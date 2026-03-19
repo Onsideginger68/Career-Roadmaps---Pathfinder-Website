@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    /* ============================================================
+       SEO ROADMAP — page-specific styles
+       Standard structure (navbar, sidebar, page-header, footer)
+       from global.css + roadmap.css.
+       Card grid layout from the uploaded SEO design.
+       ============================================================ */
+
+    /* ── Navbar ── */
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Card canvas — replaces .tree-canvas for this page ── */
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    /* ── Phase block ── */
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Phase colour variants — mapped to Cosmic Campus palette */
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    /* ── Card grid — matches seo-roadmap.html exactly ── */
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 0.75rem;
+    }
+
+    /* ── Card ── */
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    /* Card internals */
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Wide card */
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width:600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ── Phase connector arrow ── */
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    /* ── Detail panel ── */
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    /* ── Stats bar (sticky bottom) ── */
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+
+    /* Sidebar dots are inlined per-item */
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
+  <nav>
+    <a href="../index.html" class="brand-roadmap">Path<span>Finder</span></a>
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 38 complete</span>
+  </nav>
+
+
+  <!-- =====================================================
+       PAGE HEADER
+  ====================================================== -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>SEO</span></div>
+      <div class="page-tag">Marketing</div>
+      <h1 class="page-title">Search Engine<br />Optimisation</h1>
+      <p class="page-desc">A beginner-to-advanced roadmap covering every skill you need to rank higher, drive organic
+        traffic, and build sustainable search visibility — 7 phases, 38 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>6–12 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>38 topics</strong>&nbsp;· 7 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>9,400</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 38 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       LAYOUT — Sidebar + Card Canvas
+  ====================================================== -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        How Search Engines Work</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SERP Anatomy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Core SEO Concepts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Setting Up SEO Tools</div>
+
+      <div class="sidebar-section-title">Phase 2 — Keyword Research</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Search Intent</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Keyword Metrics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Keyword Research Tools</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Long-tail Keywords</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Keyword Mapping &amp; Clustering</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Competitive Keyword Analysis</div>
+
+      <div class="sidebar-section-title">Phase 3 — On-Page SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Title Tags &amp; Meta Descriptions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Heading Structure</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        URL Structure</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Optimisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Internal Linking</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Image &amp; Media Optimisation</div>
+
+      <div class="sidebar-section-title">Phase 4 — Technical SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Core Web Vitals &amp; Site Speed</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Crawlability &amp; Indexing Control</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        XML Sitemaps</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Structured Data &amp; Schema</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Mobile-First &amp; HTTPS</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Technical SEO Auditing</div>
+
+      <div class="sidebar-section-title">Phase 5 — Content Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Types &amp; Formats</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Pillar Pages &amp; Topic Clusters</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        E-E-A-T &amp; Content Quality</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Refresh &amp; Pruning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Featured Snippets &amp; PAA</div>
+
+      <div class="sidebar-section-title">Phase 6 — Off-Page &amp; Links</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Backlink Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Link Building Tactics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Anchor Text Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Brand Signals &amp; Mentions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Local SEO &amp; Google Business Profile</div>
+
+      <div class="sidebar-section-title">Phase 7 — Analytics &amp; Growth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Google Search Console Mastery</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        GA4 for SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Rank Tracking &amp; Reporting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SEO Reporting for Stakeholders</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Algorithm Updates &amp; Recovery</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        AI &amp; the Future of SEO</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 ═══ -->
+      <div class="phase phase-amber" id="phase-1" data-phase="1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">SEO Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="1" data-title="How Search Engines Work"
+            data-desc="Understand the lifecycle of a search: crawling, indexing, and ranking. Learn how Googlebot discovers pages, what it can and can't render, and how the index is built. This foundational knowledge underpins every SEO decision you make."
+            data-topics="Crawling & indexing basics|Google's ranking signals overview|How JavaScript affects crawling|Search engine vs. website relationship"
+            data-tags="fundamentals,crawling">
+            <div class="node-top">
+              <div class="node-icon">🌐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">How Search Engines Work</div>
+            <div class="node-desc">Crawling, indexing, and ranking explained.</div>
+            <div class="node-tags"><span class="node-tag">fundamentals</span><span class="node-tag">crawling</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="2" data-title="SERP Anatomy"
+            data-desc="Dissect a Search Engine Results Page. Understand organic results, paid ads, featured snippets, People Also Ask, local packs, and more. Knowing what you're competing with helps you set realistic goals."
+            data-topics="Organic vs. paid results|SERP features: snippets, packs, carousels|CTR by SERP position|Zero-click searches"
+            data-tags="serp,ctr">
+            <div class="node-top">
+              <div class="node-icon">📄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SERP Anatomy</div>
+            <div class="node-desc">Understand every element on a results page.</div>
+            <div class="node-tags"><span class="node-tag">serp</span><span class="node-tag">ctr</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Core SEO Concepts"
+            data-desc="Learn the vocabulary of SEO: on-page, off-page, technical, E-E-A-T, domain authority, backlinks, anchor text, and more. These concepts appear everywhere — you need to be fluent in them."
+            data-topics="On-page vs. off-page vs. technical SEO|E-E-A-T explained|Domain & page authority|White hat vs. black hat"
+            data-tags="concepts,vocabulary">
+            <div class="node-top">
+              <div class="node-icon">🧩</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Core SEO Concepts</div>
+            <div class="node-desc">Master the essential vocabulary of the field.</div>
+            <div class="node-tags"><span class="node-tag">concepts</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Setting Up SEO Tools"
+            data-desc="Install and configure the essential tools: Google Search Console, Google Analytics 4, Bing Webmaster Tools, and browser extensions like Detailed SEO. These are your instruments — learn them before anything else."
+            data-topics="Google Search Console setup|GA4 basics for SEO|Bing Webmaster Tools|Browser extensions (Detailed, MozBar)"
+            data-tags="tools,gsc,ga4">
+            <div class="node-top">
+              <div class="node-icon">🛠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Setting Up SEO Tools</div>
+            <div class="node-desc">GSC, GA4, and essential browser extensions.</div>
+            <div class="node-tags"><span class="node-tag">tools</span><span class="node-tag">gsc</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 ═══ -->
+      <div class="phase phase-teal" id="phase-2" data-phase="2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Keyword Research</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Search Intent"
+            data-desc="The single most important concept in modern SEO. Every query has an intent — informational, navigational, commercial, or transactional. Matching your content to intent is the biggest ranking factor you can control."
+            data-topics="4 types of search intent|Intent modifiers in queries|How Google interprets intent|SERP intent analysis"
+            data-tags="intent,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Search Intent</div>
+            <div class="node-desc">Align every page to what the searcher really wants.</div>
+            <div class="node-tags"><span class="node-tag">intent</span><span class="node-tag">core</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Keyword Metrics"
+            data-desc="Learn to evaluate keywords using search volume, keyword difficulty (KD), CPC, and trend data. Understand why a low-volume keyword can be more valuable than a high-volume one for a new site."
+            data-topics="Search volume & seasonality|Keyword difficulty scores|CPC & commercial value|Trend data with Google Trends"
+            data-tags="metrics,volume">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Keyword Metrics</div>
+            <div class="node-desc">Volume, difficulty, CPC, and trend data.</div>
+            <div class="node-tags"><span class="node-tag">metrics</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Keyword Research Tools"
+            data-desc="Get hands-on with Ahrefs, Semrush, Google Keyword Planner, and free alternatives like Ubersuggest and AnswerThePublic. Learn to export, filter, and prioritize keyword lists efficiently."
+            data-topics="Ahrefs Keywords Explorer|Semrush Keyword Magic Tool|Google Keyword Planner|Free tools: Ubersuggest, Exploding Topics"
+            data-tags="ahrefs,semrush,tools">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Keyword Research Tools</div>
+            <div class="node-desc">Ahrefs, Semrush, and free alternatives.</div>
+            <div class="node-tags"><span class="node-tag">ahrefs</span><span class="node-tag">semrush</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Long-tail Keywords"
+            data-desc="Long-tail keywords (3+ words) have lower competition and higher conversion rates. Find them through autocomplete, PAA, related searches, Reddit, forums, and competitive gap analysis."
+            data-topics="Why long-tail converts better|Finding gaps competitors miss|Autocomplete & PAA harvesting|Clustering related long-tails"
+            data-tags="long-tail,strategy">
+            <div class="node-top">
+              <div class="node-icon">🌿</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Long-tail Keywords</div>
+            <div class="node-desc">Lower competition, higher intent, better conversions.</div>
+            <div class="node-tags"><span class="node-tag">strategy</span></div>
+          </div>
+
+          <div class="node" data-id="9" data-title="Keyword Mapping & Clustering"
+            data-desc="Map keywords to specific pages to avoid cannibalisation. Group semantically related keywords into topic clusters. Build a keyword map as your content strategy foundation."
+            data-topics="One page = one primary keyword|Topic clusters & pillar pages|Cannibalisation detection|Spreadsheet keyword mapping"
+            data-tags="mapping,clusters">
+            <div class="node-top">
+              <div class="node-icon">🗺</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Keyword Mapping &amp; Clustering</div>
+            <div class="node-desc">Assign keywords to pages, build topic clusters.</div>
+            <div class="node-tags"><span class="node-tag">clusters</span><span class="node-tag">strategy</span></div>
+          </div>
+
+          <div class="node" data-id="10" data-title="Competitive Keyword Analysis"
+            data-desc="Spy on competitors' top-performing pages and keywords. Use Ahrefs/Semrush to find keyword gaps — terms your competitors rank for but you don't. Prioritise the opportunities with the best ROI."
+            data-topics="Competitor keyword gap analysis|Top pages by traffic|Low-hanging fruit identification|SERP competitor profiling"
+            data-tags="competitors,gap-analysis">
+            <div class="node-top">
+              <div class="node-icon">⚔️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Competitive Keyword Analysis</div>
+            <div class="node-desc">Find gaps and opportunities your rivals are missing.</div>
+            <div class="node-tags"><span class="node-tag">competitors</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 ═══ -->
+      <div class="phase phase-amber" id="phase-3" data-phase="3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">On-Page SEO</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="11" data-title="Title Tags & Meta Descriptions"
+            data-desc="Write compelling, keyword-rich title tags (50–60 chars) and meta descriptions (150–160 chars) that drive clicks. Learn when Google rewrites your titles and how to prevent it."
+            data-topics="Title tag best practices|Meta description CTR optimisation|When Google rewrites titles|Templated vs. unique tags"
+            data-tags="title-tags,meta">
+            <div class="node-top">
+              <div class="node-icon">🏷</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Title Tags &amp; Meta Descriptions</div>
+            <div class="node-desc">Drive clicks with compelling, keyword-rich snippets.</div>
+            <div class="node-tags"><span class="node-tag">on-page</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Heading Structure (H1–H6)"
+            data-desc="Structure content with semantic headings. One H1 per page, keyword-rich H2s for sections, H3s for sub-sections. Headings are both a ranking signal and a readability aid for users."
+            data-topics="H1 best practices|H2/H3 keyword placement|Heading hierarchy for readers|Accessibility and headings"
+            data-tags="headings,structure">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Heading Structure</div>
+            <div class="node-desc">Semantic H1–H6 hierarchy for rankings and readers.</div>
+            <div class="node-tags"><span class="node-tag">headings</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="URL Structure"
+            data-desc="Short, descriptive, keyword-containing URLs outperform long parameter-heavy ones. Learn folder structures, trailing slashes, HTTPS, and how to avoid common URL mistakes."
+            data-topics="Short and descriptive URLs|Hyphens vs. underscores|URL depth and folders|HTTPS & www canonicalisation"
+            data-tags="urls,structure">
+            <div class="node-top">
+              <div class="node-icon">🔗</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">URL Structure</div>
+            <div class="node-desc">Clean, descriptive URLs that Google loves.</div>
+            <div class="node-tags"><span class="node-tag">urls</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Content Optimisation"
+            data-desc="Write content that comprehensively covers a topic, uses natural keyword placement, and satisfies intent better than competitors. Learn TF-IDF, semantic keywords, and content depth strategies."
+            data-topics="Keyword density and placement|Semantic & LSI keywords|Content length & depth|Beating competitor content"
+            data-tags="content,writing">
+            <div class="node-top">
+              <div class="node-icon">✍️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Optimisation</div>
+            <div class="node-desc">Write comprehensive content that beats competitors.</div>
+            <div class="node-tags"><span class="node-tag">content</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Internal Linking"
+            data-desc="Internal links pass PageRank, help Google discover pages, and keep users on site. Learn to build a silo structure, choose anchor text strategically, and find internal link opportunities."
+            data-topics="PageRank distribution via links|Anchor text strategy|Silo vs. flat architecture|Finding orphan pages"
+            data-tags="internal-links,architecture">
+            <div class="node-top">
+              <div class="node-icon">🕸</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Internal Linking</div>
+            <div class="node-desc">Pass PageRank and guide crawlers through your site.</div>
+            <div class="node-tags"><span class="node-tag">links</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Image & Media Optimisation"
+            data-desc="Optimise images for speed and search: descriptive file names, alt text, compression (WebP), lazy loading, and image sitemaps. Images can drive independent traffic via Google Image Search."
+            data-topics="Alt text best practices|File naming conventions|WebP & compression tools|Image sitemaps"
+            data-tags="images,alt-text">
+            <div class="node-top">
+              <div class="node-icon">🖼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Image &amp; Media Optimisation</div>
+            <div class="node-desc">Alt text, compression, and image search opportunities.</div>
+            <div class="node-tags"><span class="node-tag">images</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 ═══ -->
+      <div class="phase phase-blue" id="phase-4" data-phase="4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Technical SEO</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="17" data-title="Core Web Vitals & Site Speed"
+            data-desc="Core Web Vitals (LCP, INP, CLS) are official Google ranking factors. Learn to measure them in PageSpeed Insights and Search Console, then fix the most common performance bottlenecks."
+            data-topics="LCP, INP & CLS explained|PageSpeed Insights & CrUX data|Image optimisation for speed|Server response time (TTFB)"
+            data-tags="speed,cwv">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Core Web Vitals &amp; Site Speed</div>
+            <div class="node-desc">LCP, INP, CLS — Google's official UX ranking signals.</div>
+            <div class="node-tags"><span class="node-tag">cwv</span><span class="node-tag">speed</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Crawlability & Indexing Control"
+            data-desc="Control what Google crawls and indexes. Master robots.txt, the noindex tag, canonical tags, crawl budget management, and how to use Search Console's URL Inspection Tool."
+            data-topics="robots.txt syntax & testing|noindex & nofollow tags|Canonical tags and duplicate content|Crawl budget management"
+            data-tags="crawling,robots">
+            <div class="node-top">
+              <div class="node-icon">🤖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Crawlability &amp; Indexing Control</div>
+            <div class="node-desc">robots.txt, noindex, canonicals, and crawl budget.</div>
+            <div class="node-tags"><span class="node-tag">crawling</span><span class="node-tag">robots</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="XML Sitemaps"
+            data-desc="Create and submit XML sitemaps to help Google discover and prioritise pages. Learn what to include and exclude, handle large sites with sitemap indexes, and monitor submissions in GSC."
+            data-topics="XML sitemap structure|What to include/exclude|Sitemap indexes for large sites|Submitting via GSC"
+            data-tags="sitemaps,indexing">
+            <div class="node-top">
+              <div class="node-icon">🗂</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">XML Sitemaps</div>
+            <div class="node-desc">Help Google discover and prioritise your pages.</div>
+            <div class="node-tags"><span class="node-tag">sitemaps</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Structured Data & Schema"
+            data-desc="Add schema.org markup to unlock rich results: FAQs, how-tos, reviews, recipes, events, and more. Learn JSON-LD implementation and test with Google's Rich Results Test tool."
+            data-topics="JSON-LD vs. Microdata|Common schema types (Article, FAQ, Product)|Rich Results Test|CMS plugin implementation"
+            data-tags="schema,rich-results">
+            <div class="node-top">
+              <div class="node-icon">🧬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Structured Data &amp; Schema</div>
+            <div class="node-desc">Unlock rich results with JSON-LD schema markup.</div>
+            <div class="node-tags"><span class="node-tag">schema</span><span class="node-tag">rich-results</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Mobile-First & HTTPS"
+            data-desc="Google indexes the mobile version of your site first. Learn mobile-first indexing requirements, responsive design, HTTPS as a ranking signal, and how to fix mixed content warnings."
+            data-topics="Mobile-first indexing explained|Responsive vs. separate mobile site|HTTPS & SSL certificates|Mixed content warnings"
+            data-tags="mobile,https">
+            <div class="node-top">
+              <div class="node-icon">📱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Mobile-First &amp; HTTPS</div>
+            <div class="node-desc">Mobile indexing, responsive design, and SSL.</div>
+            <div class="node-tags"><span class="node-tag">mobile</span><span class="node-tag">https</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Technical SEO Auditing"
+            data-desc="Run a full technical audit using Screaming Frog, Ahrefs Site Audit, or Semrush. Identify and fix: broken links, redirect chains, duplicate content, thin pages, and crawl errors."
+            data-topics="Screaming Frog walkthrough|Broken links & redirects|Duplicate & thin content detection|Prioritising audit findings"
+            data-tags="audit,screaming-frog">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Technical SEO Auditing</div>
+            <div class="node-desc">Screaming Frog, redirects, broken links, thin content.</div>
+            <div class="node-tags"><span class="node-tag">audit</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 ═══ -->
+      <div class="phase phase-red" id="phase-5" data-phase="5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Content Strategy &amp; Creation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="23" data-title="Content Types & Formats"
+            data-desc="Know when to use blog posts, landing pages, pillar pages, comparison pages, listicles, tools, or video. Each format serves a different intent and competes on different SERP features."
+            data-topics="Blog posts, guides, and how-tos|Commercial and comparison pages|Interactive tools and calculators|Video SEO basics"
+            data-tags="content,formats">
+            <div class="node-top">
+              <div class="node-icon">📝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Types &amp; Formats</div>
+            <div class="node-desc">Match content format to intent and SERP features.</div>
+            <div class="node-tags"><span class="node-tag">content</span><span class="node-tag">formats</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Pillar Pages & Topic Clusters"
+            data-desc="Build topical authority with a comprehensive pillar page and supporting cluster content. This structure signals expertise to Google and helps all related pages rank better together."
+            data-topics="Pillar page structure|Cluster content planning|Internal linking in clusters|Measuring topical authority"
+            data-tags="pillars,clusters">
+            <div class="node-top">
+              <div class="node-icon">🏛</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Pillar Pages &amp; Topic Clusters</div>
+            <div class="node-desc">Build topical authority with interconnected content hubs.</div>
+            <div class="node-tags"><span class="node-tag">authority</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="E-E-A-T & Content Quality"
+            data-desc="Experience, Expertise, Authoritativeness, Trustworthiness. Learn how Google evaluates quality via Search Quality Rater Guidelines and how to demonstrate E-E-A-T in your content."
+            data-topics="Google's Quality Rater Guidelines|Author bios and expertise signals|Citing sources and building trust|YMYL niches and higher scrutiny"
+            data-tags="eeat,quality">
+            <div class="node-top">
+              <div class="node-icon">🏅</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">E-E-A-T &amp; Content Quality</div>
+            <div class="node-desc">Demonstrate expertise, authority, and trustworthiness.</div>
+            <div class="node-tags"><span class="node-tag">eeat</span><span class="node-tag">quality</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Content Refresh & Pruning"
+            data-desc="Old, thin, or outdated content drags your entire site down. Audit your content portfolio, decide what to update vs. redirect vs. delete, and how regular refreshes drive ranking improvements."
+            data-topics="Content decay and freshness signals|Update vs. delete vs. consolidate|Redirecting pruned pages|Measuring impact of refreshes"
+            data-tags="content-audit,pruning">
+            <div class="node-top">
+              <div class="node-icon">✂️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Refresh &amp; Pruning</div>
+            <div class="node-desc">Update, consolidate, or cut pages dragging you down.</div>
+            <div class="node-tags"><span class="node-tag">maintenance</span></div>
+          </div>
+
+          <div class="node" data-id="27" data-title="Featured Snippets & PAA"
+            data-desc="Optimise content to win featured snippets (position 0) and appear in People Also Ask. Learn the question-answer format, paragraph/table/list snippet types, and tracking your snippet wins."
+            data-topics="Paragraph, list & table snippets|Question-answer formatting|PAA optimisation techniques|Tracking snippet wins in GSC"
+            data-tags="snippets,paa">
+            <div class="node-top">
+              <div class="node-icon">⭐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Featured Snippets &amp; PAA</div>
+            <div class="node-desc">Win position zero and People Also Ask boxes.</div>
+            <div class="node-tags"><span class="node-tag">snippets</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 ═══ -->
+      <div class="phase phase-teal" id="phase-6" data-phase="6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Off-Page SEO &amp; Link Building</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="28" data-title="Backlink Fundamentals"
+            data-desc="Backlinks remain one of Google's top 3 ranking factors. Learn PageRank, link equity, domain authority, dofollow vs. nofollow, and how to evaluate whether a link is worth pursuing."
+            data-topics="PageRank & link equity|Domain Authority vs. Domain Rating|dofollow vs. nofollow vs. UGC|Toxic links and disavow file"
+            data-tags="backlinks,pagerank">
+            <div class="node-top">
+              <div class="node-icon">🔐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Backlink Fundamentals</div>
+            <div class="node-desc">PageRank, link equity, and evaluating link quality.</div>
+            <div class="node-tags"><span class="node-tag">backlinks</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Link Building Tactics"
+            data-desc="Learn ethical, scalable link building: digital PR, HARO/Connectively, guest posting, broken link building, the skyscraper technique, resource page outreach, and building linkable assets."
+            data-topics="Digital PR and data studies|Guest posting at scale|Broken link building|Skyscraper technique"
+            data-tags="link-building,outreach">
+            <div class="node-top">
+              <div class="node-icon">🏗</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Link Building Tactics</div>
+            <div class="node-desc">Digital PR, guest posts, HARO, and skyscraper.</div>
+            <div class="node-tags"><span class="node-tag">outreach</span></div>
+          </div>
+
+          <div class="node" data-id="30" data-title="Anchor Text Strategy"
+            data-desc="A natural anchor text profile is essential after Penguin. Learn to balance exact-match, partial-match, branded, and naked URL anchors to avoid over-optimisation penalties."
+            data-topics="Anchor text types and ratios|Penguin and over-optimisation|Natural link profiles|Monitoring anchor distribution"
+            data-tags="anchor-text,penguin">
+            <div class="node-top">
+              <div class="node-icon">⚓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Anchor Text Strategy</div>
+            <div class="node-desc">Balance exact-match, branded, and naked URL anchors.</div>
+            <div class="node-tags"><span class="node-tag">anchors</span></div>
+          </div>
+
+          <div class="node" data-id="31" data-title="Brand Signals & Mentions"
+            data-desc="Google uses brand signals — unlinked mentions, branded searches, authority — as proxies for trust. Learn to build brand visibility through PR, social, and community presence."
+            data-topics="Unlinked brand mentions|Branded search volume as a signal|Building brand on social & forums|Monitoring brand mentions"
+            data-tags="brand,mentions">
+            <div class="node-top">
+              <div class="node-icon">📣</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Signals &amp; Mentions</div>
+            <div class="node-desc">Unlinked mentions and branded searches as trust signals.</div>
+            <div class="node-tags"><span class="node-tag">brand</span></div>
+          </div>
+
+          <div class="node" data-id="32" data-title="Local SEO & Google Business Profile"
+            data-desc="For local businesses, ranking in the Local Pack is often more valuable than blue links. Learn to optimise your Google Business Profile, build local citations, and earn reviews."
+            data-topics="Google Business Profile optimisation|Local citations & NAP consistency|Review strategy and management|Local link building"
+            data-tags="local-seo,gbp">
+            <div class="node-top">
+              <div class="node-icon">📍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Local SEO &amp; Google Business Profile</div>
+            <div class="node-desc">Rank in the Local Pack and Maps for local queries.</div>
+            <div class="node-tags"><span class="node-tag">local</span><span class="node-tag">gbp</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 7 ═══ -->
+      <div class="phase phase-blue" id="phase-7" data-phase="7">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 07</div>
+          <div class="phase-title">Analytics, Reporting &amp; Growth</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="33" data-title="Google Search Console Mastery"
+            data-desc="Go beyond the basics: use GSC's Performance report to find quick wins, identify keyword cannibalisation, monitor Core Web Vitals, track index coverage, and submit pages for re-crawling."
+            data-topics="Performance report deep-dive|URL Inspection Tool|Index coverage troubleshooting|Enhancements and rich results monitoring"
+            data-tags="gsc,analytics">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Google Search Console Mastery</div>
+            <div class="node-desc">Advanced GSC for deep performance insights.</div>
+            <div class="node-tags"><span class="node-tag">gsc</span><span class="node-tag">analytics</span></div>
+          </div>
+
+          <div class="node" data-id="34" data-title="GA4 for SEO"
+            data-desc="Connect GA4 to Search Console. Analyse organic landing page performance, engagement rates, conversions from search, and use exploration reports to understand the full SEO funnel."
+            data-topics="GA4 + GSC integration|Organic channel analysis|Engagement metrics vs. bounce rate|Conversion tracking from SEO"
+            data-tags="ga4,analytics">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">GA4 for SEO</div>
+            <div class="node-desc">Track organic conversions and full-funnel performance.</div>
+            <div class="node-tags"><span class="node-tag">ga4</span></div>
+          </div>
+
+          <div class="node" data-id="35" data-title="Rank Tracking & Reporting"
+            data-desc="Set up rank tracking in Ahrefs, Semrush, or SERPWatcher. Monitor keyword positions, track SERP features, segment by device/location, and diagnose algorithm impacts from position changes."
+            data-topics="Rank tracker setup and segmentation|Tracking SERP features|Device & location splits|Correlating rank changes with updates"
+            data-tags="rank-tracking,reporting">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Rank Tracking &amp; Reporting</div>
+            <div class="node-desc">Monitor keyword positions and correlate with updates.</div>
+            <div class="node-tags"><span class="node-tag">tracking</span></div>
+          </div>
+
+          <div class="node" data-id="36" data-title="SEO Reporting for Stakeholders"
+            data-desc="Create clear, business-focused SEO reports. Communicate organic traffic trends, ROI, keyword wins, and connect SEO outcomes to business metrics executives actually care about."
+            data-topics="KPIs: traffic, rankings, conversions|Looker Studio SEO dashboards|Communicating SEO value to stakeholders|Monthly reporting templates"
+            data-tags="reporting,dashboards">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SEO Reporting for Stakeholders</div>
+            <div class="node-desc">Looker Studio dashboards and ROI-focused reporting.</div>
+            <div class="node-tags"><span class="node-tag">reporting</span></div>
+          </div>
+
+          <div class="node" data-id="37" data-title="Algorithm Updates & Recovery"
+            data-desc="Google releases hundreds of updates per year. Learn to monitor, diagnose, and recover from traffic drops after Core Updates, Helpful Content updates, and SpamBrain."
+            data-topics="Tracking Google updates (SearchLiaison)|Diagnosing post-update drops|Core Update recovery strategies|Staying updated via SEO blogs"
+            data-tags="algorithms,recovery">
+            <div class="node-top">
+              <div class="node-icon">🌊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Algorithm Updates &amp; Recovery</div>
+            <div class="node-desc">Diagnose and recover from Google's Core Updates.</div>
+            <div class="node-tags"><span class="node-tag">algorithms</span></div>
+          </div>
+
+          <div class="node wide" data-id="38" data-title="AI & the Future of SEO"
+            data-desc="AI Overviews are changing what it means to rank. Learn how to optimise for AI-generated answers, the role of structured data in AI citations, and how to stay visible in an AI-first search world."
+            data-topics="Google AI Overviews optimisation|Optimising for conversational & voice search|Generative search and zero-click impact|Building a brand that AI cites"
+            data-tags="ai,future,sge">
+            <div class="node-top">
+              <div class="node-icon">🤖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">AI &amp; the Future of SEO</div>
+            <div class="node-desc">Optimise for AI Overviews, generative search, and voice — stay visible in an AI-first
+              world.</div>
+            <div class="node-tags"><span class="node-tag">ai</span><span class="node-tag">future</span><span
+                class="node-tag">sge</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>38</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/7 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — SEO FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 38;
+    const phaseNames = {
+      1: 'SEO FOUNDATIONS', 2: 'KEYWORD RESEARCH', 3: 'ON-PAGE SEO',
+      4: 'TECHNICAL SEO', 5: 'CONTENT STRATEGY', 6: 'OFF-PAGE & LINKS',
+      7: 'ANALYTICS & GROWTH'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-seo-done') || '[]'));
+    let activeNode = null;
+
+    function save() {
+      localStorage.setItem('pathfinder-seo-done', JSON.stringify([...done]));
+    }
+
+    function updateProgress() {
+      const n = done.size;
+      const pct = Math.round((n / TOTAL) * 100);
+
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+
+      let completedPhases = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const allDone = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = allDone ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = allDone ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = allDone ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (allDone) completedPhases++;
+      });
+      document.getElementById('phaseDone').textContent = completedPhases;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => {
+        nd.classList.toggle('done', done.has(nd.dataset.id));
+      });
+      updateProgress();
+    }
+
+    // Open panel
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const phase = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${phase} — ${phaseNames[phase]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Checkbox tick
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id);
+        save(); applyDone();
+      });
+    });
+
+    // Panel mark button
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    // Close panel
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    // Sidebar scroll
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Init
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

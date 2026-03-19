@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B Marketing — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    /* ── Navbar ── */
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Card canvas ── */
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    /* ── Phase animations ── */
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    /* ── Card grid — 3 columns; override roadmap.css node width ── */
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      width: auto;
+      text-align: left;
+    }
+
+    /* ── Card ── */
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width:600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ── Phase connector ── */
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    /* ── Detail panel ── */
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="../index.html" class="brand">Path<em>Finder</em></a>
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 33 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>B2B Marketing</span></div>
+      <div class="page-tag">Marketing</div>
+      <h1 class="page-title">B2B<br />Marketing</h1>
+      <p class="page-desc">A structured path through business-to-business marketing — from understanding buyers and
+        building pipeline, to demand generation, account-based marketing, and revenue attribution.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~4 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>33 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>4,200</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 33 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        B2B vs B2C</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The B2B Buyer</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        B2B Buying Committee</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        ICP &amp; Market Segmentation</div>
+
+      <div class="sidebar-section-title">Phase 2 — Positioning &amp; Messaging</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Positioning &amp; Differentiation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Value Proposition</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Messaging Framework</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Competitive Intelligence</div>
+
+      <div class="sidebar-section-title">Phase 3 — Demand Generation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Demand Gen vs Lead Gen</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Marketing for B2B</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        LinkedIn Marketing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Email &amp; Nurture Programs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SEO &amp; Paid Search for B2B</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Webinars &amp; Events</div>
+
+      <div class="sidebar-section-title">Phase 4 — ABM</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        ABM Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Target Account Selection</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Personalisation at Scale</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Sales &amp; Marketing Alignment</div>
+
+      <div class="sidebar-section-title">Phase 5 — Pipeline &amp; Revenue</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Lead Scoring &amp; MQL/SQL</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        CRM &amp; Marketing Automation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Pipeline Velocity</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Customer Marketing &amp; Expansion</div>
+
+      <div class="sidebar-section-title">Phase 6 — Measurement &amp; Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        B2B Marketing Metrics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Attribution Modelling</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        B2B Marketing Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        GTM Planning</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 — Foundations ═══ -->
+      <div class="phase phase-amber" id="phase-1" data-phase="1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">B2B Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="1" data-title="B2B vs B2C"
+            data-desc="Understand the fundamental differences between marketing to businesses and marketing to consumers. B2B has longer sales cycles, multiple decision-makers, rational purchase drivers, and much higher deal values — each of these changes everything about how you market."
+            data-topics="Sales cycle length and complexity|Rational vs emotional buying drivers|Deal size and relationship importance|How marketing's role differs in B2B"
+            data-tags="fundamentals,b2b">
+            <div class="node-top">
+              <div class="node-icon">🏢</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">B2B vs B2C</div>
+            <div class="node-desc">Understand how B2B fundamentally differs from consumer marketing.</div>
+            <div class="node-tags"><span class="node-tag">fundamentals</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="The B2B Buyer"
+            data-desc="B2B buyers are under pressure, risk-averse, and highly informed before they ever talk to sales. Learn the psychology of the B2B buyer, how they research solutions, what makes them trust a vendor, and how buying behaviour has shifted in the digital era."
+            data-topics="How B2B buyers self-educate|The risk aversion principle|Trust signals in B2B|The shift to digital-first buyer journeys"
+            data-tags="buyer,psychology">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The B2B Buyer</div>
+            <div class="node-desc">Psychology, behaviour, and how B2B buyers make decisions.</div>
+            <div class="node-tags"><span class="node-tag">buyer</span><span class="node-tag">psychology</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="B2B Buying Committee"
+            data-desc="B2B purchases involve an average of 6–10 stakeholders, each with different priorities. Learn the roles — champion, economic buyer, technical buyer, end user, legal/procurement — and how to create content and messaging that speaks to each one."
+            data-topics="The 6 buyer roles in a committee|Economic buyer vs champion|How to influence without direct access|Multi-threading your marketing"
+            data-tags="committee,stakeholders">
+            <div class="node-top">
+              <div class="node-icon">👥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">B2B Buying Committee</div>
+            <div class="node-desc">Navigate the 6–10 stakeholders involved in every B2B purchase.</div>
+            <div class="node-tags"><span class="node-tag">committee</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="ICP & Market Segmentation"
+            data-desc="Your Ideal Customer Profile (ICP) defines which companies you can help most and who will buy most reliably. Learn how to build an ICP using firmographics, technographics, and behavioural signals, then segment your market into actionable tiers."
+            data-topics="Firmographic vs technographic segmentation|How to build an ICP from existing customers|Tiering your market (Tier 1/2/3)|TAM, SAM, SOM"
+            data-tags="icp,segmentation">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">ICP &amp; Market Segmentation</div>
+            <div class="node-desc">Define who you serve and tier your market for maximum ROI.</div>
+            <div class="node-tags"><span class="node-tag">icp</span><span class="node-tag">segmentation</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 — Positioning & Messaging ═══ -->
+      <div class="phase phase-teal" id="phase-2" data-phase="2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Positioning &amp; Messaging</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Positioning & Differentiation"
+            data-desc="Positioning is how your product occupies a distinct place in the mind of your buyer relative to alternatives. Learn April Dunford's framework for modern B2B positioning — competitive alternatives, unique attributes, value themes, and best-fit customers."
+            data-topics="April Dunford's positioning framework|Competitive alternatives (not just direct competitors)|Unique attributes that matter to buyers|Positioning statement construction"
+            data-tags="positioning,strategy">
+            <div class="node-top">
+              <div class="node-icon">📍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Positioning &amp; Differentiation</div>
+            <div class="node-desc">Own a distinct place in your buyer's mind using proven frameworks.</div>
+            <div class="node-tags"><span class="node-tag">positioning</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Value Proposition"
+            data-desc="A strong value proposition clearly answers: who is this for, what problem does it solve, and why is this better than alternatives? Learn to build value propositions that are specific, quantified, and aligned to buyer outcomes — not product features."
+            data-topics="Outcome-based vs feature-based value props|Quantifying business value (ROI, time saved)|Value prop by persona and buying stage|Testing and validating your value prop"
+            data-tags="value-prop,messaging">
+            <div class="node-top">
+              <div class="node-icon">💎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Value Proposition</div>
+            <div class="node-desc">Articulate why buyers should choose you over every alternative.</div>
+            <div class="node-tags"><span class="node-tag">value-prop</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Messaging Framework"
+            data-desc="A messaging framework ensures every piece of content, every sales call, and every ad says the same core things in the right way. Learn to build a messaging house: core narrative, pillar messages, proof points, and persona-specific variants."
+            data-topics="Messaging house structure|Core narrative and brand story|Pillar messages and proof points|Persona-specific message variants"
+            data-tags="messaging,framework">
+            <div class="node-top">
+              <div class="node-icon">🗣️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Messaging Framework</div>
+            <div class="node-desc">Build the messaging house that keeps all comms consistent.</div>
+            <div class="node-tags"><span class="node-tag">messaging</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Competitive Intelligence"
+            data-desc="Know your competitive landscape better than your buyers do. Learn how to systematically monitor competitors, build battlecards for sales, and create competitive content that wins deals at the bottom of the funnel."
+            data-topics="Competitor research methods|Building sales battlecards|Competitive content strategy|Win/loss analysis"
+            data-tags="competitive,intelligence">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Competitive Intelligence</div>
+            <div class="node-desc">Monitor the landscape and build battlecards that win deals.</div>
+            <div class="node-tags"><span class="node-tag">competitive</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 — Demand Generation ═══ -->
+      <div class="phase phase-blue" id="phase-3" data-phase="3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Demand Generation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="9" data-title="Demand Gen vs Lead Gen"
+            data-desc="Demand generation creates awareness and desire in your market. Lead generation captures people already in-market. Most B2B teams over-invest in lead gen and under-invest in demand. Learn the difference, when to use each, and how the two work together."
+            data-topics="Demand creation vs demand capture|The dark funnel and uncredited influence|Why gated content is declining|Building a full-funnel demand strategy"
+            data-tags="demand-gen,strategy">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Demand Gen vs Lead Gen</div>
+            <div class="node-desc">Understand the critical distinction and when to use each.</div>
+            <div class="node-tags"><span class="node-tag">demand-gen</span></div>
+          </div>
+
+          <div class="node" data-id="10" data-title="Content Marketing for B2B"
+            data-desc="B2B content must educate, not just attract. Learn how to build a content strategy around buyer stages, create thought leadership that builds authority, repurpose effectively across formats, and measure content's contribution to pipeline."
+            data-topics="Buyer stage content mapping (TOFU/MOFU/BOFU)|Thought leadership vs product content|Long-form, case studies, and data reports|Content distribution and amplification"
+            data-tags="content,thought-leadership">
+            <div class="node-top">
+              <div class="node-icon">📝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Marketing for B2B</div>
+            <div class="node-desc">Build content that educates buyers and drives pipeline.</div>
+            <div class="node-tags"><span class="node-tag">content</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="LinkedIn Marketing"
+            data-desc="LinkedIn is the most important platform for B2B marketing. Learn organic content strategy for company pages and personal brands, LinkedIn Ads (Sponsored Content, Message Ads, Lead Gen Forms), audience targeting, and how to measure LinkedIn's contribution to pipeline."
+            data-topics="Organic LinkedIn strategy for brands|Personal brand as a B2B channel|LinkedIn Ads campaign types|Targeting by job title, company, and intent"
+            data-tags="linkedin,social">
+            <div class="node-top">
+              <div class="node-icon">💼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">LinkedIn Marketing</div>
+            <div class="node-desc">The most important platform for B2B — organic and paid.</div>
+            <div class="node-tags"><span class="node-tag">linkedin</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Email & Nurture Programs"
+            data-desc="Email remains one of the highest-ROI B2B channels. Learn how to build nurture sequences that move buyers through long sales cycles, design drip programs by persona and stage, maintain list hygiene, and measure what actually matters."
+            data-topics="Nurture sequence design by funnel stage|Drip vs trigger-based programs|List segmentation and hygiene|Email metrics: open rate vs pipeline contribution"
+            data-tags="email,nurture">
+            <div class="node-top">
+              <div class="node-icon">📧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Email &amp; Nurture Programs</div>
+            <div class="node-desc">Move buyers through long sales cycles with targeted sequences.</div>
+            <div class="node-tags"><span class="node-tag">email</span><span class="node-tag">nurture</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="SEO & Paid Search for B2B"
+            data-desc="B2B SEO is about ranking for high-intent, often low-volume keywords that signal active buying intent. Learn B2B keyword strategy, bottom-of-funnel content (vs category/comparisons pages), Google Ads for B2B, and how to align search strategy with sales cycles."
+            data-topics="B2B keyword intent hierarchy|Bottom-of-funnel SEO pages|Google Ads for B2B — search vs display|Retargeting throughout long sales cycles"
+            data-tags="seo,paid-search">
+            <div class="node-top">
+              <div class="node-icon">🔎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SEO &amp; Paid Search for B2B</div>
+            <div class="node-desc">Rank for intent-rich keywords and capture in-market buyers.</div>
+            <div class="node-tags"><span class="node-tag">seo</span><span class="node-tag">paid-search</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Webinars & Events"
+            data-desc="Webinars and in-person events are uniquely powerful in B2B because they create real human connection and intent signals. Learn how to plan, promote, and run high-converting webinars, and how to measure the pipeline impact of events both virtual and live."
+            data-topics="Webinar funnel design and promotion|Converting attendees to pipeline|Field marketing and hosted events|Virtual vs in-person event strategy"
+            data-tags="events,webinars">
+            <div class="node-top">
+              <div class="node-icon">🎤</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Webinars &amp; Events</div>
+            <div class="node-desc">Create human connection and intent signals that drive pipeline.</div>
+            <div class="node-tags"><span class="node-tag">events</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 — Account-Based Marketing ═══ -->
+      <div class="phase phase-red" id="phase-4" data-phase="4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Account-Based Marketing</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="15" data-title="ABM Fundamentals"
+            data-desc="Account-Based Marketing flips traditional lead gen: instead of casting a wide net, you identify high-value accounts and market directly to them. Learn the three tiers of ABM (1:1, 1:few, 1:many), when ABM makes sense, and how to build the business case internally."
+            data-topics="ABM 1:1, 1:few, 1:many tiers|When ABM is right for your business|The ABM technology stack|Building internal buy-in for ABM"
+            data-tags="abm,strategy">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">ABM Fundamentals</div>
+            <div class="node-desc">Flip the funnel — market to accounts, not just leads.</div>
+            <div class="node-tags"><span class="node-tag">abm</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Target Account Selection"
+            data-desc="Choosing the right accounts to pursue is the most important ABM decision. Learn how to combine ICP criteria with intent data, technographic signals, engagement history, and sales input to build and rank a target account list."
+            data-topics="Account scoring models|Intent data providers (6sense, Bombora)|Technographic signals for fit|Sales + marketing joint account selection"
+            data-tags="abm,account-selection">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Target Account Selection</div>
+            <div class="node-desc">Score and prioritise accounts using ICP fit and intent signals.</div>
+            <div class="node-tags"><span class="node-tag">abm</span><span class="node-tag">intent-data</span></div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Personalisation at Scale"
+            data-desc="ABM requires personalised experiences, but true 1:1 at scale isn't feasible. Learn how to create personalised landing pages, ads, and email sequences using dynamic content and segmentation — and where to spend personalisation effort for maximum impact."
+            data-topics="Dynamic landing pages and website personalisation|Personalised ad creative at scale|Account-level email personalisation|Personalisation ROI — where it matters most"
+            data-tags="personalisation,abm">
+            <div class="node-top">
+              <div class="node-icon">✨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Personalisation at Scale</div>
+            <div class="node-desc">Create tailored experiences without doing everything manually.</div>
+            <div class="node-tags"><span class="node-tag">personalisation</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Sales & Marketing Alignment"
+            data-desc="ABM only works when sales and marketing operate as a single revenue team. Learn how to define shared goals (pipeline, not leads), build joint account plans, create SLAs between teams, and run weekly account reviews that keep both sides aligned."
+            data-topics="Shared pipeline goals vs MQL targets|Joint account planning process|Marketing-to-sales SLAs|Weekly account review cadence"
+            data-tags="alignment,smarketing">
+            <div class="node-top">
+              <div class="node-icon">🤝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Sales &amp; Marketing Alignment</div>
+            <div class="node-desc">Operate as one revenue team — shared goals, shared accountability.</div>
+            <div class="node-tags"><span class="node-tag">alignment</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 — Pipeline & Revenue ═══ -->
+      <div class="phase phase-teal" id="phase-5" data-phase="5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Pipeline &amp; Revenue Operations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="19" data-title="Lead Scoring & MQL/SQL"
+            data-desc="Lead scoring determines when a prospect is ready to be passed to sales. Learn how to build a scoring model using demographic fit and behavioural engagement, define MQL and SQL thresholds, and set up the handoff process that prevents leads from falling through the cracks."
+            data-topics="Demographic + behavioural scoring models|MQL vs SQL definitions and SLAs|Lead routing and assignment rules|Recycling and re-nurturing rejected leads"
+            data-tags="lead-scoring,mql">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Lead Scoring &amp; MQL/SQL</div>
+            <div class="node-desc">Know exactly when a lead is ready for sales — and prove it.</div>
+            <div class="node-tags"><span class="node-tag">lead-scoring</span><span class="node-tag">mql</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="CRM & Marketing Automation"
+            data-desc="Your CRM and MAP are the operating system of B2B marketing. Learn the core platforms (Salesforce, HubSpot, Marketo), how to structure your data, build automated workflows, and maintain the data hygiene that makes everything else reliable."
+            data-topics="CRM data architecture for B2B|MAP platforms: HubSpot, Marketo, Pardot|Workflow automation best practices|Data hygiene and deduplication"
+            data-tags="crm,automation,hubspot">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">CRM &amp; Marketing Automation</div>
+            <div class="node-desc">The operating system of B2B marketing — data, workflows, automation.</div>
+            <div class="node-tags"><span class="node-tag">crm</span><span class="node-tag">automation</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Pipeline Velocity"
+            data-desc="Pipeline velocity measures how fast deals move through your funnel: (Number of deals × Win rate × Average deal size) ÷ Sales cycle length. Learn how marketing influences each component and how to identify which stage of the funnel is creating the biggest drag."
+            data-topics="Pipeline velocity formula|How marketing accelerates deal cycles|Stage conversion rate analysis|Content and campaigns for mid-funnel"
+            data-tags="pipeline,velocity">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Pipeline Velocity</div>
+            <div class="node-desc">Speed up deals at every stage with targeted marketing support.</div>
+            <div class="node-tags"><span class="node-tag">pipeline</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Customer Marketing & Expansion"
+            data-desc="Acquiring customers is just the start in B2B. Learn how to use marketing to drive adoption, prevent churn, generate referrals, and create upsell and cross-sell opportunities — turning your customer base into your most valuable growth channel."
+            data-topics="Onboarding and adoption campaigns|Customer advocacy and case studies|Upsell and cross-sell marketing programs|NPS and customer health scoring"
+            data-tags="customer-marketing,expansion">
+            <div class="node-top">
+              <div class="node-icon">🌱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Customer Marketing &amp; Expansion</div>
+            <div class="node-desc">Turn customers into advocates and your biggest growth channel.</div>
+            <div class="node-tags"><span class="node-tag">customer-marketing</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 — Measurement & Strategy ═══ -->
+      <div class="phase phase-amber" id="phase-6" data-phase="6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Measurement &amp; Strategy</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="23" data-title="B2B Marketing Metrics"
+            data-desc="Most B2B marketing teams track the wrong metrics. Learn the metrics that actually matter to the business: pipeline sourced and influenced, cost per pipeline, marketing's contribution to revenue, and CAC:LTV ratio — not just MQLs and impressions."
+            data-topics="Pipeline sourced vs influenced|Marketing-sourced revenue|CAC, LTV, and payback period|Vanity metrics vs business metrics"
+            data-tags="metrics,kpis">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">B2B Marketing Metrics</div>
+            <div class="node-desc">Measure what matters — pipeline, revenue, and CAC, not MQLs.</div>
+            <div class="node-tags"><span class="node-tag">metrics</span><span class="node-tag">kpis</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Attribution Modelling"
+            data-desc="B2B attribution is hard because deals have 10+ touchpoints over months. Learn the main attribution models (first touch, last touch, linear, U-shaped, W-shaped, data-driven), when to use each, and how to tell the story of marketing's impact with imperfect data."
+            data-topics="Attribution model types and trade-offs|Multi-touch attribution in B2B|The dark funnel problem|Revenue attribution tools (Bizible, Dreamdata)"
+            data-tags="attribution,reporting">
+            <div class="node-top">
+              <div class="node-icon">🔗</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Attribution Modelling</div>
+            <div class="node-desc">Prove marketing's impact across 10+ touchpoints and months.</div>
+            <div class="node-tags"><span class="node-tag">attribution</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="B2B Marketing Strategy"
+            data-desc="Pull everything together into a coherent annual marketing strategy. Learn how to set goals tied to revenue targets, allocate budget across channels and stages, build a quarterly planning cadence, and communicate strategy to leadership and cross-functional stakeholders."
+            data-topics="Revenue-back goal setting|Budget allocation framework|Quarterly OKR planning|Executive reporting and storytelling"
+            data-tags="strategy,planning">
+            <div class="node-top">
+              <div class="node-icon">🗺️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">B2B Marketing Strategy</div>
+            <div class="node-desc">Build a revenue-tied annual plan and communicate it to leadership.</div>
+            <div class="node-tags"><span class="node-tag">strategy</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="GTM Planning"
+            data-desc="A Go-To-Market plan defines how you bring a new product, feature, or market expansion to life. Learn the GTM framework: positioning, launch tiers, launch channels, sales enablement, and success metrics — and how marketing owns much of the GTM process."
+            data-topics="GTM framework and launch tiers|Launch channel and asset planning|Sales enablement for new GTMs|Measuring GTM success post-launch"
+            data-tags="gtm,launch">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">GTM Planning</div>
+            <div class="node-desc">Launch new products and markets with a structured GTM plan.</div>
+            <div class="node-tags"><span class="node-tag">gtm</span><span class="node-tag">launch</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>26</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — B2B FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 26;
+    const phaseNames = {
+      1: 'B2B FOUNDATIONS', 2: 'POSITIONING & MESSAGING', 3: 'DEMAND GENERATION',
+      4: 'ACCOUNT-BASED MARKETING', 5: 'PIPELINE & REVENUE OPS', 6: 'MEASUREMENT & STRATEGY'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-b2b-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-b2b-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size;
+      const pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+
+      let completedPhases = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const allDone = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = allDone ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = allDone ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = allDone ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (allDone) completedPhases++;
+      });
+      document.getElementById('phaseDone').textContent = completedPhases;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const phase = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${phase} — ${phaseNames[phase]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id);
+        save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — PathFinder</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/global.css">
+
+  <style>
+    /* ── Blog Page Hero ── */
+    .blog-hero {
+      padding: 6rem 4rem 5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .blog-hero-left {
+      position: relative;
+    }
+
+    .blog-hero-bg {
+      position: absolute;
+      bottom: -1rem;
+      left: -1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 16rem;
+      font-weight: 900;
+      color: rgba(245, 166, 35, 0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .blog-hero-left>*:not(.blog-hero-bg) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog-hero-right {
+      padding-bottom: 0.5rem;
+    }
+
+    .blog-hero-right p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      border-left: 2px solid var(--teal);
+      padding-left: 1rem;
+    }
+
+    .blog-hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .blog-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .blog-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .blog-stat-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+
+    /* ── Coming Soon Section ── */
+    .blog-coming-section {
+      padding: 5rem 4rem 8rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .coming-soon-wrap {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Ambient glow blobs */
+    .coming-soon-wrap::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .coming-soon-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 20%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 201, 167, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Left — text */
+    .cs-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: 50px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .cs-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
+    }
+
+    .cs-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-headline em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .cs-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cs-topic-chip {
+      padding: 0.28rem 0.75rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    /* Right — illustration / decorative placeholder cards */
+    .cs-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .ghost-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: ghostFadeIn 0.7s ease forwards;
+    }
+
+    .ghost-card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .ghost-card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .ghost-card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes ghostFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .ghost-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .gc-gold {
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.15);
+    }
+
+    .gc-teal {
+      background: rgba(0, 201, 167, 0.08);
+      border: 1px solid rgba(0, 201, 167, 0.15);
+    }
+
+    .gc-blue {
+      background: rgba(123, 159, 255, 0.08);
+      border: 1px solid rgba(123, 159, 255, 0.15);
+    }
+
+    .ghost-lines {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .ghost-line {
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ghost-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+      transform: translateX(-100%);
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    .ghost-card:nth-child(2) .ghost-line::after {
+      animation-delay: 0.3s;
+    }
+
+    .ghost-card:nth-child(3) .ghost-line::after {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(200%);
+      }
+    }
+
+    .ghost-line.gl-long {
+      width: 85%;
+    }
+
+    .ghost-line.gl-short {
+      width: 55%;
+    }
+
+    .ghost-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .gc-gold .ghost-label,
+    .ghost-card:nth-child(1) .ghost-label {
+      color: rgba(245, 166, 35, 0.4);
+    }
+
+    .gc-teal .ghost-label,
+    .ghost-card:nth-child(2) .ghost-label {
+      color: rgba(0, 201, 167, 0.4);
+    }
+
+    .gc-blue .ghost-label,
+    .ghost-card:nth-child(3) .ghost-label {
+      color: rgba(123, 159, 255, 0.4);
+    }
+
+    .ghost-coming-tag {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .ghost-card:nth-child(1) .ghost-coming-tag {
+      background: rgba(245, 166, 35, 0.08);
+      color: rgba(245, 166, 35, 0.5);
+    }
+
+    .ghost-card:nth-child(2) .ghost-coming-tag {
+      background: rgba(0, 201, 167, 0.08);
+      color: rgba(0, 201, 167, 0.5);
+    }
+
+    .ghost-card:nth-child(3) .ghost-coming-tag {
+      background: rgba(123, 159, 255, 0.08);
+      color: rgba(123, 159, 255, 0.5);
+    }
+
+
+
+    /* ── Topics Preview Grid ── */
+    .topics-section {
+      background: var(--bg2);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 5rem 4rem;
+    }
+
+    .topics-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .topics-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .topic-card {
+      background: var(--surface);
+      padding: 2rem 1.75rem;
+      position: relative;
+      cursor: default;
+      transition: background 0.2s;
+    }
+
+    .topic-card:hover {
+      background: var(--surface2);
+    }
+
+    .topic-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1.75rem;
+      right: 1.75rem;
+      height: 2px;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .topic-card:hover::after {
+      opacity: 1;
+    }
+
+    .tc-gold::after {
+      background: var(--gold);
+    }
+
+    .tc-teal::after {
+      background: var(--teal);
+    }
+
+    .tc-blue::after {
+      background: var(--blue);
+    }
+
+    .tc-red::after {
+      background: var(--red-soft);
+    }
+
+    .topic-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .ti-gold {
+      background: rgba(245, 166, 35, 0.1);
+    }
+
+    .ti-teal {
+      background: rgba(0, 201, 167, 0.1);
+    }
+
+    .ti-blue {
+      background: rgba(123, 159, 255, 0.1);
+    }
+
+    .ti-red {
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .topic-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .tc-gold .topic-name {
+      color: var(--gold);
+    }
+
+    .tc-teal .topic-name {
+      color: var(--teal);
+    }
+
+    .tc-blue .topic-name {
+      color: var(--blue);
+    }
+
+    .tc-red .topic-name {
+      color: var(--red-soft);
+    }
+
+    .topic-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .topic-soon-tag {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .tc-gold .topic-soon-tag {
+      background: rgba(245, 166, 35, 0.1);
+      color: rgba(245, 166, 35, 0.6);
+    }
+
+    .tc-teal .topic-soon-tag {
+      background: rgba(0, 201, 167, 0.1);
+      color: rgba(0, 201, 167, 0.6);
+    }
+
+    .tc-blue .topic-soon-tag {
+      background: rgba(123, 159, 255, 0.1);
+      color: rgba(123, 159, 255, 0.6);
+    }
+
+    .tc-red .topic-soon-tag {
+      background: rgba(255, 107, 107, 0.1);
+      color: rgba(255, 107, 107, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" style="color: inherit;">
+        <div class="brand">Path<em>Finder</em></div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <button class="nav-cta-pill">Start for Free</button>
+  </nav>
+
+
+  <!-- =====================================================
+       BLOG HERO
+  ====================================================== -->
+  <div class="blog-hero">
+    <div class="blog-hero-left fade-in">
+      <div class="blog-hero-bg">B</div>
+      <div class="hero-kicker">
+        <div class="kicker-line"></div>
+        <div class="kicker-text"
+          style="font-size: 1.5rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);;">
+          PathFinder Blog</div>
+      </div>
+      <h1 class="hero-headline" style="font-size: clamp(2.8rem, 5vw, 4.8rem);">
+        Insights for<br />
+        <span class="line2">curious</span>
+        <span class="line3">learners.</span>
+      </h1>
+    </div>
+    <div class="blog-hero-right fade-in">
+      <p>
+        Tips, guides, and deep-dives on learning smarter — covering
+        tech, design, business, finance, and personal growth.
+        Written for beginners, by people who started there too.
+      </p>
+      <div class="blog-hero-stats">
+        <div class="blog-stat-item">
+          <span class="blog-stat-num">Soon™</span>
+          <span class="blog-stat-label">Articles dropping</span>
+        </div>
+        <div class="blog-stat-item">
+          <span class="blog-stat-num">4</span>
+          <span class="blog-stat-label">Topics planned</span>
+        </div>
+        <div class="blog-stat-item">
+          <span class="blog-stat-num">0%</span>
+          <span class="blog-stat-label">Paywalled, ever</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       COMING SOON CARD
+  ====================================================== -->
+  <div class="blog-coming-section">
+    <div class="coming-soon-wrap fade-in">
+
+      <!-- Left -->
+      <div class="cs-left">
+        <div class="cs-badge">
+          <span class="cs-badge-dot"></span>
+          Coming Soon
+        </div>
+        <h2 class="cs-headline">
+          The blog is<br />
+          <em>being written.</em>
+        </h2>
+        <p class="cs-desc">
+          We're crafting articles that actually help — no fluff, no recycled advice.
+          Leave your email and we'll let you know the moment we publish.
+        </p>
+
+
+        <div class="cs-topics" style="margin-top: 2rem;">
+          <span class="cs-topic-chip">How to Learn Anything</span>
+          <span class="cs-topic-chip">Career Switching</span>
+          <span class="cs-topic-chip">Study Systems</span>
+          <span class="cs-topic-chip">Roadmap Deep Dives</span>
+          <span class="cs-topic-chip">Beginner Guides</span>
+          <span class="cs-topic-chip">Resource Reviews</span>
+        </div>
+      </div>
+
+      <!-- Right — ghost article cards -->
+      <div class="cs-right">
+        <div class="ghost-card">
+          <div class="ghost-icon gc-gold"></div>
+          <div class="ghost-lines">
+            <span class="ghost-label">Tech</span>
+            <div class="ghost-line gl-long"></div>
+            <div class="ghost-line gl-short"></div>
+          </div>
+          <span class="ghost-coming-tag">Soon</span>
+        </div>
+        <div class="ghost-card">
+          <div class="ghost-icon gc-teal"></div>
+          <div class="ghost-lines">
+            <span class="ghost-label">Design</span>
+            <div class="ghost-line gl-long"></div>
+            <div class="ghost-line gl-short"></div>
+          </div>
+          <span class="ghost-coming-tag">Soon</span>
+        </div>
+        <div class="ghost-card">
+          <div class="ghost-icon gc-blue"></div>
+          <div class="ghost-lines">
+            <span class="ghost-label">Life Skills</span>
+            <div class="ghost-line gl-long"></div>
+            <div class="ghost-line gl-short"></div>
+          </div>
+          <span class="ghost-coming-tag">Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       TOPICS PREVIEW
+  ====================================================== -->
+  <div class="topics-section">
+    <div class="topics-inner">
+      <div class="topics-header">
+        <div>
+          <div class="s-eyebrow">What We'll Cover</div>
+          <h2 class="s-title">Four areas,<br /><em>one mission.</em></h2>
+        </div>
+        <p class="s-desc" style="max-width: 360px; margin: 0;">
+          Every article will tie back to a roadmap — so reading always leads to doing.
+        </p>
+      </div>
+
+      <div class="topics-grid fade-in">
+        <div class="topic-card tc-gold">
+          <div class="topic-icon ti-gold">💻</div>
+          <div class="topic-name">Tech & Coding</div>
+          <p class="topic-desc">Breakdowns, beginner guides, and "where do I even start?" answers for every tech
+            roadmap.</p>
+          <span class="topic-soon-tag">Articles Coming Soon</span>
+        </div>
+        <div class="topic-card tc-teal">
+          <div class="topic-icon ti-teal">🎨</div>
+          <div class="topic-name">Design & Creative</div>
+          <p class="topic-desc">From Figma basics to design thinking — making creativity accessible for everyone.</p>
+          <span class="topic-soon-tag">Articles Coming Soon</span>
+        </div>
+        <div class="topic-card tc-blue">
+          <div class="topic-icon ti-blue">📈</div>
+          <div class="topic-name">Business & Finance</div>
+          <p class="topic-desc">Plain-English explainers on investing, entrepreneurship, and building financial
+            literacy.</p>
+          <span class="topic-soon-tag">Articles Coming Soon</span>
+        </div>
+        <div class="topic-card tc-red">
+          <div class="topic-icon ti-red">🌱</div>
+          <div class="topic-name">Life Skills</div>
+          <p class="topic-desc">Communication, critical thinking, productivity — the skills no one teaches in school.
+          </p>
+          <span class="topic-soon-tag">Articles Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="assets/js/global.js"></script>
+</body>
+
+</html>

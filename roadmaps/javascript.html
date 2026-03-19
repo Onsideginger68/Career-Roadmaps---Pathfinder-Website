@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="../index.html" class="brand-roadmap">Path<span>finder</span></a>
+    <div class="nav-divider"></div>
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+    <span class="progress-pill">0 / 15 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>JavaScript</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">JavaScript<br />Programming</h1>
+      <p class="page-desc">The language of the web — from your first variable to async APIs and modern frameworks. A
+        complete beginner-to-capable path through core JS and its ecosystem.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~6 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>15 skill nodes</strong></div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>14,200</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong>0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" data-progress="0%"></div>
+      </div>
+      <div class="progress-nodes">0 of 15 nodes completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item locked" onclick="openPanel('syntax')"> <span class="side-dot dot-locked"></span> Syntax
+        &amp; Basics</div>
+      <div class="sidebar-item locked" onclick="openPanel('datatypes')"> <span class="side-dot dot-locked"></span> Data
+        Types &amp; Variables</div>
+      <div class="sidebar-item locked" onclick="openPanel('operators')"> <span class="side-dot dot-locked"></span>
+        Operators &amp; Control Flow</div>
+      <div class="sidebar-item locked" onclick="openPanel('functions')"> <span class="side-dot dot-locked"></span>
+        Functions</div>
+
+      <div class="sidebar-section-title">Phase 2 — Core JavaScript</div>
+      <div class="sidebar-item locked" onclick="openPanel('arrays')"> <span class="side-dot dot-locked"></span> Arrays
+        &amp; Objects</div>
+      <div class="sidebar-item locked" onclick="openPanel('dom')"> <span class="side-dot dot-locked"></span> The DOM
+      </div>
+      <div class="sidebar-item locked" onclick="openPanel('events')"> <span class="side-dot dot-locked"></span> Events
+        &amp; Listeners</div>
+      <div class="sidebar-item locked" onclick="openPanel('scope')"> <span class="side-dot dot-locked"></span> Scope,
+        Closures &amp; this</div>
+
+      <div class="sidebar-section-title">Phase 3 — Modern JavaScript</div>
+      <div class="sidebar-item locked" onclick="openPanel('es6')"> <span class="side-dot dot-locked"></span> ES6+
+        Features</div>
+      <div class="sidebar-item locked" onclick="openPanel('async')"> <span class="side-dot dot-locked"></span> Async JS
+        &amp; Promises</div>
+      <div class="sidebar-item locked" onclick="openPanel('fetch')"> <span class="side-dot dot-locked"></span> Fetch
+        &amp; APIs</div>
+      <div class="sidebar-item locked" onclick="openPanel('modules')"> <span class="side-dot dot-locked"></span> Modules
+        &amp; Tooling</div>
+
+      <div class="sidebar-section-title">Phase 4 — Next Steps (Pick One)</div>
+      <div class="sidebar-item locked" onclick="openPanel('react')"> <span class="side-dot dot-locked"></span> React
+        Path</div>
+      <div class="sidebar-item locked" onclick="openPanel('node')"> <span class="side-dot dot-locked"></span> Node.js
+        Path</div>
+      <div class="sidebar-item locked" onclick="openPanel('typescript')"> <span class="side-dot dot-locked"></span>
+        TypeScript Path</div>
+
+      <div class="sidebar-section-title">Phase 5 — Ship It</div>
+      <div class="sidebar-item locked" onclick="openPanel('project')"> <span class="side-dot dot-locked"></span> Build
+        &amp; Deploy a Project</div>
+
+    </aside>
+
+
+    <!-- TREE CANVAS -->
+    <main class="tree-canvas">
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot ld-done"></div> Completed
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-active"></div> In Progress
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-locked"></div> Locked
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-opt"></div> Optional Branch
+        </div>
+      </div>
+
+
+      <!-- ═══ PHASE 1 — Foundations ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <h3>Foundations</h3>
+          <p>Learn how JavaScript thinks — variables, logic, and functions before anything else.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('syntax')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Syntax &amp; Basics</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('datatypes')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Data Types &amp; Variables</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('operators')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Operators &amp; Control Flow</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('functions')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Functions</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div>
+
+
+      <!-- ═══ PHASE 2 — Core JavaScript ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <h3>Core JavaScript</h3>
+          <p>The concepts that make JS unique — data structures, the DOM, and how the browser works.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('arrays')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Arrays &amp; Objects</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('dom')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">The DOM</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('events')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Events &amp; Listeners</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('scope')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Scope, Closures &amp; this</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div>
+
+
+      <!-- ═══ PHASE 3 — Modern JavaScript ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <h3>Modern JavaScript</h3>
+          <p>Write JS the way professional developers do — ES6+, async patterns, and real API calls.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('es6')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">ES6+ Features</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('async')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Async JS &amp; Promises</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('fetch')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Fetch &amp; APIs</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('modules')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Modules &amp; Tooling</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div>
+
+
+      <!-- ═══ PHASE 4 — Next Steps (branching) ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">04</div>
+        <div class="phase-info">
+          <h3>Next Steps</h3>
+          <p>Choose your specialisation. React for UI, Node.js for backend, or TypeScript for scale.</p>
+        </div>
+      </div>
+
+      <div class="tree-branches">
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('react')">
+            <div class="node-status">~</div>
+            <div class="node-title">React Path</div>
+            <div class="node-time">~5 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('node')">
+            <div class="node-status">~</div>
+            <div class="node-title">Node.js Path</div>
+            <div class="node-time">~4 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('typescript')">
+            <div class="node-status">~</div>
+            <div class="node-title">TypeScript Path</div>
+            <div class="node-time">~3 weeks</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div class="connector-v" style="margin:0 auto;"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 5 — Ship It ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">05</div>
+        <div class="phase-info">
+          <h3>Ship It</h3>
+          <p>Build something real, put it on GitHub, and deploy it live for the world to see.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+        <div class="node locked" onclick="openPanel('project')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Build &amp; Deploy a Project</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- OVERLAY + PANEL -->
+  <div class="overlay" id="overlay" onclick="closePanel()"></div>
+  <div class="detail-panel" id="detailPanel">
+    <button class="panel-close" onclick="closePanel()">✕</button>
+    <div class="panel-tag" id="panelTag"></div>
+    <h2 class="panel-title" id="panelTitle"></h2>
+    <p class="panel-desc" id="panelDesc"></p>
+    <div class="panel-divider"></div>
+    <div class="resources-title">Recommended Resources</div>
+    <div id="panelResources"></div>
+    <button class="panel-btn" id="panelBtn">Mark as Complete ✓</button>
+    <button class="panel-btn-ghost">Save for Later</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- NODE DATA -->
+  <script>
+    const nodes = {
+
+      syntax: {
+        tag: 'JavaScript — Phase 1',
+        title: 'Syntax & Basics',
+        desc: 'Write your first JavaScript. Understand how to include JS in a webpage, use the browser console, write statements, use comments, and understand how JS is executed by the browser.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — The Basics', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/first-steps' },
+          { name: 'MDN — JavaScript First Steps', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps' },
+          { name: 'freeCodeCamp — JS Algorithms Course', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/' },
+        ]
+      },
+
+      datatypes: {
+        tag: 'JavaScript — Phase 1',
+        title: 'Data Types & Variables',
+        desc: 'Learn the difference between var, let, and const. Understand JavaScript\'s data types: strings, numbers, booleans, null, undefined, and objects. Grasp type coercion and dynamic typing.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Data Types', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/types' },
+          { name: 'MDN — JavaScript Data Types', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures' },
+          { name: 'Fireship — JS Variables in 100 Seconds', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=9emXNzqCKyg' },
+        ]
+      },
+
+      operators: {
+        tag: 'JavaScript — Phase 1',
+        title: 'Operators & Control Flow',
+        desc: 'Use arithmetic, comparison, and logical operators. Write if/else statements, switch cases, ternary operators, and loops (for, while, for...of, for...in) to control program execution.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Operators', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/operators' },
+          { name: 'javascript.info — Loops', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/while-for' },
+          { name: 'The Odin Project — JS Foundations', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics' },
+        ]
+      },
+
+      functions: {
+        tag: 'JavaScript — Phase 1',
+        title: 'Functions',
+        desc: 'Write function declarations, function expressions, and arrow functions. Understand parameters, return values, default arguments, and the difference between function types in JavaScript.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Functions', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/function-basics' },
+          { name: 'javascript.info — Arrow Functions', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/arrow-functions-basics' },
+          { name: 'Corey Schafer — JS Functions', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=xUI5Tsl2JpY' },
+        ]
+      },
+
+      arrays: {
+        tag: 'JavaScript — Phase 2',
+        title: 'Arrays & Objects',
+        desc: 'Master JavaScript\'s core data structures. Work with arrays using map, filter, reduce, find, and forEach. Build and destructure objects, use the spread operator, and understand reference types.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Arrays', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/array' },
+          { name: 'javascript.info — Objects', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/object' },
+          { name: 'Traversy Media — Array Methods', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=rRgD1yVwIvE' },
+        ]
+      },
+
+      dom: {
+        tag: 'JavaScript — Phase 2',
+        title: 'The DOM',
+        desc: 'The Document Object Model is how JavaScript talks to your HTML. Learn to select elements, read and change their content and styles, create and remove elements, and traverse the DOM tree.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — DOM', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/document' },
+          { name: 'MDN — DOM Introduction', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction' },
+          { name: 'Traversy Media — DOM Crash Course', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=0ik6X4DJKCc' },
+        ]
+      },
+
+      events: {
+        tag: 'JavaScript — Phase 2',
+        title: 'Events & Listeners',
+        desc: 'Make pages interactive by responding to user actions. Learn addEventListener, event types (click, submit, keydown, etc.), event bubbling and capturing, delegation, and preventDefault.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Events', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/events' },
+          { name: 'MDN — Introduction to Events', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events' },
+        ]
+      },
+
+      scope: {
+        tag: 'JavaScript — Phase 2',
+        title: 'Scope, Closures & this',
+        desc: 'Understand one of JavaScript\'s trickiest areas. Learn global vs local scope, lexical scope, how closures work and why they matter, and how the "this" keyword behaves in different contexts.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Closures', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/closure' },
+          { name: 'javascript.info — The "this" keyword', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/this' },
+          { name: 'Fireship — Closures Explained', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=vKJpN5FAeF4' },
+        ]
+      },
+
+      es6: {
+        tag: 'JavaScript — Phase 3',
+        title: 'ES6+ Features',
+        desc: 'Modern JavaScript introduced powerful new syntax. Learn destructuring, template literals, the spread/rest operator, optional chaining, nullish coalescing, and class syntax.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Modern JS Features', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/js-misc' },
+          { name: 'freeCodeCamp — ES6 Guide', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/news/write-less-do-more-with-javascript-es6-5fd4a8e50ee2/' },
+          { name: 'Fireship — ES6 in 100 Seconds', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=NCwa_xi0Uuc' },
+        ]
+      },
+
+      async: {
+        tag: 'JavaScript — Phase 3',
+        title: 'Async JS & Promises',
+        desc: 'JavaScript is single-threaded but handles async operations constantly. Learn the event loop, callbacks, Promises (.then/.catch), and the cleaner async/await syntax — essential for any real app.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Promises & Async/Await', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/async' },
+          { name: 'MDN — Asynchronous JavaScript', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous' },
+          { name: 'Fireship — Async Await in 100 Seconds', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=vn3tm0quoqE' },
+        ]
+      },
+
+      fetch: {
+        tag: 'JavaScript — Phase 3',
+        title: 'Fetch & APIs',
+        desc: 'Connect your JavaScript to the outside world. Use the Fetch API to make GET and POST requests, work with JSON data, handle errors, and consume real public APIs in your projects.',
+        status: 'locked',
+        resources: [
+          { name: 'MDN — Using Fetch', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch' },
+          { name: 'javascript.info — Fetch', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/fetch' },
+          { name: 'Traversy Media — Fetch API Crash Course', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=Oive66jrwBs' },
+        ]
+      },
+
+      modules: {
+        tag: 'JavaScript — Phase 3',
+        title: 'Modules & Tooling',
+        desc: 'Organise code with ES Modules (import/export). Understand npm, package.json, and bundlers like Vite. Learn about linting with ESLint and formatting with Prettier — tools every JS developer uses.',
+        status: 'locked',
+        resources: [
+          { name: 'javascript.info — Modules', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/modules-intro' },
+          { name: 'Vite — Getting Started', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://vitejs.dev/guide/' },
+          { name: 'Fireship — npm Explained', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=P3aKRdUyr0s' },
+        ]
+      },
+
+      react: {
+        tag: 'JavaScript — Phase 4',
+        title: 'React Path',
+        desc: 'The most popular UI library in the world. Learn components, JSX, props, state with useState, side effects with useEffect, and how to build complete single-page applications.',
+        status: 'locked',
+        resources: [
+          { name: 'React — Official Docs (New)', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://react.dev/learn' },
+          { name: 'freeCodeCamp — React Full Course', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=bMknfKXIFA8' },
+          { name: 'The Odin Project — React Path', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.theodinproject.com/paths/full-stack-javascript/courses/react' },
+        ]
+      },
+
+      node: {
+        tag: 'JavaScript — Phase 4',
+        title: 'Node.js Path',
+        desc: 'Run JavaScript on the server. Learn Node.js fundamentals, the built-in modules (fs, http, path), build REST APIs with Express, and understand how the backend side of JS works.',
+        status: 'locked',
+        resources: [
+          { name: 'Node.js — Official Docs', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://nodejs.org/en/docs/' },
+          { name: 'freeCodeCamp — Node.js & Express', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=Oe421EPjeBE' },
+          { name: 'The Odin Project — NodeJS Path', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs' },
+        ]
+      },
+
+      typescript: {
+        tag: 'JavaScript — Phase 4',
+        title: 'TypeScript Path',
+        desc: 'Add static types to JavaScript and catch bugs before they happen. Learn TypeScript syntax, interfaces, generics, and how to set up a TS project — the standard in professional JS development.',
+        status: 'locked',
+        resources: [
+          { name: 'TypeScript — Official Handbook', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://www.typescriptlang.org/docs/handbook/intro.html' },
+          { name: 'Matt Pocock — Total TypeScript (Free)', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.totaltypescript.com/tutorials' },
+          { name: 'Fireship — TypeScript in 100 Seconds', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=zQnBQ4tB3ZA' },
+        ]
+      },
+
+      project: {
+        tag: 'JavaScript — Phase 5',
+        title: 'Build & Deploy a Project',
+        desc: 'Apply everything by building a complete JavaScript project from scratch. Host it on GitHub Pages, Vercel, or Netlify — free platforms that make deployment a matter of minutes.',
+        status: 'locked',
+        resources: [
+          { name: 'GitHub Pages — Free Hosting', type: 'Free Platform', icon: '📄', cls: 'res-doc', url: 'https://pages.github.com/' },
+          { name: 'Vercel — Deploy in Seconds', type: 'Free Platform', icon: '📄', cls: 'res-doc', url: 'https://vercel.com/' },
+          { name: 'Traversy Media — 50 JS Projects', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=3PHXvlpOkf4' },
+        ]
+      },
+
+    };
+  </script>
+
+  <script src="../assets/js/roadmap.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Marketing — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="../index.html" class="brand-roadmap">Path<span>finder</span></a>
+    <div class="nav-divider"></div>
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+    <span class="progress-pill">0 / 14 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>Performance Marketing</span></div>
+      <div class="page-tag">Marketing</div>
+      <h1 class="page-title">Performance<br />Marketing</h1>
+      <p class="page-desc">Learn how to run paid campaigns that generate measurable results. A structured path from
+        marketing fundamentals through paid ads, analytics, CRO, and growth strategy.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~4 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>14 skill nodes</strong></div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>7,600</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong>0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" data-progress="0%"></div>
+      </div>
+      <div class="progress-nodes">0 of 14 nodes completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item locked" onclick="openPanel('pmfundamentals')"> <span class="side-dot dot-locked"></span>
+        Marketing Fundamentals</div>
+      <div class="sidebar-item locked" onclick="openPanel('funnel')"> <span class="side-dot dot-locked"></span> The
+        Marketing Funnel</div>
+      <div class="sidebar-item locked" onclick="openPanel('metrics')"> <span class="side-dot dot-locked"></span> Key
+        Metrics &amp; KPIs</div>
+
+      <div class="sidebar-section-title">Phase 2 — Paid Channels</div>
+      <div class="sidebar-item locked" onclick="openPanel('googleads')"> <span class="side-dot dot-locked"></span>
+        Google Ads</div>
+      <div class="sidebar-item locked" onclick="openPanel('metaads')"> <span class="side-dot dot-locked"></span> Meta
+        Ads</div>
+      <div class="sidebar-item locked" onclick="openPanel('otherchannels')"> <span class="side-dot dot-locked"></span>
+        Other Paid Channels</div>
+
+      <div class="sidebar-section-title">Phase 3 — Creative & Copy</div>
+      <div class="sidebar-item locked" onclick="openPanel('adcreative')"> <span class="side-dot dot-locked"></span> Ad
+        Creative</div>
+      <div class="sidebar-item locked" onclick="openPanel('copywriting')"> <span class="side-dot dot-locked"></span>
+        Copywriting for Ads</div>
+      <div class="sidebar-item locked" onclick="openPanel('landing')"> <span class="side-dot dot-locked"></span> Landing
+        Pages</div>
+
+      <div class="sidebar-section-title">Phase 4 — Analytics & Optimisation</div>
+      <div class="sidebar-item locked" onclick="openPanel('tracking')"> <span class="side-dot dot-locked"></span>
+        Tracking &amp; Attribution</div>
+      <div class="sidebar-item locked" onclick="openPanel('analytics')"> <span class="side-dot dot-locked"></span>
+        Analytics &amp; Reporting</div>
+      <div class="sidebar-item locked" onclick="openPanel('cro')"> <span class="side-dot dot-locked"></span> CRO &amp;
+        A/B Testing</div>
+
+      <div class="sidebar-section-title">Phase 5 — Scale & Strategy</div>
+      <div class="sidebar-item locked" onclick="openPanel('budgeting')"> <span class="side-dot dot-locked"></span>
+        Budgeting &amp; Bidding</div>
+      <div class="sidebar-item locked" onclick="openPanel('growth')"> <span class="side-dot dot-locked"></span> Growth
+        Strategy</div>
+
+    </aside>
+
+
+    <!-- TREE CANVAS -->
+    <main class="tree-canvas">
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot ld-done"></div> Completed
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-active"></div> In Progress
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-locked"></div> Locked
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-opt"></div> Optional Branch
+        </div>
+      </div>
+
+
+      <!-- ═══ PHASE 1 — Foundations ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <h3>Foundations</h3>
+          <p>Understand the core principles behind performance marketing before spending a rupee.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('pmfundamentals')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Marketing Fundamentals</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('funnel')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">The Marketing Funnel</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('metrics')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Key Metrics &amp; KPIs</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div>
+
+
+      <!-- ═══ PHASE 2 — Paid Channels (branching) ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <h3>Paid Channels</h3>
+          <p>Master the platforms where performance marketers spend their budget and time.</p>
+        </div>
+      </div>
+
+      <div class="tree-branches">
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked" onclick="openPanel('googleads')">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Google Ads</div>
+            <div class="node-time">~2.5 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked" onclick="openPanel('metaads')">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Meta Ads</div>
+            <div class="node-time">~2.5 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('otherchannels')">
+            <div class="node-status">~</div>
+            <div class="node-title">Other Paid Channels</div>
+            <div class="node-time">~1.5 weeks</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div class="connector-v" style="margin:0 auto;"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 3 — Creative & Copy ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <h3>Creative &amp; Copy</h3>
+          <p>Ads live or die by their creative. Learn to write, design, and test what converts.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('adcreative')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Ad Creative</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('copywriting')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Copywriting for Ads</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('landing')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Landing Pages</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div>
+
+
+      <!-- ═══ PHASE 4 — Analytics & Optimisation (branching) ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">04</div>
+        <div class="phase-info">
+          <h3>Analytics &amp; Optimisation</h3>
+          <p>Performance marketing without measurement is guesswork. Learn to track and improve everything.</p>
+        </div>
+      </div>
+
+      <div class="tree-branches">
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked" onclick="openPanel('tracking')">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Tracking &amp; Attribution</div>
+            <div class="node-time">~1.5 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked" onclick="openPanel('analytics')">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Analytics &amp; Reporting</div>
+            <div class="node-time">~1.5 weeks</div>
+          </div>
+        </div>
+
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked" onclick="openPanel('cro')">
+            <div class="node-status">🔒</div>
+            <div class="node-title">CRO &amp; A/B Testing</div>
+            <div class="node-time">~1.5 weeks</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div class="connector-v" style="margin:0 auto;"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 5 — Scale & Strategy ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">05</div>
+        <div class="phase-info">
+          <h3>Scale &amp; Strategy</h3>
+          <p>Move from running campaigns to building a system that grows sustainably over time.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <div class="node locked" onclick="openPanel('budgeting')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Budgeting &amp; Bidding</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('growth')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Growth Strategy</div>
+          <div class="node-time">~1 week</div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- OVERLAY + PANEL -->
+  <div class="overlay" id="overlay" onclick="closePanel()"></div>
+  <div class="detail-panel" id="detailPanel">
+    <button class="panel-close" onclick="closePanel()">✕</button>
+    <div class="panel-tag" id="panelTag"></div>
+    <h2 class="panel-title" id="panelTitle"></h2>
+    <p class="panel-desc" id="panelDesc"></p>
+    <div class="panel-divider"></div>
+    <div class="resources-title">Recommended Resources</div>
+    <div id="panelResources"></div>
+    <button class="panel-btn" id="panelBtn">Mark as Complete ✓</button>
+    <button class="panel-btn-ghost">Save for Later</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- NODE DATA -->
+  <script>
+    const nodes = {
+
+      pmfundamentals: {
+        tag: 'Performance Marketing — Phase 1',
+        title: 'Marketing Fundamentals',
+        desc: 'Understand what performance marketing is and how it differs from brand marketing. Learn core concepts — audience targeting, value propositions, customer journeys, and why every campaign needs a clear goal before it starts.',
+        status: 'locked',
+        resources: [
+          { name: 'Google — Fundamentals of Digital Marketing', type: 'Free Certification', icon: '🆓', cls: 'res-free', url: 'https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing' },
+          { name: 'HubSpot — Free Marketing Courses', type: 'Free Courses', icon: '🆓', cls: 'res-free', url: 'https://academy.hubspot.com/courses' },
+          { name: 'Marketing Against the Grain (Podcast)', type: 'Free Podcast', icon: '▶', cls: 'res-video', url: 'https://www.hubspot.com/podcasts/marketing-against-the-grain' },
+        ]
+      },
+
+      funnel: {
+        tag: 'Performance Marketing — Phase 1',
+        title: 'The Marketing Funnel',
+        desc: 'Understand TOFU (awareness), MOFU (consideration), and BOFU (conversion). Learn how customers move from discovering a brand to purchasing, and how performance marketers target each stage differently.',
+        status: 'locked',
+        resources: [
+          { name: 'HubSpot — Marketing Funnel Guide', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://blog.hubspot.com/marketing/marketing-funnel' },
+          { name: 'Neil Patel — Sales Funnel Explained', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://neilpatel.com/blog/sales-funnel/' },
+          { name: 'freeCodeCamp — Digital Marketing Overview', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=bixR-KIJKYM' },
+        ]
+      },
+
+      metrics: {
+        tag: 'Performance Marketing — Phase 1',
+        title: 'Key Metrics & KPIs',
+        desc: 'Performance marketing is measured, not guessed. Learn the essential metrics: CTR, CPC, CPM, CPA, ROAS, CAC, LTV, and conversion rate. Understand what each means and when to optimise for which one.',
+        status: 'locked',
+        resources: [
+          { name: 'Google — Measure Your Ad Performance', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://support.google.com/google-ads/answer/2497703' },
+          { name: 'Meta — Ads Metrics Glossary', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://www.facebook.com/business/help/metrics' },
+          { name: 'HubSpot — Marketing Metrics Guide', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://blog.hubspot.com/marketing/marketing-metrics' },
+        ]
+      },
+
+      googleads: {
+        tag: 'Performance Marketing — Phase 2',
+        title: 'Google Ads',
+        desc: 'Learn search, display, shopping, and YouTube ads. Understand campaign structure (campaign → ad group → ad), keyword match types, Quality Score, bidding strategies, and how to set up your first campaign.',
+        status: 'locked',
+        resources: [
+          { name: 'Google Skillshop — Google Ads Certification', type: 'Free Certification', icon: '🆓', cls: 'res-free', url: 'https://skillshop.google.com/googleads' },
+          { name: 'Google Ads Help Center', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://support.google.com/google-ads' },
+          { name: 'Aaron Young — Google Ads Tutorials', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@AaronYoungGoogleAds' },
+        ]
+      },
+
+      metaads: {
+        tag: 'Performance Marketing — Phase 2',
+        title: 'Meta Ads',
+        desc: 'Run campaigns across Facebook and Instagram. Learn the Meta Ads Manager, campaign objectives, audience targeting (interest, lookalike, retargeting), ad formats, the Pixel, and how iOS changes affected tracking.',
+        status: 'locked',
+        resources: [
+          { name: 'Meta Blueprint — Free Certification', type: 'Free Certification', icon: '🆓', cls: 'res-free', url: 'https://www.facebook.com/business/learn' },
+          { name: 'Meta Business Help Centre', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://www.facebook.com/business/help' },
+          { name: 'Ben Heath — Meta Ads Tutorials', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@BenHeath' },
+        ]
+      },
+
+      otherchannels: {
+        tag: 'Performance Marketing — Phase 2',
+        title: 'Other Paid Channels',
+        desc: 'Explore LinkedIn Ads (B2B), TikTok Ads (younger audiences), Pinterest Ads (ecommerce), and programmatic display. Know when each platform makes sense relative to your audience and budget.',
+        status: 'locked',
+        resources: [
+          { name: 'LinkedIn Marketing Labs — Free Courses', type: 'Free Courses', icon: '🆓', cls: 'res-free', url: 'https://www.linkedin.com/learning/topics/linkedin-marketing-labs' },
+          { name: 'TikTok for Business — Learning Centre', type: 'Free Guide', icon: '🆓', cls: 'res-free', url: 'https://www.tiktok.com/business/en/blog' },
+          { name: 'WordStream — Paid Social Ad Channels', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://www.wordstream.com/blog/ws/2021/02/09/paid-social-media-advertising' },
+        ]
+      },
+
+      adcreative: {
+        tag: 'Performance Marketing — Phase 3',
+        title: 'Ad Creative',
+        desc: 'Creative is often the biggest lever in performance marketing. Learn what makes a thumb-stopping image or video ad, how to brief a designer or create basic assets yourself using Canva, and how to test creative systematically.',
+        status: 'locked',
+        resources: [
+          { name: 'Meta — Creative Best Practices', type: 'Free Guide', icon: '📄', cls: 'res-doc', url: 'https://www.facebook.com/business/ads/creative' },
+          { name: 'Canva — Free Design Tool', type: 'Free Tool', icon: '🆓', cls: 'res-free', url: 'https://www.canva.com/' },
+          { name: 'AdEspresso — Ad Design Guide', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://adespresso.com/blog/facebook-ad-design/' },
+        ]
+      },
+
+      copywriting: {
+        tag: 'Performance Marketing — Phase 3',
+        title: 'Copywriting for Ads',
+        desc: 'Write headlines, primary text, and CTAs that convert. Learn direct response copywriting frameworks — AIDA, PAS, BAB — and how to write for different ad formats and audience temperatures.',
+        status: 'locked',
+        resources: [
+          { name: 'Copyhackers — Copywriting Fundamentals', type: 'Free Articles', icon: '🆓', cls: 'res-free', url: 'https://copyhackers.com/' },
+          { name: 'freeCodeCamp — Copywriting for Beginners', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=6ucDHoJFHaI' },
+          { name: 'AIDA Framework — Explained', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://blog.hubspot.com/marketing/aida-model' },
+        ]
+      },
+
+      landing: {
+        tag: 'Performance Marketing — Phase 3',
+        title: 'Landing Pages',
+        desc: 'A great ad sending traffic to a bad landing page wastes money. Learn what makes a high-converting landing page: clear headlines, social proof, single CTAs, fast load times, and message match with your ad.',
+        status: 'locked',
+        resources: [
+          { name: 'Unbounce — Landing Page Guide', type: 'Free Guide', icon: '🆓', cls: 'res-free', url: 'https://unbounce.com/landing-page-articles/what-is-a-landing-page/' },
+          { name: 'CXL — Landing Page Optimisation', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://cxl.com/blog/landing-page-optimization/' },
+          { name: 'Webflow — Free Landing Page Builder', type: 'Free Tool', icon: '📄', cls: 'res-doc', url: 'https://webflow.com/' },
+        ]
+      },
+
+      tracking: {
+        tag: 'Performance Marketing — Phase 4',
+        title: 'Tracking & Attribution',
+        desc: 'Know which ads are driving results. Learn UTM parameters, the Google Tag Manager, the Meta Pixel, conversion APIs, and attribution models (last click, first click, data-driven). Understand the impact of iOS 14+ on tracking.',
+        status: 'locked',
+        resources: [
+          { name: 'Google Tag Manager — Documentation', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://support.google.com/tagmanager' },
+          { name: 'Meta — Conversions API Setup', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developers.facebook.com/docs/marketing-api/conversions-api' },
+          { name: 'Measureschool — GTM for Beginners', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@Measureschool' },
+        ]
+      },
+
+      analytics: {
+        tag: 'Performance Marketing — Phase 4',
+        title: 'Analytics & Reporting',
+        desc: 'Turn data into decisions. Learn Google Analytics 4, how to build dashboards, read campaign reports, identify underperformers, and communicate results clearly to clients or stakeholders.',
+        status: 'locked',
+        resources: [
+          { name: 'Google — GA4 Certification (Free)', type: 'Free Certification', icon: '🆓', cls: 'res-free', url: 'https://skillshop.google.com/googleanalytics' },
+          { name: 'Looker Studio — Free Dashboards', type: 'Free Tool', icon: '📄', cls: 'res-doc', url: 'https://lookerstudio.google.com/' },
+          { name: 'Loves Data — GA4 for Beginners', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@LovesData' },
+        ]
+      },
+
+      cro: {
+        tag: 'Performance Marketing — Phase 4',
+        title: 'CRO & A/B Testing',
+        desc: 'Conversion Rate Optimisation is the discipline of getting more from existing traffic. Learn how to run A/B tests on ads, landing pages, and CTAs. Understand statistical significance, test design, and how to read results.',
+        status: 'locked',
+        resources: [
+          { name: 'CXL — CRO Foundations', type: 'Free Articles', icon: '🆓', cls: 'res-free', url: 'https://cxl.com/blog/category/conversion-optimization/' },
+          { name: 'Google Optimize Alternative — VWO', type: 'Free Tool (Trial)', icon: '📄', cls: 'res-doc', url: 'https://vwo.com/' },
+          { name: 'Hotjar — Free Heatmaps & Recordings', type: 'Free Tool', icon: '🆓', cls: 'res-free', url: 'https://www.hotjar.com/' },
+        ]
+      },
+
+      budgeting: {
+        tag: 'Performance Marketing — Phase 5',
+        title: 'Budgeting & Bidding',
+        desc: 'Learn how to allocate budget across channels, set daily vs lifetime budgets, choose the right bidding strategy (tCPA, tROAS, max conversions, manual CPC), and scale spend without killing performance.',
+        status: 'locked',
+        resources: [
+          { name: 'Google — Bidding Strategy Guide', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://support.google.com/google-ads/answer/2979071' },
+          { name: 'WordStream — PPC Budgeting Guide', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://www.wordstream.com/blog/ws/2017/10/09/ppc-budget' },
+        ]
+      },
+
+      growth: {
+        tag: 'Performance Marketing — Phase 5',
+        title: 'Growth Strategy',
+        desc: 'Combine everything into a repeatable system. Learn how to build a testing roadmap, scale winning campaigns, expand to new channels, and think in terms of unit economics (CAC vs LTV) for sustainable growth.',
+        status: 'locked',
+        resources: [
+          { name: 'Reforge — Growth Articles (Free)', type: 'Free Articles', icon: '🆓', cls: 'res-free', url: 'https://www.reforge.com/blog' },
+          { name: 'Andrew Chen — Growth Essays', type: 'Free Articles', icon: '🆓', cls: 'res-free', url: 'https://andrewchen.com/' },
+          { name: 'Marketing Examples — Real Case Studies', type: 'Free Resource', icon: '🆓', cls: 'res-free', url: 'https://marketingexamples.com/' },
+        ]
+      },
+
+    };
+  </script>
+
+  <script src="../assets/js/roadmap.js"></script>
+
+</body>
+
+</html>

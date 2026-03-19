@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Web Dev — Pathfinder</title>
+
+  <!-- Roadmap font stack: Syne (headings) + DM Sans (body) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- 1. Shared tokens, reset, navbar base, footer, utilities -->
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <!-- 2. Roadmap-specific: sidebar, nodes, panel, star-field -->
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    /* ── Roadmap page navbar: full links visible on wider screens ── */
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    /* Divider between back-link and nav links */
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NAVBAR
+       Roadmap pages have: brand | back link | nav links | progress pill
+  ====================================================== -->
+  <nav>
+    <!-- Brand — Syne font, links back to homepage -->
+    <a href="../index.html" class="brand-roadmap">Path<span>Finder</span></a>
+
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Progress pill — update text per roadmap -->
+    <span class="progress-pill">3 / 12 complete</span>
+  </nav>
+
+
+  <!-- =====================================================
+       PAGE HEADER
+       To modify: update breadcrumb text, page-tag, page-title,
+       page-desc, meta-chips, and data-progress value.
+  ====================================================== -->
+  <div class="page-header">
+
+    <div>
+      <a href="index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>Frontend Web Development</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">Frontend Web<br />Development</h1>
+      <p class="page-desc">A structured skill tree taking you from zero to job-ready frontend developer. Follow
+        the path, branch into specialisations, and build real projects along the way.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~6 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>12 skill nodes</strong></div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>8,200</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong>25%</strong></div>
+      <div class="progress-bar-bg">
+        <!-- Change data-progress="XX%" to update the filled bar -->
+        <div class="progress-bar-fill" data-progress="25%"></div>
+      </div>
+      <div class="progress-nodes">3 of 12 nodes completed</div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       MAIN LAYOUT — Sidebar + Tree Canvas
+  ====================================================== -->
+  <div class="layout">
+
+    <!-- ── SIDEBAR ──────────────────────────────────────
+         To add a node: copy a .sidebar-item line, change
+         the class (done/active/locked) and onclick ID.
+         To add a phase: copy a .sidebar-section-title div.
+    ──────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item done" onclick="openPanel('html')"> <span class="side-dot dot-done"></span> HTML Basics
+      </div>
+      <div class="sidebar-item done" onclick="openPanel('css')"> <span class="side-dot dot-done"></span> CSS
+        Fundamentals</div>
+      <div class="sidebar-item done" onclick="openPanel('responsive')"><span class="side-dot dot-done"></span>
+        Responsive Design</div>
+
+      <div class="sidebar-section-title">Phase 2 — Logic</div>
+      <div class="sidebar-item active" onclick="openPanel('js')"> <span class="side-dot dot-active"></span> JavaScript
+        Basics</div>
+      <div class="sidebar-item locked"> <span class="side-dot dot-locked"></span> DOM Manipulation</div>
+
+      <div class="sidebar-section-title">Phase 3 — Frameworks</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> React</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Vue (Optional)</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> APIs &amp; Fetch</div>
+
+      <div class="sidebar-section-title">Phase 4 — Pro Skills</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Git &amp; Version Control</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Performance &amp; SEO</div>
+      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Deploy Your Project</div>
+
+    </aside>
+
+
+    <!-- ── TREE CANVAS ───────────────────────────────────
+         Structure per phase:
+           1. .phase-header  (number + title + description)
+           2. .tree-row      (for linear/vertical nodes)
+              OR
+              .tree-branches (for branching parallel nodes)
+           3. .connector-v   (vertical line between nodes)
+              .connector-v.lit = gold lit line (completed path)
+
+         Adding a node:   copy a .node block + .connector-v
+         Removing a node: delete the .node block + its connector
+         Changing status: swap class  done / active / locked / optional
+         Adding a phase:  copy a full phase-header + tree-row block
+    ──────────────────────────────────────────────────── -->
+    <main class="tree-canvas">
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot ld-done"></div> Completed
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-active"></div> In Progress
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-locked"></div> Locked
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-opt"></div> Optional Branch
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════
+           PHASE 1 — Foundations
+      ════════════════════════════════════════════════ -->
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <h3>Foundations</h3>
+          <p>The building blocks — learn these first before anything else.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <!-- NODE: HTML Basics -->
+        <div class="node done" onclick="openPanel('html')">
+          <div class="node-status">✓</div>
+          <div class="node-title">HTML Basics</div>
+          <div class="node-time">~2 weeks</div>
+          <span class="node-badge">Done</span>
+        </div>
+        <div class="connector-v lit"></div>
+
+        <!-- NODE: CSS Fundamentals -->
+        <div class="node done" onclick="openPanel('css')">
+          <div class="node-status">✓</div>
+          <div class="node-title">CSS Fundamentals</div>
+          <div class="node-time">~3 weeks</div>
+          <span class="node-badge">Done</span>
+        </div>
+        <div class="connector-v lit"></div>
+
+        <!-- NODE: Responsive Design -->
+        <div class="node done" onclick="openPanel('responsive')">
+          <div class="node-status">✓</div>
+          <div class="node-title">Responsive Design</div>
+          <div class="node-time">~2 weeks</div>
+          <span class="node-badge">Done</span>
+        </div>
+        <div class="connector-v lit"></div>
+
+      </div><!-- /tree-row -->
+
+
+      <!-- ═══════════════════════════════════════════════
+           PHASE 2 — JavaScript & Logic
+      ════════════════════════════════════════════════ -->
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <h3>JavaScript &amp; Logic</h3>
+          <p>Make things interactive. The most important phase for web development.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+
+        <!-- NODE: JavaScript Basics -->
+        <div class="node active" onclick="openPanel('js')">
+          <div class="node-status">→</div>
+          <div class="node-title">JavaScript Basics</div>
+          <div class="node-time">~5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <!-- NODE: DOM Manipulation -->
+        <div class="node locked">
+          <div class="node-status">🔒</div>
+          <div class="node-title">DOM Manipulation</div>
+          <div class="node-time">~3 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+      </div><!-- /tree-row -->
+
+
+      <!-- ═══════════════════════════════════════════════
+           PHASE 3 — Frameworks & APIs  (branching)
+      ════════════════════════════════════════════════ -->
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <h3>Frameworks &amp; APIs</h3>
+          <p>Choose a framework path. React is recommended. Vue is an optional branch.</p>
+        </div>
+      </div>
+
+      <!-- tree-branches = horizontal spread of parallel nodes -->
+      <div class="tree-branches">
+
+        <!-- BRANCH: React (main path) -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked">
+            <div class="node-status">🔒</div>
+            <div class="node-title">React</div>
+            <div class="node-time">~6 weeks</div>
+          </div>
+        </div>
+
+        <!-- BRANCH: Vue.js (optional — note class "optional locked") -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked">
+            <div class="node-status">~</div>
+            <div class="node-title">Vue.js</div>
+            <div class="node-time">~5 weeks</div>
+          </div>
+        </div>
+
+        <!-- BRANCH: APIs & Fetch -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked">
+            <div class="node-status">🔒</div>
+            <div class="node-title">APIs &amp; Fetch</div>
+            <div class="node-time">~2 weeks</div>
+          </div>
+        </div>
+
+      </div><!-- /tree-branches -->
+
+      <!-- Reconnect branches to single trunk before next phase -->
+      <div style="margin-top:1.5rem;">
+        <div class="connector-v" style="margin:0 auto;"></div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════
+           PHASE 4 — Professional Skills  (branching)
+      ════════════════════════════════════════════════ -->
+      <div class="phase-header">
+        <div class="phase-num">04</div>
+        <div class="phase-info">
+          <h3>Professional Skills</h3>
+          <p>Polish your craft, get production-ready, and launch your first real project.</p>
+        </div>
+      </div>
+
+      <div class="tree-branches">
+
+        <!-- BRANCH: Git & Version Control -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Git &amp; Version Control</div>
+            <div class="node-time">~1 week</div>
+          </div>
+        </div>
+
+        <!-- BRANCH: Performance & SEO -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Performance &amp; SEO</div>
+            <div class="node-time">~2 weeks</div>
+          </div>
+        </div>
+
+        <!-- BRANCH: Deploy Your Project -->
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node locked">
+            <div class="node-status">🔒</div>
+            <div class="node-title">Deploy Your Project</div>
+            <div class="node-time">~1 week</div>
+          </div>
+        </div>
+
+      </div><!-- /tree-branches -->
+
+    </main>
+  </div><!-- /layout -->
+
+
+  <!-- =====================================================
+       OVERLAY + DETAIL PANEL
+       Copy this block IDENTICALLY to every roadmap page.
+       Never needs to change — roadmap.js fills it dynamically.
+  ====================================================== -->
+  <div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+  <div class="detail-panel" id="detailPanel">
+    <button class="panel-close" onclick="closePanel()">✕</button>
+    <div class="panel-tag" id="panelTag"></div>
+    <h2 class="panel-title" id="panelTitle"></h2>
+    <p class="panel-desc" id="panelDesc"></p>
+    <div class="panel-divider"></div>
+    <div class="resources-title">Recommended Resources</div>
+    <div id="panelResources"></div>
+    <button class="panel-btn" id="panelBtn">Mark as Complete ✓</button>
+    <button class="panel-btn-ghost">Save for Later</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+       NODE DATA  — the only thing that changes per roadmap.
+       Add/remove/edit entries here to change what the
+       detail panel shows when a node is clicked.
+
+       FIELDS:
+         tag      → small label at top of panel  e.g. "Tech — Phase 1"
+         title    → panel heading
+         desc     → paragraph description
+         status   → "done" | "active" | "locked"
+         resources → array of resource objects:
+           name   → display name
+           type   → subtitle e.g. "Free Course"
+           icon   → emoji
+           cls    → "res-doc" | "res-free" | "res-video"
+           url    → link (optional — omit to make non-clickable)
+  ====================================================== -->
+
+  <script>
+    const nodes = {
+
+      html: {
+        tag: 'Tech — Phase 1',
+        title: 'HTML Basics',
+        desc: 'Learn the structure of web pages. Understand elements, attributes, semantic HTML, accessibility, and how browsers parse your code.',
+        status: 'done',
+        resources: [
+          { name: 'MDN Web Docs — HTML', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+          { name: 'freeCodeCamp HTML Course', type: 'Free Interactive Course', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/learn/2022/responsive-web-design/' },
+          { name: 'HTML Crash Course (YouTube)', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=UB1O30fR-EE' },
+        ]
+      },
+
+      css: {
+        tag: 'Tech — Phase 1',
+        title: 'CSS Fundamentals',
+        desc: 'Style your web pages. Learn selectors, the box model, flexbox, grid, animations, and how to build clean, modern layouts.',
+        status: 'done',
+        resources: [
+          { name: 'CSS Tricks — Complete Guide to Flexbox', type: 'Free Reference', icon: '📄', cls: 'res-doc', url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/' },
+          { name: 'Kevin Powell CSS on YouTube', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@KevinPowell' },
+          { name: 'The Odin Project — CSS', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.theodinproject.com/' },
+        ]
+      },
+
+      responsive: {
+        tag: 'Tech — Phase 1',
+        title: 'Responsive Design',
+        desc: 'Make your websites look great on all screen sizes. Learn media queries, mobile-first thinking, and responsive layout patterns.',
+        status: 'done',
+        resources: [
+          { name: 'MDN — Responsive Design Guide', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design' },
+          { name: 'Google — Responsive Web Design Basics', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://web.dev/responsive-web-design-basics/' },
+        ]
+      },
+
+      js: {
+        tag: 'Tech — Phase 2',
+        title: 'JavaScript Basics',
+        desc: 'The programming language of the web. Learn variables, functions, loops, objects, arrays, and how to make your pages interactive and dynamic.',
+        status: 'active',
+        resources: [
+          { name: 'javascript.info — The Modern JS Tutorial', type: 'Free & Comprehensive', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/' },
+          { name: 'Eloquent JavaScript (free online book)', type: 'Free Book', icon: '🆓', cls: 'res-free', url: 'https://eloquentjavascript.net/' },
+          { name: 'freeCodeCamp JS Algorithms', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/' },
+        ]
+      },
+
+      /* ── ADD MORE NODES BELOW AS YOU BUILD OUT THE ROADMAP ──
+         Copy the block above, give it a unique key (e.g. "react"),
+         and add onclick="openPanel('react')" to the matching .node in the HTML.
+
+      react: {
+        tag: 'Tech — Phase 3',
+        title: 'React',
+        desc: '...',
+        status: 'locked',
+        resources: [
+          { name: '...', type: '...', icon: '📄', cls: 'res-doc', url: 'https://...' },
+        ]
+      },
+      */
+
+    };
+  </script>
+
+  <!-- Shared roadmap logic — must load AFTER the nodes object above -->
+  <script src="../assets/js/roadmap.js"></script>
+
+</body>
+
+</html>

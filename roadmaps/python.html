@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="../index.html" class="brand-roadmap">Path<span>finder</span></a>
+    <div class="nav-divider"></div>
+    <ul class="nav-links-roadmap">
+      <li><a href="../index.html">Roadmaps</a></li>
+      <li><a href="../categories.html">Categories</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+    </ul>
+    <span class="progress-pill">0 / 14 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>Python</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">Python<br />Programming</h1>
+      <p class="page-desc">From your very first script to building real-world projects. A structured path through Python
+        fundamentals, data structures, libraries, and practical applications.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~5 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>14 skill nodes</strong></div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>11,400</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong>0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" data-progress="0%"></div>
+      </div>
+      <div class="progress-nodes">0 of 14 nodes completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Getting Started</div>
+      <div class="sidebar-item locked" onclick="openPanel('setup')"> <span class="side-dot dot-locked"></span> Setup
+        &amp; Environment</div>
+      <div class="sidebar-item locked" onclick="openPanel('syntax')"> <span class="side-dot dot-locked"></span> Syntax
+        &amp; Basics</div>
+      <div class="sidebar-item locked" onclick="openPanel('datatypes')"> <span class="side-dot dot-locked"></span> Data
+        Types &amp; Variables</div>
+
+      <div class="sidebar-section-title">Phase 2 — Core Concepts</div>
+      <div class="sidebar-item locked" onclick="openPanel('control')"> <span class="side-dot dot-locked"></span> Control
+        Flow</div>
+      <div class="sidebar-item locked" onclick="openPanel('functions')"> <span class="side-dot dot-locked"></span>
+        Functions</div>
+      <div class="sidebar-item locked" onclick="openPanel('datastructs')"><span class="side-dot dot-locked"></span> Data
+        Structures</div>
+      <div class="sidebar-item locked" onclick="openPanel('oop')"> <span class="side-dot dot-locked"></span> OOP Basics
+      </div>
+
+      <div class="sidebar-section-title">Phase 3 — Working Python</div>
+      <div class="sidebar-item locked" onclick="openPanel('modules')"> <span class="side-dot dot-locked"></span> Modules
+        &amp; Packages</div>
+      <div class="sidebar-item locked" onclick="openPanel('fileio')"> <span class="side-dot dot-locked"></span> File I/O
+        &amp; Exceptions</div>
+      <div class="sidebar-item locked" onclick="openPanel('libraries')"> <span class="side-dot dot-locked"></span>
+        Popular Libraries</div>
+
+      <div class="sidebar-section-title">Phase 4 — Paths (Pick One)</div>
+      <div class="sidebar-item locked" onclick="openPanel('datascience')"><span class="side-dot dot-locked"></span> Data
+        Science Path</div>
+      <div class="sidebar-item locked" onclick="openPanel('webdev')"> <span class="side-dot dot-locked"></span> Web Dev
+        Path</div>
+      <div class="sidebar-item locked" onclick="openPanel('automation')"> <span class="side-dot dot-locked"></span>
+        Automation Path</div>
+
+      <div class="sidebar-section-title">Phase 5 — Ship It</div>
+      <div class="sidebar-item locked" onclick="openPanel('project')"> <span class="side-dot dot-locked"></span> Build a
+        Real Project</div>
+
+    </aside>
+
+
+    <!-- TREE CANVAS -->
+    <main class="tree-canvas">
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot ld-done"></div> Completed
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-active"></div> In Progress
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-locked"></div> Locked
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot ld-opt"></div> Optional Branch
+        </div>
+      </div>
+
+
+      <!-- ═══ PHASE 1 — Getting Started ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <h3>Getting Started</h3>
+          <p>Install Python, write your first lines of code, and understand how it all works.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+        <div class="node locked" onclick="openPanel('setup')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Setup &amp; Environment</div>
+          <div class="node-time">~2 days</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('syntax')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Syntax &amp; Basics</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('datatypes')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Data Types &amp; Variables</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 2 — Core Concepts ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <h3>Core Concepts</h3>
+          <p>The building blocks every Python programmer must master before moving on.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+        <div class="node locked" onclick="openPanel('control')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Control Flow</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('functions')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Functions</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('datastructs')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Data Structures</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('oop')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">OOP Basics</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 3 — Working Python ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <h3>Working Python</h3>
+          <p>Write Python that does real things — read files, handle errors, use libraries.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+        <div class="node locked" onclick="openPanel('modules')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Modules &amp; Packages</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('fileio')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">File I/O &amp; Exceptions</div>
+          <div class="node-time">~1 week</div>
+        </div>
+        <div class="connector-v"></div>
+
+        <div class="node locked" onclick="openPanel('libraries')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Popular Libraries</div>
+          <div class="node-time">~1.5 weeks</div>
+        </div>
+        <div class="connector-v"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 4 — Specialisation Paths (branching) ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">04</div>
+        <div class="phase-info">
+          <h3>Specialisation Paths</h3>
+          <p>Pick the direction that matches your goals. All three are optional — choose one.</p>
+        </div>
+      </div>
+
+      <div class="tree-branches">
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('datascience')">
+            <div class="node-status">~</div>
+            <div class="node-title">Data Science Path</div>
+            <div class="node-time">~4 weeks</div>
+          </div>
+        </div>
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('webdev')">
+            <div class="node-status">~</div>
+            <div class="node-title">Web Dev Path</div>
+            <div class="node-time">~4 weeks</div>
+          </div>
+        </div>
+        <div class="branch-col">
+          <div class="connector-v"></div>
+          <div class="node optional locked" onclick="openPanel('automation')">
+            <div class="node-status">~</div>
+            <div class="node-title">Automation Path</div>
+            <div class="node-time">~3 weeks</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div class="connector-v" style="margin:0 auto;"></div>
+      </div>
+
+
+      <!-- ═══ PHASE 5 — Ship It ═══ -->
+      <div class="phase-header">
+        <div class="phase-num">05</div>
+        <div class="phase-info">
+          <h3>Ship It</h3>
+          <p>Apply everything by building and publishing a real, complete Python project.</p>
+        </div>
+      </div>
+
+      <div class="tree-row">
+        <div class="node locked" onclick="openPanel('project')">
+          <div class="node-status">🔒</div>
+          <div class="node-title">Build a Real Project</div>
+          <div class="node-time">~2 weeks</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- OVERLAY + PANEL -->
+  <div class="overlay" id="overlay" onclick="closePanel()"></div>
+  <div class="detail-panel" id="detailPanel">
+    <button class="panel-close" onclick="closePanel()">✕</button>
+    <div class="panel-tag" id="panelTag"></div>
+    <h2 class="panel-title" id="panelTitle"></h2>
+    <p class="panel-desc" id="panelDesc"></p>
+    <div class="panel-divider"></div>
+    <div class="resources-title">Recommended Resources</div>
+    <div id="panelResources"></div>
+    <button class="panel-btn" id="panelBtn">Mark as Complete ✓</button>
+    <button class="panel-btn-ghost">Save for Later</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">
+            Structured learning paths for students and self-learners.
+            120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- NODE DATA -->
+  <script>
+    const nodes = {
+
+      setup: {
+        tag: 'Python — Phase 1',
+        title: 'Setup & Environment',
+        desc: 'Install Python, set up VS Code, and run your first script. Learn about pip, virtual environments, and how Python projects are structured.',
+        status: 'locked',
+        resources: [
+          { name: 'Python.org — Official Download', type: 'Official Site', icon: '🐍', cls: 'res-doc', url: 'https://www.python.org/downloads/' },
+          { name: 'VS Code Python Setup Guide', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://code.visualstudio.com/docs/python/python-tutorial' },
+          { name: 'Python in 100 Seconds (Fireship)', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=x7X9w_GIm1s' },
+        ]
+      },
+
+      syntax: {
+        tag: 'Python — Phase 1',
+        title: 'Syntax & Basics',
+        desc: 'Learn Python\'s clean, readable syntax. Understand print statements, comments, indentation rules, and how to write your first programs.',
+        status: 'locked',
+        resources: [
+          { name: 'Python.org Official Tutorial', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/tutorial/' },
+          { name: 'freeCodeCamp Python for Beginners', type: 'Free Video Course', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=rfscVS0vtbw' },
+          { name: 'Automate the Boring Stuff — Ch. 1', type: 'Free Book', icon: '🆓', cls: 'res-free', url: 'https://automatetheboringstuff.com/2e/chapter0/' },
+        ]
+      },
+
+      datatypes: {
+        tag: 'Python — Phase 1',
+        title: 'Data Types & Variables',
+        desc: 'Understand integers, floats, strings, booleans, and None. Learn how to store, convert, and manipulate data — the foundation of every Python program.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — Variables in Python', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-variables/' },
+          { name: 'W3Schools Python Data Types', type: 'Free Reference', icon: '📄', cls: 'res-doc', url: 'https://www.w3schools.com/python/python_datatypes.asp' },
+        ]
+      },
+
+      control: {
+        tag: 'Python — Phase 2',
+        title: 'Control Flow',
+        desc: 'Make decisions with if/elif/else, repeat actions with for and while loops, and control execution with break, continue, and pass.',
+        status: 'locked',
+        resources: [
+          { name: 'Python.org — Control Flow Tools', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/tutorial/controlflow.html' },
+          { name: 'Real Python — Conditional Statements', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-conditional-statements/' },
+          { name: 'CS Dojo — Python Loops', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=6iF8Xb7Z3wQ' },
+        ]
+      },
+
+      functions: {
+        tag: 'Python — Phase 2',
+        title: 'Functions',
+        desc: 'Write reusable blocks of code. Understand parameters, return values, scope, default arguments, *args/**kwargs, and lambda expressions.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — Defining Functions', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/defining-your-own-python-function/' },
+          { name: 'Python.org — Functions Tutorial', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/tutorial/controlflow.html#defining-functions' },
+          { name: 'Corey Schafer — Python Functions', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=9Os0o3wzS_I' },
+        ]
+      },
+
+      datastructs: {
+        tag: 'Python — Phase 2',
+        title: 'Data Structures',
+        desc: 'Master lists, tuples, dictionaries, and sets. Learn when to use each, how to iterate them, and common patterns like list comprehensions.',
+        status: 'locked',
+        resources: [
+          { name: 'Python.org — Data Structures', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/tutorial/datastructures.html' },
+          { name: 'Real Python — Lists & Tuples', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-lists-tuples/' },
+          { name: 'Corey Schafer — Python Dictionaries', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=daefaLgNkw0' },
+        ]
+      },
+
+      oop: {
+        tag: 'Python — Phase 2',
+        title: 'OOP Basics',
+        desc: 'Learn object-oriented programming — classes, objects, attributes, methods, inheritance, and encapsulation. Patterns used in nearly every real codebase.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — OOP in Python', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python3-object-oriented-programming/' },
+          { name: 'Corey Schafer — OOP Series', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=ZDa-Z5JzLYM' },
+        ]
+      },
+
+      modules: {
+        tag: 'Python — Phase 3',
+        title: 'Modules & Packages',
+        desc: 'Organise code into modules and packages, import from the standard library, and install third-party packages with pip. Understand virtual environments.',
+        status: 'locked',
+        resources: [
+          { name: 'Python.org — Modules', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/tutorial/modules.html' },
+          { name: 'Real Python — Modules & Packages', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-modules-packages/' },
+        ]
+      },
+
+      fileio: {
+        tag: 'Python — Phase 3',
+        title: 'File I/O & Exceptions',
+        desc: 'Read and write files, handle CSV and JSON data, and write robust code using try/except blocks so your programs don\'t crash unexpectedly.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — Reading & Writing Files', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/read-write-files-python/' },
+          { name: 'Real Python — Python Exceptions', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-exceptions/' },
+          { name: 'Corey Schafer — File Objects', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=Uh2ebFW8OYM' },
+        ]
+      },
+
+      libraries: {
+        tag: 'Python — Phase 3',
+        title: 'Popular Libraries',
+        desc: 'Get hands-on with the most-used libraries: requests for HTTP, datetime for time, os/pathlib for filesystem, and json for data parsing.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — Requests Library', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/python-requests/' },
+          { name: 'Python.org — Standard Library', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://docs.python.org/3/library/' },
+        ]
+      },
+
+      datascience: {
+        tag: 'Python — Phase 4',
+        title: 'Data Science Path',
+        desc: 'Dive into data analysis with NumPy, Pandas, and Matplotlib. Load datasets, clean data, and create charts. A direct gateway into machine learning.',
+        status: 'locked',
+        resources: [
+          { name: 'Kaggle — Python Course (Free)', type: 'Free Interactive', icon: '🆓', cls: 'res-free', url: 'https://www.kaggle.com/learn/python' },
+          { name: 'Pandas Official Docs', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://pandas.pydata.org/docs/getting_started/' },
+          { name: 'freeCodeCamp — Data Analysis with Python', type: 'Free Course', icon: '▶', cls: 'res-video', url: 'https://www.freecodecamp.org/learn/data-analysis-with-python/' },
+        ]
+      },
+
+      webdev: {
+        tag: 'Python — Phase 4',
+        title: 'Web Dev Path',
+        desc: 'Build web applications with Flask or Django. Learn routing, templates, forms, and database connections. Flask is simpler; Django is more powerful.',
+        status: 'locked',
+        resources: [
+          { name: 'Flask Official Tutorial', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://flask.palletsprojects.com/en/latest/tutorial/' },
+          { name: 'CS50 Web Programming with Python', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://cs50.harvard.edu/web/2020/' },
+          { name: 'Corey Schafer — Flask Series', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=MwZwr5Tvyxo' },
+        ]
+      },
+
+      automation: {
+        tag: 'Python — Phase 4',
+        title: 'Automation Path',
+        desc: 'Use Python to automate repetitive tasks — web scraping with BeautifulSoup, browser automation with Selenium, and working with Excel/Google Sheets.',
+        status: 'locked',
+        resources: [
+          { name: 'Automate the Boring Stuff with Python', type: 'Free Book', icon: '🆓', cls: 'res-free', url: 'https://automatetheboringstuff.com/' },
+          { name: 'Real Python — Web Scraping', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/beautiful-soup-web-scraper-python/' },
+        ]
+      },
+
+      project: {
+        tag: 'Python — Phase 5',
+        title: 'Build a Real Project',
+        desc: 'Apply everything by building and sharing a real Python project — a scraper, a bot, a data dashboard, or a web app. The best way to solidify what you\'ve learned.',
+        status: 'locked',
+        resources: [
+          { name: 'Real Python — Project Ideas', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://realpython.com/tutorials/projects/' },
+          { name: 'GitHub — Showcase Your Work', type: 'Free Platform', icon: '📄', cls: 'res-doc', url: 'https://github.com/' },
+        ]
+      },
+
+    };
+  </script>
+
+  <script src="../assets/js/roadmap.js"></script>
+
+</body>
+
+</html>
