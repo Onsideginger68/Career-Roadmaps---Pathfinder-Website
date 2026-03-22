@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consumer Behavior Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    /* ── Navbar ── */
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Card canvas ── */
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    /* ── Phase block ── */
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    /* ── Card grid ── */
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    /* ── Card ── */
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    /* Card internals */
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ── Phase connector ── */
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    /* ── Detail panel ── */
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 34 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>Consumer Behavior</span></div>
+      <div class="page-tag">Marketing</div>
+      <h1 class="page-title">Consumer<br />Behavior</h1>
+      <p class="page-desc">Understand why people buy — from psychological drivers and decision-making frameworks to
+        social influences, digital behavior, and the neuroscience behind purchasing. 6 phases, 34 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>4–7 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>34 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>5,300</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 34 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What is Consumer Behavior?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Consumer Decision Process</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Types of Buying Decisions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Consumer Research Methods</div>
+
+      <div class="sidebar-section-title">Phase 2 — Psychological Drivers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Motivation &amp; Maslow's Hierarchy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Perception &amp; Attention</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Learning &amp; Memory</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Attitudes &amp; Attitude Change</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Personality &amp; Self-Concept</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Emotions in Decision-Making</div>
+
+      <div class="sidebar-section-title">Phase 3 — Behavioral Economics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        System 1 vs. System 2 Thinking</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Cognitive Biases &amp; Heuristics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Anchoring &amp; Framing Effects</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Loss Aversion &amp; Prospect Theory</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Scarcity, Urgency &amp; Social Proof</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Nudge Theory &amp; Choice Architecture</div>
+
+      <div class="sidebar-section-title">Phase 4 — Social &amp; Cultural Influences</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Social Groups &amp; Reference Groups</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Family &amp; Household Decisions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Culture &amp; Subculture</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Social Class &amp; Status Consumption</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Opinion Leaders &amp; Influencers</div>
+
+      <div class="sidebar-section-title">Phase 5 — Digital Consumer Behavior</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Online Purchasing Behavior</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Social Media &amp; Consumer Decisions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Reviews, Ratings &amp; UGC</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Personalisation &amp; Recommendation Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Dark Patterns &amp; Ethical Design</div>
+
+      <div class="sidebar-section-title">Phase 6 — Application &amp; Research</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Neuromarketing Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Consumer Segmentation &amp; Personas</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Consumer Journey Mapping</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Applying Behavioral Insights</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 01</span>
+          <span class="phase-title">Foundations of Consumer Behavior</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="What is Consumer Behavior?"
+            data-desc="Consumer behavior is the study of how individuals, groups, and organisations select, buy, use, and dispose of goods, services, ideas, and experiences to satisfy their needs and desires. It sits at the intersection of psychology, sociology, economics, and marketing."
+            data-topics="Definition and scope of consumer behavior|Why marketers study buying behavior|The consumer behavior model: inputs → process → outputs|Key disciplines: psychology, economics, anthropology|How consumer behavior shapes marketing strategy"
+            data-tags="foundations,definition">
+            <div class="node-top">
+              <div class="node-icon">🧑‍🤝‍🧑</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is Consumer Behavior?</div>
+            <div class="node-desc">The study of why, how, and when people buy — and everything that happens before and
+              after.</div>
+            <div class="node-tags"><span class="node-tag">foundations</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="The Consumer Decision Process"
+            data-desc="Every purchase follows a process — though it may happen in seconds or months. The classic 5-stage model (problem recognition → information search → evaluation → purchase → post-purchase) is the backbone of consumer behavior theory. Learn how each stage works and how marketers influence it."
+            data-topics="The 5-stage consumer decision model|Problem/need recognition triggers|Information search: internal vs. external|Evaluation of alternatives and criteria|Post-purchase: satisfaction, dissonance, loyalty"
+            data-tags="decision,process">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Consumer Decision Process</div>
+            <div class="node-desc">From need recognition to post-purchase — the 5-stage model every marketer must know.
+            </div>
+            <div class="node-tags"><span class="node-tag">decision</span><span class="node-tag">process</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Types of Buying Decisions"
+            data-desc="Not all buying decisions are equal. Buying toothpaste is nothing like buying a car. Learn the four types — routine/habitual, limited decision-making, extensive decision-making, and impulse buying — and how involvement level shapes consumer behavior."
+            data-topics="Routine vs. complex buying decisions|Low-involvement vs. high-involvement products|Extended Problem Solving (EPS)|Limited Problem Solving (LPS)|Impulse buying triggers and patterns"
+            data-tags="buying-types,involvement">
+            <div class="node-top">
+              <div class="node-icon">🛒</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Types of Buying Decisions</div>
+            <div class="node-desc">Routine, limited, extensive, and impulse — consumer involvement shapes every buying
+              decision.</div>
+            <div class="node-tags"><span class="node-tag">buying-types</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="Consumer Research Methods"
+            data-desc="How do we actually find out what consumers think, feel, and do? Learn the core methods of consumer research — from surveys and focus groups to ethnography, eye-tracking, and behavioral data analysis — and when to use each."
+            data-topics="Qualitative vs. quantitative research|Surveys, questionnaires, and scales|Focus groups and depth interviews|Ethnographic and observational research|Eye-tracking, biometrics, and digital analytics"
+            data-tags="research,methods">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Consumer Research Methods</div>
+            <div class="node-desc">Surveys, ethnography, eye-tracking — how researchers get inside the consumer mind.
+            </div>
+            <div class="node-tags"><span class="node-tag">research</span><span class="node-tag">methods</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 02</span>
+          <span class="phase-title">Psychological Drivers</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Motivation & Maslow's Hierarchy"
+            data-desc="Motivation is the driving force behind all consumer behavior — the internal state that pushes us toward goals. Learn Maslow's hierarchy of needs, McClelland's theory of needs, and how marketers tap into physiological, safety, social, esteem, and self-actualisation drives."
+            data-topics="Maslow's 5-level hierarchy of needs|McClelland's theory: achievement, affiliation, power|Hedonic vs. utilitarian motivation|How needs translate into marketing opportunities|Motivational conflicts and resolution"
+            data-tags="motivation,maslow">
+            <div class="node-top">
+              <div class="node-icon">🔥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Motivation &amp; Maslow's Hierarchy</div>
+            <div class="node-desc">Every purchase is motivated by a need. Learn what drives consumers at every level of
+              Maslow's pyramid.</div>
+            <div class="node-tags"><span class="node-tag">motivation</span><span class="node-tag">maslow</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Perception & Attention"
+            data-desc="Consumers don't see the world as it is — they see it as they are. Learn selective attention, selective distortion, selective retention, and how marketers design stimuli (packaging, ads, store layouts) to cut through perceptual filters."
+            data-topics="Selective attention, distortion, and retention|Sensory thresholds: absolute and differential|Gestalt principles in marketing design|Figure and ground in advertising|Subliminal perception: myth vs. reality"
+            data-tags="perception,attention">
+            <div class="node-top">
+              <div class="node-icon">👁️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Perception &amp; Attention</div>
+            <div class="node-desc">Consumers filter reality through their own lens. Learn how perception shapes buying
+              behaviour.</div>
+            <div class="node-tags"><span class="node-tag">perception</span><span class="node-tag">attention</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Learning & Memory"
+            data-desc="Consumer behavior is shaped by learning. Brands rely on conditioning, repetition, and memory encoding to build strong associations. Learn classical conditioning, operant conditioning, and observational learning — and how marketers use them."
+            data-topics="Classical conditioning (Pavlov) in advertising|Operant conditioning and loyalty programmes|Observational learning and modelling|Memory encoding, storage, and retrieval|Repetition and the mere exposure effect"
+            data-tags="learning,memory">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Learning &amp; Memory</div>
+            <div class="node-desc">Brands are built through repeated learning. Understand how memories form and drive
+              future buying.</div>
+            <div class="node-tags"><span class="node-tag">learning</span><span class="node-tag">memory</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Attitudes & Attitude Change"
+            data-desc="An attitude is a learned predisposition to respond to an object consistently. Consumer attitudes toward brands determine purchase likelihood. Learn the tri-component model (cognitive, affective, conative) and how marketers use persuasion to change attitudes."
+            data-topics="The tri-component attitude model (ABC)|Attitude functions: utilitarian, ego-defensive, value-expressive|Attitude-behavior consistency|Elaboration Likelihood Model (ELM)|Central vs. peripheral persuasion routes"
+            data-tags="attitudes,persuasion">
+            <div class="node-top">
+              <div class="node-icon">💭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Attitudes &amp; Attitude Change</div>
+            <div class="node-desc">Attitudes drive intentions. Learn how brands shape and change consumer attitudes
+              through persuasion.</div>
+            <div class="node-tags"><span class="node-tag">attitudes</span><span class="node-tag">ELM</span></div>
+          </div>
+
+          <div class="node" data-id="9" data-title="Personality & Self-Concept"
+            data-desc="People buy brands that match their self-image. Learn consumer personality theories — the Big Five, psychographics, lifestyle segmentation — and the crucial concepts of actual self, ideal self, and social self in brand choice."
+            data-topics="The Big Five personality dimensions in marketing|Psychographics and lifestyle segmentation|Actual self vs. ideal self vs. social self|Self-congruity theory in brand choice|Materialism, vanity, and compulsive buying traits"
+            data-tags="personality,self-concept">
+            <div class="node-top">
+              <div class="node-icon">🪞</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Personality &amp; Self-Concept</div>
+            <div class="node-desc">Consumers choose brands that match who they are — or who they want to be.</div>
+            <div class="node-tags"><span class="node-tag">personality</span><span class="node-tag">self</span></div>
+          </div>
+
+          <div class="node" data-id="10" data-title="Emotions in Decision-Making"
+            data-desc="Emotions are not the enemy of rational decision-making — they are central to it. Damasio's Somatic Marker Hypothesis shows that emotion is essential for decisions. Learn how positive and negative emotions influence purchase, satisfaction, and loyalty."
+            data-topics="Damasio's Somatic Marker Hypothesis|Positive vs. negative emotions in buying|Affect heuristic: mood and judgment|Fear, pride, and guilt appeals in advertising|Post-purchase emotional responses: joy, regret, satisfaction"
+            data-tags="emotions,decision">
+            <div class="node-top">
+              <div class="node-icon">❤️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Emotions in Decision-Making</div>
+            <div class="node-desc">Emotion isn't irrational — it's essential. Learn how feelings drive every purchase
+              decision.</div>
+            <div class="node-tags"><span class="node-tag">emotions</span><span class="node-tag">affect</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 03</span>
+          <span class="phase-title">Behavioral Economics</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="11" data-title="System 1 vs. System 2 Thinking"
+            data-desc="Daniel Kahneman's dual-process theory is the single most important framework in modern consumer behavior. System 1 is fast, intuitive, and emotional. System 2 is slow, deliberate, and rational. Most consumer decisions are made by System 1 — with System 2 justifying them after the fact."
+            data-topics="Kahneman's Thinking Fast and Slow framework|System 1: automatic, unconscious, emotional|System 2: deliberate, effortful, rational|Which system drives most purchase decisions?|Marketing applications: priming, fluency, salience"
+            data-tags="kahneman,system1,system2">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">System 1 vs. System 2 Thinking</div>
+            <div class="node-desc">Kahneman's most important insight: most decisions are fast, emotional, and
+              unconscious. Not rational.</div>
+            <div class="node-tags"><span class="node-tag">kahneman</span><span class="node-tag">dual-process</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Cognitive Biases & Heuristics"
+            data-desc="The brain uses mental shortcuts — heuristics — to make decisions quickly. These shortcuts lead to systematic errors called cognitive biases. Learn the most marketing-relevant biases: availability, representativeness, confirmation bias, and the decoy effect."
+            data-topics="What are heuristics and why we use them|Availability heuristic: ease of recall|Representativeness heuristic|Confirmation bias in brand perception|The decoy effect in pricing and choice"
+            data-tags="biases,heuristics">
+            <div class="node-top">
+              <div class="node-icon">🧩</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Cognitive Biases &amp; Heuristics</div>
+            <div class="node-desc">Mental shortcuts shape every purchase. Learn the biases that marketers must
+              understand and respect.</div>
+            <div class="node-tags"><span class="node-tag">biases</span><span class="node-tag">heuristics</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Anchoring & Framing Effects"
+            data-desc="The first number you see anchors your judgment. The way a choice is framed changes which option you pick. Anchoring and framing are two of the most powerful forces in pricing, negotiation, and persuasion — and every marketer must understand them."
+            data-topics="Anchoring: how first numbers dominate judgment|Framing: gain frames vs. loss frames|Price anchoring in retail and SaaS|Framing in advertising copy|Reference price effects"
+            data-tags="anchoring,framing">
+            <div class="node-top">
+              <div class="node-icon">⚓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Anchoring &amp; Framing Effects</div>
+            <div class="node-desc">The first number you see, and how an option is described, changes the decision every
+              time.</div>
+            <div class="node-tags"><span class="node-tag">anchoring</span><span class="node-tag">framing</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Loss Aversion & Prospect Theory"
+            data-desc="Losing £100 hurts more than gaining £100 feels good. Kahneman and Tversky's Prospect Theory shows that people weigh losses roughly twice as heavily as equivalent gains. Learn how loss aversion shapes pricing, insurance, loyalty programmes, and risk communication."
+            data-topics="Kahneman & Tversky's Prospect Theory|Loss aversion: losses ~2x more painful than gains|The value function and reference point|Endowment effect: why we overvalue what we own|Marketing applications: free trials, risk reversal"
+            data-tags="loss-aversion,prospect-theory">
+            <div class="node-top">
+              <div class="node-icon">📉</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Loss Aversion &amp; Prospect Theory</div>
+            <div class="node-desc">Losses hurt twice as much as gains feel good. Prospect Theory is the most important
+              pricing insight.</div>
+            <div class="node-tags"><span class="node-tag">loss-aversion</span><span class="node-tag">prospect</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Scarcity, Urgency & Social Proof"
+            data-desc="Robert Cialdini's principles of influence are the most applied behavioral economics concepts in marketing. Scarcity (limited supply), urgency (limited time), and social proof (others are doing it) are consistently among the most powerful drivers of consumer action."
+            data-topics="Cialdini's 6 principles of influence|Scarcity: real vs. manufactured|Urgency: time-limited vs. quantity-limited|Social proof: reviews, numbers, testimonials|The FOMO effect in consumer decision-making"
+            data-tags="cialdini,scarcity,social-proof">
+            <div class="node-top">
+              <div class="node-icon">⏰</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Scarcity, Urgency &amp; Social Proof</div>
+            <div class="node-desc">Cialdini's influence principles — the most applied behavioral economics concepts in
+              marketing.</div>
+            <div class="node-tags"><span class="node-tag">cialdini</span><span class="node-tag">influence</span></div>
+          </div>
+
+          <div class="node wide" data-id="16" data-title="Nudge Theory & Choice Architecture"
+            data-desc="Richard Thaler and Cass Sunstein's Nudge Theory shows that the way choices are presented — not just the choices themselves — powerfully influences behavior. Learn how default options, order effects, and environmental design can guide consumers toward better decisions."
+            data-topics="Thaler & Sunstein's Nudge Theory|What is choice architecture?|Default effects: opt-in vs. opt-out|Order effects and position bias|Ethical nudging vs. manipulation|Real applications: health, finance, UX design"
+            data-tags="nudge,choice-architecture">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Nudge Theory &amp; Choice Architecture</div>
+            <div class="node-desc">How choices are presented changes which one people pick. Design environments that
+              guide better decisions.</div>
+            <div class="node-tags"><span class="node-tag">nudge</span><span class="node-tag">thaler</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 04</span>
+          <span class="phase-title">Social &amp; Cultural Influences</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="17" data-title="Social Groups & Reference Groups"
+            data-desc="We are social animals. Our buying decisions are profoundly shaped by the groups we belong to (membership groups) and aspire to join (aspiration groups). Learn how reference groups influence brand preference, product choice, and social signalling through consumption."
+            data-topics="Types of reference groups: membership, aspiration, dissociative|Normative vs. informational social influence|Brand choice as group identity signalling|Peer pressure in consumer decision-making|The Joneses effect: social comparison and status"
+            data-tags="social,reference-groups">
+            <div class="node-top">
+              <div class="node-icon">👥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Social Groups &amp; Reference Groups</div>
+            <div class="node-desc">We buy to fit in and to stand out. Reference groups shape consumer choices more than
+              brands realise.</div>
+            <div class="node-tags"><span class="node-tag">social</span><span class="node-tag">groups</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Family & Household Decisions"
+            data-desc="Many of the most important consumer decisions — cars, homes, holidays, food — are made at the household level, not the individual level. Learn family purchase roles (initiator, influencer, decider, buyer, user) and how they shift across different product categories."
+            data-topics="Family purchase roles: 5 key roles|Husband-dominant vs. wife-dominant vs. joint decisions|Children as influencers in family purchasing|Life stage and family buying behavior|Changing household structures and their impact"
+            data-tags="family,household">
+            <div class="node-top">
+              <div class="node-icon">🏠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Family &amp; Household Decisions</div>
+            <div class="node-desc">Many purchase decisions are made collectively. Understand the roles, dynamics, and
+              power within households.</div>
+            <div class="node-tags"><span class="node-tag">family</span><span class="node-tag">household</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Culture & Subculture"
+            data-desc="Culture is the most fundamental determinant of consumer wants and behavior. It shapes what we eat, wear, value, and aspire to. Learn Hofstede's cultural dimensions, the role of subcultures, and how cross-cultural consumer behavior differs."
+            data-topics="Hofstede's 6 cultural dimensions|Power distance, individualism, uncertainty avoidance|How culture shapes product categories|Subcultures: generational, ethnic, regional|Cross-cultural marketing pitfalls and strategies"
+            data-tags="culture,hofstede">
+            <div class="node-top">
+              <div class="node-icon">🌍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Culture &amp; Subculture</div>
+            <div class="node-desc">Culture defines what we want before we even know it. Learn how cultural dimensions
+              shape consumer behavior.</div>
+            <div class="node-tags"><span class="node-tag">culture</span><span class="node-tag">hofstede</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Social Class & Status Consumption"
+            data-desc="Social class influences what we buy, where we shop, and how we aspire to live. Learn Veblen's conspicuous consumption theory, the role of luxury goods as status signals, and how social mobility shapes aspirational purchasing behavior."
+            data-topics="Defining social class in consumer behavior|Veblen's Theory of the Leisure Class|Conspicuous consumption and status signalling|Luxury goods: functional vs. symbolic value|Trickle-down effect in fashion and trends"
+            data-tags="social-class,status">
+            <div class="node-top">
+              <div class="node-icon">💎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Social Class &amp; Status Consumption</div>
+            <div class="node-desc">What we buy signals who we are. Learn how social class and status shape consumption
+              patterns.</div>
+            <div class="node-tags"><span class="node-tag">social-class</span><span class="node-tag">veblen</span></div>
+          </div>
+
+          <div class="node wide" data-id="21" data-title="Opinion Leaders & Influencers"
+            data-desc="Opinion leaders are individuals whose opinions, recommendations, and choices disproportionately influence others. In the digital age, this means influencers. Learn the two-step flow of communication, influencer tiers, and how word-of-mouth — organic and paid — shapes consumer decisions."
+            data-topics="Two-step flow of communication theory|Who are opinion leaders? Characteristics|Influencer tiers: nano, micro, macro, mega|WOM (word-of-mouth) vs. eWOM (electronic)|Parasocial relationships and influencer trust"
+            data-tags="opinion-leaders,influencers">
+            <div class="node-top">
+              <div class="node-icon">📣</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Opinion Leaders &amp; Influencers</div>
+            <div class="node-desc">Some consumers influence millions. Learn the two-step communication flow and how
+              influencers shape buying.</div>
+            <div class="node-tags"><span class="node-tag">influencers</span><span class="node-tag">WOM</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 5 ═══════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 05</span>
+          <span class="phase-title">Digital Consumer Behavior</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="22" data-title="Online Purchasing Behavior"
+            data-desc="The internet has transformed how consumers search, evaluate, and buy. Learn the unique factors that drive or prevent online purchase — trust signals, friction, website UX, payment security, return policies, and how digital behavior differs from in-store behavior."
+            data-topics="The online consumer journey|Trust signals: SSL, reviews, brand familiarity|Friction points in the digital purchase funnel|Mobile vs. desktop purchasing behavior|Basket abandonment: causes and recovery"
+            data-tags="online,ecommerce">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Online Purchasing Behavior</div>
+            <div class="node-desc">The digital consumer has unique drivers and barriers. Understand what gets people to
+              click buy.</div>
+            <div class="node-tags"><span class="node-tag">online</span><span class="node-tag">ecommerce</span></div>
+          </div>
+
+          <div class="node" data-id="23" data-title="Social Media & Consumer Decisions"
+            data-desc="Social media has made consumer decision-making a social, public activity. Learn how platforms like Instagram, TikTok, and YouTube influence product discovery, social comparison, and purchase — and the role of the FOMO and social validation loop."
+            data-topics="Social media as product discovery channel|The role of visual content in consumer desire|FOMO and social comparison on social platforms|TikTok shopping behavior: from discovery to purchase|UGC (User Generated Content) and its influence"
+            data-tags="social-media,digital">
+            <div class="node-top">
+              <div class="node-icon">📱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Social Media &amp; Consumer Decisions</div>
+            <div class="node-desc">Discovery, desire, validation — social media has fundamentally rewired how consumers
+              decide to buy.</div>
+            <div class="node-tags"><span class="node-tag">social-media</span><span class="node-tag">digital</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Reviews, Ratings & UGC"
+            data-desc="93% of consumers read online reviews before buying. Learn the psychology of why we trust strangers' opinions, how review systems shape purchase decisions, the role of star ratings, and the growing influence of user-generated content across the customer journey."
+            data-topics="Why we trust strangers: social proof psychology|The star rating heuristic|Fake reviews and consumer skepticism|How businesses should respond to reviews|UGC in advertising: authenticity vs. polish"
+            data-tags="reviews,UGC,social-proof">
+            <div class="node-top">
+              <div class="node-icon">⭐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Reviews, Ratings &amp; UGC</div>
+            <div class="node-desc">93% of consumers read reviews before buying. Understand the psychology behind
+              trusting strangers.</div>
+            <div class="node-tags"><span class="node-tag">reviews</span><span class="node-tag">UGC</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Personalisation & Recommendation Systems"
+            data-desc="Netflix, Amazon, and Spotify have made personalisation an expectation. Learn how recommendation algorithms shape consumer choice, the filter bubble effect, the tension between personalisation and privacy, and the psychology of why personalised experiences convert better."
+            data-topics="How recommendation algorithms work (overview)|The filter bubble and its risks|Personalisation and the perceived value|Privacy paradox: sharing data vs. privacy concerns|Personalisation in email, ads, and ecommerce"
+            data-tags="personalisation,algorithms">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Personalisation &amp; Recommendation Systems</div>
+            <div class="node-desc">Algorithms now shape what we discover and desire. Learn how personalisation drives —
+              and limits — consumer choice.</div>
+            <div class="node-tags"><span class="node-tag">personalisation</span><span class="node-tag">algorithms</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="26" data-title="Dark Patterns & Ethical Design"
+            data-desc="Dark patterns are design techniques that trick consumers into actions they didn't intend — hidden fees, tricky unsubscribes, confirm-shaming. Learn to recognise them, understand why they work psychologically, and the growing ethical and legal movement against them."
+            data-topics="What are dark patterns? (Harry Brignull's taxonomy)|Confirm-shaming, roach motels, bait-and-switch|The psychology behind why they work|EU and FTC regulation of dark patterns|Ethical UX design principles for marketers"
+            data-tags="dark-patterns,ethics">
+            <div class="node-top">
+              <div class="node-icon">⚠️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Dark Patterns &amp; Ethical Design</div>
+            <div class="node-desc">Design tricks that exploit psychology to manipulate consumers — and why the backlash
+              is growing.</div>
+            <div class="node-tags"><span class="node-tag">dark-patterns</span><span class="node-tag">ethics</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 6 ═══════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 06</span>
+          <span class="phase-title">Application &amp; Research</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="27" data-title="Neuromarketing Basics"
+            data-desc="Neuromarketing uses neuroscience tools — fMRI, EEG, eye-tracking, galvanic skin response — to understand how the brain responds to marketing stimuli. Learn the foundational findings of neuromarketing and how they're being applied to advertising, packaging, pricing, and retail design."
+            data-topics="What is neuromarketing?|Key tools: fMRI, EEG, eye-tracking, biometrics|The three brains: reptilian, limbic, neocortex|Key neuromarketing findings in advertising|Packaging design and the buy button in the brain"
+            data-tags="neuromarketing,neuroscience">
+            <div class="node-top">
+              <div class="node-icon">🧬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Neuromarketing Basics</div>
+            <div class="node-desc">What does the brain actually respond to? Neuromarketing goes beyond surveys to find
+              out.</div>
+            <div class="node-tags"><span class="node-tag">neuromarketing</span></div>
+          </div>
+
+          <div class="node" data-id="28" data-title="Consumer Segmentation & Personas"
+            data-desc="Effective marketing requires understanding different consumer segments — not all customers are the same. Learn how to combine behavioral, psychographic, and demographic data to build detailed, actionable consumer personas that go beyond demographics."
+            data-topics="From demographics to psychographics|Jobs-to-be-done (JTBD) framework|Building a consumer persona (template)|Attitudinal vs. behavioral segmentation|Using research data to validate personas"
+            data-tags="segmentation,personas">
+            <div class="node-top">
+              <div class="node-icon">🧑‍💼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Consumer Segmentation &amp; Personas</div>
+            <div class="node-desc">Go beyond demographics. Build rich, behavioral consumer personas that actually inform
+              strategy.</div>
+            <div class="node-tags"><span class="node-tag">segmentation</span><span class="node-tag">personas</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Consumer Journey Mapping"
+            data-desc="A consumer journey map visualises every step a consumer takes from first becoming aware of a need to post-purchase reflection. Learn how to map journeys for different consumer segments, identify moments of truth, and find friction points that undermine conversion and loyalty."
+            data-topics="Journey mapping components: stages, touchpoints, emotions|Moments of truth (zero, first, second moment)|Mapping for different personas and categories|Emotional journey: highs, lows, and flat spots|From journey map to actionable insights"
+            data-tags="journey-mapping,CX">
+            <div class="node-top">
+              <div class="node-icon">🗺️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Consumer Journey Mapping</div>
+            <div class="node-desc">Map every step, emotion, and touchpoint in the consumer journey — then fix the
+              friction points.</div>
+            <div class="node-tags"><span class="node-tag">journey-mapping</span><span class="node-tag">CX</span></div>
+          </div>
+
+          <div class="node wide" data-id="30" data-title="Applying Behavioral Insights"
+            data-desc="The capstone of consumer behavior study: translating theory into marketing practice. Learn how to take insights from psychology, behavioral economics, and social influence and apply them ethically to advertising, pricing, product design, retail, digital UX, and brand strategy."
+            data-topics="Behavioral insight teams (BIT): how governments use them|Applying loss aversion to pricing strategy|Using social proof in conversion rate optimisation|Designing for System 1 in advertising|Ethical boundaries: insight vs. manipulation"
+            data-tags="application,behavioral-insights">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Applying Behavioral Insights</div>
+            <div class="node-desc">The capstone: translate consumer psychology into real marketing strategy — ethically
+              and effectively.</div>
+            <div class="node-tags"><span class="node-tag">application</span><span class="node-tag">strategy</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>34</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 34;
+    const phaseNames = {
+      1: 'FOUNDATIONS', 2: 'PSYCHOLOGICAL DRIVERS', 3: 'BEHAVIORAL ECONOMICS',
+      4: 'SOCIAL & CULTURAL INFLUENCES', 5: 'DIGITAL CONSUMER BEHAVIOR', 6: 'APPLICATION & RESEARCH'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-consumer-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-consumer-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size;
+      const pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+
+      let completedPhases = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const allDone = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = allDone ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = allDone ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = allDone ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (allDone) completedPhases++;
+      });
+      document.getElementById('phaseDone').textContent = completedPhases;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => {
+        nd.classList.toggle('done', done.has(nd.dataset.id));
+      });
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const phase = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${phase} — ${phaseNames[phase]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id);
+        save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

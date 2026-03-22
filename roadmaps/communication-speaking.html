@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communication & Speaking Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 30 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Life Skills → <span>Communication &amp; Speaking</span></div>
+      <div class="page-tag">Life Skills</div>
+      <h1 class="page-title">Communication<br />&amp; Speaking</h1>
+      <p class="page-desc">A complete roadmap to becoming a confident, compelling communicator — from conquering
+        speaking anxiety and mastering everyday conversation to delivering powerful presentations and navigating
+        difficult discussions. 6 phases, 30 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>2–4 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>30 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>6,500</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 30 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        How Communication Works</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Self-Awareness as a Communicator</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Overcoming Communication Fear</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Non-Verbal Communication</div>
+
+      <div class="sidebar-section-title">Phase 2 — Everyday Communication</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Active Listening</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Clarity &amp; Conciseness</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Conversation Skills</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Asking Better Questions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Empathy &amp; Emotional Intelligence</div>
+
+      <div class="sidebar-section-title">Phase 3 — Voice &amp; Delivery</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Voice: Pace, Pitch &amp; Power</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Breath &amp; Vocal Presence</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Body Language &amp; Stage Presence</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Filler Words &amp; Pausing</div>
+
+      <div class="sidebar-section-title">Phase 4 — Public Speaking</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Structuring a Talk</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Opening &amp; Closing Strong</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Storytelling for Speakers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Managing Speaking Anxiety</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Handling Q&amp;A</div>
+
+      <div class="sidebar-section-title">Phase 5 — Difficult Conversations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Assertive Communication</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Giving &amp; Receiving Feedback</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Navigating Conflict</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Saying No with Confidence</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Negotiation Basics</div>
+
+      <div class="sidebar-section-title">Phase 6 — Advanced &amp; Professional</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Persuasion &amp; Influence</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Written Communication</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Communication Across Cultures</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Digital &amp; Remote Communication</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building Your Communication Practice</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Foundations of Communication</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="How Communication Works"
+            data-desc="Communication is not just talking. It's a complete loop: a sender encodes a message, a receiver decodes it, and meaning is created — or misunderstood — in that gap. Most communication failures happen not because people say the wrong thing, but because they have no model for how the process actually works. Start here."
+            data-topics="The communication model: sender, message, channel, receiver, feedback|Encoding and decoding: why the same words mean different things to different people|Verbal, non-verbal, and written communication|The 7-38-55 rule: words, tone, and body language (and its real context)|Noise and barriers: physical, psychological, semantic|Feedback loops and communication as a two-way process"
+            data-tags="foundations,model">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">How Communication Works</div>
+            <div class="node-desc">Communication is a loop, not a broadcast. Understand the model before trying to
+              improve the output.</div>
+            <div class="node-tags"><span class="node-tag">foundations</span><span class="node-tag">model</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Self-Awareness as a Communicator"
+            data-desc="You cannot improve what you don't notice. Most people have significant blind spots about how they come across — their tone, their habits, their tendencies under pressure. Self-awareness is the prerequisite for every other communication skill. Learn to observe yourself honestly."
+            data-topics="Communication style self-assessment: assertive, passive, aggressive, passive-aggressive|Your default patterns under stress|Recording yourself: the uncomfortable truth|Feedback from trusted others: what to ask and how to hear it|Fixed vs. growth mindset in communication development|Identifying your top 3 communication habits to change"
+            data-tags="self-awareness,mindset">
+            <div class="node-top">
+              <div class="node-icon">🪞</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Self-Awareness as a Communicator</div>
+            <div class="node-desc">You can't fix what you can't see. Honest self-observation is the foundation of every
+              other skill here.</div>
+            <div class="node-tags"><span class="node-tag">self-awareness</span><span class="node-tag">mindset</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Overcoming Communication Fear"
+            data-desc="Fear of speaking — whether in a meeting, a conversation, or in front of a crowd — is one of the most common human experiences. But it's not a personality trait. It's a learnable skill. Understand the physiology and psychology of communication anxiety, and the evidence-based techniques to manage it."
+            data-topics="Why communication fear exists: the brain's threat response|The physiology of anxiety: what's actually happening in your body|Cognitive reframing: anxiety vs. excitement (Amy Cuddy's research)|Systematic exposure: the only real cure|Power posing and pre-talk rituals that actually work|Social anxiety vs. performance anxiety: different approaches"
+            data-tags="fear,anxiety,confidence">
+            <div class="node-top">
+              <div class="node-icon">💪</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Overcoming Communication Fear</div>
+            <div class="node-desc">Speaking anxiety is not a personality trait — it's a learnable skill. Here's the
+              evidence-based approach.</div>
+            <div class="node-tags"><span class="node-tag">fear</span><span class="node-tag">confidence</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="Non-Verbal Communication"
+            data-desc="You are communicating even when you're not speaking. Facial expressions, eye contact, posture, gestures, proximity, and even silence send powerful signals. Understanding and deliberately managing your non-verbal communication transforms how people perceive and respond to you."
+            data-topics="The six universal facial expressions (Ekman)|Eye contact: how much, how long, and what it signals|Posture and body orientation: open vs. closed|Gestures: emphasising vs. distracting|Mirroring and rapport building|Microexpressions: reading what people aren't saying|Congruence: when words and body language conflict"
+            data-tags="non-verbal,body-language">
+            <div class="node-top">
+              <div class="node-icon">🤝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Non-Verbal Communication</div>
+            <div class="node-desc">You're always communicating. Master the signals your body sends before you say a
+              word.</div>
+            <div class="node-tags"><span class="node-tag">non-verbal</span><span class="node-tag">body-language</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Everyday Communication</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="5" data-title="Active Listening"
+            data-desc="Most people listen to reply, not to understand. Active listening is the rare, powerful practice of being fully present to another person — without formulating your response, checking your phone, or waiting for your turn. It's the foundation of every good relationship and every effective communication."
+            data-topics="The 5 levels of listening: from ignoring to empathic listening|Attending behaviours: physical presence and eye contact|Paraphrasing and reflecting: showing you understood|Not interrupting — and why it's harder than it sounds|Listening barriers: assumptions, distractions, emotional triggers|The SIER model: Sensing, Interpreting, Evaluating, Responding"
+            data-tags="listening,empathy">
+            <div class="node-top">
+              <div class="node-icon">👂</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Active Listening</div>
+            <div class="node-desc">Most people listen to reply. Active listening — truly hearing someone — is one of the
+              rarest skills in existence.</div>
+            <div class="node-tags"><span class="node-tag">listening</span><span class="node-tag">empathy</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Clarity & Conciseness"
+            data-desc="The goal of communication is understanding, not impressing. Rambling, over-explaining, and burying the key point kills clarity. Learn to identify your core message, say it first, and support it — the BLUF (Bottom Line Up Front) principle used by military and business leaders alike."
+            data-topics="BLUF: Bottom Line Up Front — lead with the point|The Pyramid Principle (Barbara Minto): conclusion first, support second|Removing filler and padding from your communication|Plain language: cutting jargon and complexity|The 'one clear message' test: what is the single thing I want them to remember?|Editing spoken and written communication for clarity"
+            data-tags="clarity,conciseness">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Clarity &amp; Conciseness</div>
+            <div class="node-desc">Lead with the point. Cut the padding. Clarity is a sign of respect for the listener's
+              time.</div>
+            <div class="node-tags"><span class="node-tag">clarity</span><span class="node-tag">BLUF</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Conversation Skills"
+            data-desc="Great conversations don't just happen — they're built through specific skills: starting confidently, finding common ground, keeping energy alive, knowing when to listen and when to share, and ending memorably. These are learnable, practicable techniques, not personality traits."
+            data-topics="Conversation openers: beyond 'what do you do?'|Finding common ground quickly|Transitioning between topics naturally|The art of sharing without oversharing|Remembering names: techniques that actually work|Conversation killers and how to avoid them|Gracefully ending a conversation"
+            data-tags="conversation,social">
+            <div class="node-top">
+              <div class="node-icon">💬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Conversation Skills</div>
+            <div class="node-desc">Great conversations are built, not born. Learn the specific techniques that make them
+              flow naturally.</div>
+            <div class="node-tags"><span class="node-tag">conversation</span><span class="node-tag">social</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Asking Better Questions"
+            data-desc="Questions are the most underrated communication tool. The right question unlocks insight, builds rapport, demonstrates intelligence, and moves conversations forward in ways that statements never can. Learn to ask questions that people actually want to answer."
+            data-topics="Open vs. closed questions and when each is right|Probing questions: going deeper without interrogating|Socratic questioning: using questions to guide thinking|Questions that build rapport vs. questions that create distance|The pause after asking: giving space for real answers|Interview technique: following up on what wasn't said"
+            data-tags="questions,curiosity">
+            <div class="node-top">
+              <div class="node-icon">❓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Asking Better Questions</div>
+            <div class="node-desc">The right question is more powerful than any statement. Learn to unlock conversations
+              and deeper thinking.</div>
+            <div class="node-tags"><span class="node-tag">questions</span><span class="node-tag">curiosity</span></div>
+          </div>
+
+          <div class="node wide" data-id="9" data-title="Empathy & Emotional Intelligence"
+            data-desc="Emotional intelligence (EQ) — the ability to recognise, understand, and manage emotions in yourself and others — consistently predicts communication effectiveness better than IQ. Learn the four domains of EQ and how empathy specifically transforms the quality of your interactions."
+            data-topics="Daniel Goleman's 4 domains: self-awareness, self-regulation, social awareness, relationship management|Cognitive empathy vs. emotional empathy vs. compassionate empathy|Validation: acknowledging feelings without agreeing with everything|Reading emotional subtext: what's beneath the words|Emotional regulation under pressure: staying rational when triggered|Empathy in difficult conversations: making space for someone to feel heard"
+            data-tags="empathy,EQ,emotional-intelligence">
+            <div class="node-top">
+              <div class="node-icon">❤️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Empathy &amp; Emotional Intelligence</div>
+            <div class="node-desc">EQ predicts communication success more than IQ. Learn to read, manage, and respond to
+              emotion effectively.</div>
+            <div class="node-tags"><span class="node-tag">empathy</span><span class="node-tag">EQ</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Voice &amp; Delivery</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="10" data-title="Voice: Pace, Pitch & Power"
+            data-desc="Your voice is an instrument. Pace, pitch, volume, and tone are the dials that control how your words land. Speaking too fast sounds nervous. Monotone kills engagement. Too loud feels aggressive. Learn to deliberately use your voice to convey authority, warmth, and conviction."
+            data-topics="Pace: why slowing down commands attention|Pitch variation: the enemy of monotone|Volume: projection vs. yelling|Tone: how the same words sound completely different depending on it|Emphasis: stressing the right words to shape meaning|Vocal warmth: the quality that makes people trust and like you"
+            data-tags="voice,delivery">
+            <div class="node-top">
+              <div class="node-icon">🎙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Voice: Pace, Pitch &amp; Power</div>
+            <div class="node-desc">Your voice is an instrument. Learn to use pace, pitch, volume, and tone with
+              deliberate intention.</div>
+            <div class="node-tags"><span class="node-tag">voice</span><span class="node-tag">delivery</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="Breath & Vocal Presence"
+            data-desc="Breath is the engine of the voice. Shallow breathing creates a weak, anxious-sounding voice. Diaphragmatic breathing supports projection, steadies nerves, and gives your voice resonance and authority. The techniques actors and singers use are directly applicable to everyday speaking."
+            data-topics="Diaphragmatic vs. chest breathing|Breathing exercises for vocal power and calm|How breath control reduces anxiety in the moment|Resonance: using your chest and body as a natural amplifier|Vocal warm-ups: the 5-minute routine before any important conversation|Rest and recovery: protecting your voice long-term"
+            data-tags="breath,vocal,presence">
+            <div class="node-top">
+              <div class="node-icon">🌬️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Breath &amp; Vocal Presence</div>
+            <div class="node-desc">Breath is the engine of your voice. Diaphragmatic breathing creates authority, calm,
+              and resonance.</div>
+            <div class="node-tags"><span class="node-tag">breath</span><span class="node-tag">presence</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Body Language & Stage Presence"
+            data-desc="The moment you walk into a room — or onto a stage — people are already forming an impression. How you stand, move, and occupy space communicates confidence or anxiety before you've said a word. Learn the body language of presence and how to own any room."
+            data-topics="The confident stance: feet, posture, shoulder position|Movement on stage: purposeful vs. pacing|Gestures that reinforce your message|Eye contact in groups: the 3-second rule|Entering a room: first impressions in the first 7 seconds|The 'power pose': what the evidence actually says"
+            data-tags="stage-presence,body-language">
+            <div class="node-top">
+              <div class="node-icon">🎭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Body Language &amp; Stage Presence</div>
+            <div class="node-desc">Own the room before you speak. Posture, movement, and eye contact project confidence
+              or anxiety.</div>
+            <div class="node-tags"><span class="node-tag">stage-presence</span><span class="node-tag">posture</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="13" data-title="Filler Words & Pausing"
+            data-desc="'Um', 'uh', 'like', 'you know', 'basically', 'sort of' — filler words undermine credibility and make speakers sound uncertain. The silence between words is not emptiness — it's power. Deliberate pausing creates emphasis, signals confidence, and gives listeners time to absorb. This is one of the highest-ROI delivery skills to master."
+            data-topics="Why we use filler words: the neuroscience of thinking aloud|Recording yourself: the only way to truly hear your fillers|Replacing fillers with intentional silence|The 3 types of pause: emphatic, dramatic, transitional|How top speakers use silence as a tool, not a gap to fill|A 30-day filler word elimination practice"
+            data-tags="filler-words,pausing">
+            <div class="node-top">
+              <div class="node-icon">⏸️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Filler Words &amp; Pausing</div>
+            <div class="node-desc">Silence is power. Eliminate fillers and replace them with deliberate pauses that
+              project confidence.</div>
+            <div class="node-tags"><span class="node-tag">filler-words</span><span class="node-tag">pausing</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Public Speaking</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="14" data-title="Structuring a Talk"
+            data-desc="A speech without structure is just noise. The audience needs to follow your logic, remember your message, and feel the journey from start to finish. Learn the classic and modern frameworks for structuring a talk — and why the structure you choose shapes how your message lands."
+            data-topics="The classic structure: Opening, Body, Conclusion|Monroe's Motivated Sequence: Attention, Need, Satisfaction, Visualisation, Action|The Rule of Three: why ideas group in threes|TED Talk structure: the through-line concept|Creating a talking outline vs. a written script|Signposting: guiding the audience through your structure"
+            data-tags="structure,preparation">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Structuring a Talk</div>
+            <div class="node-desc">A talk without structure is just words. Learn the frameworks that make ideas stick
+              and arguments land.</div>
+            <div class="node-tags"><span class="node-tag">structure</span><span class="node-tag">Monroe</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Opening & Closing Strong"
+            data-desc="Audiences decide within the first 30 seconds whether they're going to pay attention. And they remember the last thing they heard. The opening and closing of any talk are the two highest-leverage moments. Learn proven techniques for both — and never again start with 'Hi, so today I'm going to talk about…'"
+            data-topics="Opening techniques: story, question, bold statement, shocking statistic|What NOT to do: apologising, 'So…', thanking people first|The 4 jobs of a great opening: hook, context, credibility, roadmap|Closing techniques: call to action, callback to opening, memorable last line|The wrong way to end: 'So, yeah, that's it, any questions?'|Practising your opening and closing 10x more than the middle"
+            data-tags="opening,closing,hooks">
+            <div class="node-top">
+              <div class="node-icon">🎬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Opening &amp; Closing Strong</div>
+            <div class="node-desc">The first 30 seconds and last 30 seconds matter most. Never open with 'So, today I'm
+              going to talk about…'</div>
+            <div class="node-tags"><span class="node-tag">openings</span><span class="node-tag">hooks</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Storytelling for Speakers"
+            data-desc="Data tells, stories sell. The brain is wired for narrative — facts wrapped in story are 22 times more memorable than facts alone. Every great speaker knows how to use personal story, case studies, and anecdote to make abstract ideas concrete and emotional. This is the skill that separates good speakers from memorable ones."
+            data-topics="Why the brain responds to story (neural coupling)|The Story Spine: a simple structure for any anecdote|Personal stories: vulnerability as a trust-building tool|The STAR method: Situation, Task, Action, Result|Making data emotional: the human story behind the statistic|Finding stories in your own life: a bank-building exercise"
+            data-tags="storytelling,narrative">
+            <div class="node-top">
+              <div class="node-icon">📖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Storytelling for Speakers</div>
+            <div class="node-desc">Facts tell, stories sell. Story makes ideas 22x more memorable — the skill that
+              separates good from great.</div>
+            <div class="node-tags"><span class="node-tag">storytelling</span><span class="node-tag">STAR</span></div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Managing Speaking Anxiety"
+            data-desc="Nervousness before speaking is not a flaw — it's energy. The difference between a nervous speaker and a confident one is often not the absence of anxiety, but the ability to channel it. Learn evidence-based strategies to move from paralysing fear to productive activation."
+            data-topics="Reframing anxiety as excitement (Harvard research)|Preparation as the deepest form of confidence|Visualisation: rehearsing the successful version|Physical anchors: breathing, posture, movement before you speak|Accepting imperfection: the liberating truth that audiences are on your side|Systematic desensitisation: small exposures that build permanent confidence"
+            data-tags="anxiety,performance,confidence">
+            <div class="node-top">
+              <div class="node-icon">🧘</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Managing Speaking Anxiety</div>
+            <div class="node-desc">Nerves are energy, not failure. Learn to channel anxiety into presence rather than
+              fight it into paralysis.</div>
+            <div class="node-tags"><span class="node-tag">anxiety</span><span class="node-tag">confidence</span></div>
+          </div>
+
+          <div class="node wide" data-id="18" data-title="Handling Q&A"
+            data-desc="Many speakers prepare thoroughly for their talk — then fall apart in Q&A. Questions from an audience can be challenging, hostile, or simply confusing. Learn the protocol for fielding questions confidently: how to buy thinking time, handle hostile questions, and use Q&A to reinforce your message."
+            data-topics="The Q&A mindset: every question is an opportunity|Buying time without looking uncertain: bridging techniques|Handling hostile or loaded questions gracefully|'I don't know' — the most credible answer you can give|Redirecting off-topic questions|How to close Q&A with a strong final message rather than 'any more questions?'"
+            data-tags="Q&A,handling-questions">
+            <div class="node-top">
+              <div class="node-icon">🙋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Handling Q&amp;A</div>
+            <div class="node-desc">Q&A is where speakers lose credibility — or gain it. Learn to field any question with
+              composure and clarity.</div>
+            <div class="node-tags"><span class="node-tag">Q&A</span><span class="node-tag">public-speaking</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 5 ═══════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Difficult Conversations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="19" data-title="Assertive Communication"
+            data-desc="Assertiveness is the middle ground between passivity (not expressing your needs) and aggression (expressing them at others' expense). It's the ability to say what you mean clearly, confidently, and respectfully — without apologising for having needs. It's the single most important communication skill for life quality."
+            data-topics="The assertiveness spectrum: passive, passive-aggressive, assertive, aggressive|'I' statements vs. 'You' statements: owning your experience|Setting expectations clearly from the start|Assertive body language: presence without aggression|The DESC script: Describe, Express, Specify, Consequences|Overcoming the people-pleasing habit"
+            data-tags="assertiveness,boundaries">
+            <div class="node-top">
+              <div class="node-icon">🗣️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Assertive Communication</div>
+            <div class="node-desc">Not passive, not aggressive — assertive. Say what you mean clearly and respectfully
+              without apologising for it.</div>
+            <div class="node-tags"><span class="node-tag">assertiveness</span><span class="node-tag">DESC</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Giving & Receiving Feedback"
+            data-desc="Most people hate giving feedback because they're afraid of hurting feelings. Most people hate receiving it because they take it personally. Both reactions make teams and relationships worse. Learn evidence-based frameworks for giving feedback that lands constructively — and receiving it without becoming defensive."
+            data-topics="The SBI model: Situation, Behaviour, Impact|The feedback sandwich: why it doesn't work (and what does)|Separating behaviour from identity when giving feedback|Receiving feedback: the 3 triggers (truth, relationship, identity)|The 'right to update' — being open to being wrong|Asking for specific feedback rather than general opinions"
+            data-tags="feedback,SBI">
+            <div class="node-top">
+              <div class="node-icon">🔁</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Giving &amp; Receiving Feedback</div>
+            <div class="node-desc">The SBI model, feedback triggers, and why the sandwich method fails — give and
+              receive feedback that actually helps.</div>
+            <div class="node-tags"><span class="node-tag">feedback</span><span class="node-tag">SBI</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Navigating Conflict"
+            data-desc="Conflict is not a sign of a bad relationship — avoiding it is. Healthy conflict, handled well, leads to better outcomes and stronger relationships. Learn the Thomas-Kilmann conflict modes, the principles of non-violent communication, and a step-by-step framework for navigating difficult conversations without damaging relationships."
+            data-topics="The Thomas-Kilmann conflict modes: competing, collaborating, compromising, avoiding, accommodating|Non-Violent Communication (NVC): observations, feelings, needs, requests|Separating positions from interests: what people say vs. what they actually need|Staying curious instead of defensive under pressure|The difficult conversation framework: prepare, open, explore, resolve|Post-conflict repair: how to rebuild after a hard conversation"
+            data-tags="conflict,NVC">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Navigating Conflict</div>
+            <div class="node-desc">Avoiding conflict is the problem, not conflict itself. Learn to navigate it in ways
+              that strengthen, not damage, relationships.</div>
+            <div class="node-tags"><span class="node-tag">conflict</span><span class="node-tag">NVC</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Saying No with Confidence"
+            data-desc="Saying yes when you mean no is one of the most common — and most damaging — communication habits. It breeds resentment, erodes boundaries, and signals to others that your time and energy are without limit. Learn to say no clearly, kindly, and without excessive explanation or apology."
+            data-topics="Why people say yes when they mean no: fear, guilt, people-pleasing|The cost of chronic yes: resentment, overload, loss of respect|The anatomy of a good 'no': direct, warm, brief|No without over-explaining: 'I can't make that work' is a complete sentence|Offering alternatives vs. just declining|Practising no in low-stakes situations to build the muscle"
+            data-tags="boundaries,saying-no">
+            <div class="node-top">
+              <div class="node-icon">🚫</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Saying No with Confidence</div>
+            <div class="node-desc">'I can't make that work' is a complete sentence. Learn to decline clearly and kindly
+              without guilt or apology.</div>
+            <div class="node-tags"><span class="node-tag">boundaries</span><span class="node-tag">saying-no</span></div>
+          </div>
+
+          <div class="node wide" data-id="23" data-title="Negotiation Basics"
+            data-desc="Negotiation is not just for boardrooms and car dealerships. You negotiate every day — for your salary, your workload, your time, your relationships. Learn the foundational principles of principled negotiation from Fisher and Ury's 'Getting to Yes' and how to find outcomes where both sides win."
+            data-topics="Principled negotiation: the Fisher-Ury framework from 'Getting to Yes'|Positions vs. interests: the critical distinction|BATNA: Best Alternative to a Negotiated Agreement — your source of power|The anchor effect: why the first number matters so much|Active listening in negotiation: what the other side isn't saying|Negotiating salary: research, timing, and the exact script to use"
+            data-tags="negotiation,BATNA">
+            <div class="node-top">
+              <div class="node-icon">🤝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Negotiation Basics</div>
+            <div class="node-desc">You negotiate every day. BATNA, principled negotiation, and the salary script — the
+              foundations of getting to yes.</div>
+            <div class="node-tags"><span class="node-tag">negotiation</span><span class="node-tag">BATNA</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 6 ═══════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Advanced &amp; Professional Communication</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="24" data-title="Persuasion & Influence"
+            data-desc="Persuasion is not manipulation — it's the ethical art of changing minds with evidence, emotion, and credibility. Aristotle identified the three pillars 2,400 years ago: ethos (credibility), pathos (emotion), logos (logic). Modern behavioural science has added nuance. Learn both to communicate in ways that move people to action."
+            data-topics="Aristotle's three pillars: ethos, pathos, logos|Cialdini's 6 principles of influence: reciprocity, commitment, social proof, authority, liking, scarcity|The Elaboration Likelihood Model: central vs. peripheral persuasion routes|Framing effects: how presenting the same information differently changes decisions|Storytelling as the most powerful persuasion tool|Ethical persuasion: the line between influence and manipulation"
+            data-tags="persuasion,influence,Cialdini">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Persuasion &amp; Influence</div>
+            <div class="node-desc">Ethos, pathos, logos — Aristotle's pillars plus Cialdini's modern science of ethical
+              influence.</div>
+            <div class="node-tags"><span class="node-tag">persuasion</span><span class="node-tag">Cialdini</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Written Communication"
+            data-desc="Most professional communication happens in writing — emails, Slack messages, reports, proposals. Poor written communication wastes time and creates confusion. Learn to write clearly, concisely, and with the right tone for every context — the skills that most professionals never formally learn."
+            data-topics="Email structure: subject line, opening, body, clear ask|The inverted pyramid: most important information first|Professional tone: formal, informal, and knowing the difference|Writing for clarity: short sentences, active voice, plain language|Editing ruthlessly: the first draft is always too long|Slack, Teams, and instant messaging etiquette"
+            data-tags="writing,email,professional">
+            <div class="node-top">
+              <div class="node-icon">✍️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Written Communication</div>
+            <div class="node-desc">Most professional communication is written. Emails, Slack, reports — learn to write
+              clearly and with the right tone.</div>
+            <div class="node-tags"><span class="node-tag">writing</span><span class="node-tag">email</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Communication Across Cultures"
+            data-desc="In a globalised world, you will communicate with people from cultures with radically different norms around directness, hierarchy, silence, disagreement, and emotion. What reads as confident in one culture reads as rude in another. Learn Hofstede's cultural dimensions and how to adapt without losing authenticity."
+            data-topics="Hofstede's dimensions: power distance, individualism, directness|High-context vs. low-context communication cultures|Directness: why Germans and Japanese have such different norms|Silence in different cultures: comfortable vs. deeply uncomfortable|Hierarchy and titles: when and how formality matters|Adapting your communication style without losing your identity"
+            data-tags="cross-cultural,Hofstede">
+            <div class="node-top">
+              <div class="node-icon">🌍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Communication Across Cultures</div>
+            <div class="node-desc">What's confident in one culture is rude in another. Understand cultural dimensions to
+              communicate across any context.</div>
+            <div class="node-tags"><span class="node-tag">cross-cultural</span><span class="node-tag">Hofstede</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="27" data-title="Digital & Remote Communication"
+            data-desc="Remote work has made communication harder. Without physical presence, tone and intent are harder to read. Asynchronous communication requires more care. Video calls require deliberate performance. Learn the principles and practices of excellent digital communication in a world where most work happens through screens."
+            data-topics="The challenges of asynchronous communication|Writing for asynchronous clarity: leave no ambiguity|Video call presence: camera, lighting, framing, eye contact|The 'video call before email' decision framework|Managing tone in text: when emojis are professional|Over-communication in remote teams: why it's usually better"
+            data-tags="remote,digital,async">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Digital &amp; Remote Communication</div>
+            <div class="node-desc">Screens remove physical cues. Learn the principles of clarity, presence, and tone in
+              async and remote contexts.</div>
+            <div class="node-tags"><span class="node-tag">remote</span><span class="node-tag">async</span></div>
+          </div>
+
+          <div class="node wide" data-id="28" data-title="Building Your Communication Practice"
+            data-desc="Communication skills are not learned by reading about them — they're built through deliberate practice. The final stage of this roadmap is about creating a sustainable system for ongoing improvement: regular practice opportunities, feedback loops, and the long-term habits that turn knowledge into capability."
+            data-topics="Toastmasters: the world's best communication practice environment|Improv comedy: the fastest way to build conversational confidence|Deliberate practice: specific, focused, feedback-rich repetition|Recording yourself: monthly communication audits|The communication journal: tracking wins, challenges, and insights|Setting a 90-day communication development goal"
+            data-tags="practice,Toastmasters,growth">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building Your Communication Practice</div>
+            <div class="node-desc">Knowledge doesn't make you a better communicator — practice does. Build the system
+              for permanent improvement.</div>
+            <div class="node-tags"><span class="node-tag">practice</span><span class="node-tag">Toastmasters</span><span
+                class="node-tag">growth</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>30</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 30;
+    const phaseNames = {
+      1: 'FOUNDATIONS OF COMMUNICATION', 2: 'EVERYDAY COMMUNICATION',
+      3: 'VOICE & DELIVERY', 4: 'PUBLIC SPEAKING',
+      5: 'DIFFICULT CONVERSATIONS', 6: 'ADVANCED & PROFESSIONAL COMMUNICATION'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-comms-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-comms-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

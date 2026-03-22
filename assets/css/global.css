@@ -611,6 +611,12 @@ nav {
   min-height: 90px;
 }
 
+a.r-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .r-card:hover {
   background: var(--surface2);
 }

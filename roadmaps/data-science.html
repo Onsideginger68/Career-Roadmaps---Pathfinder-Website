@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Science Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 35 complete</span>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>Data Science</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">Data<br />Science</h1>
+      <p class="page-desc">A complete beginner-to-practitioner roadmap covering Python, statistics, data wrangling,
+        machine learning, and data storytelling — everything you need to start working with data professionally. 7
+        phases, 35 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>8–12 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>35 topics</strong>&nbsp;· 7 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>9,600</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 35 topics completed</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What is Data Science?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Python for Data Science</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Your Data Science Toolkit</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Mathematics Essentials</div>
+
+      <div class="sidebar-section-title">Phase 2 — Statistics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Descriptive Statistics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Probability Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Inferential Statistics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Distributions &amp; Central Limit Theorem</div>
+
+      <div class="sidebar-section-title">Phase 3 — Data Wrangling</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        NumPy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Pandas</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Data Cleaning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SQL for Data Science</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Exploratory Data Analysis</div>
+
+      <div class="sidebar-section-title">Phase 4 — Data Visualisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Visualisation Principles</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Matplotlib &amp; Seaborn</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Plotly &amp; Interactive Charts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Storytelling with Data</div>
+
+      <div class="sidebar-section-title">Phase 5 — Machine Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        ML Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Supervised Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Unsupervised Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Scikit-learn in Practice</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Model Evaluation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Feature Engineering</div>
+
+      <div class="sidebar-section-title">Phase 6 — Deep Learning Intro</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Neural Networks Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Keras &amp; TensorFlow Intro</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        CNNs &amp; RNNs Overview</div>
+
+      <div class="sidebar-section-title">Phase 7 — Real-World Practice</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        End-to-End Projects</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Kaggle &amp; Competitions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Git &amp; Reproducibility</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building Your DS Portfolio</div>
+
+    </aside>
+
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="What is Data Science?"
+            data-desc="Data science sits at the intersection of statistics, programming, and domain expertise. Before writing a line of code, you need to understand the full data science workflow — from problem framing and data collection through analysis, modelling, and communication of insights. This topic maps the territory."
+            data-topics="The data science workflow: question → data → analysis → insight → action|Data scientist vs. data analyst vs. ML engineer vs. data engineer|Types of data problems: description, prediction, causation|Industries where data science creates value: finance, health, retail, tech|The data science hierarchy of needs (Maslow for data)"
+            data-tags="foundations,overview">
+            <div class="node-top">
+              <div class="node-icon">🔭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is Data Science?</div>
+            <div class="node-desc">Map the field before diving in — the workflow, the roles, and what data science
+              actually produces.</div>
+            <div class="node-tags"><span class="node-tag">overview</span><span class="node-tag">foundations</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Python for Data Science"
+            data-desc="Python is the dominant language in data science — not because it's the fastest, but because its ecosystem of libraries (NumPy, Pandas, Scikit-learn, Matplotlib) makes it unbeatable for working with data. This topic assumes basic Python and deepens it specifically for data work."
+            data-topics="Python data types and structures you'll use constantly: lists, dicts, tuples|List comprehensions: writing efficient, readable data transformations|Functions, classes, and modules in a data context|File I/O: reading CSV, JSON, Excel, and text files|Virtual environments and package management with pip and conda|Jupyter Notebooks: the data scientist's primary working environment"
+            data-tags="python,programming">
+            <div class="node-top">
+              <div class="node-icon">🐍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Python for Data Science</div>
+            <div class="node-desc">The essential Python — data structures, comprehensions, file I/O, and Jupyter —
+              specifically for data work.</div>
+            <div class="node-tags"><span class="node-tag">python</span><span class="node-tag">jupyter</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Your Data Science Toolkit"
+            data-desc="Data scientists use a specific set of tools daily. Getting your environment set up correctly from the start saves enormous frustration. Learn to configure Jupyter, understand Anaconda, connect to data sources, and use the command line — the plumbing that makes everything else work."
+            data-topics="Anaconda: the all-in-one data science distribution|Jupyter Lab vs. Jupyter Notebook vs. VS Code|Google Colab: free GPU access in the browser|conda environments: isolating project dependencies|Command line basics every data scientist must know|Version control with Git for notebooks and scripts"
+            data-tags="tools,environment,jupyter">
+            <div class="node-top">
+              <div class="node-icon">🛠️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Your Data Science Toolkit</div>
+            <div class="node-desc">Anaconda, Jupyter, Colab, Git — set up your environment correctly from day one.</div>
+            <div class="node-tags"><span class="node-tag">tools</span><span class="node-tag">anaconda</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="Mathematics Essentials"
+            data-desc="You don't need a maths degree to do data science — but you do need a solid foundation in three areas: linear algebra (the language of data), calculus (the engine of optimisation), and statistics (the framework for reasoning under uncertainty). This topic gives you the minimum viable maths to understand what your models are actually doing."
+            data-topics="Linear algebra: vectors, matrices, dot products, matrix multiplication|Why matrices are just data — and why that matters|Calculus: derivatives and gradients intuitively (no proofs required)|The gradient descent algorithm: how models learn|Statistics fundamentals: mean, variance, standard deviation|Logarithms and exponentials: why they appear everywhere in data science"
+            data-tags="maths,linear-algebra,calculus">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Mathematics Essentials</div>
+            <div class="node-desc">Linear algebra, calculus, and statistics — the minimum viable maths to understand
+              what your models are doing.</div>
+            <div class="node-tags"><span class="node-tag">maths</span><span class="node-tag">linear-algebra</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Statistics for Data Science</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Descriptive Statistics"
+            data-desc="Descriptive statistics summarise and describe data. Before any modelling, you must understand your data's shape — its centre, spread, and distribution. These are the questions you ask first about every new dataset, and the answers that reveal data quality issues, outliers, and key patterns."
+            data-topics="Measures of central tendency: mean, median, mode — and when each is right|Measures of spread: range, variance, standard deviation, IQR|Skewness and kurtosis: understanding distribution shape|Quartiles, percentiles, and the five-number summary|Outlier detection: IQR method and Z-scores|Computing descriptive stats in Python with pandas .describe()"
+            data-tags="statistics,descriptive">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Descriptive Statistics</div>
+            <div class="node-desc">Summarise any dataset — mean, spread, shape, outliers — before you model anything.
+            </div>
+            <div class="node-tags"><span class="node-tag">statistics</span><span class="node-tag">descriptive</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Probability Fundamentals"
+            data-desc="Probability is the language machine learning speaks. Understanding probability unlocks Bayesian thinking, model confidence, and why predictions are never certainties. This topic covers the core rules and the mental models that make probabilistic reasoning intuitive."
+            data-topics="Basic probability rules: addition, multiplication, complement|Conditional probability: P(A|B) explained intuitively|Bayes' Theorem: the most important formula in data science|Joint, marginal, and conditional distributions|Random variables: discrete and continuous|Expected value and variance of distributions"
+            data-tags="probability,bayes">
+            <div class="node-top">
+              <div class="node-icon">🎲</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Probability Fundamentals</div>
+            <div class="node-desc">The language ML speaks — conditional probability, Bayes' Theorem, and probabilistic
+              reasoning.</div>
+            <div class="node-tags"><span class="node-tag">probability</span><span class="node-tag">bayes</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Inferential Statistics"
+            data-desc="Inferential statistics let you draw conclusions about a population from a sample. Hypothesis testing — the backbone of experimental analysis and A/B testing — lives here. Learn the framework for making data-driven decisions that hold up to scrutiny."
+            data-topics="Population vs. sample: the fundamental distinction|Hypothesis testing: null hypothesis, alternative hypothesis, test statistic|p-values: what they actually mean (and the common misconceptions)|Type I and Type II errors: false positives and false negatives|t-tests, chi-square tests, ANOVA|A/B testing: the most common application of inferential statistics in industry"
+            data-tags="inferential,hypothesis-testing">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Inferential Statistics</div>
+            <div class="node-desc">Hypothesis testing, p-values, A/B testing — draw conclusions from samples that hold
+              up to scrutiny.</div>
+            <div class="node-tags"><span class="node-tag">inferential</span><span class="node-tag">A/B testing</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="8" data-title="Distributions & the Central Limit Theorem"
+            data-desc="Probability distributions are the shapes that data takes. Understanding the normal, binomial, Poisson, and other distributions unlocks your ability to reason about uncertainty. The Central Limit Theorem — one of the most profound results in statistics — explains why so many things in nature follow the normal distribution."
+            data-topics="Normal distribution: properties, Z-scores, the 68-95-99.7 rule|Binomial distribution: modelling yes/no outcomes|Poisson distribution: modelling rare events|Uniform, exponential, and log-normal distributions|The Central Limit Theorem: why sample means are normally distributed|Checking normality in Python: Q-Q plots and Shapiro-Wilk test"
+            data-tags="distributions,CLT,normal">
+            <div class="node-top">
+              <div class="node-icon">🔔</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Distributions &amp; the Central Limit Theorem</div>
+            <div class="node-desc">Normal, binomial, Poisson — understand the shapes data takes, and why the CLT is the
+              cornerstone of statistics.</div>
+            <div class="node-tags"><span class="node-tag">distributions</span><span class="node-tag">CLT</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Data Wrangling</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="9" data-title="NumPy"
+            data-desc="NumPy is the numerical backbone of Python's data stack. Its ndarray (N-dimensional array) is the data structure that Pandas, Scikit-learn, and TensorFlow are all built on. Learn to think in vectorised operations — the key performance shift that makes NumPy 100x faster than pure Python loops."
+            data-topics="Creating arrays: np.array(), np.zeros(), np.ones(), np.arange(), np.linspace()|Array shapes, reshaping, and broadcasting|Vectorised operations: why you never need a for loop|Indexing and slicing: 1D, 2D, and boolean masks|Mathematical operations: np.sum(), np.mean(), np.std(), np.dot()|Random number generation: np.random"
+            data-tags="numpy,arrays">
+            <div class="node-top">
+              <div class="node-icon">🔢</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">NumPy</div>
+            <div class="node-desc">The numerical backbone of the Python data stack — arrays, vectorised operations, and
+              why loops are the enemy.</div>
+            <div class="node-tags"><span class="node-tag">numpy</span><span class="node-tag">arrays</span></div>
+          </div>
+
+          <div class="node wide" data-id="10" data-title="Pandas"
+            data-desc="Pandas is the workhorse of data analysis in Python. The DataFrame — essentially a spreadsheet in code — is how you load, inspect, filter, group, merge, and transform data. Mastering Pandas is the single skill that makes the biggest practical difference in day-to-day data work."
+            data-topics="Series and DataFrame: the two fundamental structures|Loading data: pd.read_csv(), read_json(), read_excel()|Selecting data: .loc[], .iloc[], boolean filtering|Aggregating with .groupby() and pivot tables|Merging and joining DataFrames: merge(), join(), concat()|Time series basics: date indexing and resampling"
+            data-tags="pandas,dataframes">
+            <div class="node-top">
+              <div class="node-icon">🐼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Pandas</div>
+            <div class="node-desc">The workhorse of Python data analysis. DataFrames, groupby, merging — mastering
+              Pandas is the highest-ROI data skill.</div>
+            <div class="node-tags"><span class="node-tag">pandas</span><span class="node-tag">dataframes</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="Data Cleaning"
+            data-desc="Real-world data is messy. Missing values, duplicates, inconsistent formats, outliers, wrong data types — cleaning data typically consumes 60–80% of a data scientist's time. Learn the systematic approach to auditing and cleaning a dataset before any analysis."
+            data-topics="Handling missing values: drop, fill, impute — when each is right|Detecting and removing duplicates|Standardising formats: dates, strings, categories|Outlier handling: winsorising, capping, removal|Data type casting and validation|Building a data cleaning pipeline that's reproducible"
+            data-tags="data-cleaning,missing-values">
+            <div class="node-top">
+              <div class="node-icon">🧹</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Data Cleaning</div>
+            <div class="node-desc">80% of data science is cleaning. Missing values, duplicates, wrong types — build a
+              systematic, reproducible approach.</div>
+            <div class="node-tags"><span class="node-tag">cleaning</span><span class="node-tag">quality</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="SQL for Data Science"
+            data-desc="Most data in the world lives in relational databases, not CSV files. SQL is how you get it out — filtering, joining, aggregating, and transforming data before it ever reaches Python. Learn the SQL that data scientists use daily: SELECT, JOIN, GROUP BY, window functions, and subqueries."
+            data-topics="SELECT, WHERE, ORDER BY, LIMIT — the core query pattern|GROUP BY and aggregate functions: COUNT, SUM, AVG, MAX, MIN|JOINs: INNER, LEFT, RIGHT, FULL OUTER — with visual explanations|Subqueries and CTEs (Common Table Expressions)|Window functions: ROW_NUMBER, RANK, LAG, LEAD|Writing SQL in Python with sqlite3 and SQLAlchemy"
+            data-tags="SQL,databases">
+            <div class="node-top">
+              <div class="node-icon">🗄️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SQL for Data Science</div>
+            <div class="node-desc">Most data lives in databases. SQL is how you get it — JOINs, GROUP BY, window
+              functions, and CTEs.</div>
+            <div class="node-tags"><span class="node-tag">SQL</span><span class="node-tag">databases</span></div>
+          </div>
+
+          <div class="node wide" data-id="13" data-title="Exploratory Data Analysis (EDA)"
+            data-desc="EDA is the detective work of data science. Before modelling anything, you explore the data to understand its structure, spot patterns, test assumptions, and uncover anomalies. A thorough EDA saves enormous time and prevents the garbage-in-garbage-out problem."
+            data-topics="The EDA mindset: curiosity before conclusions|Univariate analysis: distributions, histograms, box plots|Bivariate analysis: scatter plots, correlation matrices|Correlation vs. causation — the most important distinction in data science|Pandas Profiling and ydata-profiling for automated EDA|Documenting and communicating EDA findings"
+            data-tags="EDA,exploration">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Exploratory Data Analysis</div>
+            <div class="node-desc">The detective work before any model. Explore, question, visualise — understand your
+              data before you trust it.</div>
+            <div class="node-tags"><span class="node-tag">EDA</span><span class="node-tag">exploration</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Data Visualisation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="14" data-title="Visualisation Principles"
+            data-desc="Most charts are bad — not because of ugly colours, but because they obscure rather than reveal. Learn the principles of effective data visualisation: choosing the right chart for the question, eliminating chart junk, using pre-attentive attributes, and communicating uncertainty honestly."
+            data-topics="Choosing the right chart: when to use bar, line, scatter, histogram, heatmap|Edward Tufte's data-ink ratio: eliminate everything that doesn't add information|Pre-attentive attributes: colour, size, shape, position|Visualising uncertainty: error bars, confidence intervals|Accessibility: colour blindness and contrast|Common visualisation mistakes and how to fix them"
+            data-tags="visualisation,principles">
+            <div class="node-top">
+              <div class="node-icon">👁️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Visualisation Principles</div>
+            <div class="node-desc">Most charts obscure rather than reveal. Learn the principles of choosing and
+              designing charts that actually work.</div>
+            <div class="node-tags"><span class="node-tag">principles</span><span class="node-tag">Tufte</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Matplotlib & Seaborn"
+            data-desc="Matplotlib is Python's foundational plotting library — powerful but verbose. Seaborn is built on top of it with a simpler API and beautiful statistical charts by default. Together they cover 90% of static data visualisation needs."
+            data-topics="Matplotlib fundamentals: Figure, Axes, subplots|Customising charts: titles, labels, colours, fonts, gridlines|Seaborn's statistical plot types: violinplot, boxplot, heatmap, pairplot|Plotting distributions: histplot, kdeplot, ecdfplot|Correlation heatmaps with seaborn and annotations|Saving publication-quality figures with plt.savefig()"
+            data-tags="matplotlib,seaborn">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Matplotlib &amp; Seaborn</div>
+            <div class="node-desc">The standard Python visualisation stack — from basic line charts to beautiful
+              statistical plots.</div>
+            <div class="node-tags"><span class="node-tag">matplotlib</span><span class="node-tag">seaborn</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Plotly & Interactive Charts"
+            data-desc="Interactive charts let viewers explore data themselves — hovering, zooming, filtering. Plotly and its Dash framework turn Python data analysis into shareable web applications. This is how data scientists present findings to stakeholders without requiring them to run code."
+            data-topics="Plotly Express: one-line interactive charts|Customising Plotly: layouts, colours, hover text|Plotly Go (graph objects) for full control|Animated charts: visualising change over time|Dash basics: turning a Plotly chart into a web app|Alternatives: Bokeh, Altair, Streamlit"
+            data-tags="plotly,interactive">
+            <div class="node-top">
+              <div class="node-icon">🖱️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Plotly &amp; Interactive Charts</div>
+            <div class="node-desc">Charts stakeholders can explore themselves — Plotly, Dash, and interactive data
+              storytelling.</div>
+            <div class="node-tags"><span class="node-tag">plotly</span><span class="node-tag">interactive</span></div>
+          </div>
+
+          <div class="node wide" data-id="17" data-title="Storytelling with Data"
+            data-desc="Finding insight is only half the job. Communicating it so non-technical stakeholders understand and act on it is the other half — and where many data scientists fall short. Learn Cole Nussbaumer Knaflic's storytelling with data framework: context, choosing the right visual, and building a clear narrative."
+            data-topics="The data storytelling framework: audience, context, narrative|Cole Knaflic's 6 lessons: choose appropriate displays, eliminate clutter, direct attention, think like a designer, tell a story|The difference between exploratory and explanatory visualisation|Building a data narrative: the so-what, not just the what|Presentation structure for data findings|Making one clear chart vs. 10 confusing ones"
+            data-tags="storytelling,communication">
+            <div class="node-top">
+              <div class="node-icon">📖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Storytelling with Data</div>
+            <div class="node-desc">Insights don't speak for themselves. Learn to build a clear, compelling narrative
+              that non-technical audiences act on.</div>
+            <div class="node-tags"><span class="node-tag">storytelling</span><span class="node-tag">communication</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Machine Learning</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="18" data-title="ML Fundamentals"
+            data-desc="Machine learning is the practice of teaching computers to learn from data rather than explicit rules. Before any algorithms, you need to understand the core concepts: supervised vs. unsupervised learning, training vs. test data, the bias-variance tradeoff, and overfitting — the enemies of every model."
+            data-topics="Supervised vs. unsupervised vs. reinforcement learning|Training set, validation set, test set — why each exists|The bias-variance tradeoff: the fundamental tension in ML|Overfitting and underfitting: how to detect and fix them|Cross-validation: k-fold and stratified k-fold|The ML pipeline: data → features → model → evaluation → iteration"
+            data-tags="ML,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">🤖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">ML Fundamentals</div>
+            <div class="node-desc">Training/test splits, bias-variance tradeoff, overfitting — the core concepts every
+              ML practitioner must understand cold.</div>
+            <div class="node-tags"><span class="node-tag">ML</span><span class="node-tag">fundamentals</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Supervised Learning"
+            data-desc="Supervised learning — where you train a model on labelled examples — is the most commonly used form of ML in industry. Learn the most important algorithms: linear and logistic regression, decision trees, random forests, and gradient boosting. Understand when to use each and what assumptions they make."
+            data-topics="Linear regression: predicting continuous values|Logistic regression: predicting probabilities and classification|Decision trees: interpretable, powerful, prone to overfitting|Random forests: ensemble of trees that corrects overfitting|Gradient Boosting: XGBoost and LightGBM — the competition winners|When to use each: a practical decision framework"
+            data-tags="supervised,regression,classification">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Supervised Learning</div>
+            <div class="node-desc">Linear regression, decision trees, random forests, XGBoost — the core algorithms and
+              when to use each.</div>
+            <div class="node-tags"><span class="node-tag">supervised</span><span class="node-tag">XGBoost</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Unsupervised Learning"
+            data-desc="Unsupervised learning finds hidden structure in unlabelled data. Clustering groups similar observations together. Dimensionality reduction compresses data while preserving key information. Both are essential for exploratory analysis and as preprocessing steps for supervised learning."
+            data-topics="K-Means clustering: the most common clustering algorithm|DBSCAN: clustering without specifying k|Hierarchical clustering and dendrograms|Principal Component Analysis (PCA): reducing dimensions intelligently|t-SNE and UMAP: visualising high-dimensional data|Applications: customer segmentation, anomaly detection, recommendation systems"
+            data-tags="unsupervised,clustering,PCA">
+            <div class="node-top">
+              <div class="node-icon">🧭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Unsupervised Learning</div>
+            <div class="node-desc">K-Means, PCA, t-SNE — find hidden structure in unlabelled data and compress
+              high-dimensional datasets.</div>
+            <div class="node-tags"><span class="node-tag">clustering</span><span class="node-tag">PCA</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Scikit-learn in Practice"
+            data-desc="Scikit-learn is the go-to Python library for traditional machine learning. Its consistent API (fit, transform, predict) makes switching between algorithms trivial. Learn to build proper ML pipelines that prevent data leakage and make your workflow production-ready."
+            data-topics="Scikit-learn's estimator API: fit(), transform(), predict()|Building Pipelines: preventing data leakage|Preprocessing: StandardScaler, OneHotEncoder, SimpleImputer|Model selection with GridSearchCV and RandomizedSearchCV|ColumnTransformer: applying different transforms to different columns|Saving and loading models with joblib and pickle"
+            data-tags="scikit-learn,pipelines">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Scikit-learn in Practice</div>
+            <div class="node-desc">Scikit-learn's Pipeline API, ColumnTransformer, GridSearchCV — build ML workflows
+              that don't leak and do scale.</div>
+            <div class="node-tags"><span class="node-tag">scikit-learn</span><span class="node-tag">pipelines</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Model Evaluation"
+            data-desc="A model with 99% accuracy can be completely useless. Model evaluation requires choosing the right metric for the problem — accuracy, precision, recall, F1, ROC-AUC for classification; MAE, RMSE, R² for regression — and understanding what each actually measures."
+            data-topics="Classification metrics: accuracy, precision, recall, F1-score, ROC-AUC|Confusion matrix: true positives, false positives, false negatives, true negatives|Regression metrics: MAE, RMSE, MAPE, R²|The precision-recall tradeoff: choosing a threshold|Learning curves: diagnosing bias vs. variance visually|SHAP values: understanding what drives your model's predictions"
+            data-tags="evaluation,metrics">
+            <div class="node-top">
+              <div class="node-icon">📏</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Model Evaluation</div>
+            <div class="node-desc">Accuracy isn't enough. Precision, recall, ROC-AUC, RMSE, SHAP — choose the right
+              metric for the right problem.</div>
+            <div class="node-tags"><span class="node-tag">evaluation</span><span class="node-tag">metrics</span></div>
+          </div>
+
+          <div class="node wide" data-id="23" data-title="Feature Engineering"
+            data-desc="The features you feed a model matter more than the algorithm you choose. Feature engineering — creating, transforming, and selecting input variables — is where domain knowledge meets data science, and where the biggest performance gains come from."
+            data-topics="Creating new features from existing ones: ratios, interactions, lags|Handling categorical variables: one-hot encoding, target encoding, ordinal encoding|Handling dates and times: extracting day, month, hour, day-of-week|Scaling numerical features: StandardScaler, MinMaxScaler, RobustScaler|Feature selection: correlation filters, recursive feature elimination, SHAP|The feature engineering mindset: think about what the model needs to know"
+            data-tags="feature-engineering,features">
+            <div class="node-top">
+              <div class="node-icon">🔧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Feature Engineering</div>
+            <div class="node-desc">Better features beat better algorithms. Transform, create, and select the inputs that
+              give your model what it needs.</div>
+            <div class="node-tags"><span class="node-tag">feature-engineering</span><span
+                class="node-tag">domain-knowledge</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Deep Learning Introduction</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="24" data-title="Neural Networks Basics"
+            data-desc="Neural networks are inspired by the brain but work nothing like it. Understanding how they actually work — as chains of matrix multiplications and non-linear activations optimised by gradient descent — demystifies deep learning and gives you the foundation to use it intentionally, not as a magic black box."
+            data-topics="The neuron: weights, bias, and activation function|Layers: input, hidden, output|Forward propagation: how predictions are made|Backpropagation: how weights are updated|Activation functions: ReLU, sigmoid, softmax — and why each exists|Why depth matters: the power of representation learning"
+            data-tags="neural-networks,deep-learning">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Neural Networks Basics</div>
+            <div class="node-desc">Weights, activations, backpropagation — demystify deep learning by understanding
+              what's actually happening.</div>
+            <div class="node-tags"><span class="node-tag">neural-networks</span><span class="node-tag">backprop</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Keras & TensorFlow Intro"
+            data-desc="Keras is the high-level API built into TensorFlow that makes building neural networks approachable. You define a model in a few lines, compile it with an optimizer and loss function, and train it with .fit(). Learn to build, train, and evaluate your first real neural networks."
+            data-topics="Keras Sequential API: building simple networks layer by layer|Compiling a model: optimizer, loss, metrics|Training with model.fit(): epochs, batch size, validation split|Callbacks: EarlyStopping, ModelCheckpoint, ReduceLROnPlateau|Regularisation: Dropout layers and L2 regularisation|Saving and loading Keras models"
+            data-tags="keras,tensorflow">
+            <div class="node-top">
+              <div class="node-icon">🔥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Keras &amp; TensorFlow Intro</div>
+            <div class="node-desc">Build, compile, and train real neural networks in Python — Keras makes deep learning
+              approachable.</div>
+            <div class="node-tags"><span class="node-tag">keras</span><span class="node-tag">tensorflow</span></div>
+          </div>
+
+          <div class="node wide" data-id="26" data-title="CNNs & RNNs Overview"
+            data-desc="Convolutional Neural Networks (CNNs) excel at images. Recurrent Neural Networks (RNNs) and their modern successors (LSTMs, Transformers) excel at sequences. You don't need to implement these from scratch — but understanding what they do and when to reach for each unlocks the full power of the deep learning toolbox."
+            data-topics="CNNs: convolutional layers, pooling, filters — why they work for images|Transfer learning: using pre-trained CNNs (ResNet, VGG, EfficientNet)|RNNs and the vanishing gradient problem|LSTMs: the solution to vanishing gradients in sequences|Transformers and attention: the architecture behind modern LLMs|When to use deep learning vs. traditional ML — the honest answer"
+            data-tags="CNNs,RNNs,transformers">
+            <div class="node-top">
+              <div class="node-icon">🖼️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">CNNs &amp; RNNs Overview</div>
+            <div class="node-desc">Images get CNNs, sequences get LSTMs — understand what each architecture does and
+              when to reach for it.</div>
+            <div class="node-tags"><span class="node-tag">CNNs</span><span class="node-tag">RNNs</span><span
+                class="node-tag">transformers</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 7 ═══ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 07</div>
+          <div class="phase-title">Real-World Practice &amp; Career</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="27" data-title="End-to-End Projects"
+            data-desc="The most important thing you can do as a beginner data scientist is complete full end-to-end projects — from raw, messy data to a communicated conclusion. A project that covers the full pipeline is worth ten tutorials. Learn the project structure, common datasets, and how to frame a real problem."
+            data-topics="Choosing a project: real datasets from Kaggle, UCI, government open data|Defining the problem statement before touching data|The complete pipeline in one notebook: data → cleaning → EDA → features → model → evaluation → conclusions|Making projects reproducible: requirements.txt, random seeds, clear structure|Presenting your project: README, notebook narrative, key charts|3 starter project ideas with real impact"
+            data-tags="projects,end-to-end">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">End-to-End Projects</div>
+            <div class="node-desc">One complete project beats ten tutorials. Build the full pipeline — from raw data to
+              communicated conclusion.</div>
+            <div class="node-tags"><span class="node-tag">projects</span><span class="node-tag">portfolio</span></div>
+          </div>
+
+          <div class="node" data-id="28" data-title="Kaggle & Competitions"
+            data-desc="Kaggle is the world's largest data science community. Its competitions expose you to real problems, expert solutions (via public notebooks), and a global community. Even finishing a competition in the bottom half teaches you more than most courses."
+            data-topics="Kaggle's structure: datasets, notebooks, competitions, courses|Getting started: titanic survival (the classic beginner competition)|Reading top solutions: what separates 1st from 100th place|Kernels and notebooks: learning from others' code|Kaggle medals and ranking: do they matter for jobs?|Where to go after Kaggle: real-world data work"
+            data-tags="kaggle,competitions">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Kaggle &amp; Competitions</div>
+            <div class="node-desc">The world's largest data science community — compete, learn from top solutions, and
+              sharpen every skill.</div>
+            <div class="node-tags"><span class="node-tag">kaggle</span><span class="node-tag">competitions</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Git & Reproducibility"
+            data-desc="A data science result that can't be reproduced is worthless. Learn the practices that make your work reproducible: version control for code and notebooks, environment management, random seeds, and MLflow for experiment tracking."
+            data-topics="Git for data science: versioning notebooks and scripts|DVC (Data Version Control): versioning large datasets and models|MLflow: tracking experiments, parameters, and metrics|Random seeds: making stochastic processes reproducible|Docker basics: containerising your data science environment|README-driven development: documenting as you go"
+            data-tags="git,reproducibility,MLflow">
+            <div class="node-top">
+              <div class="node-icon">🔁</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Git &amp; Reproducibility</div>
+            <div class="node-desc">A result you can't reproduce is a result you can't trust. Version control, MLflow,
+              seeds, and clean environments.</div>
+            <div class="node-tags"><span class="node-tag">git</span><span class="node-tag">MLflow</span></div>
+          </div>
+
+          <div class="node wide" data-id="30" data-title="Building Your DS Portfolio"
+            data-desc="A data science portfolio is your proof of work. Unlike software engineering where you can show code, data science portfolios need to show thinking — your EDA, your feature choices, your model decisions, and your ability to communicate findings. Learn what makes a portfolio that gets you hired."
+            data-topics="What hiring managers actually look for in a DS portfolio|Project structure: problem → data → approach → results → insights|GitHub profile: pinned repos, README quality, commit history|Writing about your projects: the case study format|Deploying a model as a simple web app with Streamlit|LinkedIn and networking in the data science community"
+            data-tags="portfolio,career">
+            <div class="node-top">
+              <div class="node-icon">💼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building Your DS Portfolio</div>
+            <div class="node-desc">Show your thinking, not just your code. Projects, GitHub, Streamlit apps — a
+              portfolio that actually gets you hired.</div>
+            <div class="node-tags"><span class="node-tag">portfolio</span><span class="node-tag">career</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>35</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/7 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOTAL = 35;
+    const phaseNames = {
+      1: 'FOUNDATIONS', 2: 'STATISTICS FOR DATA SCIENCE',
+      3: 'DATA WRANGLING', 4: 'DATA VISUALISATION',
+      5: 'MACHINE LEARNING', 6: 'DEEP LEARNING INTRODUCTION',
+      7: 'REAL-WORLD PRACTICE & CAREER'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-datascience-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-datascience-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

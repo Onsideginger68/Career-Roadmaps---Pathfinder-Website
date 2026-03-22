@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX / UI Design Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    /* ── Navbar ── */
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Card canvas ── */
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    /* ── Phase block ── */
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    /* ── Card grid ── */
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    /* ── Card ── */
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    /* Card internals */
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ── Phase connector ── */
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    /* ── Detail panel ── */
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 36 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Design → <span>UX / UI Design</span></div>
+      <div class="page-tag">Design</div>
+      <h1 class="page-title">UX / UI<br />Design</h1>
+      <p class="page-desc">A complete beginner-to-job-ready roadmap covering user research, wireframing, visual design,
+        prototyping, and design systems — everything you need to become a UX/UI designer from scratch. 7 phases, 36
+        topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>6–9 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>36 topics</strong>&nbsp;· 7 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>11,400</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 36 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        UX vs. UI: What's the Difference?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Design Process</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Design Thinking</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Psychology of UX</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Accessibility Fundamentals</div>
+
+      <div class="sidebar-section-title">Phase 2 — User Research</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Research Methods Overview</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        User Interviews</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Surveys &amp; Questionnaires</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Personas &amp; Empathy Maps</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Journey Mapping</div>
+
+      <div class="sidebar-section-title">Phase 3 — Information Architecture</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Information Architecture Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Card Sorting &amp; Tree Testing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        User Flows &amp; Task Flows</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Wireframing</div>
+
+      <div class="sidebar-section-title">Phase 4 — Visual Design</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Visual Design Principles</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Typography for UI</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Colour in UI Design</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Grids, Spacing &amp; Layout</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Iconography &amp; Imagery</div>
+
+      <div class="sidebar-section-title">Phase 5 — Figma &amp; Prototyping</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Figma Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Components &amp; Auto Layout</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Prototyping &amp; Interactions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Design Handoff to Developers</div>
+
+      <div class="sidebar-section-title">Phase 6 — Design Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What is a Design System?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building a Component Library</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Tokens: Color, Type, Spacing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Studying Real Design Systems</div>
+
+      <div class="sidebar-section-title">Phase 7 — Usability Testing &amp; Growth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Usability Testing Methods</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Heuristic Evaluation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Metrics: UX Measurement</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building Your Portfolio</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Breaking Into the Field</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Foundations of UX/UI</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="UX vs. UI: What's the Difference?"
+            data-desc="UX (User Experience) is about how a product feels and functions — the research, strategy, and flow. UI (User Interface) is about how it looks — the colours, typography, buttons, and visual polish. In reality, they overlap constantly. This topic makes sure you understand both, and how they complement each other in a design role."
+            data-topics="UX: research, flows, information architecture, usability|UI: visual design, components, aesthetics|How UX and UI work together in a product team|UX Designer vs. UI Designer vs. Product Designer roles|The T-shaped designer: broad UX, deep UI"
+            data-tags="fundamentals,UX,UI">
+            <div class="node-top">
+              <div class="node-icon">🎨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">UX vs. UI: What's the Difference?</div>
+            <div class="node-desc">Two distinct disciplines that work as one. Understand what each means and where they
+              overlap.</div>
+            <div class="node-tags"><span class="node-tag">fundamentals</span><span class="node-tag">UX</span><span
+                class="node-tag">UI</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="The Design Process"
+            data-desc="Great design doesn't happen by accident — it follows a process. Learn the double diamond model, agile design sprints, and iterative design cycles. Understanding process gives you a framework for approaching any design challenge methodically."
+            data-topics="The Double Diamond: Discover, Define, Develop, Deliver|Design sprints: the Google Ventures model|Iterative vs. waterfall design approaches|Divergent and convergent thinking in design|How design process fits into product development"
+            data-tags="process,methodology">
+            <div class="node-top">
+              <div class="node-icon">💎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Design Process</div>
+            <div class="node-desc">The Double Diamond, design sprints, and iterative cycles — how professional designers
+              work.</div>
+            <div class="node-tags"><span class="node-tag">process</span><span class="node-tag">methodology</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Design Thinking"
+            data-desc="Design Thinking is the most widely taught problem-solving framework in design and innovation. The five stages — Empathise, Define, Ideate, Prototype, Test — give you a structured way to solve human-centred problems. It's the foundation of modern UX thinking."
+            data-topics="The 5 stages: Empathise, Define, Ideate, Prototype, Test|Human-centred design principles|How to write a good problem statement (HMW questions)|Ideation techniques: brainstorming, SCAMPER, crazy 8s|Design thinking at companies like IDEO and Apple"
+            data-tags="design-thinking,HCD">
+            <div class="node-top">
+              <div class="node-icon">💡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Design Thinking</div>
+            <div class="node-desc">The 5-stage framework for solving human problems. The mindset behind all great UX
+              work.</div>
+            <div class="node-tags"><span class="node-tag">design-thinking</span><span class="node-tag">HCD</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Psychology of UX"
+            data-desc="Users behave predictably — if you know the right psychological principles. Learn the Laws of UX: Hick's Law, Fitts's Law, Jakob's Law, the Miller's Law, the serial position effect, and the Von Restorff effect. These principles explain why good design feels effortless."
+            data-topics="Hick's Law: choice overload and decision time|Fitts's Law: target size and click accuracy|Jakob's Law: users expect familiar patterns|Miller's Law: 7±2 items in working memory|Gestalt principles: proximity, similarity, continuity"
+            data-tags="psychology,laws-of-UX">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Psychology of UX</div>
+            <div class="node-desc">Hick's, Fitts's, Jakob's laws — the cognitive science that makes great design feel
+              effortless.</div>
+            <div class="node-tags"><span class="node-tag">psychology</span><span class="node-tag">laws-of-UX</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="5" data-title="Accessibility Fundamentals"
+            data-desc="Accessible design isn't just ethical — it makes products better for everyone. Learn the WCAG guidelines, the four POUR principles (Perceivable, Operable, Understandable, Robust), colour contrast ratios, keyboard navigation, and screen reader compatibility. Accessibility is now a legal requirement in many markets."
+            data-topics="WCAG 2.1 guidelines: A, AA, AAA levels|The 4 POUR principles|Colour contrast: minimum 4.5:1 for normal text|Touch target sizes (minimum 44x44px)|Screen readers: how they work and how to design for them"
+            data-tags="accessibility,WCAG,a11y">
+            <div class="node-top">
+              <div class="node-icon">♿</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Accessibility Fundamentals</div>
+            <div class="node-desc">WCAG, POUR principles, contrast ratios — accessible design is better design for
+              everyone.</div>
+            <div class="node-tags"><span class="node-tag">accessibility</span><span class="node-tag">WCAG</span><span
+                class="node-tag">a11y</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">User Research</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="6" data-title="Research Methods Overview"
+            data-desc="UX research has two fundamental axes: qualitative vs. quantitative, and attitudinal vs. behavioural. Learn when to use which method, how to plan a research project, and how to build a research plan. The best designers are rigorous researchers first."
+            data-topics="Qualitative vs. quantitative research|Attitudinal vs. behavioural research|Generative vs. evaluative research|When to use each method|Writing a UX research plan"
+            data-tags="research,planning">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Research Methods Overview</div>
+            <div class="node-desc">Qual vs. quant, attitudinal vs. behavioural — choose the right method for every
+              design question.</div>
+            <div class="node-tags"><span class="node-tag">research</span><span class="node-tag">planning</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="User Interviews"
+            data-desc="One-on-one user interviews are the single most powerful tool in a UX researcher's arsenal. Learn how to write a discussion guide, avoid leading questions, use the five-act interview structure, and synthesise findings into actionable insights."
+            data-topics="Writing an interview discussion guide|Open vs. closed questions|The 5-act interview structure (Ideo/Google)|Active listening and probing techniques|Affinity mapping: synthesising interview findings"
+            data-tags="interviews,research">
+            <div class="node-top">
+              <div class="node-icon">🎙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">User Interviews</div>
+            <div class="node-desc">The gold standard of qualitative research. Learn to ask the right questions and
+              listen deeply.</div>
+            <div class="node-tags"><span class="node-tag">interviews</span><span class="node-tag">qualitative</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Surveys & Questionnaires"
+            data-desc="Surveys let you gather quantitative data from large user groups quickly. Learn to write unbiased survey questions, choose the right rating scales (Likert, NPS, SUS), and use tools like Google Forms, Typeform, and Maze to distribute and analyse them."
+            data-topics="Writing unbiased survey questions|Likert scales, NPS, System Usability Scale (SUS)|Survey tools: Google Forms, Typeform, Maze|Sample size and statistical significance basics|Combining surveys with qualitative methods"
+            data-tags="surveys,quantitative">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Surveys &amp; Questionnaires</div>
+            <div class="node-desc">Scale your research with surveys — write good questions, pick the right scales, avoid
+              bias.</div>
+            <div class="node-tags"><span class="node-tag">surveys</span><span class="node-tag">SUS</span></div>
+          </div>
+
+          <div class="node" data-id="9" data-title="Personas & Empathy Maps"
+            data-desc="Personas are fictional but research-based representations of key user types. Empathy maps help teams align on what a user says, thinks, does, and feels. Together, they keep design decisions anchored in real user needs rather than assumptions."
+            data-topics="Building research-based personas (not fictional ones)|Proto-personas when research is limited|Empathy map: Says, Thinks, Does, Feels|Jobs-to-be-done (JTBD) as an alternative framework|Using personas throughout the design process"
+            data-tags="personas,empathy-maps">
+            <div class="node-top">
+              <div class="node-icon">🧑</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Personas &amp; Empathy Maps</div>
+            <div class="node-desc">Research-grounded user archetypes that keep design teams focused on real human needs.
+            </div>
+            <div class="node-tags"><span class="node-tag">personas</span><span class="node-tag">empathy</span></div>
+          </div>
+
+          <div class="node wide" data-id="10" data-title="Journey Mapping"
+            data-desc="A user journey map visualises the full experience a user has with a product — from first awareness to post-use. It plots every step, touchpoint, emotion, and pain point. Journey maps are essential for identifying gaps and opportunities that you'd never find by looking at screens alone."
+            data-topics="Journey map components: stages, actions, thoughts, emotions, touchpoints|Experience highs, lows, and flat moments|Current state vs. future state journey maps|Service blueprints: the operational layer beneath journey maps|Running a journey mapping workshop"
+            data-tags="journey-mapping,CX">
+            <div class="node-top">
+              <div class="node-icon">🗺️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Journey Mapping</div>
+            <div class="node-desc">Map the full user experience — every stage, touchpoint, and emotion — to find the
+              gaps worth fixing.</div>
+            <div class="node-tags"><span class="node-tag">journey-mapping</span><span class="node-tag">CX</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Information Architecture &amp; Wireframing</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="11" data-title="Information Architecture Basics"
+            data-desc="Information architecture (IA) is about organising and structuring content so users can find it effortlessly. Learn the components of IA — navigation systems, labelling, search, and taxonomy — and how the IA of a product directly determines whether users succeed or fail."
+            data-topics="What is information architecture?|The 8 components of IA (Morville & Rosenfeld)|Navigation patterns: global, local, contextual|Labelling systems: naming things users understand|Taxonomies, ontologies, and folksonomies"
+            data-tags="IA,navigation">
+            <div class="node-top">
+              <div class="node-icon">🏛️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Information Architecture Basics</div>
+            <div class="node-desc">How content is organised determines whether users find what they need — or give up.
+            </div>
+            <div class="node-tags"><span class="node-tag">IA</span><span class="node-tag">navigation</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Card Sorting & Tree Testing"
+            data-desc="Card sorting is a research method where users organise topics into groups that make sense to them — it reveals how real users think about your content. Tree testing then validates your proposed IA structure. Together they remove assumptions from navigation design."
+            data-topics="Open vs. closed card sorting|Hybrid card sorting|Running card sorts with Optimal Workshop or Maze|Tree testing: validating navigation labels and structure|Interpreting card sort results into IA decisions"
+            data-tags="card-sorting,tree-testing">
+            <div class="node-top">
+              <div class="node-icon">🃏</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Card Sorting &amp; Tree Testing</div>
+            <div class="node-desc">Let users organise your content — then validate your navigation before you build
+              anything.</div>
+            <div class="node-tags"><span class="node-tag">card-sorting</span><span class="node-tag">IA</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="User Flows & Task Flows"
+            data-desc="A user flow maps the path a user takes through a product to complete a task — from entry point to success state. Task flows show the system's steps. Learning to map flows before wireframing saves enormous rework and surfaces logical gaps early."
+            data-topics="User flow vs. task flow vs. wireflow|Mapping happy paths and edge cases|Entry points: search, ads, direct, referral|Decision points and branching logic|Tools: Figma, FigJam, Whimsical, Miro"
+            data-tags="user-flows,task-flows">
+            <div class="node-top">
+              <div class="node-icon">➡️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">User Flows &amp; Task Flows</div>
+            <div class="node-desc">Map the path before you design the screens — find logical gaps before they cost you
+              rework.</div>
+            <div class="node-tags"><span class="node-tag">user-flows</span><span class="node-tag">IA</span></div>
+          </div>
+
+          <div class="node wide" data-id="14" data-title="Wireframing"
+            data-desc="Wireframes are low-fidelity skeletal representations of screens — focused on layout, hierarchy, and functionality with no visual styling. They're the fastest way to explore and validate structural ideas before committing to high-fidelity design. Learn when to use low, mid, and high-fidelity wireframes."
+            data-topics="Low vs. mid vs. high fidelity wireframes|Wireframing with pen and paper first|Digital wireframing in Figma|What to include — and what to leave out|Common wireframe patterns: navigation, forms, dashboards, onboarding"
+            data-tags="wireframing,fidelity">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Wireframing</div>
+            <div class="node-desc">Skeleton screens that test structure and logic before any visual design — the fastest
+              way to validate ideas.</div>
+            <div class="node-tags"><span class="node-tag">wireframing</span><span class="node-tag">lo-fi</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Visual Design for UI</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="15" data-title="Visual Design Principles"
+            data-desc="Great UI is underpinned by timeless visual design principles. Learn the fundamental principles — hierarchy, contrast, alignment, repetition, proximity, balance, and white space — and how to apply them to digital interfaces. These principles are to UI design what grammar is to writing."
+            data-topics="Visual hierarchy: guiding the eye|Contrast: making things stand out|Alignment and the grid|Repetition and consistency|Proximity: grouping related elements|White space as a design tool"
+            data-tags="visual-design,principles">
+            <div class="node-top">
+              <div class="node-icon">✨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Visual Design Principles</div>
+            <div class="node-desc">Hierarchy, contrast, alignment, proximity — the grammar of great interface design.
+            </div>
+            <div class="node-tags"><span class="node-tag">visual-design</span><span class="node-tag">principles</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Typography for UI"
+            data-desc="Typography is the single most powerful tool in visual design. In UI, it accounts for roughly 95% of design. Learn type scales, font pairing, line-height, letter-spacing, readability, and how to establish a clear typographic hierarchy across components and screens."
+            data-topics="Typeface categories: serif, sans-serif, monospace|Type scales: 8pt grid and modular scales|Font pairing: heading + body combinations|Line-height (1.4–1.6) and letter-spacing|Responsive typography: clamp() and viewport units"
+            data-tags="typography,type">
+            <div class="node-top">
+              <div class="node-icon">Aa</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Typography for UI</div>
+            <div class="node-desc">Type is 95% of UI design. Master scales, pairing, hierarchy, and readability.</div>
+            <div class="node-tags"><span class="node-tag">typography</span><span class="node-tag">type-scale</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Colour in UI Design"
+            data-desc="Colour is functional in UI, not just decorative. Learn the 60-30-10 rule, how to build a systematic colour palette with primary, secondary, neutral, and semantic colours, dark mode considerations, and the psychological impact of colour on user trust and action."
+            data-topics="The 60-30-10 colour rule|Building a UI colour system: primary, neutral, semantic|Semantic colours: success, warning, error, info|Dark mode: not just inverting colours|Colour and emotion: trust (blue), urgency (red), growth (green)"
+            data-tags="colour,UI-colour">
+            <div class="node-top">
+              <div class="node-icon">🎨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Colour in UI Design</div>
+            <div class="node-desc">Build a systematic colour palette — primary, neutrals, semantic — and use colour with
+              intention.</div>
+            <div class="node-tags"><span class="node-tag">colour</span><span class="node-tag">palette</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Grids, Spacing & Layout"
+            data-desc="Consistent spacing and layout are what separate amateur designs from professional ones. Learn the 8pt grid system, column grids for responsive layouts, spacing tokens, and how Material Design and Apple HIG approach layout — so your designs feel structured and intentional."
+            data-topics="The 8pt grid system|Column grids: 4, 8, 12 columns|Spacing tokens: 4, 8, 12, 16, 24, 32, 48px|Gutters and margins|Material Design grid system|Responsive breakpoints: mobile, tablet, desktop"
+            data-tags="grid,spacing,layout">
+            <div class="node-top">
+              <div class="node-icon">📏</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Grids, Spacing &amp; Layout</div>
+            <div class="node-desc">The 8pt grid, column systems, and spacing tokens — the invisible structure of
+              polished UI.</div>
+            <div class="node-tags"><span class="node-tag">grid</span><span class="node-tag">spacing</span></div>
+          </div>
+
+          <div class="node wide" data-id="19" data-title="Iconography & Imagery"
+            data-desc="Icons and images are not decoration — they're functional communication. Learn icon design principles (recognisability, consistency, metaphor), when to use icons vs. labels vs. both, how to choose or create an icon set, and how to use illustration and photography to support (not overpower) UI."
+            data-topics="Icon design: metaphor, simplicity, consistency|Icon sizing: 16, 20, 24, 32px standards|Labels with icons: when words are necessary|Icon libraries: Material Icons, Phosphor, Lucide|Illustration style: choosing and maintaining visual consistency|Photography: authentic vs. stock"
+            data-tags="icons,imagery,illustration">
+            <div class="node-top">
+              <div class="node-icon">🖼️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Iconography &amp; Imagery</div>
+            <div class="node-desc">Icons communicate, not decorate. Illustration and photography set a brand tone. Use
+              both with intention.</div>
+            <div class="node-tags"><span class="node-tag">icons</span><span class="node-tag">imagery</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 5 ═══════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Figma &amp; Prototyping</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="20" data-title="Figma Fundamentals"
+            data-desc="Figma is the industry-standard design tool, used by designers at Google, Airbnb, Spotify, and thousands of startups. Learn the interface, frames vs. groups, vector tools, boolean operations, styles, and how to structure files professionally. Figma is free to start — there's no excuse not to learn it."
+            data-topics="Figma interface: canvas, layers, properties panel|Frames vs. groups vs. sections|Vector drawing and boolean operations|Figma styles: colour, text, effects|File organisation: pages, frames, naming conventions"
+            data-tags="figma,tools">
+            <div class="node-top">
+              <div class="node-icon">🖥️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Figma Fundamentals</div>
+            <div class="node-desc">The industry-standard design tool. Master the interface, vectors, styles, and file
+              structure.</div>
+            <div class="node-tags"><span class="node-tag">figma</span><span class="node-tag">tools</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Components & Auto Layout"
+            data-desc="Components are reusable UI elements — buttons, inputs, cards, navbars. Auto Layout makes them respond intelligently to content changes, like CSS flexbox. Mastering components and auto layout is what separates beginner Figma files from production-ready design systems."
+            data-topics="Creating and using components|Main components vs. instances|Variants: organizing states and types|Auto Layout: direction, gap, padding|Nested components and complex structures"
+            data-tags="components,auto-layout,figma">
+            <div class="node-top">
+              <div class="node-icon">🧱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Components &amp; Auto Layout</div>
+            <div class="node-desc">Reusable components and intelligent auto layout — the foundation of scalable Figma
+              design.</div>
+            <div class="node-tags"><span class="node-tag">components</span><span class="node-tag">auto-layout</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Prototyping & Interactions"
+            data-desc="A prototype simulates the behaviour of a real product without code. Learn Figma's prototyping features — hotspot connections, transitions, scroll, overlays, and interactive components — and how to build prototypes convincing enough to test with real users."
+            data-topics="Figma prototype connections and triggers|Transition types: instant, dissolve, push, slide|Scroll behaviour: vertical, horizontal, fixed|Overlays: modals, tooltips, dropdowns|Interactive components for state changes"
+            data-tags="prototyping,interactions">
+            <div class="node-top">
+              <div class="node-icon">▶️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Prototyping &amp; Interactions</div>
+            <div class="node-desc">Simulate real product behaviour — build clickable prototypes convincing enough to
+              test with users.</div>
+            <div class="node-tags"><span class="node-tag">prototyping</span><span class="node-tag">interactions</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="23" data-title="Design Handoff to Developers"
+            data-desc="A design is only complete when developers can build it accurately. Learn how to prepare your Figma files for handoff — proper naming conventions, organised component structure, redlines, spacing annotations, and how to use Figma Dev Mode to give developers everything they need to build pixel-perfect."
+            data-topics="Figma Dev Mode: inspect panel, code snippets|Naming layers for developer sanity|Documenting component states and interactions|Exporting assets: SVG, PNG, @2x|Writing a design spec / redline document|What developers actually need from you"
+            data-tags="handoff,dev-mode">
+            <div class="node-top">
+              <div class="node-icon">🤝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Design Handoff to Developers</div>
+            <div class="node-desc">Figma Dev Mode, redlines, and specs — give developers everything they need to build
+              your design accurately.</div>
+            <div class="node-tags"><span class="node-tag">handoff</span><span class="node-tag">dev-mode</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 6 ═══════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Design Systems</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="24" data-title="What is a Design System?"
+            data-desc="A design system is a collection of reusable components, governed by clear standards, that allow teams to build products consistently and efficiently. It's the single source of truth for design and development. Learn the anatomy of a design system and why companies like Airbnb, IBM, and Google invest millions in maintaining them."
+            data-topics="Design system anatomy: tokens, components, patterns, guidelines|Design system vs. style guide vs. pattern library|The value of design systems: speed, consistency, scalability|Who builds and maintains a design system?|Famous design systems: Material Design, Apple HIG, Atlassian, Carbon"
+            data-tags="design-systems,foundations">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is a Design System?</div>
+            <div class="node-desc">The single source of truth for design and engineering — how great teams scale quality
+              consistently.</div>
+            <div class="node-tags"><span class="node-tag">design-systems</span><span class="node-tag">foundations</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Building a Component Library"
+            data-desc="A component library is the UI layer of a design system — a set of reusable, documented components. Learn how to build one in Figma: from atomic elements (buttons, inputs, badges) to molecules (form groups, cards) to organisms (navbars, modals), using Brad Frost's Atomic Design methodology."
+            data-topics="Atomic Design: atoms, molecules, organisms, templates, pages|Building base components in Figma|Component documentation: usage, do's and don'ts|Variants for states: default, hover, active, disabled, error|Maintaining and versioning your component library"
+            data-tags="components,atomic-design">
+            <div class="node-top">
+              <div class="node-icon">🧬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building a Component Library</div>
+            <div class="node-desc">Atomic Design in practice — build reusable, documented components from atoms to
+              organisms.</div>
+            <div class="node-tags"><span class="node-tag">components</span><span class="node-tag">atomic-design</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Tokens: Colour, Type & Spacing"
+            data-desc="Design tokens are the named variables that store the raw values of your design system — colour, typography, spacing, border radii. They're the bridge between design (Figma variables) and code (CSS custom properties). Learn to define, name, and organise design tokens for a scalable system."
+            data-topics="What are design tokens?|Token types: global, semantic, component|Colour tokens: primitive → semantic → component|Typography tokens: size, weight, line-height|Spacing tokens: base-4 or base-8 scale|Figma Variables and the Tokens Studio plugin"
+            data-tags="tokens,design-tokens">
+            <div class="node-top">
+              <div class="node-icon">🪙</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Tokens: Colour, Type &amp; Spacing</div>
+            <div class="node-desc">Named variables that connect design to code — the foundation of a truly scalable
+              design system.</div>
+            <div class="node-tags"><span class="node-tag">tokens</span><span class="node-tag">variables</span></div>
+          </div>
+
+          <div class="node wide" data-id="27" data-title="Studying Real Design Systems"
+            data-desc="The fastest way to learn design systems is to study the best in the world. Learn to read Material Design, Apple's Human Interface Guidelines, Atlassian's Atlaskit, and IBM Carbon — understanding not just what they built, but why they made those decisions. This is how you develop design system intuition."
+            data-topics="Material Design 3: principles and component docs|Apple Human Interface Guidelines: iOS and macOS|Atlassian Design System: B2B SaaS patterns|IBM Carbon: enterprise-scale design|How to read design system documentation critically"
+            data-tags="real-systems,material,HIG">
+            <div class="node-top">
+              <div class="node-icon">📚</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Studying Real Design Systems</div>
+            <div class="node-desc">Material Design, Apple HIG, Atlassian, IBM Carbon — read the best systems to build
+              your intuition.</div>
+            <div class="node-tags"><span class="node-tag">material</span><span class="node-tag">HIG</span><span
+                class="node-tag">carbon</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 7 ═══════════ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 07</div>
+          <div class="phase-title">Usability Testing &amp; Breaking Into the Field</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="28" data-title="Usability Testing Methods"
+            data-desc="Usability testing is watching real users attempt real tasks on your product — and learning from where they struggle. Learn moderated vs. unmoderated testing, remote vs. in-person, think-aloud protocol, and the 5-user rule. Usability testing is the most cost-effective way to improve a product."
+            data-topics="Moderated vs. unmoderated testing|Remote usability testing tools: Maze, UserTesting, Lookback|Think-aloud protocol|The 5-user rule (Nielsen Norman)|Writing usability test tasks and scenarios"
+            data-tags="usability-testing,research">
+            <div class="node-top">
+              <div class="node-icon">🧪</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Usability Testing Methods</div>
+            <div class="node-desc">Watch real users struggle (and succeed) — the most cost-effective way to improve any
+              product.</div>
+            <div class="node-tags"><span class="node-tag">usability-testing</span><span class="node-tag">research</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Heuristic Evaluation"
+            data-desc="Jakob Nielsen's 10 Usability Heuristics are principles for interface design that any expert can use to evaluate a product without users. Learn all 10 heuristics — from visibility of system status to error prevention — and how to run a structured heuristic evaluation audit."
+            data-topics="Nielsen's 10 Usability Heuristics|Visibility of system status|Match between system and real world|User control and freedom|Error prevention and recovery|Conducting a heuristic evaluation: severity ratings"
+            data-tags="heuristics,nielsen">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Heuristic Evaluation</div>
+            <div class="node-desc">Nielsen's 10 Heuristics — evaluate any interface for usability issues without a
+              single user test.</div>
+            <div class="node-tags"><span class="node-tag">heuristics</span><span class="node-tag">nielsen</span></div>
+          </div>
+
+          <div class="node" data-id="30" data-title="Metrics: UX Measurement"
+            data-desc="How do you know if a design is working? Learn the core UX metrics — task success rate, time-on-task, error rate, SUS score, NPS, HEART framework (Google), and PULSE — and how to connect design improvements to measurable outcomes."
+            data-topics="Task success rate and time-on-task|System Usability Scale (SUS) scoring|Google's HEART framework: Happiness, Engagement, Adoption, Retention, Task Success|PULSE metrics: Page views, Uptime, Latency, Seven-day active users, Earnings|Connecting UX metrics to business KPIs"
+            data-tags="metrics,HEART,measurement">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Metrics: UX Measurement</div>
+            <div class="node-desc">SUS, HEART, task success rate — prove your design decisions with data.</div>
+            <div class="node-tags"><span class="node-tag">metrics</span><span class="node-tag">HEART</span></div>
+          </div>
+
+          <div class="node" data-id="31" data-title="Building Your Portfolio"
+            data-desc="A UX/UI portfolio is your most important career asset — more important than your CV. Learn how to structure a case study that shows your process (not just polished mockups), what hiring managers actually look for, and how to build a compelling portfolio with just 2–3 strong projects."
+            data-topics="Portfolio structure: case study anatomy|Showing process: research → insights → design → testing|What hiring managers want (and don't want)|2–3 projects is enough if they're excellent|Portfolio platforms: Behance, Notion, personal site|Writing your case study narrative"
+            data-tags="portfolio,career">
+            <div class="node-top">
+              <div class="node-icon">💼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building Your Portfolio</div>
+            <div class="node-desc">2–3 strong case studies beat 12 pretty mockups. Show your process, not just the final
+              screens.</div>
+            <div class="node-tags"><span class="node-tag">portfolio</span><span class="node-tag">career</span></div>
+          </div>
+
+          <div class="node wide" data-id="32" data-title="Breaking Into the Field"
+            data-desc="Getting your first UX/UI job is hard — but it's very doable if you're strategic. Learn how to approach job applications, ace design challenges and portfolio reviews, network authentically in the design community, and position yourself for junior roles at agencies, startups, and product companies."
+            data-topics="Where junior UX/UI designers get hired first|How to approach the job search strategically|Acing the design challenge: process over polish|Portfolio review: what to say and what to show|Building your network: design communities, events, social|Freelancing as a path into full-time work"
+            data-tags="career,job-search">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Breaking Into the Field</div>
+            <div class="node-desc">Job search strategy, design challenges, networking — a realistic path to your first
+              UX/UI role.</div>
+            <div class="node-tags"><span class="node-tag">career</span><span class="node-tag">job-search</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>36</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/7 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS OF UX/UI</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 36;
+    const phaseNames = {
+      1: 'FOUNDATIONS OF UX/UI',
+      2: 'USER RESEARCH',
+      3: 'INFORMATION ARCHITECTURE & WIREFRAMING',
+      4: 'VISUAL DESIGN FOR UI',
+      5: 'FIGMA & PROTOTYPING',
+      6: 'DESIGN SYSTEMS',
+      7: 'USABILITY TESTING & BREAKING INTO THE FIELD'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-uxui-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-uxui-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size;
+      const pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+
+      let completedPhases = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const phaseNodes = phase.querySelectorAll('.node');
+        const allDone = phaseNodes.length > 0 && [...phaseNodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = allDone ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = allDone ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = allDone ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (allDone) completedPhases++;
+      });
+      document.getElementById('phaseDone').textContent = completedPhases;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => {
+        nd.classList.toggle('done', done.has(nd.dataset.id));
+      });
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const phase = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${phase} — ${phaseNames[phase]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id);
+        save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

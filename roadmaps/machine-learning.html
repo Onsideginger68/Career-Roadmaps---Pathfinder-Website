@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    .phase:nth-child(8) {
+      animation-delay: 0.32s;
+    }
+
+    .phase:nth-child(9) {
+      animation-delay: 0.36s;
+    }
+
+    .phase:nth-child(10) {
+      animation-delay: 0.40s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    /* Project card variant */
+    .node.project-card {
+      border-style: dashed;
+      border-color: rgba(245, 166, 35, 0.25);
+      background: rgba(245, 166, 35, 0.03);
+    }
+
+    .node.project-card .node-title {
+      color: var(--gold);
+    }
+
+    .phase-teal .node.project-card {
+      border-color: rgba(0, 201, 167, 0.25);
+      background: rgba(0, 201, 167, 0.03);
+    }
+
+    .phase-teal .node.project-card .node-title {
+      color: var(--teal);
+    }
+
+    .phase-blue .node.project-card {
+      border-color: rgba(123, 159, 255, 0.25);
+      background: rgba(123, 159, 255, 0.03);
+    }
+
+    .phase-blue .node.project-card .node-title {
+      color: var(--blue);
+    }
+
+    .phase-red .node.project-card {
+      border-color: rgba(255, 107, 107, 0.25);
+      background: rgba(255, 107, 107, 0.03);
+    }
+
+    .phase-red .node.project-card .node-title {
+      color: var(--red-soft);
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node-tag.project {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.3);
+      background: rgba(245, 166, 35, 0.06);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(440px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 52 complete</span>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>Machine Learning</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">Machine<br />Learning</h1>
+      <p class="page-desc">The most comprehensive ML roadmap available — from mathematical foundations through
+        supervised and unsupervised learning, deep learning, specialisations, MLOps, and cutting-edge research. Includes
+        hands-on projects at every stage. Complete this and you will be a subject-matter expert. 10 phases, 52 topics.
+      </p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>12–18 months</strong>&nbsp;at 2hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>52 topics</strong>&nbsp;· 10 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>14,300</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner → Expert</strong></div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 52 topics completed</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Mathematical Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Linear Algebra</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Calculus &amp; Optimisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Probability &amp; Statistics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Information Theory</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Numerical Methods</div>
+
+      <div class="sidebar-section-title">Phase 2 — Programming &amp; Tools</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Python for ML</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        NumPy &amp; Pandas</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Data Wrangling &amp; EDA</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Visualisation for ML</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: EDA &amp; Visualisation</div>
+
+      <div class="sidebar-section-title">Phase 3 — Core ML Concepts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The ML Framework</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Bias, Variance &amp; Generalisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Loss Functions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Gradient Descent &amp; Optimisers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Regularisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Cross-Validation &amp; Model Selection</div>
+
+      <div class="sidebar-section-title">Phase 4 — Supervised Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Linear &amp; Logistic Regression</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Decision Trees</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Ensemble Methods</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Support Vector Machines</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Naive Bayes &amp; k-NN</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Tabular Prediction</div>
+
+      <div class="sidebar-section-title">Phase 5 — Unsupervised Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Clustering Algorithms</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Dimensionality Reduction</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Anomaly Detection</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Density Estimation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Customer Segmentation</div>
+
+      <div class="sidebar-section-title">Phase 6 — Model Engineering</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Feature Engineering</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Feature Selection</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Hyperparameter Tuning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Model Interpretability</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Imbalanced Data &amp; Special Cases</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Full ML Pipeline</div>
+
+      <div class="sidebar-section-title">Phase 7 — Deep Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Neural Network Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Training Deep Networks</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Convolutional Neural Networks</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Recurrent Networks &amp; LSTMs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Transformer Architecture</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        PyTorch in Depth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Deep Learning End-to-End</div>
+
+      <div class="sidebar-section-title">Phase 8 — Specialisations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot" id="sdot-8"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Natural Language Processing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Computer Vision</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Reinforcement Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Generative Models</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Specialisation Capstone</div>
+
+      <div class="sidebar-section-title">Phase 9 — MLOps &amp; Production</div>
+      <div class="sidebar-item" onclick="scrollToPhase(9)"><span class="side-dot" id="sdot-9"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        ML System Design</div>
+      <div class="sidebar-item" onclick="scrollToPhase(9)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Model Serving &amp; APIs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(9)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Experiment Tracking &amp; Pipelines</div>
+      <div class="sidebar-item" onclick="scrollToPhase(9)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Monitoring &amp; Model Drift</div>
+      <div class="sidebar-item" onclick="scrollToPhase(9)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Project: Production ML System</div>
+
+      <div class="sidebar-section-title">Phase 10 — Research &amp; Mastery</div>
+      <div class="sidebar-item" onclick="scrollToPhase(10)"><span class="side-dot" id="sdot-10"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Reading ML Papers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(10)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Ethics &amp; Responsible AI</div>
+      <div class="sidebar-item" onclick="scrollToPhase(10)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Frontier Topics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(10)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔨 Final Capstone Project</div>
+
+    </aside>
+
+    <main class="card-canvas">
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 1 — Mathematical Foundations
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Mathematical Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="Linear Algebra"
+            data-desc="Linear algebra is the native language of machine learning. Every dataset is a matrix. Every weight update is a vector operation. Every neural network forward pass is a chain of matrix multiplications. Without fluency here, you are using ML as a black box. With it, you can design, debug, and innovate."
+            data-topics="Scalars, vectors, matrices, tensors — and the intuition behind each|Matrix multiplication: the operation that powers all of ML|Eigenvalues and eigenvectors: principal directions of transformation|Matrix decompositions: SVD, LU, Cholesky — why they appear in PCA, linear regression, and compression|Norms: L1, L2, Frobenius — measuring magnitude in vector spaces|Projections and orthogonality: the geometry of least squares|Span, basis, rank, and null space — understanding the geometry of data"
+            data-tags="linear-algebra,maths,essential">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Linear Algebra</div>
+            <div class="node-desc">The native language of ML — matrices, eigenvalues, SVD, norms, and the geometry that
+              underpins every algorithm.</div>
+            <div class="node-tags"><span class="node-tag">essential</span><span class="node-tag">linear-algebra</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Calculus & Optimisation"
+            data-desc="Every ML model learns by minimising a loss function. This minimisation is calculus in action — specifically, gradient descent driven by derivatives and the chain rule (backpropagation). You don't need to solve differential equations, but you must deeply understand how gradients flow and what it means to optimise in high-dimensional spaces."
+            data-topics="Derivatives and partial derivatives: rate of change intuition|The chain rule: why backpropagation is just repeated chain rule application|Gradients and the gradient vector: direction of steepest ascent|Jacobians and Hessians: first and second-order curvature information|The Taylor series: approximating functions locally|Convexity: why convex optimisation is easier and why most DL problems aren't|Critical points: local minima, global minima, saddle points"
+            data-tags="calculus,optimisation">
+            <div class="node-top">
+              <div class="node-icon">📉</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Calculus &amp; Optimisation</div>
+            <div class="node-desc">Gradients, chain rule, Jacobians, Hessians — backprop is just calculus. Understand
+              it, don't just use it.</div>
+            <div class="node-tags"><span class="node-tag">calculus</span><span class="node-tag">gradients</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Probability & Statistics"
+            data-desc="Machine learning is fundamentally about reasoning under uncertainty. Every prediction is a probability estimate, every model is a statistical assumption, every evaluation is a statistical comparison. A deep understanding of probability and statistics separates practitioners who can diagnose model failures from those who can't."
+            data-topics="Probability axioms, conditional probability, Bayes' theorem — the foundational framework|Random variables: discrete and continuous, PMF, PDF, CDF|Key distributions: Gaussian, Bernoulli, Binomial, Poisson, Exponential, Beta, Dirichlet|Expectation, variance, covariance, correlation|Maximum Likelihood Estimation (MLE): the most important estimation principle in ML|Maximum A Posteriori (MAP) estimation: MLE with a prior|Central Limit Theorem, Law of Large Numbers, hypothesis testing"
+            data-tags="probability,statistics,Bayesian">
+            <div class="node-top">
+              <div class="node-icon">🎲</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Probability &amp; Statistics</div>
+            <div class="node-desc">MLE, MAP, Bayesian inference, key distributions — ML is fundamentally probabilistic.
+              Reason under uncertainty properly.</div>
+            <div class="node-tags"><span class="node-tag">probability</span><span class="node-tag">MLE</span><span
+                class="node-tag">Bayes</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Information Theory"
+            data-desc="Information theory underpins core ML concepts you use every day — entropy is the foundation of decision trees, KL divergence appears in variational autoencoders and RLHF, cross-entropy is the most widely used classification loss. Understanding where these come from makes you a far more principled practitioner."
+            data-topics="Shannon entropy: measuring uncertainty — H(X) = -Σ p(x) log p(x)|KL divergence: the asymmetric measure of distribution difference|Cross-entropy loss: the connection between MLE and classification|Mutual information: measuring statistical dependence between variables|The data processing inequality: information can only be lost, never gained through transformations|Bits and nats: the two information units and when each appears|Applications: decision tree splitting criteria, VAE ELBO, RLHF reward modelling"
+            data-tags="information-theory,entropy,KL">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Information Theory</div>
+            <div class="node-desc">Entropy, KL divergence, cross-entropy, mutual information — the maths behind the loss
+              functions you use every day.</div>
+            <div class="node-tags"><span class="node-tag">entropy</span><span class="node-tag">KL-divergence</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="5" data-title="Numerical Methods"
+            data-desc="Computers can't do pure mathematics — they do finite precision arithmetic. Numerical methods bridge the gap: iterative algorithms for solving systems that have no analytical solution, and stability considerations that determine whether your training converges or explodes. Every ML practitioner who debugs production models needs this."
+            data-topics="Floating-point arithmetic: precision, overflow, underflow — and why log-sum-exp matters|Numerical stability in neural networks: vanishing and exploding gradients as numerical phenomena|Iterative solvers: Conjugate Gradient, Krylov methods for large linear systems|Finite differences: numerically approximating gradients (used in gradient checking)|Newton's method and quasi-Newton methods (L-BFGS) for second-order optimisation|Root-finding algorithms: bisection, Newton-Raphson|Numerical integration: Monte Carlo methods for intractable integrals"
+            data-tags="numerical,stability,floating-point">
+            <div class="node-top">
+              <div class="node-icon">🔢</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Numerical Methods</div>
+            <div class="node-desc">Floating-point precision, numerical stability, iterative solvers, gradient checking —
+              the maths that makes ML run reliably.</div>
+            <div class="node-tags"><span class="node-tag">numerical</span><span class="node-tag">stability</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 2 — Programming & Tools
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Programming &amp; Tools</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="6" data-title="Python for ML"
+            data-desc="Python is the lingua franca of ML. But ML Python is not beginner Python — you need fluency with performance patterns, object-oriented design for model classes, type hints, generators for large datasets, and profiling tools for optimisation. This topic builds the Python depth that separates researchers from engineers."
+            data-topics="Python internals: garbage collection, memory model, CPython vs. alternatives|OOP for ML: writing clean model and dataset classes with __init__, __len__, __getitem__|Generators and iterators: lazy evaluation for datasets that don't fit in memory|Context managers, decorators, and functional Python patterns used in ML code|Type hints and dataclasses: making ML code readable and maintainable|Profiling and optimisation: cProfile, line_profiler, memory_profiler|Multiprocessing and threading for data loading (understanding the GIL)"
+            data-tags="python,programming">
+            <div class="node-top">
+              <div class="node-icon">🐍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Python for ML</div>
+            <div class="node-desc">OOP for models, generators for datasets, profiling, type hints — ML-grade Python, not
+              just beginner Python.</div>
+            <div class="node-tags"><span class="node-tag">python</span><span class="node-tag">OOP</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="NumPy & Pandas"
+            data-desc="NumPy and Pandas are the workhorses of data manipulation in ML. NumPy's vectorised array operations are the foundation of every ML library. Pandas handles the messy reality of real-world data. Expert-level fluency means knowing not just what functions to call but how to write operations that perform well at scale."
+            data-topics="NumPy internals: C-contiguous vs. Fortran-contiguous memory, strides and views|Advanced indexing: fancy indexing, boolean masks, np.where — vectorising logic|Broadcasting rules: the complete specification and common pitfalls|Pandas performance: .apply() vs. vectorised operations, using .values and .to_numpy()|MultiIndex DataFrames and advanced groupby patterns|Memory reduction: categorical dtypes, downcasting numeric types|Dask: scaling Pandas operations beyond RAM with lazy evaluation"
+            data-tags="numpy,pandas,performance">
+            <div class="node-top">
+              <div class="node-icon">🔢</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">NumPy &amp; Pandas</div>
+            <div class="node-desc">Strides, broadcasting, vectorised operations, memory reduction — use both at expert
+              level, not just competent level.</div>
+            <div class="node-tags"><span class="node-tag">numpy</span><span class="node-tag">pandas</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Data Wrangling & EDA"
+            data-desc="The most important insight in ML is that the quality of your data determines the ceiling of your model's performance. Expert data wrangling means building systematic pipelines for cleaning, transforming, and validating data — not just fixing obvious errors. Expert EDA means formulating and testing hypotheses about your data, not just plotting histograms."
+            data-topics="Systematic missing data analysis: MCAR, MAR, MNAR — implications for imputation|Outlier detection methods: Z-score, IQR, isolation forest, DBSCAN|Data validation with Great Expectations or Pandera: contract-based validation|Feature distributions: detecting data leakage, distribution shift, and label leakage|Correlation analysis: Pearson, Spearman, Kendall — when each is appropriate|Target leakage: the most costly EDA mistake in competitive ML|Automated EDA: ydata-profiling, sweetviz, dtale"
+            data-tags="EDA,data-quality,wrangling">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Data Wrangling &amp; EDA</div>
+            <div class="node-desc">MCAR/MAR/MNAR imputation, data validation contracts, target leakage — systematic,
+              hypothesis-driven data science.</div>
+            <div class="node-tags"><span class="node-tag">EDA</span><span class="node-tag">data-quality</span></div>
+          </div>
+
+          <div class="node" data-id="9" data-title="Visualisation for ML"
+            data-desc="ML visualisation goes well beyond bar charts. Understanding how to visualise high-dimensional data, model behaviour, training dynamics, and decision boundaries separates practitioners who understand their models from those who don't. This is also the skill that lets you communicate findings to non-technical audiences."
+            data-topics="Matplotlib internals: the Figure/Axes object model for programmatic control|Seaborn for statistical ML visualisation: pairplots, residual plots, distribution comparisons|Plotly for interactive model exploration: confusion matrices, feature importance, SHAP waterfall plots|Visualising high-dimensional data: t-SNE, UMAP, PCA projections|Training diagnostic plots: loss curves, learning rate schedules, gradient norms|Decision boundary visualisation for 2D classification problems|Calibration curves and reliability diagrams"
+            data-tags="visualisation,matplotlib,SHAP">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Visualisation for ML</div>
+            <div class="node-desc">t-SNE, UMAP, loss curves, SHAP waterfall plots — visualise model behaviour and
+              high-dimensional data effectively.</div>
+            <div class="node-tags"><span class="node-tag">visualisation</span><span class="node-tag">t-SNE</span><span
+                class="node-tag">UMAP</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="10" data-title="🔨 Project: End-to-End EDA & Visualisation"
+            data-desc="Your first hands-on project: take a real messy dataset and perform a complete, systematic exploratory analysis that would satisfy a professional data scientist. The goal is not to build a model — it's to deeply understand the data, document every finding, and tell a compelling story with visualisations."
+            data-topics="Dataset recommendation: NYC Taxi Trip Data, Airbnb listings, or any Kaggle tabular dataset with >100k rows|Step 1: systematic data quality audit — missing values, duplicates, type issues, range violations|Step 2: univariate analysis of every feature — distributions, outliers, cardinality|Step 3: bivariate analysis — correlations, group comparisons, scatter matrices|Step 4: hypothesis testing — formulate and test 5 statistical hypotheses about the data|Step 5: produce a polished EDA notebook with narrative, findings, and recommendations|Deliverable: a GitHub repo with a reproducible notebook, README, and PDF summary"
+            data-tags="project,EDA,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: End-to-End EDA &amp; Visualisation</div>
+            <div class="node-desc">Take a real messy dataset, perform a systematic audit, test statistical hypotheses,
+              and tell a story with polished visualisations.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span class="node-tag">EDA</span><span
+                class="node-tag">portfolio</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 3 — Core ML Concepts
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Core ML Concepts</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="11" data-title="The ML Framework"
+            data-desc="Before any algorithm, you must deeply understand the ML framework: the fundamental problem statement, the distinction between training and test performance, inductive bias, the no-free-lunch theorem, and the statistical learning theory that gives guarantees (or not) on generalisation."
+            data-topics="The formal ML problem: input space, output space, hypothesis class, loss function|Inductive bias: what assumptions each algorithm makes about the data|The No Free Lunch theorem: why no single algorithm wins everywhere|PAC learning theory: the framework for understanding learnability and sample complexity|VC dimension: the combinatorial measure of a hypothesis class's capacity|Empirical Risk Minimisation (ERM): the theoretical basis for ML training|Structural Risk Minimisation: trading fit for complexity"
+            data-tags="framework,learning-theory,VC">
+            <div class="node-top">
+              <div class="node-icon">🧮</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The ML Framework</div>
+            <div class="node-desc">PAC learning, VC dimension, No Free Lunch, ERM — the theoretical foundations that
+              explain why and when ML works.</div>
+            <div class="node-tags"><span class="node-tag">learning-theory</span><span class="node-tag">PAC</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Bias, Variance & Generalisation"
+            data-desc="The bias-variance tradeoff is the single most important conceptual framework in machine learning. Understanding it deeply — not just as a slogan but as a precise decomposition of expected error — explains overfitting, underfitting, ensemble methods, regularisation, and why more data helps some models but not others."
+            data-topics="The bias-variance decomposition of expected squared error: E[(f(x)-y)²] = Bias² + Variance + Noise|What high bias looks like: underfitting, systematic error, poor training performance|What high variance looks like: overfitting, gap between train and test performance|The double descent phenomenon: why modern overparameterised models can generalise|Effective degrees of freedom: a model-agnostic measure of complexity|Learning curves: diagnosing bias vs. variance visually|When more data helps: reducing variance, but not bias"
+            data-tags="bias-variance,overfitting,generalisation">
+            <div class="node-top">
+              <div class="node-icon">⚖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Bias, Variance &amp; Generalisation</div>
+            <div class="node-desc">The formal decomposition of expected error — understand overfitting, underfitting,
+              and double descent precisely.</div>
+            <div class="node-tags"><span class="node-tag">bias-variance</span><span class="node-tag">overfitting</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Loss Functions"
+            data-desc="The loss function is the objective your model optimises. Choosing the wrong loss function is one of the most common practical mistakes in ML. Understanding the mathematical properties of each loss — and how it corresponds to a probabilistic model — allows you to design custom losses for novel problems."
+            data-topics="Regression losses: MSE (MLE under Gaussian), MAE (MLE under Laplace), Huber (robust combination)|Classification losses: cross-entropy (MLE for Categorical), focal loss (class imbalance), hinge loss (SVM)|Probabilistic interpretation: every loss corresponds to a negative log-likelihood under some distribution|Custom loss design: writing differentiable losses in PyTorch for novel tasks|Surrogate losses: why we optimise cross-entropy instead of classification error directly|Ranking losses: pairwise, listwise — used in recommendation and search|Contrastive losses: triplet loss, NT-Xent (SimCLR) — used in self-supervised learning"
+            data-tags="loss-functions,MLE,design">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Loss Functions</div>
+            <div class="node-desc">MSE, cross-entropy, focal, hinge, contrastive — understand each as a probabilistic
+              model and design custom ones.</div>
+            <div class="node-tags"><span class="node-tag">loss-functions</span><span class="node-tag">MLE</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Gradient Descent & Optimisers"
+            data-desc="Gradient descent and its variants are the engines of all modern ML. Understanding not just how to use them but why they work — the geometry of loss landscapes, the role of momentum, adaptive learning rates, and convergence guarantees — makes you a far more effective practitioner who can debug training failures."
+            data-topics="Batch, mini-batch, and stochastic gradient descent — theoretical and practical differences|SGD with momentum: the physical intuition and formal analysis|Nesterov accelerated gradient: look-ahead momentum|Adam: the combination of momentum and adaptive learning rates — and its failure modes|AdamW: decoupled weight decay and why it's now the default|Learning rate schedules: warm-up, cosine annealing, one-cycle|Loss landscape geometry: saddle points, flat minima, sharp minima — and their implications for generalisation"
+            data-tags="optimisers,gradient-descent,Adam">
+            <div class="node-top">
+              <div class="node-icon">⬇️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Gradient Descent &amp; Optimisers</div>
+            <div class="node-desc">SGD, momentum, Adam, AdamW, learning rate schedules — understand the geometry and
+              convergence, not just the API.</div>
+            <div class="node-tags"><span class="node-tag">optimisers</span><span class="node-tag">Adam</span><span
+                class="node-tag">AdamW</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Regularisation"
+            data-desc="Regularisation is the family of techniques that reduce variance (overfitting) by constraining the model. It comes in many forms — explicit penalties on parameters, structural constraints, data augmentation, noise injection, and early stopping. Understanding regularisation deeply means knowing which technique to apply and why."
+            data-topics="L2 regularisation (Ridge / weight decay): MAP estimation with a Gaussian prior|L1 regularisation (Lasso): MAP estimation with a Laplace prior — and why it induces sparsity|Elastic Net: combining L1 and L2|Dropout: the Bayesian interpretation and implementation details|Batch Normalisation: regularisation, internal covariate shift, and why it works|Data augmentation as regularisation: label-preserving transformations|Early stopping: regularisation by constraining training time|Stochastic depth, DropPath, DropBlock: structural dropout variants"
+            data-tags="regularisation,L1,L2,dropout">
+            <div class="node-top">
+              <div class="node-icon">🛡️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Regularisation</div>
+            <div class="node-desc">L1/L2, Dropout, BatchNorm, early stopping, data augmentation — reduce variance by
+              constraining models systematically.</div>
+            <div class="node-tags"><span class="node-tag">regularisation</span><span class="node-tag">dropout</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="16" data-title="Cross-Validation & Model Selection"
+            data-desc="Cross-validation is how you estimate model performance honestly — without touching the test set. Model selection is the process of choosing between algorithms, hyperparameters, and architectures. Getting these right is what separates models that work in research from models that work in production."
+            data-topics="k-fold, stratified k-fold, group k-fold — when each is required|Leave-one-out cross-validation: when and why to use it|Nested cross-validation: the correct way to tune hyperparameters and estimate performance simultaneously|Time series cross-validation: walk-forward, blocked, purged — preventing temporal data leakage|The test set: how to use it exactly once, and why contaminating it invalidates everything|Statistical comparison of models: paired t-test, Wilcoxon signed-rank test, McNemar's test|The multiple comparisons problem: correcting for testing many models"
+            data-tags="cross-validation,model-selection">
+            <div class="node-top">
+              <div class="node-icon">🔁</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Cross-Validation &amp; Model Selection</div>
+            <div class="node-desc">Nested CV, group k-fold, temporal splits, statistical model comparison — the rigorous
+              path from training to trustworthy evaluation.</div>
+            <div class="node-tags"><span class="node-tag">cross-validation</span><span
+                class="node-tag">evaluation</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 4 — Supervised Learning
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Supervised Learning</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="17" data-title="Linear & Logistic Regression"
+            data-desc="Linear and logistic regression are not just 'simple baselines' — they are the starting point for understanding every other model. Deriving them from MLE gives you the probabilistic model. Understanding their geometric interpretation gives you the intuition. Mastering their assumptions, diagnostics, and extensions gives you the toolkit to use them expertly."
+            data-topics="Ordinary Least Squares: derivation from MLE under Gaussian noise, the normal equations, and the geometric interpretation|Gauss-Markov theorem: why OLS is the Best Linear Unbiased Estimator (BLUE)|Regularised regression: Ridge (L2), Lasso (L1), Elastic Net — derivations and solution paths|Logistic regression: derivation from Bernoulli MLE, decision boundary geometry, multi-class (softmax)|Logistic regression assumptions and diagnostics: multicollinearity, independence, linearity of log-odds|Generalised Linear Models (GLMs): unifying linear, logistic, Poisson regression|Calibration: Platt scaling and isotonic regression for probability calibration"
+            data-tags="regression,logistic,GLM">
+            <div class="node-top">
+              <div class="node-icon">📏</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Linear &amp; Logistic Regression</div>
+            <div class="node-desc">OLS derivation, Gauss-Markov, GLMs, calibration — these 'simple' models contain deep
+              ideas every expert must master.</div>
+            <div class="node-tags"><span class="node-tag">regression</span><span class="node-tag">MLE</span><span
+                class="node-tag">GLM</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Decision Trees"
+            data-desc="Decision trees are among the most interpretable and widely used models in industry. Understanding them deeply — the splitting criteria, pruning strategies, and relationship to axis-aligned partitioning of feature space — is essential because every powerful ensemble method is built on top of them."
+            data-topics="CART algorithm: the recursive binary partitioning procedure|Splitting criteria: Gini impurity, information gain (entropy), variance reduction — mathematical derivations|Stopping criteria and pre-pruning: max depth, min samples, min impurity decrease|Post-pruning: reduced error pruning, cost-complexity pruning (α parameter)|Tree depth and overfitting: the bias-variance tradeoff in tree form|Feature importance in trees: the (impurity-based, mean decrease impurity) approach and its biases|Oblique decision trees: generalising beyond axis-aligned splits"
+            data-tags="decision-trees,CART,Gini">
+            <div class="node-top">
+              <div class="node-icon">🌳</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Decision Trees</div>
+            <div class="node-desc">CART, Gini vs. entropy, pruning, feature importance biases — master trees to truly
+              understand the ensembles built on them.</div>
+            <div class="node-tags"><span class="node-tag">decision-trees</span><span class="node-tag">CART</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Ensemble Methods"
+            data-desc="Ensemble methods are the most reliable way to improve performance on structured data. Bagging reduces variance. Boosting reduces bias and variance simultaneously. Stacking combines diverse learners. Understanding the theory and implementation of all three — especially gradient boosting — is essential for any ML practitioner working with tabular data."
+            data-topics="Bagging: bootstrap sampling, variance reduction, the out-of-bag estimate|Random Forests: feature subsampling, decorrelation, and why they generalise better than single trees|Gradient Boosting: the functional gradient descent view — fitting residuals iteratively|XGBoost: the algorithmic innovations (regularised trees, approximate splits, cache-aware computation)|LightGBM: histogram-based splits, leaf-wise growth, GOSS and EFB|CatBoost: symmetric trees, ordered boosting for categorical features|Stacking and blending: building meta-learners from diverse base learners"
+            data-tags="ensembles,XGBoost,LightGBM">
+            <div class="node-top">
+              <div class="node-icon">🌲</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Ensemble Methods</div>
+            <div class="node-desc">Bagging, Random Forests, XGBoost, LightGBM, stacking — the most reliable path to top
+              performance on tabular data.</div>
+            <div class="node-tags"><span class="node-tag">XGBoost</span><span class="node-tag">LightGBM</span><span
+                class="node-tag">ensembles</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Support Vector Machines"
+            data-desc="SVMs introduced the kernel trick — the most elegant idea in classical ML. They optimise a geometrically meaningful objective (maximum margin), have strong theoretical guarantees, and through kernels can operate in infinite-dimensional feature spaces. Understanding SVMs is essential for understanding kernel methods broadly."
+            data-topics="The maximum margin classifier: hard-margin SVM derivation|Soft-margin SVM: the C hyperparameter and the slack variable formulation|The dual problem and the KKT conditions: why only support vectors matter|The kernel trick: implicit feature maps, Mercer's theorem|Common kernels: linear, polynomial, RBF (Gaussian), sigmoid — when each is appropriate|Support Vector Regression (SVR): the ε-insensitive tube|SVMs at scale: SGD-based linear SVMs (sklearn's SGDClassifier) for large datasets"
+            data-tags="SVM,kernels,margin">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Support Vector Machines</div>
+            <div class="node-desc">Maximum margin, the kernel trick, dual problem, RBF — SVMs introduced the most
+              elegant idea in classical ML.</div>
+            <div class="node-tags"><span class="node-tag">SVM</span><span class="node-tag">kernels</span><span
+                class="node-tag">margin</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Naive Bayes & k-Nearest Neighbours"
+            data-desc="Naive Bayes and k-NN represent two philosophically opposite approaches: parametric probabilistic modelling vs. pure instance-based reasoning. Both have important niches, and both serve as excellent vehicles for understanding core concepts — the independence assumption in Naive Bayes, and the curse of dimensionality in k-NN."
+            data-topics="Naive Bayes: the conditional independence assumption and its derivation|Gaussian, Multinomial, Bernoulli, and Complement Naive Bayes variants|Why Naive Bayes works despite wrong independence assumptions — the irrelevance of well-calibrated decision boundaries|k-NN: the memory-based, non-parametric approach — no training, all inference|The curse of dimensionality: why k-NN degrades in high dimensions (and most classical methods too)|Approximate Nearest Neighbours: KD-trees, ball trees, HNSW, FAISS — for large-scale retrieval|Weighted k-NN, distance metrics, and choosing k — the full hyperparameter story"
+            data-tags="naive-bayes,k-NN,dimensionality">
+            <div class="node-top">
+              <div class="node-icon">🔮</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Naive Bayes &amp; k-NN</div>
+            <div class="node-desc">Conditional independence, curse of dimensionality, approximate nearest neighbours —
+              two models that reveal deep ML truths.</div>
+            <div class="node-tags"><span class="node-tag">naive-bayes</span><span class="node-tag">k-NN</span><span
+                class="node-tag">FAISS</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="22" data-title="🔨 Project: Tabular Prediction — End-to-End"
+            data-desc="Build a complete, production-quality supervised learning pipeline on a real tabular dataset. This project consolidates everything from Phases 1–4. The goal is not to get the highest score but to build a rigorous, reproducible, and well-documented pipeline that you'd be proud to show an interviewer."
+            data-topics="Dataset options: House Prices (regression), Titanic (binary classification), Home Credit Default Risk (imbalanced binary), Porto Seguro (insurance), or any industry dataset|Pipeline: EDA → feature engineering → preprocessing → model selection → hyperparameter tuning → evaluation|Implement at minimum: logistic regression, random forest, and XGBoost — compare rigorously with nested CV|Write a model card: what the model does, who it's for, its limitations, and its performance|Interpret the model with SHAP: global feature importance and local explanations|Deploy the model as a FastAPI endpoint and wrap in a simple Streamlit UI"
+            data-tags="project,supervised,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Tabular Prediction — End-to-End</div>
+            <div class="node-desc">Complete pipeline: EDA → feature engineering → nested CV → SHAP interpretability →
+              FastAPI deployment → Streamlit UI.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span
+                class="node-tag">supervised</span><span class="node-tag">deployment</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 5 — Unsupervised Learning
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Unsupervised &amp; Semi-supervised Learning</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="23" data-title="Clustering Algorithms"
+            data-desc="Clustering is one of the most intellectually interesting problems in ML — there is no 'right answer', only algorithms that make different assumptions about what a 'cluster' is. Expert clustering means choosing the right algorithm for the data geometry, validating clusters without ground truth labels, and understanding what each algorithm truly optimises."
+            data-topics="K-Means: the EM interpretation, initialisation (k-means++), convergence guarantees and pitfalls|DBSCAN: density-based clustering, ε and min_samples, handling arbitrary shapes and noise|HDBSCAN: the hierarchical extension that removes ε — the modern default for density clustering|Gaussian Mixture Models (GMMs): the probabilistic cluster model and the EM algorithm derivation|Hierarchical clustering: agglomerative (single, complete, average, Ward linkage) and the dendrogram|Spectral clustering: graph-based clustering using eigendecomposition of the Laplacian|Cluster validation: Silhouette score, Davies-Bouldin, Calinski-Harabasz, and stability analysis"
+            data-tags="clustering,K-Means,HDBSCAN,GMM">
+            <div class="node-top">
+              <div class="node-icon">🔵</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Clustering Algorithms</div>
+            <div class="node-desc">K-Means, HDBSCAN, GMMs, spectral clustering — choose the right algorithm for your
+              data geometry and validate without labels.</div>
+            <div class="node-tags"><span class="node-tag">clustering</span><span class="node-tag">HDBSCAN</span><span
+                class="node-tag">GMM</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Dimensionality Reduction"
+            data-desc="Real datasets have hundreds or thousands of features. Dimensionality reduction compresses them into a lower-dimensional representation that preserves structure — whether linear (PCA) or non-linear (t-SNE, UMAP). Understanding which method preserves which properties (global structure, local structure, distances) is essential for applying them correctly."
+            data-topics="PCA: derivation via variance maximisation and via SVD — they are equivalent|The principal subspace theorem: optimality of PCA for linear reconstruction|Kernel PCA: non-linear PCA using the kernel trick|t-SNE: the perplexity parameter, the crowding problem, and why t-SNE does not preserve global structure|UMAP: the topological data analysis foundation, how it improves on t-SNE|Autoencoders as non-linear dimensionality reduction: encoder-decoder architecture|Linear Discriminant Analysis (LDA): supervised dimensionality reduction for classification"
+            data-tags="PCA,UMAP,t-SNE,autoencoders">
+            <div class="node-top">
+              <div class="node-icon">📉</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Dimensionality Reduction</div>
+            <div class="node-desc">PCA derivation, Kernel PCA, t-SNE vs. UMAP (global vs. local structure) — choose
+              correctly for your downstream task.</div>
+            <div class="node-tags"><span class="node-tag">PCA</span><span class="node-tag">UMAP</span><span
+                class="node-tag">t-SNE</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Anomaly Detection"
+            data-desc="Anomaly detection is the ML problem of identifying instances that are significantly different from normal — fraud, intrusions, manufacturing defects, medical outliers. It's challenging because anomalies are, by definition, rare and often unknown. Understanding the spectrum of approaches is essential for real-world deployment."
+            data-topics="Statistical approaches: Z-score, IQR, Mahalanobis distance — assumptions and failure modes|Isolation Forest: the ensemble method that isolates anomalies with random splits|Local Outlier Factor (LOF): density-based anomaly scoring|One-Class SVM: learning the boundary of normal data|Autoencoders for anomaly detection: reconstruction error as anomaly score|ECOD and COPOD: recent efficient methods for high-dimensional anomaly detection|Evaluation without ground truth: contamination parameter selection, label efficiency"
+            data-tags="anomaly-detection,Isolation-Forest,autoencoders">
+            <div class="node-top">
+              <div class="node-icon">🚨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Anomaly Detection</div>
+            <div class="node-desc">Isolation Forest, LOF, One-Class SVM, autoencoder reconstruction error — detect the
+              rare and unexpected without labels.</div>
+            <div class="node-tags"><span class="node-tag">anomaly-detection</span><span
+                class="node-tag">Isolation-Forest</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Density Estimation"
+            data-desc="Density estimation — learning the probability distribution p(x) from data — is the deepest problem in unsupervised learning. It underpins generative models, anomaly detection, and Bayesian inference. Understanding the methods and their trade-offs gives you the foundations for Variational Autoencoders and Normalising Flows."
+            data-topics="Histograms and their limitations: bin width selection, the curse of dimensionality|Kernel Density Estimation (KDE): the bandwidth selection problem, Silverman's rule|Gaussian Mixture Models as density estimators: EM algorithm and model selection (BIC/AIC)|Normalising Flows: density estimation via invertible transformations (RealNVP, Glow, NICE)|Variational inference: ELBO, the mean-field approximation|Neural density estimators: MADE, MAF, Neural Spline Flows|Applications: anomaly scoring, data generation, Bayesian posterior approximation"
+            data-tags="density-estimation,KDE,normalising-flows">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Density Estimation</div>
+            <div class="node-desc">KDE, GMMs, Normalising Flows, variational inference — learn the distribution behind
+              your data for generation and anomaly scoring.</div>
+            <div class="node-tags"><span class="node-tag">density-estimation</span><span
+                class="node-tag">normalising-flows</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="27"
+            data-title="🔨 Project: Customer Segmentation & Anomaly Detection"
+            data-desc="Apply unsupervised learning to a real business problem. This dual project covers clustering for segmentation and anomaly detection for fraud/outlier identification — two of the most common real-world applications of unsupervised ML."
+            data-topics="Part 1 — Segmentation: use an e-commerce or retail dataset (e.g. UCI Online Retail, Instacart)|Apply RFM feature engineering (Recency, Frequency, Monetary value), then cluster with K-Means and HDBSCAN|Validate clusters with silhouette scores AND qualitative analysis — give each segment a business name|Visualise with UMAP, produce a stakeholder-ready segment profile report|Part 2 — Anomaly Detection: use credit card fraud data or network intrusion data|Compare Isolation Forest, LOF, and an autoencoder approach|Evaluate with precision-recall curves and F1 at various contamination rates|Deliverable: end-to-end notebook + written analysis of business implications"
+            data-tags="project,clustering,anomaly-detection">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Customer Segmentation &amp; Anomaly Detection</div>
+            <div class="node-desc">RFM features → HDBSCAN → UMAP segment profiles + Isolation Forest vs. autoencoder
+              fraud detection with business analysis.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span
+                class="node-tag">unsupervised</span><span class="node-tag">portfolio</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 6 — Model Engineering
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Model Engineering</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="28" data-title="Feature Engineering"
+            data-desc="Feature engineering — the art and science of transforming raw data into informative representations — consistently delivers the largest performance improvements of any technique in applied ML. It requires domain knowledge, mathematical understanding, and creative thinking. This is where practitioners who understand the problem beat those who just tune models."
+            data-topics="Numeric transformations: log, square root, Box-Cox, Yeo-Johnson — when and why|Binning and discretisation: equal-width, equal-frequency, optimal decision tree bins|Date/time feature engineering: cyclical encoding (sin/cos) for temporal periodicity|Categorical encoding: one-hot, ordinal, target encoding, CatBoost encoding, leave-one-out|Interaction features: polynomial features, pairwise products — and when they help|Text-to-numeric features: TF-IDF, count vectors, embedding-based features|Aggregation features: mean, std, min, max over groups — the core of Kaggle feature engineering"
+            data-tags="feature-engineering,encoding,transformations">
+            <div class="node-top">
+              <div class="node-icon">🔧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Feature Engineering</div>
+            <div class="node-desc">Log transforms, cyclical encoding, target encoding, aggregation features — the
+              highest-leverage skill in applied ML.</div>
+            <div class="node-tags"><span class="node-tag">feature-engineering</span><span
+                class="node-tag">encoding</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Feature Selection"
+            data-desc="More features is not always better. Irrelevant features add noise, increase training time, and hurt generalisation. Feature selection methods — filter, wrapper, and embedded — identify the subset of features that most improve model performance. This is especially critical for high-dimensional tabular data."
+            data-topics="Filter methods: variance threshold, correlation-based, mutual information — fast but univariate|Wrapper methods: recursive feature elimination (RFE), forward/backward selection — expensive but multivariate|Embedded methods: L1 regularisation, tree-based importances, XGBoost feature importance|SHAP-based selection: using Shapley values for more reliable importance estimates|Permutation importance: the model-agnostic, unbiased alternative to impurity-based importance|Boruta: the all-relevant feature selection algorithm using shadow features|Stability selection: subsampling-based selection for reliable, low false discovery rate results"
+            data-tags="feature-selection,RFE,SHAP,Boruta">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Feature Selection</div>
+            <div class="node-desc">RFE, permutation importance, SHAP-based selection, Boruta — remove noise, reduce
+              complexity, improve generalisation.</div>
+            <div class="node-tags"><span class="node-tag">feature-selection</span><span
+                class="node-tag">Boruta</span><span class="node-tag">SHAP</span></div>
+          </div>
+
+          <div class="node" data-id="30" data-title="Hyperparameter Tuning"
+            data-desc="Every ML model has hyperparameters — settings not learned from data. Systematic hyperparameter tuning can mean the difference between a mediocre and a state-of-the-art result. Expert tuning means understanding search spaces, sample efficiency, and when to stop — not just grid searching blindly."
+            data-topics="Grid search vs. random search: the theoretical case for random search (Bergstra & Bengio 2012)|Bayesian optimisation: using a surrogate model (Gaussian Process) to guide the search|Optuna: tree-structured Parzen estimator (TPE), pruning, and define-by-run API|Hyperband and ASHA: early stopping strategies for efficient neural architecture search|Population-based training (PBT): evolutionary search with online perturbation|AutoML: H2O, AutoGluon, AutoSklearn — when to use automated ML|Practical heuristics: warm starting, prior knowledge, and hyperparameter importance"
+            data-tags="hyperparameter,Optuna,Bayesian,AutoML">
+            <div class="node-top">
+              <div class="node-icon">🎛️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Hyperparameter Tuning</div>
+            <div class="node-desc">Optuna (TPE), Bayesian optimisation, Hyperband, AutoML — systematic search that beats
+              grid search on every metric.</div>
+            <div class="node-tags"><span class="node-tag">Optuna</span><span class="node-tag">Bayesian-opt</span><span
+                class="node-tag">AutoML</span></div>
+          </div>
+
+          <div class="node" data-id="31" data-title="Model Interpretability"
+            data-desc="As models are deployed in consequential domains — medicine, finance, law — interpretability is not optional. Understanding how to explain model decisions at both the global level (what does this model generally do?) and local level (why did this model make this specific prediction?) is a core professional competency."
+            data-topics="The interpretability taxonomy: intrinsic vs. post-hoc, global vs. local|LIME: local surrogate models for any black-box prediction — and its instability problem|SHAP: the game-theoretic foundation (Shapley values), TreeSHAP, DeepSHAP|SHAP plots: beeswarm, waterfall, dependence, force — the complete toolkit|Partial Dependence Plots (PDPs) and Individual Conditional Expectation (ICE) curves|Counterfactual explanations: the minimum change to flip a prediction|Mechanistic interpretability: circuits in neural networks — the frontier of interpretability research"
+            data-tags="interpretability,SHAP,LIME,XAI">
+            <div class="node-top">
+              <div class="node-icon">🔎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Model Interpretability</div>
+            <div class="node-desc">SHAP (Shapley values, TreeSHAP), LIME, PDPs, counterfactuals — explain any model
+              globally and locally.</div>
+            <div class="node-tags"><span class="node-tag">SHAP</span><span class="node-tag">XAI</span><span
+                class="node-tag">interpretability</span></div>
+          </div>
+
+          <div class="node" data-id="32" data-title="Imbalanced Data & Special Cases"
+            data-desc="Real-world classification problems are almost never balanced. Fraud is 0.1% of transactions. Rare diseases affect 0.01% of patients. Learning to handle imbalanced data — and the related challenges of multi-label learning, multi-output prediction, and cost-sensitive learning — is essential for industry ML."
+            data-topics="The imbalance problem: why accuracy is useless and precision-recall is essential|Resampling: SMOTE (synthetic oversampling), ADASYN, random undersampling — when each helps and hurts|Class weights: the simplest and most reliable starting point|Threshold optimisation: setting the decision threshold for your business metric|Cost-sensitive learning: building imbalance awareness into the loss function|Multi-label classification: Binary Relevance, Classifier Chains, Label Powerset|Ordinal regression: when your labels have a meaningful order"
+            data-tags="imbalanced,SMOTE,multi-label,cost-sensitive">
+            <div class="node-top">
+              <div class="node-icon">⚖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Imbalanced Data &amp; Special Cases</div>
+            <div class="node-desc">SMOTE, class weights, threshold optimisation, cost-sensitive learning, multi-label —
+              handle every non-standard classification case.</div>
+            <div class="node-tags"><span class="node-tag">imbalanced</span><span class="node-tag">SMOTE</span><span
+                class="node-tag">multi-label</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="33" data-title="🔨 Project: Full ML Engineering Pipeline"
+            data-desc="This is the most technically demanding classical ML project: build a fully engineered, interpretable, and documented ML pipeline on a problem with real challenges — imbalance, mixed feature types, and a meaningful business cost structure. Document every engineering decision."
+            data-topics="Dataset options: Home Credit Default Risk, IEEE-CIS Fraud Detection, or a real dataset from your domain|Engineering: custom feature transformers using sklearn's Pipeline API, automated feature selection|Tuning: full Optuna study with 200+ trials, hyperparameter importance analysis|Interpretability: SHAP global summary + 5 individual prediction explanations with business narrative|Imbalance: compare SMOTE, class weights, and threshold tuning on PR-AUC|Robustness: test for distribution shift between training and validation splits|Deliverable: GitHub repo + model card + slide deck explaining the approach to a non-technical audience"
+            data-tags="project,feature-engineering,SHAP,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Full ML Engineering Pipeline</div>
+            <div class="node-desc">Custom sklearn Pipeline → Optuna tuning → SHAP interpretability → imbalance handling
+              → model card for a non-technical audience.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span
+                class="node-tag">Optuna</span><span class="node-tag">SHAP</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 7 — Deep Learning
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 07</div>
+          <div class="phase-title">Deep Learning</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="34" data-title="Neural Network Fundamentals"
+            data-desc="Deep learning is built on a surprisingly simple foundation: stacked linear transformations with non-linear activations, trained by gradient descent through backpropagation. Mastering this foundation — the mathematics, the geometric intuition, and the implementation from scratch — is what allows you to debug, design, and innovate rather than just copy-paste architectures."
+            data-topics="The universal approximation theorem: what neural networks can and can't represent|Forward propagation: the complete matrix computation from input to output|Backpropagation: the chain rule applied repeatedly — derive it from scratch|Computational graphs: the data structure underlying every autograd system|Activation functions: ReLU, GELU, Swish, SiLU — mathematical properties and gradient flow|Initialisation: Xavier/Glorot, He/Kaiming — preventing vanishing/exploding gradients at initialisation|Implementing a neural network from scratch in NumPy: the essential exercise"
+            data-tags="neural-networks,backpropagation,UAT">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Neural Network Fundamentals</div>
+            <div class="node-desc">Derive backprop from scratch, implement in NumPy, understand activations and
+              initialisation — own the foundation of deep learning.</div>
+            <div class="node-tags"><span class="node-tag">backpropagation</span><span
+                class="node-tag">neural-networks</span></div>
+          </div>
+
+          <div class="node" data-id="35" data-title="Training Deep Networks"
+            data-desc="Training deep networks in practice involves far more than gradient descent. Understanding the complete training toolkit — normalisation, regularisation, learning rate scheduling, mixed precision, gradient clipping, and the practical craft of reading loss curves — is what separates practitioners who can train real models from those who can only run tutorials."
+            data-topics="Batch Normalisation: the forward and backward pass, training vs. inference mode, and position debates|Layer Normalisation, Group Normalisation: alternatives to BatchNorm and when each is preferred|Gradient clipping: by value vs. by norm — preventing gradient explosions|Mixed precision training: FP16/BF16, loss scaling, and the hardware perspective|Gradient accumulation: simulating large batches on memory-constrained hardware|Reading training curves: diagnosing common failure modes (loss spikes, plateaus, divergence)|Reproducibility: setting seeds, deterministic algorithms, and controlling non-determinism in GPU ops"
+            data-tags="training,BatchNorm,mixed-precision">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Training Deep Networks</div>
+            <div class="node-desc">BatchNorm, gradient clipping, mixed precision, gradient accumulation, reading loss
+              curves — the full training craft.</div>
+            <div class="node-tags"><span class="node-tag">BatchNorm</span><span class="node-tag">mixed-precision</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="36" data-title="Convolutional Neural Networks"
+            data-desc="CNNs are the dominant architecture for visual data — and their principles (local connectivity, parameter sharing, translational equivariance) extend to audio, time series, and graphs. Understanding CNN architectures from the ground up, including the landmark architectures that advanced the field, is essential for computer vision and beyond."
+            data-topics="The convolution operation: mathematical definition, stride, padding, dilation|Pooling: max, average, global average pooling — and when to use each|Landmark architectures: AlexNet → VGG → ResNet (skip connections) → DenseNet → EfficientNet|The residual connection: why skip connections solve the vanishing gradient problem and enable very deep networks|Depthwise separable convolutions: the efficiency innovation behind MobileNet|Transfer learning with CNNs: frozen feature extraction vs. full fine-tuning vs. head-only training|Data augmentation for vision: random crop, flip, colour jitter, mixup, CutMix"
+            data-tags="CNN,ResNet,transfer-learning">
+            <div class="node-top">
+              <div class="node-icon">🖼️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Convolutional Neural Networks</div>
+            <div class="node-desc">ResNet skip connections, EfficientNet, depthwise separable convolutions, mixup —
+              master the architecture of visual deep learning.</div>
+            <div class="node-tags"><span class="node-tag">CNN</span><span class="node-tag">ResNet</span><span
+                class="node-tag">transfer-learning</span></div>
+          </div>
+
+          <div class="node" data-id="37" data-title="Recurrent Networks & LSTMs"
+            data-desc="Sequential data — text, time series, audio — has temporal structure that feedforward networks can't capture. RNNs, LSTMs, and GRUs are architectures designed to model this structure through recurrent state. Despite the dominance of Transformers, understanding RNNs is essential for understanding why Transformers succeeded."
+            data-topics="Vanilla RNNs: the recurrent computation, unrolling through time, and BPTT (backpropagation through time)|The vanishing gradient problem in RNNs: why gradients decay exponentially over long sequences|LSTM: the three gates (input, forget, output), the cell state highway, and why it solves vanishing gradients|GRU: the simplified two-gate architecture and why it often matches LSTM performance|Bidirectional RNNs: processing sequences in both directions|Sequence-to-sequence models: the encoder-decoder architecture for translation|Attention mechanism in RNNs: the precursor to the Transformer — learning to align"
+            data-tags="RNN,LSTM,GRU,sequence">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Recurrent Networks &amp; LSTMs</div>
+            <div class="node-desc">BPTT, LSTM gates, GRU, seq2seq, attention in RNNs — understand the architecture
+              Transformers were built to replace.</div>
+            <div class="node-tags"><span class="node-tag">LSTM</span><span class="node-tag">GRU</span><span
+                class="node-tag">seq2seq</span></div>
+          </div>
+
+          <div class="node wide" data-id="38" data-title="The Transformer Architecture"
+            data-desc="The Transformer is the most consequential ML architecture of the last decade — the foundation of BERT, GPT, ViT, Whisper, Stable Diffusion, and virtually every frontier AI system. Understanding it fully — the self-attention mechanism, positional encoding, multi-head attention, and the encoder-decoder structure — is now non-negotiable for any serious ML practitioner."
+            data-topics="Scaled dot-product attention: Q, K, V — the complete derivation and geometric intuition|Multi-head attention: projecting into multiple subspaces to capture different relationships|Positional encoding: sinusoidal encoding, and learned vs. relative positional encodings (RoPE, ALiBi)|Layer Normalisation placement: Pre-LN vs. Post-LN and training stability|The Feed-Forward Network: two linear layers with a non-linearity — its role and size|Encoder-only (BERT), decoder-only (GPT), encoder-decoder (T5) — the three families|Flash Attention: the memory-efficient exact attention algorithm used in all modern systems|Vision Transformer (ViT): patching images and applying Transformers to vision"
+            data-tags="transformer,attention,BERT,GPT,ViT">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Transformer Architecture</div>
+            <div class="node-desc">Self-attention derivation, multi-head, positional encoding (RoPE, ALiBi), Flash
+              Attention, encoder/decoder/encoder-decoder families.</div>
+            <div class="node-tags"><span class="node-tag">transformer</span><span class="node-tag">attention</span><span
+                class="node-tag">Flash-Attention</span></div>
+          </div>
+
+          <div class="node" data-id="39" data-title="PyTorch in Depth"
+            data-desc="PyTorch is the dominant framework for ML research and increasingly for production. Expert PyTorch means writing efficient, clean, debuggable code — not just calling high-level APIs. This includes understanding the autograd engine, writing custom layers and loss functions, using torch.compile, and scaling training across GPUs."
+            data-topics="Autograd internals: the computation graph, leaf tensors, requires_grad, and .backward()|Writing custom layers: nn.Module, forward pass, parameter registration|Custom loss functions with autograd-compatible operations|torch.utils.data: Dataset and DataLoader — custom datasets, collate functions, pin_memory|Distributed training: DataParallel vs. DistributedDataParallel — when each is appropriate|torch.compile: the TorchDynamo/TorchInductor stack for 2× speedups|Profiling PyTorch code: torch.profiler, identifying GPU utilisation bottlenecks"
+            data-tags="pytorch,autograd,distributed,compile">
+            <div class="node-top">
+              <div class="node-icon">🔥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">PyTorch in Depth</div>
+            <div class="node-desc">Autograd internals, custom layers/losses, DataLoader, DistributedDataParallel,
+              torch.compile — expert-level PyTorch.</div>
+            <div class="node-tags"><span class="node-tag">pytorch</span><span class="node-tag">autograd</span><span
+                class="node-tag">distributed</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="40" data-title="🔨 Project: Deep Learning End-to-End"
+            data-desc="Build and train a non-trivial deep learning system from near-scratch — not a tutorial, but an original application. This project should demonstrate your ability to implement, train, debug, and evaluate a real deep learning model, and should be something you'd genuinely be proud to show in an interview."
+            data-topics="Option A (Vision): Image classifier on a domain-specific dataset — implement ResNet-style architecture, data augmentation pipeline, progressive resizing, test-time augmentation, and Grad-CAM visualisation|Option B (Tabular DL): Implement TabNet or a FT-Transformer for tabular data — compare against XGBoost|Option C (Time Series): Train an LSTM or Temporal Convolutional Network on a real time-series dataset — implement multi-step forecasting|All options: write the training loop from scratch (not using Trainer APIs), implement early stopping, LR scheduling, mixed precision, and checkpoint saving|Deliverable: reproducible repo with train/eval scripts, config files, wandb experiment logs, and a detailed README"
+            data-tags="project,deep-learning,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Deep Learning End-to-End</div>
+            <div class="node-desc">Train from scratch: custom training loop, mixed precision, LR scheduling,
+              checkpointing, wandb logging, Grad-CAM or equivalent.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span
+                class="node-tag">deep-learning</span><span class="node-tag">portfolio</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 8 — Specialisations
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-red" data-phase="8" id="phase-8">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 08</div>
+          <div class="phase-title">Specialisations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="41" data-title="Natural Language Processing"
+            data-desc="NLP has been transformed by the Transformer. Expert NLP now means understanding pre-trained language models (BERT, GPT, T5, LLaMA), fine-tuning them efficiently for downstream tasks, and building with the latest techniques including instruction tuning and RLHF. This is the single most in-demand ML specialisation."
+            data-topics="Text preprocessing: tokenisation (BPE, WordPiece, SentencePiece), subword units, vocabulary|Pre-training objectives: Masked Language Modelling (BERT), Causal Language Modelling (GPT), span corruption (T5)|Fine-tuning paradigms: full fine-tuning, feature extraction, head-only, and prompt tuning|Parameter-efficient fine-tuning: LoRA, QLoRA, prefix tuning, IA³ — the 2023–2025 standard|Retrieval-Augmented Generation (RAG): dense retrieval, chunking strategies, vector databases (Pinecone, Weaviate, FAISS)|Instruction tuning and RLHF: how ChatGPT-style alignment works at a technical level|Evaluation: BLEU, ROUGE, BERTScore, and the limits of automatic evaluation"
+            data-tags="NLP,transformers,LoRA,RAG,RLHF">
+            <div class="node-top">
+              <div class="node-icon">📝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Natural Language Processing</div>
+            <div class="node-desc">BPE tokenisation, BERT/GPT pre-training, LoRA/QLoRA fine-tuning, RAG, RLHF — expert
+              NLP for the LLM era.</div>
+            <div class="node-tags"><span class="node-tag">NLP</span><span class="node-tag">LoRA</span><span
+                class="node-tag">RAG</span><span class="node-tag">RLHF</span></div>
+          </div>
+
+          <div class="node" data-id="42" data-title="Computer Vision"
+            data-desc="Expert computer vision goes far beyond image classification. Object detection, segmentation, depth estimation, and video understanding each have their own architectures and challenges. The Vision Transformer has brought Transformer-based architectures to vision, enabling multi-modal models like CLIP and DALL-E."
+            data-topics="Object detection: YOLO family (YOLOv8/9), DETR (transformer-based detection)|Semantic segmentation: FCN, U-Net, DeepLab, Mask2Former|Instance segmentation: Mask R-CNN, SAM (Segment Anything Model)|Self-supervised vision: SimCLR, MoCo, MAE (Masked Autoencoders)|CLIP: contrastive language-image pre-training — zero-shot classification and image retrieval|Multi-modal models: LLaVA, Flamingo — vision + language|Video understanding: optical flow, 3D convolutions, video Transformers"
+            data-tags="computer-vision,YOLO,SAM,CLIP,ViT">
+            <div class="node-top">
+              <div class="node-icon">👁️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Computer Vision</div>
+            <div class="node-desc">YOLOv8, SAM, CLIP, MAE, LLaVA — detection, segmentation, self-supervised pretraining,
+              and multi-modal vision.</div>
+            <div class="node-tags"><span class="node-tag">computer-vision</span><span class="node-tag">CLIP</span><span
+                class="node-tag">SAM</span></div>
+          </div>
+
+          <div class="node" data-id="43" data-title="Reinforcement Learning"
+            data-desc="Reinforcement learning is the framework for learning to make sequences of decisions through interaction with an environment. It underpins game-playing AIs (AlphaGo, Dota 2), robotics, recommendation systems, and now RLHF for LLM alignment. It's the most mathematically demanding specialisation in ML."
+            data-topics="MDP formalism: states, actions, transitions, rewards, discount factor|The Bellman equations: the recursive structure of optimal value functions|Value-based methods: Q-learning, Deep Q-Network (DQN), Double DQN, Dueling DQN|Policy gradient methods: REINFORCE, the policy gradient theorem|Actor-Critic: combining value and policy — A2C, A3C, the advantage function|Proximal Policy Optimisation (PPO): the dominant on-policy algorithm|RLHF: Reward Model training, KL penalty, practical implementation of alignment"
+            data-tags="RL,PPO,DQN,RLHF,Bellman">
+            <div class="node-top">
+              <div class="node-icon">🤖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Reinforcement Learning</div>
+            <div class="node-desc">MDPs, Bellman equations, DQN, PPO, Actor-Critic, RLHF — from game-playing to LLM
+              alignment, the full RL toolkit.</div>
+            <div class="node-tags"><span class="node-tag">RL</span><span class="node-tag">PPO</span><span
+                class="node-tag">DQN</span><span class="node-tag">RLHF</span></div>
+          </div>
+
+          <div class="node" data-id="44" data-title="Generative Models"
+            data-desc="Generative models — systems that learn to produce new data resembling the training distribution — are at the frontier of modern AI. VAEs provide a probabilistic framework. GANs introduced adversarial training. Diffusion models now dominate image and audio generation. Understanding all three prepares you to work with and build on the latest systems."
+            data-topics="Variational Autoencoders (VAEs): ELBO derivation, reparameterisation trick, decoder design|Generative Adversarial Networks: the min-max game, mode collapse, Wasserstein GAN, progressive growing|Conditional GANs and Pix2Pix: image-to-image translation|Diffusion models: the forward diffusion process, the reverse denoising network (DDPM, DDIM)|Latent Diffusion Models (LDMs): the architecture behind Stable Diffusion|Score-based models: the unified view of diffusion and score matching|Guidance: classifier-free guidance, classifier guidance — controlling generation"
+            data-tags="generative,VAE,GAN,diffusion,LDM">
+            <div class="node-top">
+              <div class="node-icon">🎨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Generative Models</div>
+            <div class="node-desc">VAE (ELBO, reparameterisation), GAN (Wasserstein), Diffusion (DDPM, DDIM), LDMs,
+              classifier-free guidance.</div>
+            <div class="node-tags"><span class="node-tag">VAE</span><span class="node-tag">GAN</span><span
+                class="node-tag">diffusion</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="45" data-title="🔨 Project: Specialisation Capstone"
+            data-desc="Choose your specialisation and build a substantive project that demonstrates depth, not just familiarity. This should be the most impressive project on your portfolio — something that requires you to read papers, implement non-trivial components, and solve a real problem."
+            data-topics="NLP track: Fine-tune LLaMA-3 or Mistral with LoRA on a domain-specific dataset using QLoRA. Build a RAG system over a document corpus (legislation, medical literature, codebase). Evaluate with RAGAS. Deploy as a chat interface.|CV track: Train SAM or DETR on a custom detection/segmentation dataset. Implement your own data annotation pipeline. Compare results to a zero-shot CLIP baseline. Produce a Gradio demo.|RL track: Train a PPO agent on a continuous control task (MuJoCo/Isaac Gym). Implement curriculum learning. Produce training videos showing learned behaviour.|Generative track: Fine-tune Stable Diffusion on a domain-specific image set using DreamBooth or LoRA. Implement a simple text-to-image application with safety filtering.|All: publish on Hugging Face Hub, write a detailed blog post / technical report"
+            data-tags="project,specialisation,LLM,CV,RL,generative">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Specialisation Capstone</div>
+            <div class="node-desc">LoRA fine-tune LLM + RAG system, or custom detection/segmentation, or PPO agent, or
+              DreamBooth. Publish on Hugging Face Hub.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span class="node-tag">LoRA</span><span
+                class="node-tag">HuggingFace</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 9 — MLOps & Production
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-amber" data-phase="9" id="phase-9">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 09</div>
+          <div class="phase-title">MLOps &amp; Production</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="46" data-title="ML System Design"
+            data-desc="ML system design is the discipline of making the right architectural and engineering choices when building ML systems at scale. It sits at the intersection of ML knowledge and software engineering — and it's what separates practitioners who can operate in industry from those who can only work in research notebooks."
+            data-topics="The ML system design interview framework: requirements, data, features, model, serving, monitoring|Batch vs. online inference: trade-offs in latency, throughput, and freshness|Feature stores: what they are, why they matter, and how to use Feast or Tecton|Training-serving skew: the most common production ML failure mode|Data versioning and lineage: DVC, Delta Lake, tracking data across pipeline stages|ML platform components: the full stack (orchestration, feature store, training, serving, monitoring)|Real system design walkthroughs: recommendation systems, search ranking, fraud detection, content moderation"
+            data-tags="ML-system-design,feature-store,batch-vs-online">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">ML System Design</div>
+            <div class="node-desc">Feature stores, training-serving skew, batch vs. online inference — design production
+              ML systems that don't fail silently.</div>
+            <div class="node-tags"><span class="node-tag">system-design</span><span
+                class="node-tag">feature-store</span></div>
+          </div>
+
+          <div class="node" data-id="47" data-title="Model Serving & APIs"
+            data-desc="A model that can't be served is useless. Model serving is the engineering discipline of making ML models available to applications — efficiently, reliably, and at scale. Understanding inference optimisation is increasingly critical as models grow larger and latency requirements become more demanding."
+            data-topics="Model serialisation: ONNX, TorchScript, SavedModel — format trade-offs|FastAPI for ML serving: async endpoints, request validation, background tasks|Model inference optimisation: quantisation (INT8, FP16), pruning, distillation, torch.compile|Batching strategies: dynamic batching, microbatching for GPU efficiency|Serving frameworks: TorchServe, Triton Inference Server, vLLM (for LLMs)|Containerisation: Dockerising ML models, managing CUDA dependencies|Horizontal scaling and load balancing: serving at thousands of QPS"
+            data-tags="serving,FastAPI,ONNX,quantisation,vLLM">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Model Serving &amp; APIs</div>
+            <div class="node-desc">ONNX, quantisation, FastAPI, Triton, vLLM, dynamic batching — serve models
+              efficiently from prototype to production scale.</div>
+            <div class="node-tags"><span class="node-tag">serving</span><span class="node-tag">vLLM</span><span
+                class="node-tag">quantisation</span></div>
+          </div>
+
+          <div class="node" data-id="48" data-title="Experiment Tracking & Pipelines"
+            data-desc="Reproducibility is the foundation of trustworthy ML. Without experiment tracking, you can't know which model to deploy. Without ML pipelines, your training process is a fragile mess of scripts. This topic covers the tools and practices that make ML development rigorous and collaborative."
+            data-topics="MLflow: experiment tracking, model registry, project packaging|Weights & Biases (wandb): real-time training dashboards, artifact versioning, sweeps for hyperparameter search|DVC: data and model versioning with Git integration|Kedro: the open-source framework for production ML pipelines|Airflow and Prefect: workflow orchestration for ML data pipelines|Makefile-driven ML projects: reproducible with a single command|The Cookiecutter Data Science template: a battle-tested project structure"
+            data-tags="MLflow,wandb,DVC,Kedro,reproducibility">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Experiment Tracking &amp; Pipelines</div>
+            <div class="node-desc">MLflow, wandb, DVC, Kedro, Prefect — build reproducible, tracked, version-controlled
+              ML pipelines that teams can trust.</div>
+            <div class="node-tags"><span class="node-tag">MLflow</span><span class="node-tag">wandb</span><span
+                class="node-tag">DVC</span></div>
+          </div>
+
+          <div class="node" data-id="49" data-title="Monitoring & Model Drift"
+            data-desc="Models degrade in production — silently, gradually, and catastrophically. The distribution of real-world data shifts over time. Feature importances change. Labels drift. Without systematic monitoring, you only find out when users complain. This topic covers the complete observability stack for production ML."
+            data-topics="Types of drift: data drift (covariate shift), concept drift (P(Y|X) changes), label drift|Statistical tests for drift detection: Kolmogorov-Smirnov, Population Stability Index (PSI), Jensen-Shannon divergence|Monitoring tools: Evidently AI, WhyLogs, Arize, Fiddler|Performance monitoring: tracking model accuracy, precision, recall over time with real labels|Shadow mode deployment: running old and new models in parallel before switching|A/B testing in production: the statistics of online model comparison|Retraining strategies: scheduled, triggered by drift threshold, triggered by performance degradation"
+            data-tags="monitoring,drift,Evidently,production">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Monitoring &amp; Model Drift</div>
+            <div class="node-desc">PSI, KS test, Evidently AI, shadow mode, triggered retraining — detect and respond to
+              degradation before users notice.</div>
+            <div class="node-tags"><span class="node-tag">monitoring</span><span class="node-tag">drift</span><span
+                class="node-tag">Evidently</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="50" data-title="🔨 Project: Production ML System"
+            data-desc="Build a complete, production-quality ML system with all the engineering infrastructure of a real company — tracking, versioning, serving, monitoring, and a CI/CD pipeline for model deployment. This is the project that demonstrates you can do ML engineering, not just ML research."
+            data-topics="System: re-use a model from a previous project or build a new one (recommendation, fraud, churn)|Experiment tracking: log all runs to wandb or MLflow, with hyperparameters, metrics, and model artifacts|Pipeline: implement a Kedro or Prefect pipeline for data ingestion → training → evaluation → registration|Serving: wrap the best model in a FastAPI service, containerise with Docker, deploy to a cloud platform (AWS/GCP/Azure or Railway/Render)|Monitoring: integrate Evidently AI for data drift and performance monitoring, set up alerts|CI/CD: GitHub Actions pipeline that runs tests, lints, and auto-deploys on merge to main|Deliverable: GitHub repo with full infrastructure, architecture diagram, and 10-minute demo video"
+            data-tags="project,MLOps,production,CI/CD,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Project: Production ML System</div>
+            <div class="node-desc">wandb tracking → Kedro pipeline → FastAPI + Docker → cloud deploy → Evidently
+              monitoring → GitHub Actions CI/CD. The full stack.</div>
+            <div class="node-tags"><span class="node-tag project">project</span><span class="node-tag">MLOps</span><span
+                class="node-tag">full-stack</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PHASE 10 — Research & Mastery
+      ═══════════════════════════════════════════ -->
+      <div class="phase phase-teal" data-phase="10" id="phase-10">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 10</div>
+          <div class="phase-title">Research &amp; Mastery</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="51" data-title="Reading ML Papers"
+            data-desc="The frontier of ML moves through papers, not textbooks. Developing the skill to read, understand, reproduce, and critique research papers is what separates practitioners who follow the field from those who advance it. This is the skill that unlocks lifelong self-directed learning in ML."
+            data-topics="The anatomy of an ML paper: abstract, intro, related work, method, experiments, limitations|Reading order: abstract → experiments → method → related work|Mathematical notation guide: the most common notation systems in ML papers|Reproducing a paper: the single best learning exercise in ML (Papers with Code)|Essential paper lists: the ML canon — Attention is All You Need, ResNet, AlexNet, DDPM, LoRA, InstructGPT|Paper reading communities: ML Collective, Papers with Code, Two Minute Papers, Yannic Kilcher|Writing a paper summary: the template for building a paper reading habit"
+            data-tags="papers,research,reading">
+            <div class="node-top">
+              <div class="node-icon">📚</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Reading ML Papers</div>
+            <div class="node-desc">Paper anatomy, reading order, reproducing results, the ML canon — develop lifelong
+              self-directed research ability.</div>
+            <div class="node-tags"><span class="node-tag">papers</span><span class="node-tag">research</span></div>
+          </div>
+
+          <div class="node" data-id="52" data-title="Ethics & Responsible AI"
+            data-desc="ML systems can perpetuate discrimination, invade privacy, spread misinformation, and concentrate power. As a practitioner, you have a responsibility to understand the ethical dimensions of the systems you build — not as an afterthought, but as a core engineering consideration baked into every design decision."
+            data-topics="Algorithmic bias: sources (training data, label bias, proxy variables), measurement, and mitigation|Fairness definitions: demographic parity, equalised odds, individual fairness — and their incompatibility|Differential privacy: the formal framework for privacy-preserving ML — DP-SGD|Federated learning: training without centralising sensitive data|Model cards and datasheets: documentation standards for responsible AI|AI safety: alignment problem, reward hacking, specification gaming, Goodhart's Law in ML|Governance frameworks: EU AI Act, NIST AI RMF — understanding the regulatory landscape"
+            data-tags="ethics,fairness,privacy,safety">
+            <div class="node-top">
+              <div class="node-icon">⚖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Ethics &amp; Responsible AI</div>
+            <div class="node-desc">Algorithmic bias, fairness definitions, DP-SGD, federated learning, model cards, AI
+              safety, EU AI Act — build responsibly.</div>
+            <div class="node-tags"><span class="node-tag">ethics</span><span class="node-tag">fairness</span><span
+                class="node-tag">AI-safety</span></div>
+          </div>
+
+          <div class="node wide" data-id="53" data-title="Frontier Topics"
+            data-desc="The field moves fast. These are the areas at the frontier of ML research in 2024–2025 that any expert must be familiar with — not necessarily deep experts in each, but aware of the landscape, the key ideas, and the open problems. These form the basis of your ongoing learning agenda."
+            data-topics="Scaling laws: the Chinchilla laws — optimal compute allocation between model size and data|Mixture of Experts (MoE): sparse activation for efficient large model training (Mixtral, GPT-4 rumoured architecture)|State Space Models (SSMs): Mamba and the return of linear-time sequence modelling|Mechanistic Interpretability: circuits in neural networks — understanding what's happening inside LLMs (Anthropic's work)|Multimodal Foundation Models: GPT-4V, Gemini, LLaVA — unified vision-language models|Test-time compute: chain-of-thought, self-consistency, o1/o3-style reasoning models|World models and model-based RL: DreamerV3, GAIA-1 — the frontier of embodied AI"
+            data-tags="frontier,scaling,MoE,Mamba,SSM">
+            <div class="node-top">
+              <div class="node-icon">🔭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Frontier Topics</div>
+            <div class="node-desc">Chinchilla scaling laws, MoE (Mixtral), Mamba/SSMs, mechanistic interpretability,
+              multimodal models, test-time compute.</div>
+            <div class="node-tags"><span class="node-tag">frontier</span><span class="node-tag">scaling</span><span
+                class="node-tag">Mamba</span><span class="node-tag">MoE</span></div>
+          </div>
+
+          <div class="node wide project-card" data-id="54" data-title="🔨 Final Capstone: Original Contribution"
+            data-desc="The final project is not a tutorial reproduction or a Kaggle competition — it is an original contribution to the field. This is the project that defines you as an ML practitioner. It should take 1–3 months, involve reading relevant literature, and produce something genuinely new."
+            data-topics="Track 1 — Research: reproduce a recent paper from scratch, then extend it in one meaningful way (new dataset, ablation study, architecture variant). Write it up as a technical report.|Track 2 — Application: identify a real problem in a domain you care about (healthcare, climate, education, finance) that ML has not yet addressed well. Build and evaluate an ML solution. Write a paper-style report.|Track 3 — Tool: build a high-quality open-source ML library, dataset, or benchmark that fills a genuine gap. Document it properly. Promote it.|Track 4 — Competition: achieve a top-10% finish on a Kaggle competition and write a detailed solution write-up that explains every decision|For all tracks: write a 5,000-word technical report, create a 20-minute presentation, publish code on GitHub, and share on Twitter/X and LinkedIn"
+            data-tags="project,original,research,capstone,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔨 Final Capstone: Original Contribution</div>
+            <div class="node-desc">Reproduce + extend a paper, build a novel ML application, or achieve top-10% on
+              Kaggle with a complete technical report.</div>
+            <div class="node-tags"><span class="node-tag project">capstone</span><span
+                class="node-tag">original</span><span class="node-tag">portfolio</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>52</strong> topics</div>
+      <div class="stat">🔨 <strong>8</strong> projects</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/10 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — MATHEMATICAL FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOTAL = 54; // 52 topics + 2 projects counted separately for sidebar sdot completeness
+    const phaseNames = {
+      1: 'MATHEMATICAL FOUNDATIONS',
+      2: 'PROGRAMMING & TOOLS',
+      3: 'CORE ML CONCEPTS',
+      4: 'SUPERVISED LEARNING',
+      5: 'UNSUPERVISED & SEMI-SUPERVISED LEARNING',
+      6: 'MODEL ENGINEERING',
+      7: 'DEEP LEARNING',
+      8: 'SPECIALISATIONS',
+      9: 'MLOPS & PRODUCTION',
+      10: 'RESEARCH & MASTERY'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-ml-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-ml-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = all ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        const phNum = ph.padStart(2, '0');
+        document.getElementById('panelPhaseTag').textContent = `PHASE ${phNum} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

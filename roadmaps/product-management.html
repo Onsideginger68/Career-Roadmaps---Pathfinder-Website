@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Management Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 34 complete</span>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Business → <span>Product Management</span></div>
+      <div class="page-tag">Business</div>
+      <h1 class="page-title">Product<br />Management</h1>
+      <p class="page-desc">A complete beginner-to-practitioner roadmap covering everything a product manager needs —
+        from understanding users and defining strategy to writing specs, running sprints, launching products, and
+        growing in the PM career. 6 phases, 34 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>5–8 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>34 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>5,100</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 34 topics completed</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — PM Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What Does a PM Actually Do?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        PM vs. Other Roles</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Product Lifecycle</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        PM Mental Models</div>
+
+      <div class="sidebar-section-title">Phase 2 — User Research</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Understanding Users</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        User Interviews</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Jobs-to-be-Done</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Personas &amp; Problem Statements</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Competitive Analysis</div>
+
+      <div class="sidebar-section-title">Phase 3 — Strategy &amp; Prioritisation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Product Vision &amp; Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        OKRs &amp; Goal Setting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Prioritisation Frameworks</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Product Roadmap</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Managing the Backlog</div>
+
+      <div class="sidebar-section-title">Phase 4 — Building &amp; Shipping</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Writing PRDs &amp; User Stories</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Agile &amp; Scrum for PMs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Working with Engineers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Working with Designers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Go-to-Market &amp; Launch</div>
+
+      <div class="sidebar-section-title">Phase 5 — Metrics &amp; Growth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Product Metrics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        North Star Metric</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        A/B Testing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Data-Informed Decisions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Growth &amp; Retention</div>
+
+      <div class="sidebar-section-title">Phase 6 — PM Career</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Stakeholder Management</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Influence Without Authority</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        PM Interviews</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building Your PM Portfolio</div>
+
+    </aside>
+
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">PM Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="What Does a PM Actually Do?"
+            data-desc="The product manager role is one of the most misunderstood in tech. PMs don't manage people, write code, or design interfaces — they own the 'why' and 'what' of a product, translating user needs into a vision that engineers and designers can build toward. This topic maps what the job actually looks like day to day."
+            data-topics="The PM's core responsibility: defining what to build and why|The PM is not the CEO of the product — the real meaning of that phrase|A typical PM week: discovery, planning, standups, reviews, stakeholder syncs|The three pillars of PM: user empathy, business acumen, technical fluency|What PMs don't do: code, design, project manage (usually)|How the PM role differs at startups vs. growth-stage vs. enterprise companies"
+            data-tags="foundations,PM-role">
+            <div class="node-top">
+              <div class="node-icon">🧭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What Does a PM Actually Do?</div>
+            <div class="node-desc">Own the 'why' and 'what' of a product. Map the day-to-day reality of the role before
+              anything else.</div>
+            <div class="node-tags"><span class="node-tag">foundations</span><span class="node-tag">PM-role</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="PM vs. Other Roles"
+            data-desc="PMs sit at the intersection of engineering, design, and business — which means they interface with almost everyone but report to no one's domain directly. Understanding how PMs relate to engineers, designers, data analysts, marketers, and leadership clarifies where your authority starts, ends, and why influence matters more than hierarchy."
+            data-topics="PM vs. Project Manager: the critical distinction|PM vs. Engineering Manager: who owns what|PM vs. Designer: collaborating without overstepping|PM vs. Growth PM vs. Technical PM vs. Platform PM|The PM's relationship with leadership: upwards communication|The 'three-legged stool': product, design, engineering alignment"
+            data-tags="roles,team">
+            <div class="node-top">
+              <div class="node-icon">🔀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">PM vs. Other Roles</div>
+            <div class="node-desc">PMs work with everyone but own no team. Understand the boundaries and relationships
+              that define the role.</div>
+            <div class="node-tags"><span class="node-tag">roles</span><span class="node-tag">cross-functional</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="3" data-title="The Product Lifecycle"
+            data-desc="Every product goes through predictable stages: discovery, definition, development, launch, and growth. Each stage demands a different kind of PM thinking and output. Understanding the full lifecycle prevents the most common PM mistake — jumping to solutions before the problem is understood."
+            data-topics="The 5 stages: discovery, definition, development, launch, growth|Double Diamond mapped to the product lifecycle|What PMs produce at each stage: research, specs, roadmaps, launch plans|The concept of product-market fit: what it means and how to know|When to kill a product or feature: the hardest PM decision|Continuous discovery: why product work is never truly 'done'"
+            data-tags="lifecycle,process">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Product Lifecycle</div>
+            <div class="node-desc">Discovery to growth — the stages every product goes through and what the PM's job is
+              at each one.</div>
+            <div class="node-tags"><span class="node-tag">lifecycle</span><span class="node-tag">process</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="PM Mental Models"
+            data-desc="The best PMs think in frameworks. Mental models are reusable lenses for making better decisions faster — from deciding what to build to diagnosing why a metric dropped. Building a personal library of mental models is one of the highest-leverage investments you can make as an early PM."
+            data-topics="First principles thinking: breaking problems down to fundamentals|Opportunity cost: every 'yes' is a 'no' to everything else|The Eisenhower Matrix applied to product decisions|Inversion: thinking about what could go wrong first|Second-order thinking: what happens after what happens next|Confirmation bias: the PM's most dangerous cognitive trap|Key PM books: Inspired (Cagan), Continuous Discovery Habits (Torres), Shape Up (Basecamp)"
+            data-tags="mental-models,thinking">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">PM Mental Models</div>
+            <div class="node-desc">First principles, inversion, opportunity cost — the reusable thinking frameworks that
+              make PMs make better decisions.</div>
+            <div class="node-tags"><span class="node-tag">mental-models</span><span class="node-tag">thinking</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">User Research &amp; Discovery</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Understanding Users"
+            data-desc="PMs build products for people, not for themselves. Developing deep, genuine empathy for users — understanding their goals, frustrations, context, and behaviour — is the most important skill in product. Everything else is secondary to getting this right."
+            data-topics="The difference between what users say, do, and want|Observational research: watching users, not just asking them|Qualitative vs. quantitative data: when each reveals what|Segmenting users: who matters most for this product right now|Building empathy at scale: support tickets, reviews, forums, social listening|The danger of building for yourself: survivorship and demographic bias"
+            data-tags="users,empathy">
+            <div class="node-top">
+              <div class="node-icon">👤</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Understanding Users</div>
+            <div class="node-desc">Users say one thing, do another, and want a third. Deep empathy — not surveys — is
+              the foundation of good product work.</div>
+            <div class="node-tags"><span class="node-tag">users</span><span class="node-tag">empathy</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="User Interviews"
+            data-desc="The user interview is the PM's most powerful discovery tool. Done well, it uncovers the real problems behind feature requests. Done poorly, it confirms whatever you already believed. Learn the PM-specific interview approach: problem-focused, non-leading, and designed to surface insight rather than validate assumptions."
+            data-topics="Interview goal: discover problems, not validate solutions|Writing a discovery-focused discussion guide|The Mom Test: asking questions that can't be answered with politeness|Recruiting the right users: who to talk to and how many|Note-taking and synthesis: turning 8 interviews into clear insights|Affinity mapping: finding patterns across multiple interviews"
+            data-tags="interviews,discovery">
+            <div class="node-top">
+              <div class="node-icon">🎙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">User Interviews</div>
+            <div class="node-desc">The Mom Test, problem-focused questions, affinity mapping — interview to discover
+              real problems, not confirm assumptions.</div>
+            <div class="node-tags"><span class="node-tag">interviews</span><span class="node-tag">mom-test</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Jobs-to-be-Done"
+            data-desc="Jobs-to-be-Done (JTBD) is one of the most powerful frameworks in product thinking. People don't buy products — they hire them to do a job. Understanding the functional, social, and emotional jobs users are trying to complete is more actionable than demographic personas."
+            data-topics="The JTBD origin: Clayton Christensen's milkshake story|Functional, social, and emotional dimensions of a job|The job statement format: When... I want to... So I can...|JTBD vs. traditional personas: what each is better for|Switch interviews: understanding why users switch products|Mapping jobs to features: from insight to roadmap input"
+            data-tags="JTBD,frameworks">
+            <div class="node-top">
+              <div class="node-icon">🔧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Jobs-to-be-Done</div>
+            <div class="node-desc">People don't buy products — they hire them for jobs. JTBD surfaces the deeper
+              motivation behind every user action.</div>
+            <div class="node-tags"><span class="node-tag">JTBD</span><span class="node-tag">Christensen</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Personas & Problem Statements"
+            data-desc="Personas and problem statements translate messy research into actionable artefacts the whole team can align on. A good persona is a research-grounded character sketch. A well-formed problem statement defines the gap between where users are and where they want to be — without prescribing a solution."
+            data-topics="Building research-based personas (not demographic fiction)|The persona template: who, what, goal, frustration, context|The problem statement formula: [User] needs [goal] but [barrier] because [insight]|How to Know You've Nailed the Problem (HMW questions)|Problem statements as alignment tools for cross-functional teams|When personas distract: the limits of the framework"
+            data-tags="personas,problem-statements">
+            <div class="node-top">
+              <div class="node-icon">🧩</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Personas &amp; Problem Statements</div>
+            <div class="node-desc">Translate research into artefacts the team can act on — research-grounded personas
+              and crisp problem definitions.</div>
+            <div class="node-tags"><span class="node-tag">personas</span><span class="node-tag">HMW</span></div>
+          </div>
+
+          <div class="node wide" data-id="9" data-title="Competitive Analysis"
+            data-desc="No product exists in a vacuum. Understanding your competitive landscape — direct competitors, indirect alternatives, and non-consumption — shapes positioning, prioritisation, and strategy. PMs who don't study competition build products in a market that's already been won."
+            data-topics="Mapping the competitive landscape: direct, indirect, and substitute competitors|How to audit a competitor's product: sign up, use it, deconstruct it|Competitive positioning: finding the gap your product can own|Porter's Five Forces applied to product strategy|Competitor research sources: G2, Capterra, App Store reviews, job postings|The danger of building feature-for-feature against competitors"
+            data-tags="competitive,analysis">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Competitive Analysis</div>
+            <div class="node-desc">Map the landscape, audit competitors' products, find the gap. Build with full
+              knowledge of the market you're entering.</div>
+            <div class="node-tags"><span class="node-tag">competitive</span><span class="node-tag">positioning</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Strategy &amp; Prioritisation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="10" data-title="Product Vision & Strategy"
+            data-desc="Vision is the north star — an inspiring picture of what the product will be and who it will serve in 3–5 years. Strategy is the logic that connects where you are today to that vision: the choices about which problems to solve, which markets to serve, and which capabilities to build first."
+            data-topics="The product vision statement: what makes it inspiring vs. generic|Vision vs. strategy vs. roadmap vs. backlog: the hierarchy|The Opportunity Solution Tree (Teresa Torres) for strategy mapping|Choosing the right strategic bets under uncertainty|Product-led vs. sales-led vs. marketing-led growth strategies|Communicating product vision to engineering, design, and leadership"
+            data-tags="vision,strategy">
+            <div class="node-top">
+              <div class="node-icon">🌟</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Product Vision &amp; Strategy</div>
+            <div class="node-desc">Vision is the north star. Strategy is the logic connecting today to it. Learn to set
+              both and make them actionable.</div>
+            <div class="node-tags"><span class="node-tag">vision</span><span class="node-tag">strategy</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="OKRs & Goal Setting"
+            data-desc="OKRs (Objectives and Key Results) are the goal-setting framework used by Google, Spotify, and most modern product organisations. They align teams around outcomes rather than outputs, ensuring everyone is working toward the same measurable results rather than just shipping features."
+            data-topics="OKR structure: Objective (qualitative direction) + Key Results (measurable outcomes)|Product OKRs vs. company OKRs: the hierarchy|Writing good Key Results: outcome-focused, measurable, time-bound|The difference between Key Results and tasks|Scoring OKRs: the 0.7 sweet spot|Common OKR mistakes: vanity metrics, too many KRs, confusing outputs and outcomes"
+            data-tags="OKRs,goals">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">OKRs &amp; Goal Setting</div>
+            <div class="node-desc">Objectives + measurable Key Results — align the team around outcomes, not features.
+              The framework used by Google and Spotify.</div>
+            <div class="node-tags"><span class="node-tag">OKRs</span><span class="node-tag">goals</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Prioritisation Frameworks"
+            data-desc="PMs always have more ideas than capacity to build them. Prioritisation is about making principled decisions under uncertainty — using frameworks that make trade-offs visible and defensible to stakeholders. Learn the most used frameworks and when each applies."
+            data-topics="RICE: Reach, Impact, Confidence, Effort — the most widely used scoring model|ICE: the lighter version for early-stage and fast-moving teams|MoSCoW: Must have, Should have, Could have, Won't have|Kano model: categorising features by their impact on satisfaction|Story mapping: prioritising based on user journey coverage|The buy-a-feature game: using stakeholders to reveal priorities"
+            data-tags="prioritisation,RICE,frameworks">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Prioritisation Frameworks</div>
+            <div class="node-desc">RICE, ICE, Kano, MoSCoW — make trade-offs visible and defensible with principled,
+              transparent prioritisation.</div>
+            <div class="node-tags"><span class="node-tag">RICE</span><span class="node-tag">Kano</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="The Product Roadmap"
+            data-desc="The roadmap is the PM's primary communication tool — but most roadmaps are done wrong. Feature-based, date-heavy roadmaps breed false certainty and micromanagement. Outcome-based, now-next-later roadmaps communicate intent and direction without locking teams into commitments based on guesswork."
+            data-topics="Now / Next / Later roadmap: the modern standard|Feature roadmaps vs. outcome roadmaps: the critical shift|Roadmap tools: Linear, Productboard, Notion, Jira Advanced Roadmaps|Who owns the roadmap and who contributes to it|Managing roadmap expectations with stakeholders|Saying no (and no for now): the PM's most used phrase"
+            data-tags="roadmap,planning">
+            <div class="node-top">
+              <div class="node-icon">🗺️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Product Roadmap</div>
+            <div class="node-desc">Now / Next / Later beats feature timelines. Learn to build roadmaps that communicate
+              direction without false certainty.</div>
+            <div class="node-tags"><span class="node-tag">roadmap</span><span class="node-tag">planning</span></div>
+          </div>
+
+          <div class="node wide" data-id="14" data-title="Managing the Backlog"
+            data-desc="The backlog is the living list of everything the team might build — and a PM's greatest source of drag if managed poorly. A well-groomed backlog is short, prioritised, and every item is clearly understood. A poorly groomed backlog is a graveyard of forgotten ideas that creates confusion and slows teams down."
+            data-topics="What belongs in the backlog (and what doesn't)|Backlog grooming rituals: frequency, participants, agenda|Writing clear acceptance criteria: the definition of done|Epic → Story → Task: the hierarchy and when each level matters|Keeping the backlog ruthlessly short — the 3-month rule|Backlog tools: Jira, Linear, Notion, GitHub Issues"
+            data-tags="backlog,grooming">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Managing the Backlog</div>
+            <div class="node-desc">A bloated backlog is a liability. Keep it short, groomed, and every item clearly
+              understood — or it will own you.</div>
+            <div class="node-tags"><span class="node-tag">backlog</span><span class="node-tag">grooming</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Building &amp; Shipping</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="15" data-title="Writing PRDs & User Stories"
+            data-desc="The Product Requirements Document (PRD) and user story are the PM's primary written deliverables. They translate the 'why' into a 'what' that engineers can build. A great PRD gives teams context, not just instructions — explaining the problem so deeply that engineers can make smart decisions without asking for clarification at every step."
+            data-topics="PRD structure: problem, goals, non-goals, user stories, success metrics, open questions|The one-pager vs. full PRD: knowing which to write when|User story format: As a [user], I want to [action], so that [outcome]|Acceptance criteria: the definition of done for each story|Edge cases and what-ifs: anticipating engineering questions before they're asked|PRD anti-patterns: over-specifying, under-specifying, missing the 'why'"
+            data-tags="PRD,user-stories">
+            <div class="node-top">
+              <div class="node-icon">📝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Writing PRDs &amp; User Stories</div>
+            <div class="node-desc">PRDs and user stories translate 'why' into 'what'. Give teams context, not just
+              instructions — and they'll build better.</div>
+            <div class="node-tags"><span class="node-tag">PRD</span><span class="node-tag">user-stories</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Agile & Scrum for PMs"
+            data-desc="Most product teams operate in Agile frameworks — most commonly Scrum or Kanban. PMs need to understand sprints, ceremonies, and the rhythm of agile delivery well enough to participate effectively and keep the team moving without creating unnecessary process overhead."
+            data-topics="Agile manifesto principles relevant to PMs|Scrum ceremonies: sprint planning, daily standup, review, retrospective|The PM's role in sprint ceremonies (not scrum master)|Velocity, story points, and capacity planning basics|Kanban as an alternative: continuous flow vs. sprints|Shape Up (Basecamp): the appetite-based alternative to Scrum"
+            data-tags="agile,scrum">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Agile &amp; Scrum for PMs</div>
+            <div class="node-desc">Sprints, ceremonies, velocity — participate in agile delivery effectively without
+              creating process overhead.</div>
+            <div class="node-tags"><span class="node-tag">agile</span><span class="node-tag">scrum</span></div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Working with Engineers"
+            data-desc="The PM–engineer relationship is the most critical partnership in product. PMs who understand how engineers think, what slows them down, and what earns their trust build products faster and with fewer reworks. You don't need to code, but you do need to speak the language."
+            data-topics="What engineers need from PMs: context, clear requirements, stable priorities|Technical concepts PMs should understand: APIs, databases, latency, technical debt|Estimating complexity: T-shirt sizes, story points, spikes|How to negotiate scope without demoralising the team|Running good technical refinement sessions|Building trust: consistency, respecting estimates, shielding from interruptions"
+            data-tags="engineering,collaboration">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Working with Engineers</div>
+            <div class="node-desc">The most critical PM partnership. Give engineers context, respect estimates, and
+              speak enough of the technical language.</div>
+            <div class="node-tags"><span class="node-tag">engineering</span><span class="node-tag">collaboration</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Working with Designers"
+            data-desc="PMs define the problem; designers own the solution space. The best PM–designer relationships are built on mutual respect, clear problem framing, and enough space for designers to do their best work — not a PM dictating wireframes. Learn to give design feedback that's useful, not controlling."
+            data-topics="The PM's job: problem and constraints — not wireframes|Giving effective design feedback: outcome-focused, not aesthetic-focused|Design review rituals: critique vs. approval|Prototyping and usability testing: when to validate before building|UX debt: the invisible accumulation of poor design decisions|Working with design systems: consistency as a feature"
+            data-tags="design,collaboration">
+            <div class="node-top">
+              <div class="node-icon">🎨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Working with Designers</div>
+            <div class="node-desc">PMs own the problem, designers own the solution space. Learn to frame well and give
+              feedback without dictating.</div>
+            <div class="node-tags"><span class="node-tag">design</span><span class="node-tag">feedback</span></div>
+          </div>
+
+          <div class="node wide" data-id="19" data-title="Go-to-Market & Launch"
+            data-desc="Building a great feature is only half the job. Getting it to users successfully — with the right positioning, messaging, timing, and enablement — is what makes the difference between a launch that lands and one that's ignored. PMs own the launch process and coordinate every function involved."
+            data-topics="Go-to-market planning: who does what and when|Positioning and messaging: translating features into user benefits|Internal enablement: briefing support, sales, and customer success|Soft launch vs. full launch vs. feature flag rollout|Beta programmes and early access: building buzz and gathering feedback|Launch metrics: defining success before you ship|Post-launch review: what to measure in the first 30 days"
+            data-tags="GTM,launch">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Go-to-Market &amp; Launch</div>
+            <div class="node-desc">Building is half the job. Coordinate positioning, enablement, rollout strategy, and
+              success metrics to make launches land.</div>
+            <div class="node-tags"><span class="node-tag">GTM</span><span class="node-tag">launch</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Metrics &amp; Growth</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="20" data-title="Product Metrics"
+            data-desc="PMs live and die by metrics. Knowing which numbers to track, what they tell you, and how to avoid the trap of vanity metrics is a core competency. Learn the standard metric frameworks — AARRR, HEART, and the input/output model — and how to choose the right metrics for your product's stage."
+            data-topics="AARRR (Pirate Metrics): Acquisition, Activation, Retention, Referral, Revenue|Google's HEART framework: Happiness, Engagement, Adoption, Retention, Task Success|Leading vs. lagging indicators: measuring what predicts future outcomes|Vanity metrics vs. actionable metrics: the critical distinction|Instrumentation: working with data teams to track the right things|Metric trees: connecting feature metrics to business outcomes"
+            data-tags="metrics,AARRR,HEART">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Product Metrics</div>
+            <div class="node-desc">AARRR, HEART, leading vs. lagging — choose the right metrics, avoid vanity, and
+              connect feature work to business outcomes.</div>
+            <div class="node-tags"><span class="node-tag">metrics</span><span class="node-tag">AARRR</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="North Star Metric"
+            data-desc="The North Star Metric (NSM) is the single number that best captures the core value your product delivers to users. It aligns the entire organisation and prevents the fragmentation that comes from tracking too many metrics. Learn how to define it and build a metric tree around it."
+            data-topics="What a North Star Metric is: one number that measures value delivered|Famous examples: Spotify (time listening), Airbnb (nights booked), Slack (messages sent)|The metric tree: input metrics that drive the NSM|Why 'revenue' is not a North Star Metric|How to choose yours: the value-action-leading-indicator framework|Counter-metrics: ensuring your NSM doesn't optimise the wrong thing"
+            data-tags="north-star,NSM">
+            <div class="node-top">
+              <div class="node-icon">⭐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">North Star Metric</div>
+            <div class="node-desc">One number that captures the core value delivered — Spotify's time listening,
+              Airbnb's nights booked. Define yours.</div>
+            <div class="node-tags"><span class="node-tag">NSM</span><span class="node-tag">alignment</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="A/B Testing"
+            data-desc="A/B testing lets you make product decisions based on evidence rather than opinion. Learn how to design a valid experiment, calculate sample size, interpret results correctly, and avoid the common pitfalls — like stopping tests too early or running too many simultaneously."
+            data-topics="The mechanics of an A/B test: control, variant, traffic split|Forming a testable hypothesis: If we [change X] for [user Y], we expect [outcome Z]|Statistical significance and p-values: what they actually mean for PMs|Minimum detectable effect: how small a difference can you detect?|Common mistakes: peeking, multiple testing, selection bias|When NOT to A/B test: low traffic, qualitative questions|Tools: Optimizely, LaunchDarkly, Statsig, Growthbook"
+            data-tags="A/B testing,experiments">
+            <div class="node-top">
+              <div class="node-icon">🧪</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">A/B Testing</div>
+            <div class="node-desc">Design valid experiments, interpret results correctly, and avoid the pitfalls that
+              produce false confidence.</div>
+            <div class="node-tags"><span class="node-tag">A/B testing</span><span class="node-tag">experiments</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="23" data-title="Data-Informed Decisions"
+            data-desc="PMs must be comfortable with data without being prisoners to it. Learn the SQL basics that let you pull your own data, how to work effectively with data analysts, and how to triangulate quantitative signals with qualitative insight when the data tells you what but not why."
+            data-topics="Basic SQL for PMs: SELECT, WHERE, GROUP BY, JOIN — the four you actually need|Reading a funnel: finding the step where users drop off|Cohort analysis: comparing behaviour of user groups over time|Combining quant and qual: data tells you what, interviews tell you why|Dashboards and self-serve analytics: Amplitude, Mixpanel, Looker|The limits of data: when to trust your judgment over the numbers"
+            data-tags="data,SQL,analytics">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Data-Informed Decisions</div>
+            <div class="node-desc">SQL basics, funnel analysis, cohort analysis — pull your own data and triangulate it
+              with qualitative insight.</div>
+            <div class="node-tags"><span class="node-tag">data</span><span class="node-tag">SQL</span></div>
+          </div>
+
+          <div class="node wide" data-id="24" data-title="Growth & Retention"
+            data-desc="Acquisition gets users in the door — retention keeps them coming back. For most products, retention is the metric that matters most for long-term success. Learn the frameworks for understanding and improving retention, the product-led growth playbook, and the viral loops that let products grow without a marketing budget."
+            data-topics="Retention curves: day-1, day-7, day-30 benchmarks by category|The aha moment: the action correlated with long-term retention|Activation: improving the path from sign-up to first value|Product-led growth (PLG): Slack, Notion, Figma's self-serve model|Viral loops and network effects: when users grow the product|Churn analysis: understanding why users leave and what to do about it"
+            data-tags="growth,retention,PLG">
+            <div class="node-top">
+              <div class="node-icon">🌱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Growth &amp; Retention</div>
+            <div class="node-desc">Retention curves, aha moments, PLG, viral loops — the frameworks for building
+              products people keep coming back to.</div>
+            <div class="node-tags"><span class="node-tag">retention</span><span class="node-tag">PLG</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">PM Career &amp; Leadership</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="25" data-title="Stakeholder Management"
+            data-desc="PMs spend as much time managing expectations and communication as they do building product. Stakeholders — executives, sales, customer success, marketing, legal — all have opinions about what should be built next. The ability to align, influence, and sometimes push back on stakeholders without burning bridges is what separates senior PMs from junior ones."
+            data-topics="Mapping stakeholders: who has influence, who has information, who will be affected|Communication cadences: the weekly PM update that keeps people informed|Managing up: how to communicate with executives without wasting their time|Handling conflicting stakeholder priorities: the principled disagreement|Saying no with data: how to decline feature requests without creating enemies|The RACI model: clarifying who is Responsible, Accountable, Consulted, Informed"
+            data-tags="stakeholders,communication">
+            <div class="node-top">
+              <div class="node-icon">🤝</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Stakeholder Management</div>
+            <div class="node-desc">Align, influence, and push back without burning bridges — managing up, across, and
+              sideways is half the PM job.</div>
+            <div class="node-tags"><span class="node-tag">stakeholders</span><span class="node-tag">RACI</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Influence Without Authority"
+            data-desc="PMs have broad responsibility and almost no formal authority — they can't tell engineers what to build or marketers what to say. The entire job relies on earned influence: building credibility through excellent thinking, clear communication, and a track record of being right about what matters."
+            data-topics="Why influence beats authority in cross-functional teams|The credibility foundation: being right more often than not|Storytelling as the core PM influence tool|Pre-wiring: aligning key stakeholders before the meeting|Handling disagreement: the disagree-and-commit principle|Building trust with engineering: consistency is more valuable than charisma"
+            data-tags="influence,leadership">
+            <div class="node-top">
+              <div class="node-icon">💡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Influence Without Authority</div>
+            <div class="node-desc">PMs can't tell anyone what to do. Everything is earned — credibility, clarity,
+              pre-wiring, and consistent judgment.</div>
+            <div class="node-tags"><span class="node-tag">influence</span><span class="node-tag">leadership</span></div>
+          </div>
+
+          <div class="node" data-id="27" data-title="PM Interviews"
+            data-desc="PM interviews are unlike any other role's interview. They test structured thinking, product sense, and analytical ability through case questions, design challenges, and behavioural questions. Preparation is a skill in itself — and the candidates who do best are those who practise the format, not just the content."
+            data-topics="Product design questions: design a product for X — the full framework|Product strategy questions: how would you grow Y?|Metrics questions: how would you measure success for Z?|Estimation questions: how many X are there in Y?|Behavioural questions: STAR format for PM scenarios|Case prep resources: Exponent, PM exercises, Lewis Lin's Decode and Conquer"
+            data-tags="interviews,career">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">PM Interviews</div>
+            <div class="node-desc">Design questions, metrics questions, strategy cases — PM interviews test structured
+              thinking and the format is a skill itself.</div>
+            <div class="node-tags"><span class="node-tag">interviews</span><span class="node-tag">career</span></div>
+          </div>
+
+          <div class="node wide" data-id="28" data-title="Building Your PM Portfolio"
+            data-desc="Unlike engineers, PMs can't show code. A PM portfolio demonstrates product thinking through case studies, writing, and documented decisions. It's the proof of work that lets hiring managers see how you think — and it's what separates candidates who read about PM from those who practice it."
+            data-topics="What a PM portfolio includes: case studies, teardowns, product essays|Writing a PM case study: problem → research → insight → decision → outcome|Product teardowns: analysing real products and proposing improvements|Starting a PM blog or newsletter: building a public thinking practice|Transitioning into PM: APM programmes, internal moves, and the pitch|PM communities and networks worth joining: Lenny's Newsletter, Mind the Product, SVPG"
+            data-tags="portfolio,career">
+            <div class="node-top">
+              <div class="node-icon">💼</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building Your PM Portfolio</div>
+            <div class="node-desc">Case studies, teardowns, product essays — show how you think, not just what you've
+              shipped.</div>
+            <div class="node-tags"><span class="node-tag">portfolio</span><span class="node-tag">APM</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>34</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — PM FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOTAL = 34;
+    const phaseNames = {
+      1: 'PM FOUNDATIONS', 2: 'USER RESEARCH & DISCOVERY',
+      3: 'STRATEGY & PRIORITISATION', 4: 'BUILDING & SHIPPING',
+      5: 'METRICS & GROWTH', 6: 'PM CAREER & LEADERSHIP'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-pm-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-pm-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

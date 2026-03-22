@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Basics Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 33 complete</span>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>DevOps Basics</span></div>
+      <div class="page-tag">Tech</div>
+      <h1 class="page-title">DevOps<br />Basics</h1>
+      <p class="page-desc">A beginner's roadmap to modern software delivery — from Linux fundamentals and Git workflows
+        through Docker, CI/CD pipelines, cloud infrastructure, and monitoring. Build the skills that bridge development
+        and operations. 6 phases, 33 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>6–9 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>33 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>5,800</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 33 topics completed</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What is DevOps?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Linux Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Bash &amp; Shell Scripting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Networking Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Git &amp; Version Control</div>
+
+      <div class="sidebar-section-title">Phase 2 — Containers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Docker Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Writing Dockerfiles</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Docker Compose</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Container Registries</div>
+
+      <div class="sidebar-section-title">Phase 3 — CI/CD</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        CI/CD Concepts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        GitHub Actions</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Testing in Pipelines</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Automated Deployments</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Secrets &amp; Environment Variables</div>
+
+      <div class="sidebar-section-title">Phase 4 — Cloud &amp; Infrastructure</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Cloud Computing Essentials</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        AWS / Azure / GCP Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Infrastructure as Code</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Terraform Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Serverless Fundamentals</div>
+
+      <div class="sidebar-section-title">Phase 5 — Orchestration</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Why Kubernetes?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Kubernetes Core Concepts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Deploying on Kubernetes</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Helm Charts</div>
+
+      <div class="sidebar-section-title">Phase 6 — Observability &amp; Security</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Monitoring &amp; Alerting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Logging &amp; Log Management</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Distributed Tracing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        DevSecOps Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SRE Principles</div>
+
+    </aside>
+
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="What is DevOps?"
+            data-desc="DevOps is not a tool, a role, or a technology — it's a culture and a set of practices that brings software development (Dev) and IT operations (Ops) together to shorten delivery cycles and ship better software more reliably. Understanding the philosophy before the tooling makes everything else click into place."
+            data-topics="The DevOps origin story: how silo culture was breaking software delivery|The three ways: flow, feedback, and continuous learning|DevOps vs. Agile vs. SRE vs. Platform Engineering — what each means|The DevOps lifecycle: plan, code, build, test, release, deploy, operate, monitor|Key DevOps metrics: DORA metrics — deployment frequency, lead time, MTTR, change failure rate|Why DevOps skills are among the most valued and highest-paid in tech"
+            data-tags="devops,culture,overview">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is DevOps?</div>
+            <div class="node-desc">A culture, not a tool. Understand the philosophy, the three ways, and the DORA
+              metrics before touching any tech.</div>
+            <div class="node-tags"><span class="node-tag">devops</span><span class="node-tag">culture</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Linux Fundamentals"
+            data-desc="The vast majority of servers in the world run Linux. Every DevOps tool — Docker, Kubernetes, Terraform, CI/CD systems — runs on Linux. Fluency with the Linux command line is the non-negotiable foundation of everything that follows."
+            data-topics="File system hierarchy: /, /etc, /var, /home, /usr, /bin|Essential commands: ls, cd, cp, mv, rm, mkdir, chmod, chown|File permissions: read, write, execute — users, groups, others|Process management: ps, top, kill, systemctl, journalctl|Package management: apt (Debian/Ubuntu), yum/dnf (RHEL/CentOS)|Text processing: grep, sed, awk, cut, sort, uniq"
+            data-tags="linux,CLI">
+            <div class="node-top">
+              <div class="node-icon">🐧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Linux Fundamentals</div>
+            <div class="node-desc">Every server runs Linux. File permissions, process management, package managers — the
+              non-negotiable foundation.</div>
+            <div class="node-tags"><span class="node-tag">linux</span><span class="node-tag">CLI</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Bash & Shell Scripting"
+            data-desc="Bash scripts are the glue of DevOps automation — they connect tools, schedule tasks, parse output, and run deployment steps. Learning to write clean, reliable shell scripts is one of the most versatile and immediately useful skills in this roadmap."
+            data-topics="Variables, arguments, and environment variables|Conditionals: if/elif/else, test operators|Loops: for, while, until — iterating over files and output|Functions: writing reusable script components|Exit codes and error handling: set -e, set -o pipefail|Cron jobs: scheduling scripts with crontab|Practical scripts: automated backups, deployment hooks, health checks"
+            data-tags="bash,scripting">
+            <div class="node-top">
+              <div class="node-icon">📜</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Bash &amp; Shell Scripting</div>
+            <div class="node-desc">The glue of DevOps automation — write scripts that deploy, schedule, parse, and
+              connect everything together.</div>
+            <div class="node-tags"><span class="node-tag">bash</span><span class="node-tag">scripting</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Networking Basics"
+            data-desc="Modern infrastructure is distributed across networks. Understanding how services communicate — IP addresses, DNS, HTTP, ports, firewalls — is essential for debugging connection issues, securing infrastructure, and designing multi-service architectures."
+            data-topics="IP addresses, subnets, and CIDR notation|DNS: how domain names resolve to IP addresses|TCP vs. UDP: when each is used and why|HTTP/HTTPS: request/response model, status codes, headers|Ports: common ports (80, 443, 22, 3306, 5432) and what they mean|Firewalls and security groups: controlling network access|curl and wget: making HTTP requests from the command line"
+            data-tags="networking,TCP/IP,DNS">
+            <div class="node-top">
+              <div class="node-icon">🌐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Networking Basics</div>
+            <div class="node-desc">IP, DNS, TCP, ports, firewalls — understand how services talk to each other and why
+              connections fail.</div>
+            <div class="node-tags"><span class="node-tag">networking</span><span class="node-tag">DNS</span></div>
+          </div>
+
+          <div class="node wide" data-id="5" data-title="Git & Version Control"
+            data-desc="Git is the foundation of every modern software delivery pipeline. In DevOps specifically, your infrastructure code, configuration files, and deployment scripts all live in Git — treating infrastructure like software. Learn not just the commands but the branching strategies and workflows teams actually use."
+            data-topics="Git core workflow: clone, add, commit, push, pull, status|Branching: feature branches, main/master, release branches|Merging vs. rebasing: the philosophical divide|Pull requests and code review workflows|Git Flow vs. trunk-based development|.gitignore: what never belongs in version control (secrets, binaries, node_modules)|Monorepos vs. polyrepos: how large organisations structure their code"
+            data-tags="git,version-control">
+            <div class="node-top">
+              <div class="node-icon">🌿</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Git &amp; Version Control</div>
+            <div class="node-desc">Everything in DevOps lives in Git — code, config, and infrastructure. Master
+              branches, PRs, and trunk-based development.</div>
+            <div class="node-tags"><span class="node-tag">git</span><span class="node-tag">trunk-based</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Containers with Docker</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="6" data-title="Docker Fundamentals"
+            data-desc="Docker solved one of software's oldest problems: 'it works on my machine.' Containers package an application with all its dependencies into a portable, isolated unit that runs identically everywhere. Understanding containers — not just Docker commands — is the most important paradigm shift in modern infrastructure."
+            data-topics="The problem Docker solves: dependency hell and environment parity|Containers vs. virtual machines: the key differences|Images and containers: the class/instance analogy|Docker Hub: the public registry of images|Core commands: docker pull, run, ps, exec, stop, rm, images, rmi|Port mapping: exposing container services to the host|-v volumes: persisting data outside the container lifecycle"
+            data-tags="docker,containers">
+            <div class="node-top">
+              <div class="node-icon">🐳</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Docker Fundamentals</div>
+            <div class="node-desc">Containers solved 'it works on my machine'. Images, containers, ports, volumes — the
+              paradigm shift in infrastructure.</div>
+            <div class="node-tags"><span class="node-tag">docker</span><span class="node-tag">containers</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Writing Dockerfiles"
+            data-desc="A Dockerfile is the recipe for building a container image. Writing efficient, secure Dockerfiles is a skill — understanding layer caching, multi-stage builds, and image size optimisation makes the difference between a 2GB bloated image and a lean 50MB production container."
+            data-topics="Dockerfile instructions: FROM, RUN, COPY, ADD, EXPOSE, ENV, CMD, ENTRYPOINT|Layer caching: why order of instructions matters enormously|Multi-stage builds: compile in one stage, run in another|Running containers as non-root users for security|.dockerignore: excluding files from the build context|Image size optimisation: choosing base images (alpine vs. slim vs. full)|ENTRYPOINT vs CMD: the difference and when to use each"
+            data-tags="dockerfile,images">
+            <div class="node-top">
+              <div class="node-icon">📄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Writing Dockerfiles</div>
+            <div class="node-desc">Layer caching, multi-stage builds, non-root users — write Dockerfiles that produce
+              lean, secure, production-ready images.</div>
+            <div class="node-tags"><span class="node-tag">dockerfile</span><span class="node-tag">multi-stage</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Docker Compose"
+            data-desc="Real applications rarely run as a single container. A web app needs a web server, a database, a cache, and maybe a queue. Docker Compose defines and runs multi-container applications with a single YAML file, making local development environments trivially reproducible."
+            data-topics="docker-compose.yml structure: services, networks, volumes|Defining services: image vs. build, environment variables, ports|Service dependencies: depends_on and health checks|Named volumes: persisting database data across restarts|Networking between services: container-to-container communication by service name|docker compose up, down, logs, exec — the essential commands|Overriding with docker-compose.override.yml for local dev"
+            data-tags="docker-compose,multi-container">
+            <div class="node-top">
+              <div class="node-icon">🔗</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Docker Compose</div>
+            <div class="node-desc">Define your entire local stack in a YAML file — web server, database, cache — and
+              spin it up with one command.</div>
+            <div class="node-tags"><span class="node-tag">docker-compose</span><span class="node-tag">YAML</span></div>
+          </div>
+
+          <div class="node wide" data-id="9" data-title="Container Registries"
+            data-desc="Container registries store and distribute Docker images — they're the package manager for containers. Understanding how to push, pull, tag, and manage images in registries is essential for CI/CD pipelines and team collaboration."
+            data-topics="Docker Hub: public and private repositories|AWS ECR, Google GCR, GitHub Container Registry, Azure ACR|Tagging strategies: latest (and why it's dangerous), semantic versions, git SHAs|Image signing and vulnerability scanning|Pulling images in production vs. building them|Access control: registry authentication in CI/CD pipelines|Image promotion: moving images from dev → staging → prod registries"
+            data-tags="registries,ECR,GCR">
+            <div class="node-top">
+              <div class="node-icon">📦</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Container Registries</div>
+            <div class="node-desc">Store, tag, and distribute images across environments — Docker Hub, ECR, GCR, and
+              image promotion strategies.</div>
+            <div class="node-tags"><span class="node-tag">registries</span><span class="node-tag">tagging</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">CI/CD Pipelines</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="10" data-title="CI/CD Concepts"
+            data-desc="Continuous Integration (CI) means every code change is automatically built and tested. Continuous Delivery (CD) means every passing build is automatically deployable. Together, they are the engine of fast, reliable software delivery. Understanding the concepts before the tools prevents cargo-culting your pipeline."
+            data-topics="Continuous Integration: automated build and test on every commit|Continuous Delivery vs. Continuous Deployment: the crucial distinction|The CI/CD pipeline stages: source → build → test → deploy|Shift left testing: catching bugs earlier in the pipeline|Trunk-based development and why it enables CI|Deployment strategies: blue-green, canary, rolling updates|Feature flags: deploying code without releasing features"
+            data-tags="CI/CD,continuous-delivery">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">CI/CD Concepts</div>
+            <div class="node-desc">Understand the philosophy — automated builds, test gates, deployment strategies —
+              before writing a single pipeline.</div>
+            <div class="node-tags"><span class="node-tag">CI/CD</span><span class="node-tag">pipelines</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="GitHub Actions"
+            data-desc="GitHub Actions is the most accessible and widely adopted CI/CD platform. Its YAML-based workflows run directly in GitHub with no external tooling required. Learn to build workflows that test, build, and deploy applications automatically on every push."
+            data-topics="Workflow structure: events, jobs, steps, actions|Triggers: push, pull_request, schedule, workflow_dispatch|Runner environments: ubuntu-latest, windows-latest, macos-latest|Using actions from the marketplace: actions/checkout, setup-node|Matrix builds: testing across multiple versions simultaneously|Caching dependencies: actions/cache for faster pipelines|Environment protection rules: requiring approvals before production deploys"
+            data-tags="github-actions,workflows">
+            <div class="node-top">
+              <div class="node-icon">🐙</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">GitHub Actions</div>
+            <div class="node-desc">YAML workflows that test, build, and deploy on every push — the most accessible CI/CD
+              platform to start with.</div>
+            <div class="node-tags"><span class="node-tag">github-actions</span><span class="node-tag">YAML</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Testing in Pipelines"
+            data-desc="Automated tests are what give CI/CD pipelines their value. Without good tests, automated deployment is just automated risk. Learn the test pyramid, how to integrate different test types into a pipeline, and the concept of quality gates — minimum thresholds that must pass before deployment proceeds."
+            data-topics="The test pyramid: unit, integration, end-to-end tests — and why the shape matters|Unit tests in CI: fast, cheap, run on every commit|Integration tests: testing service interactions|Linting and code style checks: keeping codebases consistent|Static analysis and SAST: finding vulnerabilities before deployment|Test coverage thresholds as quality gates|Parallelising tests to speed up pipeline execution"
+            data-tags="testing,quality-gates">
+            <div class="node-top">
+              <div class="node-icon">✅</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Testing in Pipelines</div>
+            <div class="node-desc">The test pyramid, quality gates, linting, and SAST — automated tests are what make
+              pipelines trustworthy.</div>
+            <div class="node-tags"><span class="node-tag">testing</span><span class="node-tag">quality-gates</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Automated Deployments"
+            data-desc="The final stage of a CD pipeline is the deployment itself. Learn how pipelines deploy to different environments — staging and production — using deployment strategies that minimise downtime and risk, with automatic rollback when things go wrong."
+            data-topics="Deploying to servers: SSH-based deployment from a pipeline|Deploying to cloud platforms: AWS ECS, App Runner, Elastic Beanstalk, Railway|Blue-green deployments: zero-downtime cutover|Canary releases: shipping to a small percentage of users first|Rolling updates: replacing instances one at a time|Automatic rollback: detecting failures and reverting|Deployment approvals: requiring human sign-off before production"
+            data-tags="deployment,blue-green,canary">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Automated Deployments</div>
+            <div class="node-desc">Blue-green, canary, rolling — deploy without downtime and with automatic rollback
+              when things go wrong.</div>
+            <div class="node-tags"><span class="node-tag">deployment</span><span class="node-tag">blue-green</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="14" data-title="Secrets & Environment Variables"
+            data-desc="API keys, database passwords, and tokens must never live in code. Managing secrets correctly is one of the most critical security practices in DevOps. Learn how to store, rotate, and inject secrets into applications safely across development, staging, and production."
+            data-topics="Why secrets in code are catastrophic: Git history never forgets|Environment variables: the standard pattern for runtime configuration|GitHub Secrets and Actions environment secrets|.env files: local development secrets (and why they stay out of Git)|Secrets managers: AWS Secrets Manager, HashiCorp Vault, 1Password Secrets Automation|Secret rotation: automating credential expiry and renewal|Detecting leaked secrets: pre-commit hooks, GitHub secret scanning"
+            data-tags="secrets,security">
+            <div class="node-top">
+              <div class="node-icon">🔐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Secrets &amp; Environment Variables</div>
+            <div class="node-desc">Secrets in code are a catastrophe. Learn to store, inject, and rotate credentials
+              safely across every environment.</div>
+            <div class="node-tags"><span class="node-tag">secrets</span><span class="node-tag">Vault</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Cloud &amp; Infrastructure as Code</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="15" data-title="Cloud Computing Essentials"
+            data-desc="Cloud computing is the on-demand delivery of IT resources over the internet. Understanding the cloud service models (IaaS, PaaS, SaaS), the shared responsibility model, and the core concepts that apply across all cloud providers gives you a vendor-agnostic foundation."
+            data-topics="IaaS vs. PaaS vs. SaaS: who manages what|The shared responsibility model: where your security responsibility starts|Regions and availability zones: geographic resilience|Core cloud primitives: compute, storage, networking, databases, identity|Pay-as-you-go pricing: understanding cloud bills and avoiding surprises|Cloud-native vs. lift-and-shift: two very different migration strategies"
+            data-tags="cloud,IaaS,PaaS">
+            <div class="node-top">
+              <div class="node-icon">☁️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Cloud Computing Essentials</div>
+            <div class="node-desc">IaaS vs. PaaS vs. SaaS, shared responsibility, regions, and the core primitives that
+              span every cloud provider.</div>
+            <div class="node-tags"><span class="node-tag">cloud</span><span class="node-tag">IaaS</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="AWS / Azure / GCP Basics"
+            data-desc="Pick one cloud to start — AWS has the largest market share and the most learning resources. Learn the core services every DevOps engineer uses daily: compute (EC2/VMs), object storage (S3/Blob), managed databases (RDS), networking (VPC), and identity (IAM). The concepts transfer to other clouds."
+            data-topics="AWS core services: EC2, S3, RDS, VPC, IAM, ECS, Lambda|Navigating the AWS console and CLI (aws configure)|IAM: users, roles, policies — the principle of least privilege|Security groups and VPCs: network isolation|S3 for static websites, backups, and artefact storage|Cost monitoring: AWS Cost Explorer and billing alerts|AWS free tier: what's genuinely free and what'll surprise you"
+            data-tags="AWS,EC2,S3,IAM">
+            <div class="node-top">
+              <div class="node-icon">☁️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">AWS / Azure / GCP Basics</div>
+            <div class="node-desc">Pick one cloud, learn the core services — EC2, S3, RDS, IAM, VPC. The concepts
+              transfer to every other cloud.</div>
+            <div class="node-tags"><span class="node-tag">AWS</span><span class="node-tag">EC2</span><span
+                class="node-tag">IAM</span></div>
+          </div>
+
+          <div class="node wide" data-id="17" data-title="Infrastructure as Code"
+            data-desc="Infrastructure as Code (IaC) means defining your servers, networks, databases, and cloud resources in code files — stored in Git, reviewed like application code, and applied automatically. It's the shift from clicking around in cloud consoles to declarative, reproducible, version-controlled infrastructure."
+            data-topics="The IaC philosophy: why ClickOps doesn't scale|Declarative vs. imperative IaC approaches|The two main tools: Terraform (cloud-agnostic) vs. AWS CloudFormation (AWS-native)|Configuration management vs. provisioning: Ansible vs. Terraform|Drift detection: what happens when reality diverges from code|GitOps: infrastructure changes via pull requests, not shell sessions|The benefits: reproducibility, auditability, disaster recovery speed"
+            data-tags="IaC,infrastructure-as-code">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Infrastructure as Code</div>
+            <div class="node-desc">Define servers, networks, and databases in code — reviewed in Git, applied
+              automatically, reproducible from scratch.</div>
+            <div class="node-tags"><span class="node-tag">IaC</span><span class="node-tag">GitOps</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Terraform Basics"
+            data-desc="Terraform is the most widely adopted IaC tool — cloud-agnostic, declarative, and backed by a huge provider ecosystem. Learn to write HCL (HashiCorp Configuration Language), manage state, and build a real cloud infrastructure from scratch."
+            data-topics="HCL syntax: resources, variables, outputs, locals|terraform init, plan, apply, destroy — the core workflow|The state file: what it is and why you never touch it manually|Remote state: storing state in S3 or Terraform Cloud|Modules: reusable infrastructure components|Variables and tfvars files: parameterising your infrastructure|Terraform Cloud and workspaces for team collaboration"
+            data-tags="terraform,HCL">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Terraform Basics</div>
+            <div class="node-desc">HCL syntax, state management, modules — provision real cloud infrastructure
+              declaratively with the most popular IaC tool.</div>
+            <div class="node-tags"><span class="node-tag">terraform</span><span class="node-tag">HCL</span></div>
+          </div>
+
+          <div class="node wide" data-id="19" data-title="Serverless Fundamentals"
+            data-desc="Serverless computing lets you run code without managing servers — you pay only for the milliseconds your code runs, and the cloud handles all scaling automatically. Functions-as-a-Service (FaaS) like AWS Lambda are now central to modern architectures."
+            data-topics="The serverless model: event-driven, ephemeral, fully managed|AWS Lambda: functions, triggers, and execution environment|Cold starts: the latency tradeoff of serverless|Serverless use cases: API backends, scheduled jobs, file processing, webhooks|AWS API Gateway: HTTP endpoints that invoke Lambda functions|The Serverless Framework and AWS SAM: simplifying Lambda deployment|Serverless costs: when it's cheaper and when it's not"
+            data-tags="serverless,lambda">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Serverless Fundamentals</div>
+            <div class="node-desc">Run code without managing servers — Lambda, API Gateway, event-driven architecture,
+              and when serverless makes sense.</div>
+            <div class="node-tags"><span class="node-tag">serverless</span><span class="node-tag">lambda</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Container Orchestration with Kubernetes</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="20" data-title="Why Kubernetes?"
+            data-desc="Docker solves packaging. Kubernetes solves running containers at scale. When you have dozens of containers across multiple machines, you need something to schedule them, keep them healthy, scale them automatically, and route traffic to them. That something is Kubernetes — the most important infrastructure platform of the last decade."
+            data-topics="The problem Kubernetes solves: running containers in production reliably|Container orchestration: scheduling, scaling, self-healing|Kubernetes vs. Docker Compose: why Compose isn't enough for production|Managed Kubernetes: EKS (AWS), GKE (Google), AKS (Azure)|Minikube and kind: running Kubernetes locally for learning|When you DON'T need Kubernetes: the honest alternative assessment|kubectl: the command-line interface to every Kubernetes cluster"
+            data-tags="kubernetes,orchestration">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Why Kubernetes?</div>
+            <div class="node-desc">Docker packages containers. Kubernetes runs them at scale — scheduling, healing, and
+              scaling automatically across machines.</div>
+            <div class="node-tags"><span class="node-tag">kubernetes</span><span class="node-tag">k8s</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Kubernetes Core Concepts"
+            data-desc="Kubernetes has a rich vocabulary. Understanding the key objects — Pods, Deployments, Services, Namespaces, ConfigMaps, Secrets, and Ingress — gives you the mental model to read any Kubernetes configuration and understand what it does."
+            data-topics="Pods: the smallest deployable unit (one or more containers)|Deployments: declarative management of pod replicas|Services: stable network endpoints for pod sets (ClusterIP, NodePort, LoadBalancer)|Namespaces: logical isolation within a cluster|ConfigMaps and Secrets: injecting configuration and credentials|Ingress: routing external HTTP/HTTPS traffic to services|PersistentVolumes and PersistentVolumeClaims: stateful storage"
+            data-tags="pods,deployments,services">
+            <div class="node-top">
+              <div class="node-icon">🧱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Kubernetes Core Concepts</div>
+            <div class="node-desc">Pods, Deployments, Services, ConfigMaps, Ingress — the objects that make up every
+              Kubernetes application.</div>
+            <div class="node-tags"><span class="node-tag">pods</span><span class="node-tag">services</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Deploying on Kubernetes"
+            data-desc="Knowing the concepts is one thing — actually deploying and managing an application on Kubernetes is another. Learn to write YAML manifests, apply them with kubectl, scale deployments, perform rolling updates, and debug pods when things go wrong."
+            data-topics="Writing Deployment YAML: apiVersion, kind, metadata, spec|Applying and updating: kubectl apply, rollout status, rollout history|Scaling: kubectl scale and Horizontal Pod Autoscaler (HPA)|Rolling updates and rollbacks: zero-downtime updates by default|Debugging pods: kubectl logs, describe, exec, port-forward|Resource requests and limits: preventing one pod from starving others|Health checks: liveness and readiness probes"
+            data-tags="kubectl,YAML,deployments">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Deploying on Kubernetes</div>
+            <div class="node-desc">Write YAML, kubectl apply, scale, debug — actually run and manage applications in a
+              real cluster.</div>
+            <div class="node-tags"><span class="node-tag">kubectl</span><span class="node-tag">YAML</span></div>
+          </div>
+
+          <div class="node wide" data-id="23" data-title="Helm Charts"
+            data-desc="Helm is the package manager for Kubernetes. Just as npm manages Node packages, Helm manages Kubernetes application packages called charts. It templates YAML, manages releases, and makes deploying complex applications (Nginx, Prometheus, PostgreSQL) into a single command."
+            data-topics="What Helm solves: templating and release management for Kubernetes YAML|Charts: directory structure, Chart.yaml, templates, values.yaml|helm install, upgrade, rollback, uninstall — the release lifecycle|Values: customising a chart for different environments|Helm repositories: Artifact Hub, Bitnami, official charts|Writing your own chart: templating with Go template syntax|Helmfile: managing multiple Helm releases declaratively"
+            data-tags="helm,charts,package-manager">
+            <div class="node-top">
+              <div class="node-icon">⚓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Helm Charts</div>
+            <div class="node-desc">Helm is the package manager for Kubernetes — template, package, and deploy complex
+              applications with a single command.</div>
+            <div class="node-tags"><span class="node-tag">helm</span><span class="node-tag">charts</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Observability &amp; Security</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="24" data-title="Monitoring & Alerting"
+            data-desc="You can't manage what you don't measure. Monitoring gives you visibility into the health and performance of your infrastructure and applications. Alerting ensures the right people are notified the moment something breaks — before users report it."
+            data-topics="The four golden signals: latency, traffic, errors, saturation|Prometheus: the standard metrics collection system for cloud-native infrastructure|Grafana: building dashboards that actually answer operational questions|Alerting rules in Prometheus: thresholds, durations, severity levels|PagerDuty and OpsGenie: on-call rotation and incident notification|Uptime monitoring: external checks with Better Uptime, Pingdom, UptimeRobot|SLIs, SLOs, and SLAs: defining and measuring reliability targets"
+            data-tags="monitoring,prometheus,grafana">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Monitoring &amp; Alerting</div>
+            <div class="node-desc">Prometheus, Grafana, the four golden signals, SLOs — measure reliability and alert
+              before users notice problems.</div>
+            <div class="node-tags"><span class="node-tag">prometheus</span><span class="node-tag">grafana</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Logging & Log Management"
+            data-desc="When something breaks at 2am, logs are your best friend — or your worst enemy if they're structured poorly. Learn centralised logging with the ELK stack (Elasticsearch, Logstash, Kibana) or cloud-native alternatives, and the structured logging practices that make logs searchable and actionable."
+            data-topics="Structured logging: JSON over plain text — why it transforms log analysis|Log levels: DEBUG, INFO, WARN, ERROR — and when to use each|Centralised log aggregation: why logs must leave the container|ELK stack: Elasticsearch, Logstash, Kibana|Cloud-native logging: AWS CloudWatch Logs, GCP Cloud Logging|Loki + Grafana: a lightweight alternative to ELK|Log retention policies and cost management"
+            data-tags="logging,ELK,Loki">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Logging &amp; Log Management</div>
+            <div class="node-desc">Structured logs, ELK stack, Loki — centralise and make logs searchable so debugging
+              at 2am isn't a nightmare.</div>
+            <div class="node-tags"><span class="node-tag">logging</span><span class="node-tag">ELK</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Distributed Tracing"
+            data-desc="In a microservices architecture, a single user request may touch 10 different services. When something is slow or failing, how do you find which service is responsible? Distributed tracing follows a request through every service it touches, giving you end-to-end visibility that metrics and logs alone cannot provide."
+            data-topics="The problem distributed tracing solves: pinpointing latency in complex systems|Traces, spans, and context propagation: the vocabulary|OpenTelemetry: the vendor-neutral standard for instrumentation|Jaeger and Zipkin: open-source tracing backends|Datadog APM, Honeycomb, and commercial tracing platforms|Trace sampling: why tracing everything is expensive|Connecting traces to logs and metrics: the observability three pillars"
+            data-tags="tracing,OpenTelemetry,Jaeger">
+            <div class="node-top">
+              <div class="node-icon">🔎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Distributed Tracing</div>
+            <div class="node-desc">Follow a request through every service it touches — OpenTelemetry, Jaeger, and the
+              third pillar of observability.</div>
+            <div class="node-tags"><span class="node-tag">tracing</span><span class="node-tag">OpenTelemetry</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="27" data-title="DevSecOps Basics"
+            data-desc="Security is not a phase at the end of development — it's built into every stage of the pipeline. DevSecOps integrates security scanning, vulnerability checks, and policy enforcement directly into CI/CD so that security issues are caught before they reach production."
+            data-topics="Shifting security left: catching vulnerabilities early in the pipeline|SAST (Static Application Security Testing): scanning source code|DAST (Dynamic Application Security Testing): testing running applications|Container image scanning: Trivy, Snyk, Grype — finding CVEs in images|Dependency scanning: identifying vulnerable libraries|OWASP Top 10: the most critical web application security risks|Secrets scanning in Git history: truffleHog, GitGuardian"
+            data-tags="devsecops,security,SAST">
+            <div class="node-top">
+              <div class="node-icon">🔒</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">DevSecOps Basics</div>
+            <div class="node-desc">Security in every pipeline stage — SAST, container scanning, dependency audits, and
+              OWASP Top 10 awareness.</div>
+            <div class="node-tags"><span class="node-tag">devsecops</span><span class="node-tag">SAST</span></div>
+          </div>
+
+          <div class="node wide" data-id="28" data-title="SRE Principles"
+            data-desc="Site Reliability Engineering (SRE) is Google's approach to operating large-scale systems — applying software engineering to operations problems. Whether or not you become an SRE, understanding its principles (error budgets, toil reduction, blameless postmortems) makes you a better DevOps practitioner."
+            data-topics="The SRE origin: how Google operationalised reliability at scale|SLIs, SLOs, SLAs: defining what reliable means in measurable terms|Error budgets: the innovation-reliability balance mechanism|Toil: the work SRE teams exist to eliminate through automation|Blameless postmortems: learning from incidents without blame|On-call best practices: sustainable incident response|The SRE book: Google's free, definitive resource"
+            data-tags="SRE,reliability,postmortems">
+            <div class="node-top">
+              <div class="node-icon">🛸</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SRE Principles</div>
+            <div class="node-desc">Error budgets, SLOs, blameless postmortems — Google's framework for operating systems
+              reliably at any scale.</div>
+            <div class="node-tags"><span class="node-tag">SRE</span><span class="node-tag">postmortems</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>33</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOTAL = 33;
+    const phaseNames = {
+      1: 'FOUNDATIONS', 2: 'CONTAINERS WITH DOCKER',
+      3: 'CI/CD PIPELINES', 4: 'CLOUD & INFRASTRUCTURE AS CODE',
+      5: 'CONTAINER ORCHESTRATION WITH KUBERNETES', 6: 'OBSERVABILITY & SECURITY'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-devops-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-devops-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

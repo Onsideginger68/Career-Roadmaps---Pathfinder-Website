@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 32 complete</span>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Finance &amp; Life Skills → <span>Personal Finance</span></div>
+      <div class="page-tag">Finance</div>
+      <h1 class="page-title">Personal<br />Finance</h1>
+      <p class="page-desc">A complete beginner's roadmap to taking control of your money — from understanding your first
+        paycheck to building long-term wealth. No jargon, no assumed knowledge, just a clear path forward. 6 phases, 32
+        topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>3–5 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>32 topics</strong>&nbsp;· 6 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>7,800</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 32 topics completed</div>
+    </div>
+  </div>
+
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Money Mindset</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Why Personal Finance Matters</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Understanding Your Income</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Psychology of Money</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Financial Goal Setting</div>
+
+      <div class="sidebar-section-title">Phase 2 — Budgeting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        How to Build a Budget</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Budgeting Methods</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Tracking Your Spending</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Cutting Expenses Strategically</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building an Emergency Fund</div>
+
+      <div class="sidebar-section-title">Phase 3 — Debt &amp; Credit</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Understanding Debt</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        How Credit Scores Work</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Debt Payoff Strategies</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Using Credit Cards Wisely</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Student Loans &amp; Big Debt</div>
+
+      <div class="sidebar-section-title">Phase 4 — Saving &amp; Banking</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Types of Bank Accounts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        High-Yield Savings Accounts</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Automating Your Finances</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The 3-Account System</div>
+
+      <div class="sidebar-section-title">Phase 5 — Investing Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Why You Must Invest</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Stocks, Bonds &amp; Funds</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Index Funds &amp; ETFs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        How to Start Investing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Risk, Return &amp; Diversification</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Retirement Accounts</div>
+
+      <div class="sidebar-section-title">Phase 6 — Building Wealth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Growing Your Income</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Insurance &amp; Protection</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Taxes Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Net Worth &amp; Financial Milestones</div>
+
+    </aside>
+
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Money Mindset &amp; Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="Why Personal Finance Matters"
+            data-desc="Most people spend their entire lives working hard and still end up financially stressed — not because they didn't earn enough, but because nobody taught them how money works. Personal finance is not about being rich. It's about having choices: the choice to leave a bad job, take a risk, or retire on your own terms. This topic sets the stage for everything that follows."
+            data-topics="Why schools don't teach money skills — and what that costs you|The difference between being rich and being wealthy|Financial stress and its impact on health, relationships, and decisions|The three fundamental levers: earn more, spend less, invest the difference|Stories of average earners who built extraordinary financial security"
+            data-tags="foundations,mindset">
+            <div class="node-top">
+              <div class="node-icon">💡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Why Personal Finance Matters</div>
+            <div class="node-desc">The case for taking your money seriously — before it's too late to make a real
+              difference.</div>
+            <div class="node-tags"><span class="node-tag">foundations</span><span class="node-tag">mindset</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Understanding Your Income"
+            data-desc="Most people know their salary but have no idea what they actually take home after taxes, deductions, and contributions. Before you can manage money, you need to understand exactly how much comes in — and in what form. This topic covers the anatomy of a paycheck and the key numbers that matter."
+            data-topics="Gross income vs. net income (take-home pay)|Reading your payslip: taxes, NI/Social Security, deductions|Active income vs. passive income vs. portfolio income|Tax brackets: how they actually work (marginal, not flat)|Freelance and self-employed income: budgeting without a fixed salary"
+            data-tags="income,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">💰</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Understanding Your Income</div>
+            <div class="node-desc">Gross, net, deductions, tax brackets — know exactly what you're actually working
+              with.</div>
+            <div class="node-tags"><span class="node-tag">income</span><span class="node-tag">paychecks</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="The Psychology of Money"
+            data-desc="Your relationship with money was shaped before you were old enough to earn any. Understanding the emotional and psychological forces behind your financial decisions — lifestyle inflation, loss aversion, instant gratification — is the real foundation of financial success. This is the topic most finance courses skip entirely."
+            data-topics="Lifestyle inflation: why raises don't make people richer|Instant gratification vs. delayed gratification: the marshmallow test and money|Loss aversion: why losing £100 hurts more than gaining £100|Money scripts: the beliefs about money you inherited from your family|The hedonic treadmill and the limits of spending on happiness"
+            data-tags="psychology,behaviour">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Psychology of Money</div>
+            <div class="node-desc">Your money behaviours were shaped by upbringing and emotion — understand them to
+              change them.</div>
+            <div class="node-tags"><span class="node-tag">psychology</span><span class="node-tag">behaviour</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="Financial Goal Setting"
+            data-desc="Vague financial goals fail. 'Save more money' achieves nothing. Specific, time-bound goals with a clear number and deadline are what actually drive behaviour change. Learn to set short, medium, and long-term financial goals — and how to reverse-engineer them into monthly action steps."
+            data-topics="Short-term goals (0–1 year): emergency fund, paying off a card|Medium-term goals (1–5 years): car, house deposit, travel fund|Long-term goals (5+ years): retirement, financial independence, investing|SMART financial goals: Specific, Measurable, Achievable, Relevant, Time-bound|Building a personal financial roadmap from goals backwards"
+            data-tags="goals,planning">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Financial Goal Setting</div>
+            <div class="node-desc">Vague goals fail. Learn to set specific, time-bound targets and reverse-engineer them
+              into monthly steps.</div>
+            <div class="node-tags"><span class="node-tag">goals</span><span class="node-tag">planning</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Budgeting &amp; Cash Flow</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="How to Build a Budget"
+            data-desc="A budget is not a punishment — it's a plan for your money. Without one, money disappears and you never know where it went. Learn to build a simple, realistic monthly budget that accounts for all income, all fixed expenses, variable spending, savings, and investing contributions."
+            data-topics="The anatomy of a monthly budget|Fixed vs. variable expenses|Needs vs. wants: the honest version|Setting realistic spending categories|Monthly budget review: what to check and adjust|Free tools: spreadsheets, apps like YNAB, Notion"
+            data-tags="budgeting,cashflow">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">How to Build a Budget</div>
+            <div class="node-desc">A budget is a plan, not a prison. Build one that's realistic, complete, and actually
+              works.</div>
+            <div class="node-tags"><span class="node-tag">budgeting</span><span class="node-tag">cashflow</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Budgeting Methods"
+            data-desc="There's no single 'correct' way to budget. Different methods work for different people and personalities. Learn the most popular frameworks — 50/30/20, zero-based budgeting, pay-yourself-first, and envelope budgeting — and pick the one that fits your life."
+            data-topics="50/30/20 rule: needs, wants, savings|Zero-based budgeting: every pound gets a job|Pay-yourself-first: savings before everything else|Envelope method (cash-based or digital)|Pros and cons of each: which fits your personality?|Anti-budget: spending freely after savings are automated"
+            data-tags="50/30/20,zero-based">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Budgeting Methods</div>
+            <div class="node-desc">50/30/20, zero-based, pay-yourself-first — find the framework that fits how your
+              brain works.</div>
+            <div class="node-tags"><span class="node-tag">50/30/20</span><span class="node-tag">zero-based</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Tracking Your Spending"
+            data-desc="You cannot manage what you don't measure. Tracking spending reveals the gap between what you think you spend and what you actually spend — and that gap is almost always surprising. Learn to track consistently without it becoming a chore."
+            data-topics="Manual tracking vs. automatic bank sync|Categorising expenses correctly|Weekly vs. monthly spending reviews|Identifying spending leaks: subscriptions, food, impulse buys|The 30-day spending audit: a powerful reset exercise|Tracking tools: Monzo, Emma, Copilot, spreadsheets"
+            data-tags="tracking,awareness">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Tracking Your Spending</div>
+            <div class="node-desc">You can't manage what you don't measure. Track spending and prepare to be surprised.
+            </div>
+            <div class="node-tags"><span class="node-tag">tracking</span><span class="node-tag">awareness</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Cutting Expenses Strategically"
+            data-desc="Cutting expenses is not about deprivation — it's about ruthless prioritisation. You should spend generously on things that genuinely matter to you and cut mercilessly on things that don't. Learn how to audit every spending category, negotiate bills, and free up cash without feeling poorer."
+            data-topics="Auditing subscriptions: the average person has 12 they've forgotten about|The Big Three: housing, transport, food account for ~70% of spending|Negotiating bills: phone, insurance, broadband|Frugal vs. cheap: the important distinction|Substitution strategies: same quality, lower cost|Conscious spending: the permission to spend on what you love"
+            data-tags="expenses,frugality">
+            <div class="node-top">
+              <div class="node-icon">✂️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Cutting Expenses Strategically</div>
+            <div class="node-desc">Spend generously on what matters, cut mercilessly on what doesn't — a systematic
+              audit approach.</div>
+            <div class="node-tags"><span class="node-tag">expenses</span><span class="node-tag">optimisation</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="9" data-title="Building an Emergency Fund"
+            data-desc="An emergency fund is the single most important financial safety net you can build. Without one, every unexpected expense becomes a debt. With one, life's surprises are merely inconvenient, not catastrophic. Learn why 3–6 months of expenses is the target, how to build it fast, and where to keep it."
+            data-topics="Why 3–6 months of expenses, not income|What counts as a real emergency (and what doesn't)|Starter emergency fund: £1,000 as the first milestone|Strategies to build it faster: windfalls, side income, expense cuts|Where to keep it: high-yield savings, instant access, separate account|Replenishing your emergency fund after using it"
+            data-tags="emergency-fund,savings">
+            <div class="node-top">
+              <div class="node-icon">🛡️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building an Emergency Fund</div>
+            <div class="node-desc">3–6 months of expenses, liquid and separate. The safety net that changes how every
+              financial decision feels.</div>
+            <div class="node-tags"><span class="node-tag">emergency-fund</span><span class="node-tag">savings</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-red" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Debt &amp; Credit</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="10" data-title="Understanding Debt"
+            data-desc="Not all debt is equally bad — but all debt has a cost. Understanding the difference between good debt and bad debt, how interest compounds against you, and the true cost of minimum payments is essential before you can make smart decisions about borrowing."
+            data-topics="Good debt vs. bad debt: the real distinction|How compound interest works against you|APR vs. interest rate: what you're actually paying|The true cost of minimum payments: a credit card example|The debt avalanche of the average household|Secured vs. unsecured debt"
+            data-tags="debt,interest">
+            <div class="node-top">
+              <div class="node-icon">⚠️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Understanding Debt</div>
+            <div class="node-desc">Not all debt is equal. Learn how interest compounds against you and what debt
+              actually costs in real terms.</div>
+            <div class="node-tags"><span class="node-tag">debt</span><span class="node-tag">interest</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="How Credit Scores Work"
+            data-desc="Your credit score is a financial reputation score that affects your ability to borrow, the rates you're offered, and sometimes even your ability to rent a flat or get a job. Learn what goes into a credit score, what damages it, what builds it, and how to check and monitor yours."
+            data-topics="Credit score ranges and what they mean|The 5 factors: payment history, utilisation, length, mix, new credit|What damages your score (and by how much)|What builds your score: practical steps|Credit report vs. credit score: the difference|How to check your score for free: Experian, ClearScore, Credit Karma"
+            data-tags="credit-score,credit">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">How Credit Scores Work</div>
+            <div class="node-desc">Your financial reputation score — what builds it, what destroys it, and why it
+              matters more than you think.</div>
+            <div class="node-tags"><span class="node-tag">credit-score</span><span class="node-tag">credit</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Debt Payoff Strategies"
+            data-desc="If you're in debt, there are two proven strategies to get out: the Debt Avalanche (highest interest first — mathematically optimal) and the Debt Snowball (smallest balance first — psychologically powerful). Learn both, understand the tradeoffs, and pick the one you'll actually stick to."
+            data-topics="Debt Avalanche: highest interest rate first — saves the most money|Debt Snowball: smallest balance first — wins momentum|When to use each method and why personality matters|Creating a debt payoff timeline|Debt consolidation: when it helps and when it doesn't|Negotiating with creditors: settlements and payment plans"
+            data-tags="debt-payoff,avalanche,snowball">
+            <div class="node-top">
+              <div class="node-icon">🏔️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Debt Payoff Strategies</div>
+            <div class="node-desc">Avalanche vs. Snowball — two proven methods to eliminate debt. Pick the one you'll
+              actually follow through on.</div>
+            <div class="node-tags"><span class="node-tag">avalanche</span><span class="node-tag">snowball</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Using Credit Cards Wisely"
+            data-desc="Credit cards are powerful tools when used correctly — and debt traps when used carelessly. Learn the rules that turn credit cards from liabilities into assets: paying in full every month, maximising rewards, avoiding fees, and never treating available credit as available money."
+            data-topics="The golden rule: pay the full balance every month|Credit utilisation: keeping it under 30% (ideally under 10%)|Rewards cards: cashback, points, travel miles|Annual fees: when they're worth it|Balance transfers: using 0% offers strategically|Credit card fraud protection and Section 75/chargeback rights"
+            data-tags="credit-cards,rewards">
+            <div class="node-top">
+              <div class="node-icon">💳</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Using Credit Cards Wisely</div>
+            <div class="node-desc">Pay in full every month, utilise rewards, and never mistake credit for cash — the
+              only rules you need.</div>
+            <div class="node-tags"><span class="node-tag">credit-cards</span><span class="node-tag">rewards</span></div>
+          </div>
+
+          <div class="node wide" data-id="14" data-title="Student Loans & Big Debt"
+            data-desc="Student loans, car finance, and mortgages work differently from consumer debt — the amounts are larger, the terms longer, and the decisions harder to reverse. Learn how student loan repayment actually works (it's not what most people think), how to evaluate a car purchase, and the basics of mortgage readiness."
+            data-topics="Student loans: income-contingent repayment — it's more like a tax|When it may not make sense to aggressively repay student loans|Car finance: PCP, HP, personal loan — which is cheapest?|The true total cost of car ownership|Mortgage basics: deposit, LTV, fixed vs. variable rates|The rent vs. buy debate: a framework for the decision"
+            data-tags="student-loans,mortgage">
+            <div class="node-top">
+              <div class="node-icon">🎓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Student Loans &amp; Big Debt</div>
+            <div class="node-desc">Student loans, car finance, mortgages — big debt works differently and deserves its
+              own strategy.</div>
+            <div class="node-tags"><span class="node-tag">student-loans</span><span class="node-tag">mortgage</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-blue" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Saving &amp; Banking</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="15" data-title="Types of Bank Accounts"
+            data-desc="Most people have one bank account and treat it as a financial catch-all. Understanding the different types of accounts — current, savings, ISA, cash ISA, fixed-term — and what each is designed for puts you in control of where your money works best."
+            data-topics="Current accounts: features to look for|Savings accounts: easy access vs. fixed-term|Cash ISAs: tax-free savings in the UK|Help to Buy ISA and Lifetime ISA (LISA) for first-time buyers|Joint accounts: benefits and risks|Switching banks: how the 7-day switch service works"
+            data-tags="accounts,banking">
+            <div class="node-top">
+              <div class="node-icon">🏦</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Types of Bank Accounts</div>
+            <div class="node-desc">Current, savings, ISA, fixed-term — each has a purpose. Use the right account for
+              each job.</div>
+            <div class="node-tags"><span class="node-tag">accounts</span><span class="node-tag">banking</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="High-Yield Savings Accounts"
+            data-desc="Leaving cash in a standard savings account at 0.1% interest is one of the most common money mistakes. High-yield savings accounts can pay 10–50x more. Learn how to find and compare the best rates, understand FSCS/FDIC protection limits, and decide between easy-access and fixed-rate accounts."
+            data-topics="Why the default savings account rate is terrible|How to compare savings rates: AER vs. gross|Easy-access savings vs. fixed-rate bonds|FSCS protection: the £85,000 limit|Where to find current best rates: MoneySavingExpert, Moneyfacts|Ladder strategy: splitting savings across multiple terms"
+            data-tags="savings,interest-rates">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">High-Yield Savings Accounts</div>
+            <div class="node-desc">Leaving cash at 0.1% is a choice. High-yield accounts pay 10–50x more — here's how to
+              find them.</div>
+            <div class="node-tags"><span class="node-tag">savings</span><span class="node-tag">HYSA</span></div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Automating Your Finances"
+            data-desc="Automation removes willpower from the equation. When your savings, investments, and bill payments happen automatically on payday, you never have to decide whether to save — it's already done. Learn how to set up a financial system that runs itself."
+            data-topics="The power of automation: removing decisions|Automated savings on payday (standing orders)|Direct debits for bills and avoiding late fees|Automating investments: regular investing orders|The 'set it and forget it' monthly financial system|What to review manually vs. what to fully automate"
+            data-tags="automation,systems">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Automating Your Finances</div>
+            <div class="node-desc">Remove willpower from saving — automate on payday so the right things happen without
+              thinking.</div>
+            <div class="node-tags"><span class="node-tag">automation</span><span class="node-tag">systems</span></div>
+          </div>
+
+          <div class="node wide" data-id="18" data-title="The 3-Account System"
+            data-desc="One of the simplest, most effective personal finance structures: three separate accounts with three distinct purposes — spending, short-term saving, and long-term saving/investing. This structure creates visual clarity about where your money is and what it's for, removing the temptation to spend savings."
+            data-topics="Account 1: current account for bills and daily spending|Account 2: savings account for goals and emergency fund|Account 3: investment account for long-term wealth building|How to calculate how much to put in each bucket|Separate banks for savings: the friction that prevents impulse spending|Naming accounts by goal: 'Japan 2025', 'Emergency', 'Future Me'"
+            data-tags="accounts,system,structure">
+            <div class="node-top">
+              <div class="node-icon">🗂️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The 3-Account System</div>
+            <div class="node-desc">Spending, saving, investing — three accounts, three jobs. The simplest financial
+              structure that actually works.</div>
+            <div class="node-tags"><span class="node-tag">structure</span><span class="node-tag">system</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 5 ═══════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Investing Basics</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="19" data-title="Why You Must Invest"
+            data-desc="Saving money in cash is not enough. Inflation silently erodes the purchasing power of money sitting in a bank account. Investing is how you make your money grow faster than inflation — turning time into one of your greatest financial assets. The earlier you start, the less you need to save."
+            data-topics="Inflation: the silent wealth killer (even at 3%, £100 becomes £74 in 10 years)|The power of compound interest: working for you, not against you|Compound interest examples: £100/month at 7% for 30 years vs. 40 years|Why time in the market beats timing the market|The cost of waiting: starting at 25 vs. 35 vs. 45|Risk of not investing: the guaranteed slow loss of purchasing power"
+            data-tags="investing,compound-interest">
+            <div class="node-top">
+              <div class="node-icon">🌱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Why You Must Invest</div>
+            <div class="node-desc">Inflation destroys cash savings. Compound interest builds wealth. Start early — time
+              is the only real edge.</div>
+            <div class="node-tags"><span class="node-tag">investing</span><span
+                class="node-tag">compound-interest</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Stocks, Bonds & Funds"
+            data-desc="Before you invest anything, you need to understand the basic building blocks. Stocks give you ownership in companies. Bonds are loans you make to governments or companies. Funds bundle many investments together. Understanding these three gives you a foundation for every other investment decision."
+            data-topics="Stocks (equities): ownership, dividends, capital growth|Bonds: fixed income, lower risk, inverse relationship with rates|Mutual funds: pooled investing, managed by professionals|ETFs (Exchange-Traded Funds): funds that trade like stocks|Asset classes and why each exists in a portfolio|How stocks actually make you money over time"
+            data-tags="stocks,bonds,funds">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Stocks, Bonds &amp; Funds</div>
+            <div class="node-desc">The three building blocks of investing — understand what each is, and what role it
+              plays in a portfolio.</div>
+            <div class="node-tags"><span class="node-tag">stocks</span><span class="node-tag">bonds</span><span
+                class="node-tag">funds</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Index Funds & ETFs"
+            data-desc="For most people, index funds are the best investment available. They give you ownership of hundreds or thousands of companies at once, with near-zero fees, and they consistently outperform the majority of actively managed funds over the long term. This is the Buffett-endorsed, evidence-backed default choice for beginners."
+            data-topics="What is an index? S&P 500, FTSE 100, MSCI World|Why passive beats active investing over the long run|Expense ratios: why 0.03% vs. 1.5% matters enormously over 30 years|Recommended beginner index funds: Vanguard LifeStrategy, iShares Core|MSCI World vs. S&P 500 vs. Total Market: which to choose?|Dollar/pound cost averaging: investing the same amount regularly"
+            data-tags="index-funds,ETFs,passive">
+            <div class="node-top">
+              <div class="node-icon">🌍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Index Funds &amp; ETFs</div>
+            <div class="node-desc">Own hundreds of companies at once with near-zero fees — the evidence-backed default
+              for beginner investors.</div>
+            <div class="node-tags"><span class="node-tag">index-funds</span><span class="node-tag">passive</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="How to Start Investing"
+            data-desc="The hardest part of investing is starting. There are too many platforms, too many choices, and too much fear of doing it wrong. This topic cuts through all of it: which platform to use, how to open an account, what to actually buy first, and how to think about the process from day one."
+            data-topics="Choosing a platform: Vanguard, Freetrade, Trading 212, Fidelity|Opening a Stocks & Shares ISA (UK) or brokerage account|Your first investment: a simple one-fund portfolio|Lump sum vs. regular monthly investing|How to think about market volatility as a beginner|Common beginner mistakes and how to avoid them"
+            data-tags="getting-started,platforms">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">How to Start Investing</div>
+            <div class="node-desc">Pick a platform, open an account, make your first investment — a clear, practical
+              starting guide.</div>
+            <div class="node-tags"><span class="node-tag">getting-started</span><span class="node-tag">platforms</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="23" data-title="Risk, Return & Diversification"
+            data-desc="Every investment involves risk. Understanding the relationship between risk and return — and how diversification reduces risk without sacrificing return — is the foundation of building a portfolio you can stick with through market downturns."
+            data-topics="The risk/return tradeoff: why higher return = higher risk|Volatility vs. permanent loss: the key distinction|Diversification: the only free lunch in investing|Asset allocation: the mix of stocks, bonds, and cash|Age and risk tolerance: how your allocation should shift over time|Rebalancing: restoring your target allocation annually"
+            data-tags="risk,diversification">
+            <div class="node-top">
+              <div class="node-icon">⚖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Risk, Return &amp; Diversification</div>
+            <div class="node-desc">Every investment involves risk. Diversification is the only free lunch — learn how to
+              spread risk intelligently.</div>
+            <div class="node-tags"><span class="node-tag">risk</span><span class="node-tag">diversification</span></div>
+          </div>
+
+          <div class="node wide" data-id="24" data-title="Retirement Accounts"
+            data-desc="Retirement accounts are the most powerful tax-advantaged tool most people will ever have access to — and most people massively under-use them. Whether it's a pension, 401(k), ISA, or Roth IRA, understanding how to max out tax-advantaged accounts before investing elsewhere can save you tens of thousands over a lifetime."
+            data-topics="UK pension basics: workplace pension, SIPP, employer match|Why employer matching is a 100% instant return — always take it|Annual contribution limits and lifetime allowances|ISA vs. pension: which to prioritise?|US: 401(k), Roth IRA, Traditional IRA — the contribution order|The compounding superpower of tax-free growth over decades"
+            data-tags="pension,retirement,ISA">
+            <div class="node-top">
+              <div class="node-icon">🏖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Retirement Accounts</div>
+            <div class="node-desc">Pensions and ISAs give you tax-free growth. Employer matching is a 100% return —
+              never leave it on the table.</div>
+            <div class="node-tags"><span class="node-tag">pension</span><span class="node-tag">ISA</span><span
+                class="node-tag">retirement</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════ PHASE 6 ═══════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Building Long-Term Wealth</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="25" data-title="Growing Your Income"
+            data-desc="There's a ceiling on how much you can cut expenses, but no ceiling on how much you can earn. Growing your income — through salary negotiation, side income, freelancing, or career development — is the highest-leverage financial move available to most people. Learn the strategies that actually work."
+            data-topics="Salary negotiation: the research, timing, and script|How to ask for a raise and what to say|Side income: freelancing, consulting, and marketplaces|Passive income: what it really is (and what it isn't)|Career capital: investing in skills that compound|The income ceiling myth: why switching jobs beats loyalty for pay"
+            data-tags="income,salary,side-hustle">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Growing Your Income</div>
+            <div class="node-desc">Salary negotiation, side income, career capital — income growth is the
+              highest-leverage financial move.</div>
+            <div class="node-tags"><span class="node-tag">income-growth</span><span class="node-tag">negotiation</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Insurance & Protection"
+            data-desc="Insurance is the financial product nobody wants to think about — until they desperately need it. A single uninsured event (serious illness, accident, death of a breadwinner) can undo years of saving and investing. Learn which types of insurance are essential, which are wasteful, and how to get the right coverage without overpaying."
+            data-topics="The purpose of insurance: protecting against catastrophic, unrecoverable loss|Health insurance: when the public system isn't enough|Life insurance: term life vs. whole life|Income protection / disability insurance — the most overlooked cover|Contents and renters insurance: cheap and essential|Insurance to avoid: extended warranties, payment protection insurance (PPI)"
+            data-tags="insurance,protection">
+            <div class="node-top">
+              <div class="node-icon">🛡️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Insurance &amp; Protection</div>
+            <div class="node-desc">One uninsured catastrophe can erase years of financial progress. Know what to cover —
+              and what to skip.</div>
+            <div class="node-tags"><span class="node-tag">insurance</span><span class="node-tag">protection</span></div>
+          </div>
+
+          <div class="node" data-id="27" data-title="Tax Basics"
+            data-desc="Taxes are the single largest expense most people will ever have — yet most people know almost nothing about how they work. Understanding how income tax, capital gains tax, and tax-advantaged accounts interact can legally save you thousands per year. You don't need an accountant to understand the basics."
+            data-topics="How income tax brackets work: marginal rates|Personal allowance and the basic rate band|Capital gains tax: what it is and how to minimise it|Tax-advantaged accounts: pensions, ISAs, 401(k)s as tax shelters|Tax-loss harvesting: using investment losses strategically|When to hire an accountant vs. do it yourself"
+            data-tags="tax,tax-efficiency">
+            <div class="node-top">
+              <div class="node-icon">🧾</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Tax Basics</div>
+            <div class="node-desc">Tax is your largest lifetime expense. Understanding brackets, allowances, and
+              tax-advantaged accounts saves real money.</div>
+            <div class="node-tags"><span class="node-tag">tax</span><span class="node-tag">efficiency</span></div>
+          </div>
+
+          <div class="node wide" data-id="28" data-title="Net Worth & Financial Milestones"
+            data-desc="Net worth — assets minus liabilities — is the single most important number in personal finance. It tells you where you actually are financially, not just how much you earn. Learn how to calculate your net worth, track it over time, and use recognised financial milestones to measure progress on the path to financial independence."
+            data-topics="Calculating your net worth: assets and liabilities|Tracking net worth monthly vs. quarterly|Financial milestones: first £1,000, first £10,000, 1x salary, 25x expenses|The FI (Financial Independence) number: 25x annual expenses|The 4% rule: sustainable withdrawal in retirement|Defining what financial success means to you — beyond a number"
+            data-tags="net-worth,FI,milestones">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Net Worth &amp; Financial Milestones</div>
+            <div class="node-desc">Your single most important financial number — track it, grow it, and use milestones
+              to stay motivated.</div>
+            <div class="node-tags"><span class="node-tag">net-worth</span><span class="node-tag">milestones</span><span
+                class="node-tag">FI</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>32</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — MONEY MINDSET</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 32;
+    const phaseNames = {
+      1: 'MONEY MINDSET & FOUNDATIONS', 2: 'BUDGETING & CASH FLOW',
+      3: 'DEBT & CREDIT', 4: 'SAVING & BANKING',
+      5: 'INVESTING BASICS', 6: 'BUILDING LONG-TERM WEALTH'
+    };
+
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-finance-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-finance-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const all = [...phase.querySelectorAll('.node')].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all && phase.querySelectorAll('.node').length > 0) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+
+</body>
+
+</html>

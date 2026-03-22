@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aerospace Engineering Degree Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <!-- STYLES -->
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    .phase:nth-child(8) {
+      animation-delay: 0.32s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node.lab-card {
+      border-style: dashed;
+      border-color: rgba(245, 166, 35, 0.25);
+      background: rgba(245, 166, 35, 0.03);
+    }
+
+    .node.lab-card .node-title {
+      color: var(--gold);
+    }
+
+    .phase-teal .node.lab-card {
+      border-color: rgba(0, 201, 167, 0.25);
+      background: rgba(0, 201, 167, 0.03);
+    }
+
+    .phase-teal .node.lab-card .node-title {
+      color: var(--teal);
+    }
+
+    .phase-blue .node.lab-card {
+      border-color: rgba(123, 159, 255, 0.25);
+      background: rgba(123, 159, 255, 0.03);
+    }
+
+    .phase-blue .node.lab-card .node-title {
+      color: var(--blue);
+    }
+
+    .phase-red .node.lab-card {
+      border-color: rgba(255, 107, 107, 0.25);
+      background: rgba(255, 107, 107, 0.03);
+    }
+
+    .phase-red .node.lab-card .node-title {
+      color: var(--red-soft);
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node-tag.lab {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.3);
+      background: rgba(245, 166, 35, 0.06);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(440px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 48 complete</span>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Degree Programs → <span>Aerospace Engineering</span></div>
+      <div class="page-tag">Degree</div>
+      <h1 class="page-title">Aerospace<br />Engineering</h1>
+      <p class="page-desc">A complete 4-year BEng/MEng Aerospace Engineering degree roadmap — every module, lab, and
+        design project mapped semester by semester. From calculus and Newtonian mechanics to aerodynamics, propulsion,
+        structures, flight dynamics, and your final year dissertation. 8 semesters, 48 modules.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>4 years</strong>&nbsp;· 8 semesters</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>48 modules</strong>&nbsp;+ labs &amp; projects</div>
+        <div class="meta-chip"><span>🎓</span>&nbsp;<strong>BEng / MEng</strong>&nbsp;level</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>University standard</strong></div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 48 modules completed</div>
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Year 1 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Engineering Mathematics I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Newtonian Mechanics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Engineering Materials</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Introduction to Flight</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Engineering Drawing &amp; CAD</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Lab: Workshop &amp; Materials</div>
+
+      <div class="sidebar-section-title">Year 1 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Engineering Mathematics II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Thermodynamics I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Statics &amp; Stress Analysis</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Fluid Mechanics I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Lab: Aerodynamics Wind Tunnel I</div>
+
+      <div class="sidebar-section-title">Year 2 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aerodynamics I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aircraft Structures I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aircraft Propulsion I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Dynamics &amp; Vibrations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Lab: Structures &amp; Propulsion</div>
+
+      <div class="sidebar-section-title">Year 2 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aerodynamics II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Flight Dynamics &amp; Control I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aircraft Structures II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Numerical Methods &amp; Programming</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Group Design Project I</div>
+
+      <div class="sidebar-section-title">Year 3 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Compressible Aerodynamics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aircraft Propulsion II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aeroelasticity</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Avionics &amp; Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Lab: High-Speed &amp; Compressible Flow</div>
+
+      <div class="sidebar-section-title">Year 3 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Computational Fluid Dynamics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Flight Dynamics &amp; Control II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Spacecraft &amp; Orbital Mechanics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Aerospace Structures III</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Group Design Project II</div>
+
+      <div class="sidebar-section-title">Year 4 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Advanced Aerodynamics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Elective I</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Elective II</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🔬 Individual Project (begins)</div>
+
+      <div class="sidebar-section-title">Year 4 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot" id="sdot-8"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Elective III</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Elective IV</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🎓 Final Year Dissertation</div>
+
+    </aside>
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+      <!-- ═══ YEAR 1 SEM 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 1 · SEM 1</div>
+          <div class="phase-title">Mathematical &amp; Physical Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="Engineering Mathematics I"
+            data-desc="The mathematical toolkit that underpins all of aerospace engineering. You need to be fluent with calculus, linear algebra, and differential equations before any engineering module makes sense. This is the most important module of Year 1 — the language everything else is written in."
+            data-topics="Single-variable calculus: limits, differentiation (product, chain, quotient rules), integration techniques|Vectors and matrices: dot product, cross product, matrix multiplication, determinants, inverse|Complex numbers: Argand diagram, polar form, Euler's formula e^(iθ) = cos θ + i sin θ|First-order ODEs: separable, linear (integrating factor), exact equations|Taylor and Maclaurin series: approximations that appear throughout engineering|Applications: trajectory problems, vector resolution of forces, oscillation equations"
+            data-tags="mathematics,calculus,ODEs,essential">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Engineering Mathematics I</div>
+            <div class="node-desc">Calculus, vectors, matrices, complex numbers, ODEs — the language all engineering is
+              written in. Master this above all else.</div>
+            <div class="node-tags"><span class="node-tag">essential</span><span class="node-tag">calculus</span><span
+                class="node-tag">ODEs</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Newtonian Mechanics"
+            data-desc="Classical mechanics is the physical foundation of aerospace engineering. Aircraft and spacecraft obey Newton's laws, and everything from lift calculation to orbital mechanics traces back to F = ma. Mastering mechanics in its full 3D vector form sets you apart from students who only learned it in 2D at school."
+            data-topics="Newton's three laws in vector form for 3D particle systems|Kinematics: position, velocity, acceleration in Cartesian, polar, and path coordinates|Work, energy, power: the work-energy theorem and conservation of energy|Impulse and momentum: the impulse-momentum theorem and conservation of momentum|Rigid body mechanics: moment of inertia, angular momentum, torque|Relative motion: rotating reference frames, Coriolis and centripetal accelerations"
+            data-tags="mechanics,Newton,dynamics">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Newtonian Mechanics</div>
+            <div class="node-desc">F = ma in full 3D vector form — from particle kinematics to rigid body dynamics and
+              rotating reference frames.</div>
+            <div class="node-tags"><span class="node-tag">mechanics</span><span class="node-tag">kinematics</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Engineering Materials"
+            data-desc="Aerospace structures must be simultaneously strong, stiff, light, and resistant to fatigue, creep, and corrosion. Understanding materials from their atomic structure through to macroscopic mechanical properties is essential before you can make engineering design decisions."
+            data-topics="Atomic bonding and crystal structure: how microstructure determines macroscopic properties|Stress, strain, and the stress-strain curve: elastic modulus, yield stress, UTS, fracture|Metals: aluminium alloys, titanium alloys, steel — properties, processing, and aerospace applications|Composites: carbon fibre reinforced polymers (CFRP), glass fibre, sandwich structures — the aerospace revolution|Ceramics and polymers: limited but critical applications (seals, ablatives, transparencies)|Fatigue: S-N curves, stress concentration factors, safe-life vs. damage-tolerant design philosophy|Corrosion: mechanisms and protective treatments for aerospace environments"
+            data-tags="materials,composites,fatigue">
+            <div class="node-top">
+              <div class="node-icon">🔩</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Engineering Materials</div>
+            <div class="node-desc">Aluminium alloys, CFRP composites, fatigue, and corrosion — the material choices that
+              define every aerospace structure.</div>
+            <div class="node-tags"><span class="node-tag">materials</span><span class="node-tag">composites</span><span
+                class="node-tag">CFRP</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Introduction to Flight"
+            data-desc="Before the equations, you need the big picture — how and why aircraft fly, the vocabulary of flight mechanics, and a qualitative understanding of the forces and moments that act on a flying vehicle. This module gives you the context that makes every subsequent technical module meaningful."
+            data-topics="The four forces of flight: lift, drag, thrust, weight — and how they balance in steady flight|Wing geometry: span, chord, aspect ratio, sweep, taper, dihedral — and what each does|Aerofoil nomenclature: NACA 4-digit series, camber, thickness, leading/trailing edge|Atmosphere: the International Standard Atmosphere (ISA) — pressure, temperature, density vs. altitude|Aircraft types: fixed-wing, rotary-wing, missiles, spacecraft — comparative overview|Qualification and certification: EASA CS-25, FAR Part 25, and what airworthiness means"
+            data-tags="flight,introduction,overview">
+            <div class="node-top">
+              <div class="node-icon">✈️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Introduction to Flight</div>
+            <div class="node-desc">The four forces, wing geometry, NACA aerofoils, ISA atmosphere — the vocabulary and
+              big picture before the equations.</div>
+            <div class="node-tags"><span class="node-tag">flight</span><span class="node-tag">ISA</span><span
+                class="node-tag">overview</span></div>
+          </div>
+
+          <div class="node" data-id="5" data-title="Engineering Drawing & CAD"
+            data-desc="Engineers communicate through drawings. Orthographic projection, section views, tolerancing (GD&T), and assembly drawings are how design intent is conveyed from engineer to manufacturer. CAD tools — SolidWorks or CATIA — are the modern implementation of these skills and are essential for every design project."
+            data-topics="Orthographic projection: first-angle vs. third-angle, views and conventions|Section views, auxiliary views, and detail drawings|Dimensioning and tolerancing: general tolerances, GD&T symbols|Isometric and pictorial drawings|SolidWorks or CATIA: part modelling, assembly, drawing extraction|Introduction to parametric design: feature trees, constraints, design intent"
+            data-tags="CAD,drawing,SolidWorks">
+            <div class="node-top">
+              <div class="node-icon">🖥️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Engineering Drawing &amp; CAD</div>
+            <div class="node-desc">Orthographic projection, GD&T, and SolidWorks/CATIA — the visual language of
+              engineering design.</div>
+            <div class="node-tags"><span class="node-tag">CAD</span><span class="node-tag">SolidWorks</span></div>
+          </div>
+
+          <div class="node lab-card" data-id="6" data-title="🔬 Lab: Workshop & Materials Testing"
+            data-desc="Your first hands-on lab experience — working in the engineering workshop to understand manufacturing processes, then conducting mechanical tests on material specimens. These labs build the physical intuition that makes equations meaningful."
+            data-topics="Workshop safety and basic machining: lathe, drill press, bench tools|Tensile testing: loading specimens to failure, extracting E, σ_y, UTS, ductility from the stress-strain curve|Hardness testing: Vickers and Brinell methods — correlating hardness to strength|Fatigue testing: S-N curve determination for an aluminium alloy specimen|Metallographic examination: polishing, etching, and optical microscopy of microstructures|Lab report writing: the engineering report format — title, abstract, method, results, discussion, conclusions"
+            data-tags="lab,materials,testing">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Lab: Workshop &amp; Materials Testing</div>
+            <div class="node-desc">Tensile testing, fatigue S-N curves, metallography — physical intuition that makes
+              the equations real.</div>
+            <div class="node-tags"><span class="node-tag lab">lab</span><span class="node-tag">tensile-testing</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 1 SEM 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 1 · SEM 2</div>
+          <div class="phase-title">Thermodynamics, Fluids &amp; Structures Fundamentals</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="7" data-title="Engineering Mathematics II"
+            data-desc="Extending the mathematical toolkit to the tools required for aerospace analysis: partial differential equations for flow and heat transfer, vector calculus for field theory, Laplace transforms for control systems, and Fourier analysis for vibrations and signal processing."
+            data-topics="Second-order ODEs: constant coefficient, characteristic equation, particular integrals — mass-spring-damper systems|Partial differential equations (PDEs): classification, the heat equation, wave equation, Laplace equation|Vector calculus: gradient, divergence, curl, the divergence theorem, Stokes' theorem|Laplace transforms: definition, properties, inverse transform, solving ODEs|Fourier series and transforms: decomposing periodic signals into frequency components|Numerical methods: Euler's method, Runge-Kutta (RK4), finite differences — for equations with no analytical solution"
+            data-tags="mathematics,PDEs,vector-calculus">
+            <div class="node-top">
+              <div class="node-icon">∫</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Engineering Mathematics II</div>
+            <div class="node-desc">PDEs, vector calculus, Laplace transforms, Fourier series, RK4 — the advanced
+              mathematical toolkit for aerospace analysis.</div>
+            <div class="node-tags"><span class="node-tag">PDEs</span><span class="node-tag">vector-calculus</span><span
+                class="node-tag">Fourier</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Thermodynamics I"
+            data-desc="Thermodynamics governs all aerospace propulsion systems — from piston engines to gas turbines to rockets. The first and second laws, thermodynamic cycles, and the properties of working fluids are the essential theoretical foundation for understanding how engines convert fuel energy into thrust."
+            data-topics="Thermodynamic systems, states, and processes: open vs. closed systems, intensive vs. extensive properties|First Law: internal energy, enthalpy, specific heats at constant volume and pressure|Second Law: entropy, irreversibility, the Clausius inequality|Thermodynamic cycles: Carnot (theoretical maximum efficiency), Otto (petrol), Diesel, Brayton (gas turbine)|Properties of air as a perfect gas: ideal gas law, compressibility, specific heat ratio γ|Steam and refrigeration cycles: basic overview for broader engineering context"
+            data-tags="thermodynamics,Brayton,entropy">
+            <div class="node-top">
+              <div class="node-icon">🔥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Thermodynamics I</div>
+            <div class="node-desc">First and Second Laws, Brayton cycle, entropy, perfect gas — the foundation of every
+              propulsion system.</div>
+            <div class="node-tags"><span class="node-tag">thermodynamics</span><span class="node-tag">Brayton</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="9" data-title="Statics & Stress Analysis"
+            data-desc="Structures must carry loads without failing or deforming excessively. Statics gives you the tools to determine internal forces and moments. Stress analysis converts those into the stress fields that determine whether failure occurs. Together they are the foundation of every structural analysis in aerospace."
+            data-topics="Equilibrium of forces and moments: free body diagrams, 2D and 3D equilibrium conditions|Internal forces in beams: shear force and bending moment diagrams — the most important structural analysis skill|Normal stress (axial and bending) and shear stress (transverse and torsion)|Mohr's circle: transformation of stresses and strains at arbitrary orientations|Deflections of beams: Macaulay's method, double integration, superposition|Torsion: circular and non-circular cross-sections, open and closed thin-walled sections|Failure criteria: von Mises, Tresca — predicting yielding in multi-axial stress states"
+            data-tags="statics,stress,structures">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Statics &amp; Stress Analysis</div>
+            <div class="node-desc">Shear force and bending moment diagrams, Mohr's circle, beam deflections, von Mises —
+              the structural analysis toolkit.</div>
+            <div class="node-tags"><span class="node-tag">statics</span><span class="node-tag">Mohr's-circle</span><span
+                class="node-tag">structures</span></div>
+          </div>
+
+          <div class="node" data-id="10" data-title="Fluid Mechanics I"
+            data-desc="Aerodynamics is applied fluid mechanics. Before you can understand lift and drag, you need the governing equations of fluid flow. This module establishes the foundational principles — from fluid statics through the Bernoulli equation to the Navier-Stokes equations and boundary layer theory."
+            data-topics="Fluid properties: density, viscosity (dynamic and kinematic), compressibility|Fluid statics: hydrostatic pressure, manometry, buoyancy|Reynolds Transport Theorem: the bridge from particle mechanics to fluid control volumes|Conservation of mass (continuity equation), momentum (integral form), and energy for control volumes|Bernoulli's equation: derivation, assumptions, and applications|Viscous flow in pipes: laminar (Hagen-Poiseuille), turbulent, the Moody chart|Introduction to boundary layers: velocity profiles, displacement thickness, momentum thickness"
+            data-tags="fluid-mechanics,Bernoulli,boundary-layer">
+            <div class="node-top">
+              <div class="node-icon">🌊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Fluid Mechanics I</div>
+            <div class="node-desc">Bernoulli, continuity, Reynolds Transport Theorem, boundary layers — the governing
+              equations of all fluid flow.</div>
+            <div class="node-tags"><span class="node-tag">fluid-mechanics</span><span class="node-tag">Bernoulli</span>
+            </div>
+          </div>
+
+          <div class="node wide lab-card" data-id="11" data-title="🔬 Lab: Aerodynamics Wind Tunnel I"
+            data-desc="Your first wind tunnel experience — measuring the pressure distribution over an aerofoil and extracting lift and drag coefficients. This is where the theory of Fluid Mechanics I becomes physical reality. You will learn that real flows are messier than ideal theory predicts."
+            data-topics="Wind tunnel operation: open-circuit vs. closed-circuit, blockage corrections, flow quality assessment|Pressure measurement: manometers, Scanivalve pressure scanners, pressure tap installation on aerofoil models|Aerofoil pressure distribution: measuring Cp at multiple angles of attack and Reynolds numbers|Integration of Cp to obtain CL and CD — comparing experimental results to thin aerofoil theory|Flow visualisation: tufts, oil flow, smoke injection — qualitative understanding of separation|Error analysis: systematic and random errors, uncertainty propagation, presenting results with confidence intervals"
+            data-tags="lab,wind-tunnel,aerodynamics">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Lab: Aerodynamics Wind Tunnel I</div>
+            <div class="node-desc">Measure aerofoil pressure distributions, extract CL and CD, and compare against thin
+              aerofoil theory in the wind tunnel.</div>
+            <div class="node-tags"><span class="node-tag lab">lab</span><span class="node-tag">wind-tunnel</span><span
+                class="node-tag">CL-CD</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 2 SEM 1 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 2 · SEM 1</div>
+          <div class="phase-title">Core Aerospace Disciplines — Part I</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="12" data-title="Aerodynamics I"
+            data-desc="This is the central module of the degree. Aerodynamics I establishes the theoretical framework for predicting lift and drag on wings and aircraft — from the irrotational flow model through thin aerofoil theory to Prandtl's lifting line theory for finite wings. These are the tools used for every wing design and performance analysis."
+            data-topics="Irrotational, incompressible flow: the velocity potential φ and stream function ψ|Elementary potential flows: uniform flow, source/sink, doublet, free vortex|Superposition: the Rankine oval, flow over a cylinder — building complex flows from simple ones|The Kutta-Joukowski theorem: L = ρ V Γ — lift from circulation|Thin aerofoil theory: the vortex sheet model, camber line equation, lift slope dCL/dα = 2π|Prandtl's lifting line theory: the elliptic lift distribution, induced drag, optimal span loading|Ground effect and winglets: the effect of the ground plane and wing tip modifications"
+            data-tags="aerodynamics,Kutta-Joukowski,lifting-line">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aerodynamics I</div>
+            <div class="node-desc">Kutta-Joukowski, thin aerofoil theory, Prandtl's lifting line — the theoretical tools
+              for every wing design calculation.</div>
+            <div class="node-tags"><span class="node-tag">aerodynamics</span><span
+                class="node-tag">lifting-line</span><span class="node-tag">circulation</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Aircraft Structures I"
+            data-desc="Aircraft structures must carry enormous loads — from wing bending due to lift to fuselage pressurisation loads — at minimum weight. This module introduces the structural concepts and analysis methods specific to thin-walled aerospace structures, which behave very differently from the solid sections studied in Year 1."
+            data-topics="Thin-walled structures: open and closed sections in bending and shear|Shear flow in closed sections: Bredt-Batho formula for torsion of thin-walled boxes|Idealised structures: the boom-panel idealization for multi-cell boxes|Buckling: Euler column buckling, buckling of plates, interaction of bending and buckling|Structural design considerations: redundancy, load paths, fail-safe vs. safe-life design|Finite Element Method (FEM): introduction — nodes, elements, stiffness matrix, boundary conditions|NASTRAN/PATRAN or Abaqus: running basic FEM analyses"
+            data-tags="structures,thin-walled,FEM,buckling">
+            <div class="node-top">
+              <div class="node-icon">✈️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aircraft Structures I</div>
+            <div class="node-desc">Thin-walled sections, Bredt-Batho torsion, Euler buckling, FEM introduction —
+              aerospace structural analysis from first principles.</div>
+            <div class="node-tags"><span class="node-tag">structures</span><span
+                class="node-tag">thin-walled</span><span class="node-tag">FEM</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Aircraft Propulsion I"
+            data-desc="Propulsion converts energy stored in fuel into the thrust that overcomes drag. Understanding how different propulsion systems work — from piston engines to gas turbines to rockets — and the thermodynamics that govern their performance is central to aerospace engineering."
+            data-topics="Actuator disc theory: the momentum theory of propulsion — the Froude efficiency|Piston engines: four-stroke Otto cycle, supercharging, volumetric efficiency, power and specific fuel consumption|Gas turbine fundamentals: the Brayton cycle for aircraft — compressor, combustion chamber, turbine, nozzle|Component analysis: compressor and turbine work, combustor energy release, nozzle expansion|Overall pressure ratio and turbine entry temperature: the key design parameters for thermal efficiency|Bypass ratio and specific thrust: why high-bypass turbofans dominate commercial aviation|Specific fuel consumption (SFC) and the Breguet range equation"
+            data-tags="propulsion,gas-turbine,SFC">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aircraft Propulsion I</div>
+            <div class="node-desc">Brayton cycle, compressor/turbine analysis, bypass ratio, SFC, and the Breguet range
+              equation — the thermodynamics of thrust.</div>
+            <div class="node-tags"><span class="node-tag">propulsion</span><span
+                class="node-tag">gas-turbine</span><span class="node-tag">Brayton</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Dynamics & Vibrations"
+            data-desc="Vibration is a fact of life in aerospace engineering — engines vibrate, structures resonate, and flutter can destroy an aircraft. Understanding the mathematics of vibrating systems — natural frequencies, resonance, and damping — is essential for both structural design and control system design."
+            data-topics="Single degree-of-freedom (SDOF) systems: equation of motion, natural frequency, damping ratio|Free vibration: underdamped, critically damped, overdamped responses|Forced vibration: steady-state response, resonance, frequency response function (FRF)|Multi degree-of-freedom (MDOF) systems: mass and stiffness matrices, eigenvalue problem for natural frequencies and mode shapes|Modal analysis: decoupling MDOF equations via modal coordinates|Vibration isolation and damping: vibration absorbers, structural damping|Introduction to continuous systems: vibration of beams and plates"
+            data-tags="vibrations,dynamics,modal-analysis">
+            <div class="node-top">
+              <div class="node-icon">〰️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Dynamics &amp; Vibrations</div>
+            <div class="node-desc">Natural frequencies, resonance, MDOF modal analysis — understand the vibration
+              phenomena that can destroy aircraft structures.</div>
+            <div class="node-tags"><span class="node-tag">vibrations</span><span
+                class="node-tag">modal-analysis</span><span class="node-tag">resonance</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="16" data-title="🔬 Lab: Structures & Propulsion Testing"
+            data-desc="Two parallel laboratory strands: structural testing of beams and thin-walled sections to validate theory, and engine performance testing on a small gas turbine or turbojet testbed to experience real propulsion data."
+            data-topics="Structures lab: strain gauge installation and Wheatstone bridge — measuring strains in a loaded beam|Comparison of measured stress distributions against theory in bending and torsion|Buckling load measurement: loaded strut experiment, comparison with Euler prediction|Propulsion lab: operating a small turbojet or turbofan testbed safely|Thrust, fuel flow, and SFC measurement at various power settings|Plotting thrust vs. throttle and SFC vs. power — linking measurements to Brayton cycle theory"
+            data-tags="lab,structures,propulsion">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Lab: Structures &amp; Propulsion Testing</div>
+            <div class="node-desc">Strain gauges on beams, buckling load measurement, and turbojet testbed — link theory
+              to physical measurement.</div>
+            <div class="node-tags"><span class="node-tag lab">lab</span><span class="node-tag">strain-gauges</span><span
+                class="node-tag">turbojet</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 2 SEM 2 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 2 · SEM 2</div>
+          <div class="phase-title">Core Aerospace Disciplines — Part II</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="17" data-title="Aerodynamics II"
+            data-desc="Building on the potential flow theory of Aerodynamics I, this module introduces viscous effects, turbulence, and the numerical methods used in real aerodynamic analysis. The Panel Method — the first step toward computational aerodynamics — is implemented and validated against theory."
+            data-topics="Viscous boundary layers: Blasius solution for laminar flow, momentum integral method, turbulent boundary layers|Transition: the mechanisms of laminar-turbulent transition, the critical Reynolds number|Separation: adverse pressure gradient, flow separation, and the consequences for lift and drag|Drag: form drag, skin friction drag, interference drag, induced drag — the complete drag breakdown|Panel methods: vortex panel and source-sink panel methods for 2D and 3D geometries|High-lift devices: flaps (plain, slotted, Fowler), slats, leading edge devices — their effect on the lift curve|Introduction to transonic effects: the critical Mach number and wave drag"
+            data-tags="aerodynamics,boundary-layer,panel-method,high-lift">
+            <div class="node-top">
+              <div class="node-icon">🌪️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aerodynamics II</div>
+            <div class="node-desc">Viscous boundary layers, transition, separation, drag breakdown, panel methods,
+              high-lift devices, transonic onset.</div>
+            <div class="node-tags"><span class="node-tag">aerodynamics</span><span
+                class="node-tag">boundary-layer</span><span class="node-tag">panel-method</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Flight Dynamics & Control I"
+            data-desc="How does an aircraft respond when you move the stick? Flight dynamics is the study of aircraft motion — the equations of motion, the aerodynamic derivatives that determine stability, and the conditions under which an aircraft is safe and controllable. This is where aerodynamics and structures come together in the aircraft system."
+            data-topics="Axes systems: body-fixed, stability, and wind axes — transformation matrices between them|Equations of motion: the full 6-degree-of-freedom (6-DoF) nonlinear equations — forces and moments|Linearisation: small perturbation theory — decoupling longitudinal and lateral/directional motion|Longitudinal stability: static stability criteria (dCm/dα < 0), neutral point, static margin|Dynamic stability: the phugoid and short period modes — characteristic equation, damping and frequency|Lateral/directional stability: roll, Dutch roll, and spiral modes|Introduction to control: elevator/aileron/rudder effectiveness, control surface design"
+            data-tags="flight-dynamics,stability,6-DoF">
+            <div class="node-top">
+              <div class="node-icon">🛫</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Flight Dynamics &amp; Control I</div>
+            <div class="node-desc">6-DoF equations of motion, static/dynamic stability, phugoid and short-period modes —
+              why aircraft fly the way they do.</div>
+            <div class="node-tags"><span class="node-tag">flight-dynamics</span><span
+                class="node-tag">stability</span><span class="node-tag">6-DoF</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Aircraft Structures II"
+            data-desc="Advanced structural analysis covering the complete methodology for sizing aircraft wing and fuselage structures. This module deals with the complex multi-cell construction of real aircraft and introduces composite structural analysis — the dominant material in modern airframes."
+            data-topics="Multi-cell thin-walled structures: shear flow distribution, statically indeterminate sections|Wing structural analysis: the semi-monocoque construction, spar-rib-skin load sharing|Fuselage analysis: pressurisation hoop stress, frame and stringer analysis|Composite mechanics: Classical Laminate Theory (CLT), ABD matrix, laminate stiffness prediction|Failure of composites: fibre fracture, matrix cracking, delamination — the complex failure modes|Fastened and bonded joints in composites: pull-through, bearing, and peel failure|Fatigue in structures: cycle counting (rainflow), damage summation (Miner's rule)"
+            data-tags="structures,composites,CLT,fatigue">
+            <div class="node-top">
+              <div class="node-icon">🦴</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aircraft Structures II</div>
+            <div class="node-desc">Multi-cell sections, semi-monocoque wing analysis, Classical Laminate Theory,
+              composite failure, Miner's rule fatigue.</div>
+            <div class="node-tags"><span class="node-tag">structures</span><span class="node-tag">CLT</span><span
+                class="node-tag">composites</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Numerical Methods & Programming"
+            data-desc="Modern aerospace engineering is inseparable from computation. This module establishes the programming and numerical skills needed to solve the problems that have no analytical solution — which is most of them in real engineering. MATLAB or Python is the vehicle; numerical analysis is the destination."
+            data-topics="MATLAB/Python for engineering: arrays, functions, plotting, file I/O|Numerical solution of ODEs: Euler, RK4, adaptive step control|Numerical linear algebra: Gaussian elimination, LU decomposition, eigenvalue solvers|Root finding: bisection, Newton-Raphson, secant method|Numerical integration: trapezoidal, Simpson's, Gaussian quadrature|Interpolation and curve fitting: polynomial, spline, least-squares regression|Monte Carlo methods: simulation-based uncertainty analysis"
+            data-tags="numerical-methods,MATLAB,programming">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Numerical Methods &amp; Programming</div>
+            <div class="node-desc">MATLAB/Python, RK4, numerical linear algebra, root-finding, Monte Carlo — solve the
+              equations that have no closed form.</div>
+            <div class="node-tags"><span class="node-tag">numerical-methods</span><span class="node-tag">MATLAB</span>
+            </div>
+          </div>
+
+          <div class="node wide lab-card" data-id="21" data-title="🔬 Group Design Project I"
+            data-desc="Your first major team engineering project. Working in groups of 4–6, you will conceptually design an aircraft to a given specification — applying everything from Aerodynamics to Structures to Propulsion in an integrated design exercise. This is where the discipline becomes engineering, not just analysis."
+            data-topics="Mission specification analysis: payload, range, altitude, speed requirements|Initial sizing: the rubber engine approach, thrust-to-weight ratio and wing loading selection|Aerodynamic design: wing planform, aerofoil selection, high-lift system sizing|Structural layout: wing structural box, fuselage cross-section, undercarriage geometry|Propulsion selection: engine sizing, installation effects, fuel system|Mass estimation: component mass build-up, centre of gravity travel calculation|Deliverables: design report, CAD model, oral presentation — assessed as a group with individual elements"
+            data-tags="design-project,aircraft-design,group-work">
+            <div class="node-top">
+              <div class="node-icon">✏️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Group Design Project I</div>
+            <div class="node-desc">Conceptually design a complete aircraft to specification — wing sizing, propulsion
+              selection, structures layout, CAD model, group report.</div>
+            <div class="node-tags"><span class="node-tag lab">project</span><span
+                class="node-tag">aircraft-design</span><span class="node-tag">group</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 3 SEM 1 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 3 · SEM 1</div>
+          <div class="phase-title">Advanced Core &amp; Specialisation Begins</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="22" data-title="Compressible Aerodynamics"
+            data-desc="At high speed, air can no longer be treated as incompressible — density changes dramatically and shock waves form. Compressible aerodynamics governs the performance of every aircraft above ~300 mph and of all rockets and spacecraft. Understanding shockwaves, expansion fans, and nozzle flows is essential for modern aerospace."
+            data-topics="Compressible flow fundamentals: Mach number, isentropic relations, stagnation properties|Normal shock waves: Rankine-Hugoniot relations, entropy increase, total pressure loss|Oblique shock waves: the shock polar, weak vs. strong solutions, detached shocks|Prandtl-Meyer expansion fans: supersonic turning around convex corners|Aerofoils in transonic flow: the critical Mach number, transonic drag rise, supercritical aerofoils|Supersonic aerofoils: wave drag, the thin aerofoil theory for M > 1|Duct flows: choked nozzles, convergent-divergent nozzles, normal shock in a duct"
+            data-tags="compressible,shockwaves,transonic,supersonic">
+            <div class="node-top">
+              <div class="node-icon">💨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Compressible Aerodynamics</div>
+            <div class="node-desc">Normal and oblique shocks, Prandtl-Meyer expansion, transonic drag rise, choked
+              nozzles — high-speed flow theory.</div>
+            <div class="node-tags"><span class="node-tag">compressible</span><span
+                class="node-tag">shockwaves</span><span class="node-tag">supersonic</span></div>
+          </div>
+
+          <div class="node" data-id="23" data-title="Aircraft Propulsion II"
+            data-desc="Advanced propulsion covering the detailed aerothermodynamic design of gas turbine components and the fundamentals of rocket propulsion. This is where you design engines, not just analyse them — compressor and turbine blading, combustion chamber design, and rocket nozzle sizing."
+            data-topics="Axial compressor design: the velocity triangle, degree of reaction, Euler work equation, blade profile selection|Compressor stall and surge: the compressor map, surge line, rotating stall|Axial turbine design: uncooled and cooled turbine blades, turbine inlet temperature limits|Combustion chamber design: diffuser, primary, secondary, and dilution zones, pattern factor|Rocket propulsion fundamentals: the rocket equation (Tsiolkovsky), specific impulse, characteristic velocity c*|Chemical rockets: liquid propellant, solid propellant, hybrid systems — applications and trade-offs|Electric propulsion overview: ion thrusters, Hall thrusters — specific impulse and thrust comparison"
+            data-tags="propulsion,compressor,turbine,rockets">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aircraft Propulsion II</div>
+            <div class="node-desc">Compressor/turbine velocity triangles, surge line, Tsiolkovsky rocket equation,
+              liquid/solid propellants, ion thrusters.</div>
+            <div class="node-tags"><span class="node-tag">propulsion</span><span
+                class="node-tag">turbomachinery</span><span class="node-tag">rockets</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Aeroelasticity"
+            data-desc="Aeroelasticity is the interaction between aerodynamic forces and structural deformation — and it can destroy an aircraft. Flutter (dynamic instability), divergence (static instability), and control reversal are all aeroelastic phenomena that must be analysed and prevented in every real aircraft design. This is one of the most intellectually rich topics in aerospace."
+            data-topics="Static aeroelasticity: the typical wing section model, divergence speed, control effectiveness reversal|Torsional divergence: the elastic axis, aerodynamic centre, divergence speed derivation|Control reversal: aileron reversal speed — when rolling the aileron makes the aircraft roll the wrong way|Dynamic aeroelasticity: flutter — the coupling of bending and torsional modes through aerodynamic forces|The V-g (flutter) method: determining flutter speed and frequency|Flutter clearance testing: ground vibration test (GVT), flight flutter test|Modern methods: CFD-CSM coupling for transonic flutter prediction"
+            data-tags="aeroelasticity,flutter,divergence">
+            <div class="node-top">
+              <div class="node-icon">🦅</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aeroelasticity</div>
+            <div class="node-desc">Divergence, control reversal, flutter — the V-g method and the aeroelastic phenomena
+              that have destroyed real aircraft.</div>
+            <div class="node-tags"><span class="node-tag">aeroelasticity</span><span
+                class="node-tag">flutter</span><span class="node-tag">divergence</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Avionics & Systems"
+            data-desc="Modern aircraft are as much software systems as they are mechanical structures. Avionics — the electronic and software systems that control, navigate, communicate, and display — are now the largest single cost component of a modern military aircraft. Understanding systems engineering, sensors, and flight management is essential."
+            data-topics="Aircraft systems architecture: hydraulics, electrical, fuel, environmental control, landing gear|Sensors: pitot-static system, inertial measurement units (IMU), GPS, air data computers|Navigation: inertial navigation, GPS, VOR/DME, ILS — principles and limitations|Communication: VHF/UHF, ACARS, SATCOM, ADS-B|Flight management systems: FMS architecture, RNAV, flight planning, 4D trajectory management|Fly-by-wire: the architecture of modern FBW systems — control laws, redundancy, reversion modes|Systems safety: fault tree analysis (FTA), failure mode and effects analysis (FMEA), safety assurance levels"
+            data-tags="avionics,FBW,navigation,systems">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Avionics &amp; Systems</div>
+            <div class="node-desc">FBW control laws, IMU/GPS navigation, FMS, FTA/FMEA safety analysis — the electronic
+              nervous system of modern aircraft.</div>
+            <div class="node-tags"><span class="node-tag">avionics</span><span class="node-tag">FBW</span><span
+                class="node-tag">FMEA</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="26" data-title="🔬 Lab: High-Speed & Compressible Flow"
+            data-desc="Experimental investigation of compressible flow phenomena — operating the supersonic wind tunnel to observe and measure shockwaves, expansion fans, and nozzle flows. This lab makes the abstract theory of compressible aerodynamics tangible."
+            data-topics="Supersonic wind tunnel operation: the starting process, Mach number setting, schlieren visualisation setup|Schlieren photography: visualising density gradients — making shockwaves visible|Measuring normal and oblique shock angles: comparison with Rankine-Hugoniot and oblique shock relations|Convergent-divergent nozzle: pressure distribution measurement, identifying normal shock position in the diverging section|Aerofoil in supersonic flow: pressure measurement, wave drag extraction, comparison with linear theory|Pitot tube in compressible flow: Rayleigh Pitot tube formula, stagnation pressure recovery"
+            data-tags="lab,supersonic,wind-tunnel,schlieren">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Lab: High-Speed &amp; Compressible Flow</div>
+            <div class="node-desc">Supersonic wind tunnel, schlieren photography, measuring shockwave angles and nozzle
+              pressure distributions.</div>
+            <div class="node-tags"><span class="node-tag lab">lab</span><span class="node-tag">supersonic</span><span
+                class="node-tag">schlieren</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 3 SEM 2 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 3 · SEM 2</div>
+          <div class="phase-title">Advanced Analysis &amp; Space Systems</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="27" data-title="Computational Fluid Dynamics"
+            data-desc="CFD has revolutionised aerospace design — reducing wind tunnel testing costs by orders of magnitude. Understanding the numerical methods behind CFD, their assumptions, and their limitations is essential for using CFD results intelligently rather than blindly. This module teaches you to be a critical user of CFD tools."
+            data-topics="The Navier-Stokes equations: the full governing equations of fluid motion|Finite volume discretisation: control volumes, face fluxes, the cell-centred approach|Turbulence modelling: the closure problem, RANS (Reynolds-Averaged), k-ε, k-ω SST models|Wall functions and near-wall treatment: y+ considerations, the law of the wall|Mesh generation: structured vs. unstructured, boundary layer meshing, mesh quality metrics|Validation and verification (V&V): discretisation error, round-off error, modelling error|Practical CFD with ANSYS Fluent, OpenFOAM, or similar: setting up and running wing/body analyses"
+            data-tags="CFD,RANS,turbulence,Navier-Stokes">
+            <div class="node-top">
+              <div class="node-icon">🌀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Computational Fluid Dynamics</div>
+            <div class="node-desc">Navier-Stokes, finite volumes, RANS turbulence models, mesh generation, V&V — be a
+              critical user of CFD, not a button-pusher.</div>
+            <div class="node-tags"><span class="node-tag">CFD</span><span class="node-tag">RANS</span><span
+                class="node-tag">OpenFOAM</span></div>
+          </div>
+
+          <div class="node" data-id="28" data-title="Flight Dynamics & Control II"
+            data-desc="Advanced flight dynamics and control — moving from stability analysis to the design of automatic control systems. This module covers the automatic flight control systems that make modern aircraft flyable and safe, from classical PID design to optimal control and modern robust control."
+            data-topics="Automatic control fundamentals: open-loop and closed-loop systems, transfer functions, block diagrams|PID control: proportional, integral, and derivative action — tuning methods (Ziegler-Nichols, IMC)|Root locus: the graphical method for understanding closed-loop pole locations|Frequency domain: Bode plots, gain margin, phase margin, stability criteria (Nyquist)|State-space representation: the A, B, C, D matrices, controllability, observability|Optimal control: LQR (Linear Quadratic Regulator) — the standard for aerospace autopilots|Fly-by-wire control law design: the pitch rate command system"
+            data-tags="control,PID,LQR,FBW">
+            <div class="node-top">
+              <div class="node-icon">🎮</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Flight Dynamics &amp; Control II</div>
+            <div class="node-desc">PID, root locus, Bode plots, state-space, LQR — design the automatic control systems
+              that make fly-by-wire aircraft flyable.</div>
+            <div class="node-tags"><span class="node-tag">control</span><span class="node-tag">LQR</span><span
+                class="node-tag">state-space</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Spacecraft & Orbital Mechanics"
+            data-desc="The other half of aerospace — space. Orbital mechanics governs the motion of satellites and spacecraft. Spacecraft design involves unique challenges: operation in the vacuum of space, thermal extremes, radiation environment, and the communication and power constraints that make spacecraft engineering fundamentally different from aircraft engineering."
+            data-topics="Two-body orbital mechanics: Kepler's laws, the vis-viva equation, orbital elements|Orbit transfers: Hohmann transfer, bi-elliptic transfer, plane change manoeuvres|Patched conic method: interplanetary trajectory design|Spacecraft systems: power (solar/RTG), thermal control (passive/active), attitude determination and control (ADCS)|Launch vehicles: launch window, ascent trajectory, staging, payload fraction|Re-entry mechanics: re-entry corridor, aerodynamic heating, ablative shields|Cubesats and small satellites: the modern approach to space access"
+            data-tags="orbital-mechanics,spacecraft,Kepler">
+            <div class="node-top">
+              <div class="node-icon">🛸</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Spacecraft &amp; Orbital Mechanics</div>
+            <div class="node-desc">Kepler's laws, Hohmann transfers, spacecraft systems, re-entry heating, cubesats —
+              the other half of aerospace.</div>
+            <div class="node-tags"><span class="node-tag">orbital-mechanics</span><span
+                class="node-tag">spacecraft</span><span class="node-tag">Kepler</span></div>
+          </div>
+
+          <div class="node" data-id="30" data-title="Aerospace Structures III"
+            data-desc="The culmination of the structures stream — fracture mechanics, damage tolerance design, and advanced composite structural analysis. Fracture mechanics determines when a crack in a structure will propagate catastrophically, and is central to the damage-tolerant design philosophy used in all modern commercial aircraft."
+            data-topics="Linear Elastic Fracture Mechanics (LEFM): the stress intensity factor K, Griffith criterion, fracture toughness KIC|Fatigue crack growth: the Paris-Erdogan law da/dN = C(ΔK)^m, threshold and tearing regimes|Damage tolerance philosophy: inspection intervals, residual strength, fail-safe vs. safe-life|Nonlinear fracture mechanics: the J-integral, CTOD — for ductile materials|Advanced composites: interlaminar shear stress, open-hole strength, delamination fracture mechanics|Structural optimisation: topology optimisation, minimum weight design with stiffness constraints|Introduction to Finite Element Analysis: full nonlinear analysis, contact, plasticity"
+            data-tags="fracture-mechanics,damage-tolerance,LEFM">
+            <div class="node-top">
+              <div class="node-icon">🔩</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Aerospace Structures III</div>
+            <div class="node-desc">LEFM, Paris-Erdogan crack growth, damage tolerance philosophy, composite
+              delamination, structural optimisation.</div>
+            <div class="node-tags"><span class="node-tag">LEFM</span><span
+                class="node-tag">fracture-mechanics</span><span class="node-tag">damage-tolerance</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="31" data-title="🔬 Group Design Project II"
+            data-desc="An advanced integrated design project — designing a spacecraft or unmanned aerial vehicle (UAV) system from mission concept through preliminary design. This project integrates CFD analysis, structural FEM, and systems design in a way that reflects real industry practice."
+            data-topics="Option A — UAV design: mission specification, aerodynamic design with CFD validation, structural analysis with FEM, propulsion system selection, flight simulation|Option B — Satellite design: orbital analysis, power budget, thermal model, ADCS design, mass and launch vehicle selection|All groups: Systems Engineering Management Plan (SEMP), design trade-offs documented|CFD requirement: at least one RANS simulation of the aerodynamic configuration|FEM requirement: structural sizing of at least one primary component|Deliverables: preliminary design review (PDR) presentation, full technical design report, MATLAB simulation"
+            data-tags="design-project,UAV,spacecraft,CFD,FEM">
+            <div class="node-top">
+              <div class="node-icon">✏️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🔬 Group Design Project II</div>
+            <div class="node-desc">Design a UAV or satellite system — CFD aerodynamics, FEM structures, orbital/flight
+              simulation, PDR presentation.</div>
+            <div class="node-tags"><span class="node-tag lab">project</span><span class="node-tag">UAV</span><span
+                class="node-tag">CFD</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 4 SEM 1 ═══ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 4 · SEM 1</div>
+          <div class="phase-title">Advanced Topics, Electives &amp; Research</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="32" data-title="Advanced Aerodynamics"
+            data-desc="The frontier module of the aerodynamics stream — turbulence, unsteady aerodynamics, and multi-disciplinary design optimisation. These are the topics at the boundary of current research, covered to a depth that prepares you to read the research literature independently."
+            data-topics="Turbulence: statistical turbulence theory, energy cascade, Kolmogorov scales, turbulence intensity|Large Eddy Simulation (LES) and DNS: beyond RANS, the computational cost and when each is justified|Unsteady aerodynamics: Theodorsen's function, the Wagner function, the unsteady lift on oscillating aerofoils|Dynamic stall: the LEV (leading edge vortex), ONERA model, relevance to wind turbines and helicopters|Aeroacoustics: noise sources (turbulence-surface interaction, trailing edge noise), OASPL, noise certification|Multi-disciplinary design optimisation (MDO): coupled aero-structural optimisation, design variables, constraint handling"
+            data-tags="turbulence,unsteady,MDO,aeroacoustics">
+            <div class="node-top">
+              <div class="node-icon">🌊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Advanced Aerodynamics</div>
+            <div class="node-desc">Turbulence theory, LES/DNS, dynamic stall, aeroacoustics, MDO — the frontier topics
+              at the edge of current research.</div>
+            <div class="node-tags"><span class="node-tag">turbulence</span><span class="node-tag">LES</span><span
+                class="node-tag">MDO</span></div>
+          </div>
+
+          <div class="node wide" data-id="33" data-title="Electives — Specialisation Pathways"
+            data-desc="Year 4 electives let you specialise in the area of aerospace that most interests you. Choose modules that align with your dissertation and career goals. The most common specialisation tracks are listed here, and your university will offer a subset of these depending on faculty expertise."
+            data-topics="Propulsion track: Advanced Propulsion (scramjets, rotating detonation engines), Turbomachinery Design, Combustion and Emissions|Structures track: Advanced Composites, Structural Health Monitoring, Crashworthiness and Impact|Aerodynamics track: Computational Aeroelasticity, Hypersonic Aerodynamics, Rotorcraft Aerodynamics|Flight Mechanics track: Advanced Flight Control, Autonomous Systems, UAV Guidance Navigation and Control|Space track: Mission Analysis and Design, Space Propulsion, Re-entry Vehicle Design|Systems track: Aircraft Systems Integration, Certification and Airworthiness, Project Management for Aerospace"
+            data-tags="electives,specialisation">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Electives — Specialisation Pathways</div>
+            <div class="node-desc">Propulsion, structures, aerodynamics, flight mechanics, space, or systems — choose
+              3–4 electives that align with your dissertation.</div>
+            <div class="node-tags"><span class="node-tag">electives</span><span class="node-tag">specialisation</span>
+            </div>
+          </div>
+
+          <div class="node wide lab-card" data-id="34" data-title="🎓 Individual Project — Research Phase"
+            data-desc="The individual final year project is the single most important piece of work in the degree. It is assessed on depth, originality, and quality of engineering/scientific thinking. Choose a topic at the intersection of your interests and your supervisor's expertise, and treat it as a research apprenticeship."
+            data-topics="Choosing a topic: discuss 3–5 options with potential supervisors, read 10 recent papers on each before deciding|Literature review: build a comprehensive picture of the state of the art — what is known, what is disputed, what is unknown|Research methodology: experimental, computational (CFD/FEM/simulation), analytical, or a combination|Planning: Gantt chart, milestones, risk register — managing 8 months of independent work|Intermediate review: typically a mid-year progress report and presentation to a panel|Key skills developed: independent research, critical thinking, technical writing, scientific presentation"
+            data-tags="dissertation,research,individual-project">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🎓 Individual Project — Research Phase</div>
+            <div class="node-desc">Choose your topic, conduct the literature review, establish methodology — 8 months of
+              supervised original research begins.</div>
+            <div class="node-tags"><span class="node-tag lab">dissertation</span><span class="node-tag">research</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 4 SEM 2 ═══ -->
+      <div class="phase phase-red" data-phase="8" id="phase-8">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 4 · SEM 2</div>
+          <div class="phase-title">Graduation — Dissertation &amp; Advanced Electives</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="35" data-title="Advanced Electives (Semester 2)"
+            data-desc="Continue your specialisation with final semester advanced electives. These are typically at the frontier of their sub-field, taught partly from research literature rather than textbooks. The distinction between student and researcher becomes blurred at this level."
+            data-topics="Sample advanced modules: Hypersonic Aerodynamics and Re-entry, Advanced Structural Optimisation, Autonomous Systems and Machine Learning in Aerospace, Advanced Turbomachinery, Combustion and Emissions|Reading groups and seminars: departments often run research seminars — attend as many as possible|Industry projects: some electives involve real industry partners and live engineering problems|Academic writing: learning to write technical papers to journal standard in preparation for the dissertation|Conference participation: some departments support final-year students attending AIAA, RAeS, or ICAS"
+            data-tags="electives,advanced,research">
+            <div class="node-top">
+              <div class="node-icon">📖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Advanced Electives (Semester 2)</div>
+            <div class="node-desc">Hypersonics, structural optimisation, ML in aerospace, combustion — frontier
+              electives taught from research literature.</div>
+            <div class="node-tags"><span class="node-tag">electives</span><span class="node-tag">advanced</span></div>
+          </div>
+
+          <div class="node" data-id="36" data-title="Professional Engineering Practice"
+            data-desc="The non-technical skills that determine whether you succeed as an engineer: project management, engineering ethics, environmental responsibility, intellectual property, and how to present and defend your work to panels of expert engineers. Often assessed through the dissertation process itself."
+            data-topics="Engineering ethics: codes of conduct (RAeS, IMechE, IET), case studies of engineering disasters (Challenger, Comet, Concorde)|Engineering law: contracts, intellectual property (patents, trade secrets), liability and indemnity|Environmental responsibility: lifecycle analysis, sustainable aviation, net zero aviation roadmap|Project management: earned value analysis, risk management, critical path analysis|Communication: writing for technical audiences, presenting to boards, writing executive summaries|Professional registration: the path to Chartered Engineer (CEng) — academic requirements and professional development"
+            data-tags="professional-practice,ethics,CEng">
+            <div class="node-top">
+              <div class="node-icon">🎓</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Professional Engineering Practice</div>
+            <div class="node-desc">Engineering ethics, IP law, environmental responsibility, Chartered Engineer pathway
+              — the professional skills beyond the technical.</div>
+            <div class="node-tags"><span class="node-tag">ethics</span><span class="node-tag">CEng</span><span
+                class="node-tag">professional</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="37" data-title="🎓 Final Year Dissertation"
+            data-desc="The culmination of four years — an original engineering or scientific investigation conducted independently under academic supervision. The dissertation is typically 10,000–15,000 words, assessed by written report and oral examination (viva). It represents the highest level of individual achievement in the degree."
+            data-topics="Writing the dissertation: structure (abstract, introduction, literature review, methodology, results, discussion, conclusions, references)|Technical depth: your results and analysis must demonstrate original thinking, not just replication of literature|Figures and tables: publication-quality presentation of data — clear labels, appropriate units, honest error bars|Oral examination (viva): defending your work to two or three examiners — the most intellectually demanding experience of the degree|Citation management: Zotero or Mendeley — managing 40–80 references efficiently|What makes an outstanding dissertation: original contribution, clear structure, honest limitations, and depth of understanding"
+            data-tags="dissertation,thesis,original-research">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🎓 Final Year Dissertation</div>
+            <div class="node-desc">10,000–15,000 words of original research, viva examination — the highest individual
+              achievement of the degree. Make it count.</div>
+            <div class="node-tags"><span class="node-tag lab">dissertation</span><span
+                class="node-tag">original-research</span><span class="node-tag">viva</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>37</strong> modules</div>
+      <div class="stat">🔬 <strong>8</strong> labs &amp; projects</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">📅 <strong id="phaseDone">0</strong>/8 semesters</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">YEAR 1 · SEM 1</div>
+    <div class="panel-node-title" id="panelTitle">Module Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Cover</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const TOTAL = 37;
+    const phaseNames = {
+      1: 'YEAR 1 · SEM 1 — MATHEMATICAL & PHYSICAL FOUNDATIONS',
+      2: 'YEAR 1 · SEM 2 — THERMODYNAMICS, FLUIDS & STRUCTURES',
+      3: 'YEAR 2 · SEM 1 — CORE AEROSPACE DISCIPLINES I',
+      4: 'YEAR 2 · SEM 2 — CORE AEROSPACE DISCIPLINES II',
+      5: 'YEAR 3 · SEM 1 — ADVANCED CORE & SPECIALISATION BEGINS',
+      6: 'YEAR 3 · SEM 2 — ADVANCED ANALYSIS & SPACE SYSTEMS',
+      7: 'YEAR 4 · SEM 1 — ADVANCED TOPICS & RESEARCH',
+      8: 'YEAR 4 · SEM 2 — GRADUATION'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-aero-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-aero-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} modules completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = phaseNames[ph];
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

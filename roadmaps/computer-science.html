@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Science Degree Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <!-- STYLES -->
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    .phase:nth-child(8) {
+      animation-delay: 0.32s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node.lab-card {
+      border-style: dashed;
+      border-color: rgba(245, 166, 35, 0.25);
+      background: rgba(245, 166, 35, 0.03);
+    }
+
+    .node.lab-card .node-title {
+      color: var(--gold);
+    }
+
+    .phase-teal .node.lab-card {
+      border-color: rgba(0, 201, 167, 0.25);
+      background: rgba(0, 201, 167, 0.03);
+    }
+
+    .phase-teal .node.lab-card .node-title {
+      color: var(--teal);
+    }
+
+    .phase-blue .node.lab-card {
+      border-color: rgba(123, 159, 255, 0.25);
+      background: rgba(123, 159, 255, 0.03);
+    }
+
+    .phase-blue .node.lab-card .node-title {
+      color: var(--blue);
+    }
+
+    .phase-red .node.lab-card {
+      border-color: rgba(255, 107, 107, 0.25);
+      background: rgba(255, 107, 107, 0.03);
+    }
+
+    .phase-red .node.lab-card .node-title {
+      color: var(--red-soft);
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node-tag.lab {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.3);
+      background: rgba(245, 166, 35, 0.06);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(440px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 40 complete</span>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Degree Programs → <span>Computer Science</span></div>
+      <div class="page-tag">Degree</div>
+      <h1 class="page-title">Computer<br />Science</h1>
+      <p class="page-desc">A complete 3–4 year BSc/MEng Computer Science degree roadmap — every module, coursework, and
+        project mapped semester by semester. From programming and discrete maths to algorithms, systems, machine
+        learning, and your final year dissertation. 8 semesters, 40 modules.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>3–4 years</strong>&nbsp;· 8 semesters</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>40 modules</strong>&nbsp;+ courseworks</div>
+        <div class="meta-chip"><span>🎓</span>&nbsp;<strong>BSc / MEng</strong>&nbsp;level</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>University standard</strong></div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 40 modules completed</div>
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Year 1 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Intro to Programming</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Discrete Mathematics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Computer Architecture</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: Python Foundations</div>
+
+      <div class="sidebar-section-title">Year 1 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Data Structures</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Mathematics for CS</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Object-Oriented Programming</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: Data Structures Implementation</div>
+
+      <div class="sidebar-section-title">Year 2 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Algorithms &amp; Complexity</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Operating Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Computer Networks</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Database Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: Systems Programming in C</div>
+
+      <div class="sidebar-section-title">Year 2 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Theory of Computation</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Software Engineering</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Probability &amp; Statistics for CS</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: Team Software Project</div>
+
+      <div class="sidebar-section-title">Year 3 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Machine Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Compilers</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Computer Graphics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Cybersecurity</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: ML Implementation</div>
+
+      <div class="sidebar-section-title">Year 3 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Distributed Systems</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Artificial Intelligence</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Human-Computer Interaction</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 CW: Distributed Application</div>
+
+      <div class="sidebar-section-title">Year 4 — Semester 1</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Advanced Algorithms</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Deep Learning</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Advanced Electives</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        💻 Individual Project (begins)</div>
+
+      <div class="sidebar-section-title">Year 4 — Semester 2</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot" id="sdot-8"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Research Electives</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Professional Practice</div>
+      <div class="sidebar-item" onclick="scrollToPhase(8)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        🎓 Final Dissertation</div>
+
+    </aside>
+
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
+
+      <!-- ═══ YEAR 1 SEM 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 1 · SEM 1</div>
+          <div class="phase-title">Programming &amp; Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="Introduction to Programming"
+            data-desc="The most important module of Year 1 — not because programming is hard, but because how you learn to program determines everything that follows. This module teaches you to think computationally: to decompose problems, design algorithms, and express solutions precisely in code. Python is the vehicle; problem-solving is the destination."
+            data-topics="Variables, types, and expressions: Python's dynamic type system and value semantics|Control flow: if/elif/else, while, for — with emphasis on choosing the right construct|Functions: definition, arguments (positional, keyword, *args, **kwargs), return values, scope|Recursion: the leap of faith — understanding recursive solutions by trusting the smaller problem|Lists, tuples, sets, dictionaries: the Python data model and when to use each|File I/O and exceptions: reading data, error handling, defensive programming|Debugging: print debugging, the Python debugger (pdb), reading tracebacks systematically"
+            data-tags="programming,Python,algorithms,essential">
+            <div class="node-top">
+              <div class="node-icon">🐍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Introduction to Programming</div>
+            <div class="node-desc">Computational thinking, problem decomposition, Python fundamentals — how you learn
+              this shapes everything that follows.</div>
+            <div class="node-tags"><span class="node-tag">essential</span><span class="node-tag">Python</span><span
+                class="node-tag">algorithms</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="Discrete Mathematics"
+            data-desc="Discrete mathematics is the mathematics of computer science — the toolkit you use to reason about algorithms, data structures, cryptography, and database theory. Sets, logic, proof, and combinatorics are the foundation of theoretical computer science. You will use this for every subsequent theoretical module."
+            data-topics="Propositional logic: truth tables, logical connectives, tautologies, logical equivalence|Predicate logic: quantifiers (∀, ∃), free and bound variables, proof strategies|Proof techniques: direct proof, proof by contradiction, proof by induction (simple and strong)|Set theory: operations, power sets, Cartesian products, relations (reflexive, symmetric, transitive), equivalence classes|Functions: injections, surjections, bijections, compositions, inverses|Combinatorics: permutations, combinations, the binomial theorem, pigeonhole principle|Graph theory introduction: vertices, edges, paths, cycles, trees, connectivity"
+            data-tags="discrete-maths,logic,proof,essential">
+            <div class="node-top">
+              <div class="node-icon">∀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Discrete Mathematics</div>
+            <div class="node-desc">Logic, proof by induction, sets, relations, combinatorics, graph theory — the
+              mathematical foundation of CS theory.</div>
+            <div class="node-tags"><span class="node-tag">essential</span><span class="node-tag">logic</span><span
+                class="node-tag">proof</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Computer Architecture"
+            data-desc="How does a computer actually work? This module traces the path from transistors to logic gates to ALUs to processors — and builds the mental model of hardware that every good programmer needs. Understanding the machine beneath the language helps you write faster, more efficient code and debug the issues that only make sense at the hardware level."
+            data-topics="Number systems: binary, hexadecimal, two's complement, floating-point (IEEE 754)|Boolean algebra and logic gates: AND, OR, NOT, NAND, NOR, XOR — the building blocks|Combinational circuits: adders, multiplexers, decoders|Sequential circuits: flip-flops, registers, state machines|The von Neumann architecture: CPU, ALU, control unit, registers, memory hierarchy|The fetch-decode-execute cycle: how instructions are processed|Assembly language introduction: RISC-V or ARM — understanding what compiled code becomes"
+            data-tags="computer-architecture,binary,CPU">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Computer Architecture</div>
+            <div class="node-desc">Logic gates → ALU → CPU → fetch-decode-execute — understand the hardware every
+              program runs on.</div>
+            <div class="node-tags"><span class="node-tag">architecture</span><span class="node-tag">CPU</span><span
+                class="node-tag">assembly</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="4" data-title="💻 Coursework: Python Foundations"
+            data-desc="The first major assessed coding assignment — a series of progressively harder programming problems that test whether you can actually apply what you've learned, not just recognise it. The problems deliberately require you to combine multiple concepts: recursion + data structures, file I/O + error handling."
+            data-topics="Problem set 1: basic Python problems — string manipulation, list comprehension, dictionary operations|Problem set 2: recursion — implement merge sort, binary search, tree traversal from scratch|Problem set 3: file processing — read a CSV, parse it, compute statistics, handle malformed data|Problem set 4: mini-project — implement a simple text-based game or simulation using functions and classes|Code quality criteria: readability, docstrings, sensible variable names, absence of code smells|Version control: using Git — commit, push, pull, branch for all submissions"
+            data-tags="coursework,Python,programming">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: Python Foundations</div>
+            <div class="node-desc">Recursive algorithms, CSV parsing, mini-project — assessed programming that forces
+              you to combine concepts, not just recall them.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span class="node-tag">Python</span><span
+                class="node-tag">Git</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 1 SEM 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 1 · SEM 2</div>
+          <div class="phase-title">Data Structures, OOP &amp; Mathematics</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Data Structures"
+            data-desc="Data structures are the organised ways of storing data that make algorithms efficient. Choosing the wrong data structure is the most common source of poor performance in real software. This module teaches you not just what the structures are, but when to use each one — and how to analyse their time and space complexity."
+            data-topics="Arrays and dynamic arrays: memory layout, amortised analysis of append operations|Linked lists: singly linked, doubly linked, circular — implementation and trade-offs vs. arrays|Stacks and queues: LIFO/FIFO, applications (expression evaluation, BFS)|Hash tables: hash functions, collision resolution (chaining, open addressing), load factor, amortised O(1) operations|Trees: binary trees, binary search trees (BST), tree traversal (in-order, pre-order, post-order)|Balanced trees: AVL trees, Red-Black trees — why balance matters|Heaps: the binary heap, heapify, heap sort, priority queues"
+            data-tags="data-structures,Big-O,hash-tables,trees">
+            <div class="node-top">
+              <div class="node-icon">🌳</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Data Structures</div>
+            <div class="node-desc">Arrays, hash tables, BSTs, AVL trees, heaps — choosing the right structure is the
+              most impactful performance decision.</div>
+            <div class="node-tags"><span class="node-tag">data-structures</span><span class="node-tag">Big-O</span><span
+                class="node-tag">trees</span></div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Mathematics for Computer Science"
+            data-desc="The mathematical tools CS requires beyond discrete maths — linear algebra for graphics and ML, calculus for optimisation, and probability for analysis and randomised algorithms. This module is specifically curated for CS applications, not a general maths survey."
+            data-topics="Linear algebra for CS: vectors, matrices, linear transformations — the language of graphics and ML|Matrix decompositions: eigenvalues/eigenvectors — PCA, Google PageRank, spectral graph theory|Calculus for CS: derivatives, gradient, partial derivatives — used in optimisation and ML|Probability theory: sample spaces, conditional probability, Bayes' theorem|Random variables: expectation, variance, distributions (Bernoulli, Binomial, Geometric, Poisson, Normal)|Markov chains: transition matrices, steady-state distributions — used in pagerank, MCMC|Generating functions: a powerful tool for algorithm analysis and combinatorics"
+            data-tags="mathematics,linear-algebra,probability">
+            <div class="node-top">
+              <div class="node-icon">📐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Mathematics for Computer Science</div>
+            <div class="node-desc">Linear algebra, probability, Markov chains, generating functions — maths curated for
+              its CS applications.</div>
+            <div class="node-tags"><span class="node-tag">linear-algebra</span><span
+                class="node-tag">probability</span><span class="node-tag">Markov</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Object-Oriented Programming"
+            data-desc="OOP is the dominant paradigm in industry software. Understanding it deeply — not just the syntax but the design principles — is what allows you to write code that other people can read, maintain, and extend. Design patterns and SOLID principles are the vocabulary of collaborative software development."
+            data-topics="Classes and objects: encapsulation, instance variables, methods, the 'self' parameter|Inheritance: extending classes, method overriding, the Liskov Substitution Principle|Polymorphism: method dispatch, duck typing in Python vs. interface-based in Java|Abstract classes and interfaces: defining contracts that implementations must satisfy|SOLID principles: Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion|Design patterns: Singleton, Factory, Observer, Strategy, Decorator — and when to use each|UML class diagrams: communicating design before writing a line of code"
+            data-tags="OOP,SOLID,design-patterns,Java">
+            <div class="node-top">
+              <div class="node-icon">🔷</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Object-Oriented Programming</div>
+            <div class="node-desc">SOLID principles, design patterns (Factory, Observer, Strategy) — write software that
+              humans can maintain and extend.</div>
+            <div class="node-tags"><span class="node-tag">OOP</span><span class="node-tag">SOLID</span><span
+                class="node-tag">design-patterns</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="8" data-title="💻 Coursework: Implement Data Structures from Scratch"
+            data-desc="The most educational coursework of Year 1 — implementing core data structures without any library support. This forces you to understand how they work at the memory level, not just how to call them. Implement in Java or C++ for maximum exposure to manual memory management and typing."
+            data-topics="Implement a dynamic array (ArrayList): resize on overflow, amortised O(1) append analysis|Implement a singly linked list: all standard operations with correct pointer manipulation|Implement a hash table with separate chaining: design your own hash function, handle resizing|Implement a binary search tree: insert, search, delete (the hard case), in-order traversal|Implement a min-heap: heapify-up and heapify-down operations, heap sort|Unit testing: write tests for every data structure using JUnit or pytest — test edge cases explicitly|Performance analysis: time your implementations vs. standard library versions — understand the constant factors"
+            data-tags="coursework,data-structures,Java,C++">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: Implement Data Structures from Scratch</div>
+            <div class="node-desc">Dynamic array, linked list, hash table, BST, heap — implement all five from scratch
+              with unit tests and performance analysis.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span
+                class="node-tag">implementation</span><span class="node-tag">unit-testing</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 2 SEM 1 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 2 · SEM 1</div>
+          <div class="phase-title">Algorithms, Systems &amp; Networks</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="9" data-title="Algorithms & Complexity"
+            data-desc="The intellectual core of Computer Science. Algorithm design and analysis asks: what is the best possible solution, how do we find it, and how do we prove we've found it? This module teaches the design paradigms — divide-and-conquer, greedy, dynamic programming — and the complexity theory that explains why some problems are fundamentally harder than others."
+            data-topics="Asymptotic analysis: Big-O, Big-Omega, Big-Theta — precise definitions and common recurrence solution methods (master theorem)|Sorting algorithms: merge sort, quicksort (randomised analysis, median-of-three), heapsort, counting sort|Graph algorithms: BFS, DFS, topological sort, shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), MST (Kruskal, Prim)|Divide and conquer: the paradigm, recurrence relations, Karatsuba multiplication|Greedy algorithms: activity selection, Huffman coding — proof of correctness via exchange argument|Dynamic programming: overlapping subproblems, memoisation, bottom-up DP — LCS, LIS, knapsack, edit distance|NP-completeness: P vs. NP, reductions, Cook's theorem — the most important open problem in CS"
+            data-tags="algorithms,Big-O,dynamic-programming,NP-completeness">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Algorithms &amp; Complexity</div>
+            <div class="node-desc">Master theorem, Dijkstra, dynamic programming, NP-completeness — the intellectual
+              core of CS and the basis of every interview.</div>
+            <div class="node-tags"><span class="node-tag">algorithms</span><span class="node-tag">DP</span><span
+                class="node-tag">NP-completeness</span></div>
+          </div>
+
+          <div class="node" data-id="10" data-title="Operating Systems"
+            data-desc="Operating systems are the invisible infrastructure that every program runs on. Understanding how the OS manages processes, memory, and file systems makes you a dramatically better programmer — you understand why concurrent programs fail, why memory leaks matter, and why I/O is expensive."
+            data-topics="Process management: processes vs. threads, PCB, context switching, scheduling algorithms (FCFS, SJF, Round Robin, CFS)|Concurrency: race conditions, mutual exclusion, semaphores, mutexes, monitors|Deadlocks: the four conditions, detection, prevention, avoidance (Banker's algorithm)|Memory management: virtual memory, paging, page tables, TLB, page replacement algorithms (LRU, CLOCK)|File systems: file abstraction, directory structure, inodes, FAT, ext4, NTFS|The Linux kernel: system calls, the process hierarchy, /proc filesystem|Practical: writing a shell in C — implementing fork(), exec(), and pipe()"
+            data-tags="operating-systems,concurrency,memory,Linux">
+            <div class="node-top">
+              <div class="node-icon">🖥️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Operating Systems</div>
+            <div class="node-desc">Scheduling, deadlocks, virtual memory, inodes — understand the infrastructure every
+              program runs on, including why concurrency fails.</div>
+            <div class="node-tags"><span class="node-tag">OS</span><span class="node-tag">concurrency</span><span
+                class="node-tag">memory</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="Computer Networks"
+            data-desc="The internet is the most consequential engineering system ever built. Understanding how it works — the layered protocol stack, TCP/IP, DNS, HTTP, and the security principles that protect (or fail to protect) data in transit — is essential for any software engineer who builds networked applications."
+            data-topics="The layered model: OSI vs. TCP/IP — what each layer does and why layering matters|Physical and data link layer: framing, error detection (CRC), MAC addresses, Ethernet, Wi-Fi|Network layer: IP addressing, IPv4/IPv6, subnetting (CIDR), routing (OSPF, BGP), NAT|Transport layer: UDP (fire and forget), TCP (reliable, in-order, congestion-controlled) — the three-way handshake, sliding window|Application layer: DNS (recursive resolution), HTTP/1.1 vs. HTTP/2 vs. HTTP/3 (QUIC), TLS/SSL|Network security: common attacks (ARP spoofing, BGP hijacking, DDoS), TLS certificate chain|Practical socket programming: implementing a simple HTTP server in Python"
+            data-tags="networks,TCP/IP,HTTP,DNS">
+            <div class="node-top">
+              <div class="node-icon">🌐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Computer Networks</div>
+            <div class="node-desc">TCP/IP stack, DNS, HTTP/3, TLS, routing (BGP) — understand the internet well enough
+              to build on it and debug it.</div>
+            <div class="node-tags"><span class="node-tag">networks</span><span class="node-tag">TCP/IP</span><span
+                class="node-tag">HTTP</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="Database Systems"
+            data-desc="Almost every application stores data in a database. Understanding the relational model, SQL, and the internals of how databases deliver performance and correctness — through indexing, query optimisation, and transactions — is essential for building systems that don't fail when the data gets large or concurrent."
+            data-topics="Relational model: relations, tuples, attributes, keys (primary, foreign, candidate, super)|SQL: SELECT, JOIN (inner, outer, self), GROUP BY, subqueries, window functions, CTEs|Entity-Relationship (ER) modelling: converting a domain description to a relational schema|Normalisation: 1NF, 2NF, 3NF, BCNF — removing redundancy and preventing anomalies|Indexing: B-tree and B+ tree indexes, hash indexes, clustered vs. non-clustered, covering indexes|Query optimisation: the query planner, cost-based optimisation, execution plans (EXPLAIN)|Transactions: ACID properties, isolation levels (read uncommitted to serialisable), 2-phase locking"
+            data-tags="databases,SQL,ACID,B-tree">
+            <div class="node-top">
+              <div class="node-icon">🗃️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Database Systems</div>
+            <div class="node-desc">SQL, B+ tree indexing, ACID transactions, query planning, normalisation — the
+              internals of the databases everything runs on.</div>
+            <div class="node-tags"><span class="node-tag">databases</span><span class="node-tag">SQL</span><span
+                class="node-tag">ACID</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="13" data-title="💻 Coursework: Systems Programming in C"
+            data-desc="The most challenging and educational coursework of Year 2 — implementing a shell or memory allocator in C. C forces you to understand memory management, pointer arithmetic, and undefined behaviour at a level that makes you a better programmer in every language."
+            data-topics="Option A — Shell implementation: fork(), exec(), pipe(), I/O redirection, signal handling, job control|Option B — Memory allocator: malloc/free from scratch — free list management, fragmentation, coalescing|Option C — Small OS: implement a simple round-robin scheduler with context switching in a provided bare-metal environment|All options: Valgrind for memory leak detection — zero leaks required for full marks|GDB debugging: setting breakpoints, stepping through assembly, inspecting memory|Makefile: building multi-file C projects correctly — understanding compilation vs. linking"
+            data-tags="coursework,C,systems,shell">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: Systems Programming in C</div>
+            <div class="node-desc">Implement a shell (fork/exec/pipe) or malloc from scratch in C — no memory leaks,
+              Valgrind clean, GDB debugged.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span class="node-tag">C</span><span
+                class="node-tag">systems</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 2 SEM 2 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 2 · SEM 2</div>
+          <div class="phase-title">Theory, Software Engineering &amp; Statistics</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="14" data-title="Theory of Computation"
+            data-desc="Theory of Computation asks the deepest question in CS: what can be computed, and what cannot? Turing's undecidability results tell us there are mathematical truths that no program can determine. Understanding these limits makes you a more principled computer scientist and gives you the tools to reason about the power of programming languages and models of computation."
+            data-topics="Finite automata: DFAs, NFAs, ε-NFAs — the subset construction (NFA → DFA conversion)|Regular languages and regular expressions: the pumping lemma for regular languages|Context-free grammars (CFGs): derivations, parse trees, ambiguity, Chomsky Normal Form|Pushdown automata (PDAs): the machine model for CFLs — recognising balanced parentheses and palindromes|Turing machines: the formal model, Church-Turing thesis|Decidability and undecidability: the Halting Problem, Rice's theorem, undecidable problems in practice|Complexity classes: P, NP, co-NP, PSPACE — the landscape of computational hardness"
+            data-tags="theory-of-computation,Turing,undecidability,automata">
+            <div class="node-top">
+              <div class="node-icon">♾️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Theory of Computation</div>
+            <div class="node-desc">Finite automata, Turing machines, the Halting Problem, Rice's theorem — what can and
+              cannot be computed, rigorously.</div>
+            <div class="node-tags"><span class="node-tag">theory</span><span class="node-tag">Turing</span><span
+                class="node-tag">undecidability</span></div>
+          </div>
+
+          <div class="node" data-id="15" data-title="Software Engineering"
+            data-desc="Programming is to software engineering as grammar is to writing a novel. Writing correct programs is only the beginning — building systems that are maintainable, testable, and evolvable over years by teams of developers requires engineering discipline. This module covers the principles and practices that industrial software teams use."
+            data-topics="Software development lifecycles: Waterfall, Agile (Scrum, Kanban), and when each is appropriate|Requirements engineering: user stories, use cases, acceptance criteria, non-functional requirements|Software architecture patterns: layered, microservices, event-driven, hexagonal — trade-offs|Testing: unit testing (pytest, JUnit), integration testing, property-based testing (Hypothesis)|Test-driven development (TDD): red-green-refactor, the discipline of writing tests first|Continuous Integration/Continuous Deployment (CI/CD): GitHub Actions, automated testing pipelines|Code quality: refactoring, code smells, technical debt, static analysis tools (pylint, mypy)"
+            data-tags="software-engineering,Agile,TDD,CI/CD">
+            <div class="node-top">
+              <div class="node-icon">🔨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Software Engineering</div>
+            <div class="node-desc">Agile, TDD, CI/CD, architecture patterns, refactoring — the engineering discipline
+              that makes programs into systems.</div>
+            <div class="node-tags"><span class="node-tag">software-engineering</span><span
+                class="node-tag">TDD</span><span class="node-tag">CI/CD</span></div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Probability & Statistics for CS"
+            data-desc="Probability and statistics underpins randomised algorithms, machine learning, systems reliability, and A/B testing. This module goes deeper than the brief treatment in Year 1 maths — covering statistical inference, hypothesis testing, and the probabilistic analysis of algorithms that every serious CS practitioner needs."
+            data-topics="Probability spaces and conditional probability: Bayes' theorem applied to spam filters, diagnostic tests|Random variables: PMFs, PDFs, CDFs, expectation, variance, moment generating functions|Key distributions and their applications: Geometric (waiting times), Poisson (arrival processes), Normal (CLT)|Probabilistic analysis of algorithms: expected case analysis of quicksort, hash table analysis|Concentration inequalities: Markov, Chebyshev, Chernoff bounds — tail bounds for randomised algorithms|Statistical inference: maximum likelihood estimation, confidence intervals|Hypothesis testing: null hypothesis, p-values, Type I/II errors, multiple testing corrections"
+            data-tags="probability,statistics,hypothesis-testing,randomised">
+            <div class="node-top">
+              <div class="node-icon">🎲</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Probability &amp; Statistics for CS</div>
+            <div class="node-desc">Chernoff bounds, MLE, hypothesis testing, probabilistic algorithm analysis —
+              statistics for practitioners, not mathematicians.</div>
+            <div class="node-tags"><span class="node-tag">probability</span><span
+                class="node-tag">statistics</span><span class="node-tag">Chernoff</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="17" data-title="💻 Coursework: Team Software Project"
+            data-desc="Your first real team project — building a functioning software system with 3–5 other students over a full semester. This is where software engineering theory becomes practice: you experience the communication overhead, conflicting design decisions, and integration challenges that make engineering hard."
+            data-topics="Weeks 1–2: requirements gathering, user story writing, backlog creation in Jira/GitHub Projects|Weeks 3–4: system design — agree on architecture, API contracts, database schema — before writing code|Weeks 5–10: implementation sprints — 2-week sprints with stand-ups, sprint reviews, retrospectives|Throughout: CI/CD pipeline from day 1 — automated tests must pass before any merge to main|Code review: every PR requires at least one review — write review feedback that is kind and specific|Deliverables: working software, user documentation, technical architecture document, team retrospective report"
+            data-tags="coursework,team-project,Agile,CI/CD">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: Team Software Project</div>
+            <div class="node-desc">Build a real system as a team — sprints, stand-ups, code reviews, CI/CD from day one.
+              Software engineering is a team sport.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span class="node-tag">team</span><span
+                class="node-tag">Agile</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 3 SEM 1 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 3 · SEM 1</div>
+          <div class="phase-title">Machine Learning, Compilers &amp; Security</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="18" data-title="Machine Learning"
+            data-desc="Machine learning is the technology that defines the decade. This module gives you the rigorous theoretical foundation — statistical learning theory, the bias-variance tradeoff, and the probabilistic interpretation of algorithms — and the practical skills to implement and evaluate real ML systems. Building models without this theory produces practitioners who can't diagnose or fix failures."
+            data-topics="The ML framework: hypothesis class, loss function, empirical risk minimisation, generalisation bounds|Linear and logistic regression: MLE derivation, the normal equations, gradient descent|The bias-variance decomposition: overfitting, underfitting, learning curves|Regularisation: L1 (Lasso, sparsity), L2 (Ridge, weight decay) — MAP estimation with priors|Ensemble methods: random forests (variance reduction via bagging), gradient boosting (XGBoost, LightGBM)|Neural networks: forward propagation, backpropagation derivation, PyTorch implementation|Cross-validation, evaluation metrics: choosing the right metric for the right problem"
+            data-tags="machine-learning,statistics,neural-networks">
+            <div class="node-top">
+              <div class="node-icon">🤖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Machine Learning</div>
+            <div class="node-desc">MLE derivation, bias-variance decomposition, regularisation, XGBoost, neural networks
+              — theory that makes ML diagnose-able.</div>
+            <div class="node-tags"><span class="node-tag">machine-learning</span><span
+                class="node-tag">neural-networks</span><span class="node-tag">XGBoost</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Compilers"
+            data-desc="Compilers are the most sophisticated programs ever written — they transform human-readable source code into machine code, optimising at every step. Building a compiler (or a significant part of one) teaches you more about programming languages, algorithms, and software engineering than any other single project."
+            data-topics="Lexical analysis: regular expressions, DFA-based lexers, the flex/lex tool|Syntax analysis: context-free grammars, LL(1) and LR(1) parsing, recursive descent parsers, the yacc/bison tool|Abstract Syntax Trees: the intermediate representation of a parsed program|Semantic analysis: symbol tables, type checking, scope resolution|Intermediate code generation: three-address code, SSA form|Optimisation: constant folding, dead code elimination, loop optimisation|Code generation: register allocation (graph colouring), instruction selection"
+            data-tags="compilers,parsing,code-generation,LLVM">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Compilers</div>
+            <div class="node-desc">Lexing, LL/LR parsing, ASTs, type checking, SSA form, register allocation — build the
+              tool that builds everything else.</div>
+            <div class="node-tags"><span class="node-tag">compilers</span><span class="node-tag">parsing</span><span
+                class="node-tag">SSA</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Computer Graphics"
+            data-desc="Computer graphics is where mathematics becomes visually beautiful. Rasterisation, ray tracing, and the OpenGL/WebGL pipeline are fundamental to games, visualisation, and increasingly to ML (differentiable rendering). This module also serves as a deep application of linear algebra in a compelling context."
+            data-topics="Coordinate systems and transformations: homogeneous coordinates, model-view-projection matrices|The rasterisation pipeline: vertex processing, clipping, rasterisation, fragment processing, the depth buffer|Ray tracing: ray-sphere and ray-triangle intersection, recursive ray tracing for shadows and reflections|Shading models: Phong illumination model (ambient, diffuse, specular), Blinn-Phong, physically-based rendering (PBR)|Texture mapping: UV coordinates, bilinear interpolation, mipmapping, normal maps|OpenGL/WebGL: buffer objects, vertex array objects, shader programs (GLSL)|GPU architecture: SIMD execution, warps, memory coalescing — why GPUs are fast for graphics and ML"
+            data-tags="computer-graphics,OpenGL,ray-tracing,GPU">
+            <div class="node-top">
+              <div class="node-icon">🎮</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Computer Graphics</div>
+            <div class="node-desc">Rasterisation pipeline, ray tracing, PBR shading, OpenGL, GPU architecture — linear
+              algebra made visually compelling.</div>
+            <div class="node-tags"><span class="node-tag">graphics</span><span class="node-tag">OpenGL</span><span
+                class="node-tag">GPU</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Cybersecurity"
+            data-desc="Security is not a feature you add at the end — it is a property you design in from the beginning. This module covers the attacker's mindset (you must understand how attacks work to defend against them), the cryptographic primitives that underpin all secure communication, and the principled approach to building secure systems."
+            data-topics="Cryptography fundamentals: symmetric (AES), asymmetric (RSA, elliptic curves), hash functions (SHA-256)|Public Key Infrastructure (PKI): certificates, certificate authorities, TLS handshake|Common vulnerabilities: buffer overflows, SQL injection, XSS, CSRF, IDOR — with exploitation and mitigation|Web application security: OWASP Top 10, session management, HTTPS enforcement, Content Security Policy|Network attacks: ARP poisoning, DNS spoofing, man-in-the-middle — defence mechanisms|Authentication and authorisation: password hashing (bcrypt, Argon2), JWTs, OAuth 2.0, 2FA|CTF introduction: participating in a Capture The Flag competition — applying theory to real challenges"
+            data-tags="cybersecurity,cryptography,OWASP,CTF">
+            <div class="node-top">
+              <div class="node-icon">🔒</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Cybersecurity</div>
+            <div class="node-desc">AES/RSA/TLS, buffer overflows, OWASP Top 10, OAuth, CTF — understand attacks to build
+              defences that actually work.</div>
+            <div class="node-tags"><span class="node-tag">cybersecurity</span><span
+                class="node-tag">cryptography</span><span class="node-tag">OWASP</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="22" data-title="💻 Coursework: ML Implementation & Evaluation"
+            data-desc="An end-to-end machine learning coursework that tests your ability to build, evaluate, and explain a complete ML pipeline — not just call sklearn APIs, but understand every decision. Two parts: implementation from scratch and an applied competition."
+            data-topics="Part 1 — From scratch: implement logistic regression with gradient descent and L2 regularisation using only NumPy — validate against sklearn|Part 2 — Full pipeline: on a provided real dataset, perform EDA, feature engineering, model selection (at least 3 algorithms), cross-validated evaluation, and SHAP interpretability analysis|Part 3 — Competition: compete on an in-class Kaggle competition for 20% of the mark — write up your approach|Deliverable: Jupyter notebook with narrative, code, and visualisations — readable as a technical report|Anti-patterns penalised: data leakage, test set contamination, ignoring class imbalance, using accuracy on imbalanced data"
+            data-tags="coursework,machine-learning,implementation">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: ML Implementation &amp; Evaluation</div>
+            <div class="node-desc">Implement logistic regression from scratch → full pipeline with SHAP → in-class
+              Kaggle competition. No sklearn shortcuts.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span class="node-tag">ML</span><span
+                class="node-tag">Kaggle</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 3 SEM 2 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 3 · SEM 2</div>
+          <div class="phase-title">Distributed Systems, AI &amp; HCI</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="23" data-title="Distributed Systems"
+            data-desc="Every large-scale software system is distributed — data centres, microservices, cloud platforms, blockchains. Understanding the fundamental impossibilities (you cannot have consistency, availability, and partition tolerance simultaneously) and the algorithms that build reliable systems despite unreliable networks is essential for any engineer working on real infrastructure."
+            data-topics="The 8 fallacies of distributed computing — the incorrect assumptions everyone makes initially|The CAP theorem and PACELC: choosing between consistency, availability, and partition tolerance|Time and clocks: physical clocks (NTP), logical clocks (Lamport), vector clocks, causal consistency|Consensus algorithms: Paxos (the theory), Raft (the practical version) — how distributed databases elect leaders|Distributed storage: eventual consistency, CRDTs, DynamoDB/Cassandra's ring topology|MapReduce and Spark: the batch processing model for distributed data|Service discovery, load balancing, and circuit breakers: the microservices toolkit"
+            data-tags="distributed-systems,CAP,Raft,consensus">
+            <div class="node-top">
+              <div class="node-icon">🌐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Distributed Systems</div>
+            <div class="node-desc">CAP theorem, Raft consensus, vector clocks, CRDTs, eventual consistency — the theory
+              of building reliable unreliable systems.</div>
+            <div class="node-tags"><span class="node-tag">distributed-systems</span><span
+                class="node-tag">CAP</span><span class="node-tag">Raft</span></div>
+          </div>
+
+          <div class="node" data-id="24" data-title="Artificial Intelligence"
+            data-desc="AI as a discipline is broader than ML — it includes search, planning, constraint satisfaction, and game-playing algorithms. Understanding classical AI gives you the tools to solve problems that ML handles poorly: structured planning, logical reasoning, and combinatorial optimisation."
+            data-topics="Search algorithms: BFS, DFS, iterative deepening, A* (heuristics, admissibility, consistency)|Adversarial search: minimax, alpha-beta pruning, Monte Carlo Tree Search (the algorithm behind AlphaGo)|Constraint Satisfaction Problems (CSPs): backtracking, arc consistency (AC-3), forward checking|Knowledge representation: propositional and predicate logic, knowledge bases, resolution theorem proving|Planning: STRIPS representation, plan-space planning, PDDL|Bayesian networks: conditional independence, exact inference (variable elimination), approximate inference (sampling)|Ethical AI: bias, fairness, accountability — the responsibilities of AI practitioners"
+            data-tags="AI,search,CSP,Bayesian-networks">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Artificial Intelligence</div>
+            <div class="node-desc">A*, alpha-beta pruning, MCTS, Bayesian networks, STRIPS planning — classical AI
+              beyond the neural network monoculture.</div>
+            <div class="node-tags"><span class="node-tag">AI</span><span class="node-tag">search</span><span
+                class="node-tag">MCTS</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Human-Computer Interaction"
+            data-desc="Technology is only valuable if humans can use it. HCI is the discipline of designing interfaces that work for real users — not hypothetical experts. Understanding usability evaluation, user research methods, and accessibility is essential for any software engineer whose code is touched by end users."
+            data-topics="User-centred design process: needs analysis, prototyping, evaluation, iteration|Usability principles: Nielsen's 10 heuristics — visibility, feedback, consistency, error prevention|Cognitive models: Fitts's law, Hick's law, the GOMS model — predicting task completion time|User research methods: interviews, surveys, diary studies, contextual inquiry|Prototyping: paper prototypes, wireframes, interactive prototypes (Figma), and when each is appropriate|Usability evaluation: think-aloud testing, heuristic evaluation, eye-tracking studies|Accessibility: WCAG 2.1, ARIA roles, keyboard navigation, screen reader compatibility"
+            data-tags="HCI,usability,accessibility,UX">
+            <div class="node-top">
+              <div class="node-icon">🖱️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Human-Computer Interaction</div>
+            <div class="node-desc">Nielsen's heuristics, Fitts's law, think-aloud testing, WCAG accessibility — design
+              interfaces that work for real humans.</div>
+            <div class="node-tags"><span class="node-tag">HCI</span><span class="node-tag">usability</span><span
+                class="node-tag">accessibility</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="26" data-title="💻 Coursework: Distributed Application"
+            data-desc="Build a distributed system from scratch — a key-value store, a distributed file system, or a simplified consensus implementation. This is the most technically challenging coursework of the degree and the one that produces the deepest learning."
+            data-topics="Option A — Distributed key-value store: implement consistent hashing, replication, and eventual consistency|Option B — Raft implementation: build the complete Raft consensus algorithm — leader election, log replication, log compaction|Option C — Distributed database: build a mini PostgreSQL with B+ tree indexing, WAL, and MVCC transactions|All options: must handle node failures and network partitions — chaos testing with random process kills|Testing: write distributed tests that deliberately introduce failures and verify correct behaviour|Deliverable: working implementation + written design document explaining all trade-off decisions"
+            data-tags="coursework,distributed-systems,Raft,key-value">
+            <div class="node-top">
+              <div class="node-icon">💻</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Coursework: Distributed Application</div>
+            <div class="node-desc">Implement Raft consensus, a distributed key-value store, or MVCC database — with
+              chaos testing for fault tolerance.</div>
+            <div class="node-tags"><span class="node-tag lab">coursework</span><span class="node-tag">Raft</span><span
+                class="node-tag">distributed</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 4 SEM 1 ═══ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 4 · SEM 1</div>
+          <div class="phase-title">Advanced Topics &amp; Specialisation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="27" data-title="Advanced Algorithms"
+            data-desc="The frontier of algorithm design — network flow, approximation algorithms, randomised algorithms, and streaming algorithms for data too large to fit in memory. These are the algorithms that power the largest real systems: Google's PageRank, logistics networks, and high-frequency trading."
+            data-topics="Network flow: Ford-Fulkerson, max-flow min-cut theorem, Dinic's algorithm, applications to bipartite matching|Linear programming: the simplex method, LP duality, applications to approximation algorithms|Approximation algorithms: the approximation ratio, vertex cover (2-approximation), TSP (Christofides algorithm)|Randomised algorithms: Monte Carlo vs. Las Vegas, min-cut (Karger's algorithm), primality testing (Miller-Rabin)|Streaming algorithms: count-min sketch, HyperLogLog, the distinct elements problem — sublinear space|Amortised analysis: potential method, aggregate method — proving average-case O(1) operations|Algorithmic game theory: Nash equilibria, the price of anarchy, mechanism design"
+            data-tags="advanced-algorithms,network-flow,approximation,streaming">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Advanced Algorithms</div>
+            <div class="node-desc">Network flow, LP duality, Karger's min-cut, streaming with HyperLogLog, algorithmic
+              game theory — the frontier of algorithms.</div>
+            <div class="node-tags"><span class="node-tag">advanced-algorithms</span><span
+                class="node-tag">network-flow</span><span class="node-tag">streaming</span></div>
+          </div>
+
+          <div class="node" data-id="28" data-title="Deep Learning"
+            data-desc="Deep learning has transformed computer vision, natural language processing, and reinforcement learning in a single decade. This advanced module goes beyond the introductory treatment in Year 3 ML — covering the modern architectures (Transformers, diffusion models), training techniques, and the practical engineering skills for working with large models."
+            data-topics="Backpropagation through computational graphs: building autograd from scratch|Convolutional Neural Networks: the full pipeline, ResNets (skip connections), batch normalisation|The Transformer: self-attention derivation, multi-head attention, positional encoding, BERT vs. GPT|Pre-training and fine-tuning: transfer learning, LoRA, prompt tuning — the modern NLP paradigm|Diffusion models: DDPM (forward and reverse process), DDIM, classifier-free guidance|Training large models: mixed precision, gradient checkpointing, distributed data parallel|PyTorch in depth: custom autograd functions, torch.compile, profiling GPU utilisation"
+            data-tags="deep-learning,Transformers,BERT,diffusion">
+            <div class="node-top">
+              <div class="node-icon">🧠</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Deep Learning</div>
+            <div class="node-desc">Self-attention derivation, LoRA fine-tuning, diffusion models, mixed precision,
+              torch.compile — expert-level deep learning.</div>
+            <div class="node-tags"><span class="node-tag">deep-learning</span><span
+                class="node-tag">Transformers</span><span class="node-tag">LoRA</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Advanced Electives — Specialisation"
+            data-desc="Year 4 electives let you specialise deeply in the area of CS that most interests you. Choose 2 electives that align with your dissertation. The most common tracks are listed — your department will offer a subset."
+            data-topics="Programming Languages track: Type Theory and Proof Assistants (Coq, Lean), Functional Programming (Haskell), Language Implementation|Systems track: Advanced Operating Systems, Cloud Computing and Serverless, High-Performance Computing (CUDA, MPI)|AI/ML track: Natural Language Processing, Computer Vision, Reinforcement Learning, Causal Inference|Security track: Advanced Cryptography, Binary Exploitation and Reverse Engineering, Formal Verification|Theory track: Computational Complexity (beyond NP), Randomised Algorithms, Quantum Computing|Data track: Big Data Systems, Knowledge Graphs, Privacy-Preserving Computation"
+            data-tags="electives,specialisation">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Advanced Electives — Specialisation</div>
+            <div class="node-desc">Type theory, NLP, RL, CUDA, formal verification, quantum computing — choose 2 that
+              align with your dissertation and career.</div>
+            <div class="node-tags"><span class="node-tag">electives</span><span class="node-tag">specialisation</span>
+            </div>
+          </div>
+
+          <div class="node wide lab-card" data-id="30" data-title="💻 Individual Project — Research & Design Phase"
+            data-desc="The most important work of the degree — your individual project. Unlike courseworks, this is entirely self-directed research and engineering. Choose a topic you genuinely care about at the intersection of your interests and your supervisor's expertise. Treat it as a research apprenticeship."
+            data-topics="Supervisor selection: meet 3–4 potential supervisors, read their recent papers, choose based on interest and fit|Proposal: 2-page research proposal — problem statement, motivation, related work, proposed approach, evaluation plan|Literature review: a thorough survey of the state of the art — what's been done, what gaps exist, what you'll contribute|Research question formulation: a specific, evaluable question that your project will answer|Infrastructure: set up your development environment, baseline implementation, experimental framework|Intermediate report: typically due halfway through — progress against plan, preliminary results, revised timeline"
+            data-tags="individual-project,research,dissertation">
+            <div class="node-top">
+              <div class="node-icon">🔬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">💻 Individual Project — Research &amp; Design Phase</div>
+            <div class="node-desc">Supervisor selection, research proposal, literature review, baseline implementation —
+              the research apprenticeship begins.</div>
+            <div class="node-tags"><span class="node-tag lab">dissertation</span><span class="node-tag">research</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ YEAR 4 SEM 2 ═══ -->
+      <div class="phase phase-red" data-phase="8" id="phase-8">
+        <div class="phase-header">
+          <div class="phase-number">YEAR 4 · SEM 2</div>
+          <div class="phase-title">Graduation — Dissertation &amp; Research Frontier</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="31" data-title="Research Frontier Electives"
+            data-desc="Final semester electives are typically taught partly from recent research papers rather than textbooks. The boundary between student and researcher disappears. These modules often involve reading groups, paper presentations, and open research problems as coursework."
+            data-topics="Sample frontier modules: Large Language Models (technical deep-dive, training at scale, alignment), Quantum Computing (quantum circuits, Shor's algorithm, near-term devices), Formal Verification (Coq/Lean proofs, program verification, certified compilers)|Research seminars: your department's weekly seminar — attend every one in your final year|Paper reading: develop the skill of reading one ML or systems paper per week and writing a half-page summary|Conference participation: some departments fund final-year students for ICML, NeurIPS, OSDI, or PLDI|Open-source contributions: many faculty projects welcome final-year students as contributors"
+            data-tags="electives,research-frontier,LLMs,quantum">
+            <div class="node-top">
+              <div class="node-icon">🔭</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Research Frontier Electives</div>
+            <div class="node-desc">LLMs at scale, quantum computing, formal verification — electives taught from papers,
+              not textbooks, at the research frontier.</div>
+            <div class="node-tags"><span class="node-tag">frontier</span><span class="node-tag">LLMs</span><span
+                class="node-tag">quantum</span></div>
+          </div>
+
+          <div class="node" data-id="32" data-title="Professional Practice & Ethics"
+            data-desc="The non-technical skills and ethical framework that determine whether you succeed as a computing professional — and whether your work contributes positively to society. Often assessed via your dissertation and interview preparation."
+            data-topics="Professional ethics: the ACM Code of Ethics, case studies of software failures with human cost (Therac-25, Boeing 737 MAX MCAS, Cambridge Analytica)|Intellectual property: software patents, open-source licences (GPL, MIT, Apache), copyright in software|Privacy and data protection: GDPR, privacy by design, anonymisation and de-identification|Algorithmic fairness: bias in ML systems — hiring, lending, criminal justice|Professional development: Chartered IT Professional (CITP), BCS membership, continuing education|Technical communication: writing a journal paper, giving a conference talk, writing a blog post that reaches practitioners|Interview preparation: system design interviews, algorithmic interviews — the final-year student's competitive advantage"
+            data-tags="professional-ethics,GDPR,IP,fairness">
+            <div class="node-top">
+              <div class="node-icon">⚖️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Professional Practice &amp; Ethics</div>
+            <div class="node-desc">ACM ethics, GDPR, software IP, algorithmic fairness, CITP pathway — the professional
+              responsibilities beyond the technical.</div>
+            <div class="node-tags"><span class="node-tag">ethics</span><span class="node-tag">GDPR</span><span
+                class="node-tag">CITP</span></div>
+          </div>
+
+          <div class="node wide lab-card" data-id="33" data-title="🎓 Final Year Dissertation"
+            data-desc="The culmination of four years of study — an original research or engineering contribution of 10,000–15,000 words, examined by written report and oral presentation (viva). The dissertation is the single piece of work by which you will be most remembered, and the best ones become the foundation for Masters applications, published papers, or startup ideas."
+            data-topics="Dissertation structure: abstract (150 words), introduction, related work, design/methodology, implementation, evaluation, discussion, conclusions|The evaluation chapter: the most commonly underweighted — your experiments must be reproducible, statistically sound, and address the research question|Writing process: 500 words per day for 20 days — the dissertation writes itself when you have results|Figures and tables: all figures at publication quality — clear labels, appropriate font sizes, colour-blind-safe palettes|Viva preparation: re-read your dissertation the day before, prepare for 'what would you do differently?' and 'what are the limitations?'|After the degree: turning your dissertation into a conference paper, an open-source project, or a startup — the path forward"
+            data-tags="dissertation,original-research,viva">
+            <div class="node-top">
+              <div class="node-icon">🏆</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">🎓 Final Year Dissertation</div>
+            <div class="node-desc">10,000–15,000 words of original contribution, viva examination — the work by which
+              you will be most remembered. Make it count.</div>
+            <div class="node-tags"><span class="node-tag lab">dissertation</span><span
+                class="node-tag">original-research</span><span class="node-tag">viva</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>33</strong> modules</div>
+      <div class="stat">💻 <strong>8</strong> courseworks</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">📅 <strong id="phaseDone">0</strong>/8 semesters</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">YEAR 1 · SEM 1</div>
+    <div class="panel-node-title" id="panelTitle">Module Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Cover</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const TOTAL = 33;
+    const phaseNames = {
+      1: 'YEAR 1 · SEM 1 — PROGRAMMING & FOUNDATIONS',
+      2: 'YEAR 1 · SEM 2 — DATA STRUCTURES, OOP & MATHEMATICS',
+      3: 'YEAR 2 · SEM 1 — ALGORITHMS, SYSTEMS & NETWORKS',
+      4: 'YEAR 2 · SEM 2 — THEORY, SOFTWARE ENGINEERING & STATISTICS',
+      5: 'YEAR 3 · SEM 1 — MACHINE LEARNING, COMPILERS & SECURITY',
+      6: 'YEAR 3 · SEM 2 — DISTRIBUTED SYSTEMS, AI & HCI',
+      7: 'YEAR 4 · SEM 1 — ADVANCED TOPICS & SPECIALISATION',
+      8: 'YEAR 4 · SEM 2 — GRADUATION'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-cs-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-cs-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} modules completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = phaseNames[ph];
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>

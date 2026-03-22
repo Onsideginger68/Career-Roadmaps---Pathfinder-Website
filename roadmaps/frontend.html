@@ -8,7 +8,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-EKZ2R7GFCB');
   </script>
 
@@ -16,18 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Frontend Web Dev — Pathfinder</title>
 
-  <!-- Roadmap font stack: Syne (headings) + DM Sans (body) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet" />
 
-  <!-- 1. Shared tokens, reset, navbar base, footer, utilities -->
   <link rel="stylesheet" href="../assets/css/global.css" />
-  <!-- 2. Roadmap-specific: sidebar, nodes, panel, star-field -->
   <link rel="stylesheet" href="../assets/css/roadmap.css" />
 
   <style>
-    /* ── Roadmap page navbar: full links visible on wider screens ── */
+    /* ── Navbar ── */
     .nav-links-roadmap {
       list-style: none;
       display: flex;
@@ -50,343 +46,846 @@
       color: var(--gold);
     }
 
-    /* Divider between back-link and nav links */
-    .nav-divider {
-      width: 1px;
-      height: 18px;
-      background: rgba(255, 255, 255, 0.1);
-      align-self: center;
-    }
-
     .page-header .nav-back {
       display: inline-block;
       margin-bottom: 1rem;
+    }
+
+    /* ── Card canvas ── */
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    /* ── Phase block ── */
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    /* ── Card grid ── */
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    /* ── Card ── */
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    /* Card internals */
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Optional tag variant */
+    .node-tag.optional {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.25);
+      background: rgba(123, 159, 255, 0.06);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ── Phase connector ── */
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    /* ── Detail panel ── */
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- =====================================================
-       NAVBAR
-       Roadmap pages have: brand | back link | nav links | progress pill
-  ====================================================== -->
+  <!-- NAVBAR -->
   <nav>
-    <!-- Brand — Syne font, links back to homepage -->
-    <a href="../index.html" class="brand-roadmap">Path<span>Finder</span></a>
-
-    <ul class="nav-links-roadmap">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../index.html">Roadmaps</a></li>
-      <li><a href="../categories.html">Categories</a></li>
-      <li><a href="../about.html">About</a></li>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a
           href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
       </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
     </ul>
-
-    <!-- Progress pill — update text per roadmap -->
-    <span class="progress-pill">3 / 12 complete</span>
+    <span class="progress-pill" id="navPill">0 / 12 complete</span>
   </nav>
 
 
-  <!-- =====================================================
-       PAGE HEADER
-       To modify: update breadcrumb text, page-tag, page-title,
-       page-desc, meta-chips, and data-progress value.
-  ====================================================== -->
+  <!-- PAGE HEADER -->
   <div class="page-header">
-
     <div>
-      <a href="index.html" class="nav-back">← Back to Roadmaps</a>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
       <div class="breadcrumb">Roadmaps → Tech &amp; Programming → <span>Frontend Web Development</span></div>
       <div class="page-tag">Tech</div>
       <h1 class="page-title">Frontend Web<br />Development</h1>
-      <p class="page-desc">A structured skill tree taking you from zero to job-ready frontend developer. Follow
-        the path, branch into specialisations, and build real projects along the way.</p>
+      <p class="page-desc">A structured skill tree taking you from zero to job-ready frontend developer. Follow the
+        path, branch into specialisations, and build real projects along the way. 4 phases, 12 topics.</p>
       <div class="page-meta">
         <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~6 months</strong>&nbsp;at 1hr/day</div>
-        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>12 skill nodes</strong></div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>12 topics</strong>&nbsp;· 4 phases</div>
         <div class="meta-chip"><span>👥</span>&nbsp;<strong>8,200</strong>&nbsp;learners</div>
         <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
       </div>
     </div>
     <div class="progress-block">
-      <div class="progress-label"><span>Your progress</span><strong>25%</strong></div>
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
       <div class="progress-bar-bg">
-        <!-- Change data-progress="XX%" to update the filled bar -->
-        <div class="progress-bar-fill" data-progress="25%"></div>
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
       </div>
-      <div class="progress-nodes">3 of 12 nodes completed</div>
+      <div class="progress-nodes" id="headerNodes">0 of 12 topics completed</div>
     </div>
   </div>
 
 
-  <!-- =====================================================
-       MAIN LAYOUT — Sidebar + Tree Canvas
-  ====================================================== -->
+  <!-- LAYOUT -->
   <div class="layout">
 
-    <!-- ── SIDEBAR ──────────────────────────────────────
-         To add a node: copy a .sidebar-item line, change
-         the class (done/active/locked) and onclick ID.
-         To add a phase: copy a .sidebar-section-title div.
-    ──────────────────────────────────────────────────── -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
       <div class="sidebar-section-title">Phase 1 — Foundations</div>
-      <div class="sidebar-item done" onclick="openPanel('html')"> <span class="side-dot dot-done"></span> HTML Basics
-      </div>
-      <div class="sidebar-item done" onclick="openPanel('css')"> <span class="side-dot dot-done"></span> CSS
-        Fundamentals</div>
-      <div class="sidebar-item done" onclick="openPanel('responsive')"><span class="side-dot dot-done"></span>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        HTML Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        CSS Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
         Responsive Design</div>
 
-      <div class="sidebar-section-title">Phase 2 — Logic</div>
-      <div class="sidebar-item active" onclick="openPanel('js')"> <span class="side-dot dot-active"></span> JavaScript
-        Basics</div>
-      <div class="sidebar-item locked"> <span class="side-dot dot-locked"></span> DOM Manipulation</div>
+      <div class="sidebar-section-title">Phase 2 — JavaScript &amp; Logic</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        JavaScript Basics</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        DOM Manipulation</div>
 
-      <div class="sidebar-section-title">Phase 3 — Frameworks</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> React</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Vue (Optional)</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> APIs &amp; Fetch</div>
+      <div class="sidebar-section-title">Phase 3 — Frameworks &amp; APIs</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        React</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Vue.js (Optional)</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        APIs &amp; Fetch</div>
 
-      <div class="sidebar-section-title">Phase 4 — Pro Skills</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Git &amp; Version Control</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Performance &amp; SEO</div>
-      <div class="sidebar-item locked"><span class="side-dot dot-locked"></span> Deploy Your Project</div>
+      <div class="sidebar-section-title">Phase 4 — Professional Skills</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Git &amp; Version Control</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Performance &amp; SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Deploy Your Project</div>
 
     </aside>
 
 
-    <!-- ── TREE CANVAS ───────────────────────────────────
-         Structure per phase:
-           1. .phase-header  (number + title + description)
-           2. .tree-row      (for linear/vertical nodes)
-              OR
-              .tree-branches (for branching parallel nodes)
-           3. .connector-v   (vertical line between nodes)
-              .connector-v.lit = gold lit line (completed path)
+    <!-- CARD CANVAS -->
+    <main class="card-canvas">
 
-         Adding a node:   copy a .node block + .connector-v
-         Removing a node: delete the .node block + its connector
-         Changing status: swap class  done / active / locked / optional
-         Adding a phase:  copy a full phase-header + tree-row block
-    ──────────────────────────────────────────────────── -->
-    <main class="tree-canvas">
 
-      <!-- Legend -->
-      <div class="legend">
-        <div class="legend-item">
-          <div class="legend-dot ld-done"></div> Completed
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Foundations</div>
+          <div class="phase-line"></div>
         </div>
-        <div class="legend-item">
-          <div class="legend-dot ld-active"></div> In Progress
+        <div class="nodes">
+
+          <div class="node" data-id="1" data-title="HTML Basics"
+            data-desc="HTML is the skeleton of every web page. It defines structure and meaning — not appearance. Learn how browsers read and render HTML, understand semantic elements that improve accessibility and SEO, and write clean, well-structured markup from day one."
+            data-topics="Elements, tags, and attributes|Semantic HTML: header, nav, main, article, section, footer|Forms and input types|Links, images, and media embeds|Accessibility basics: alt text, ARIA roles, heading hierarchy"
+            data-tags="html,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">HTML Basics</div>
+            <div class="node-desc">The skeleton of every web page. Structure, semantics, and accessibility from the
+              ground up.</div>
+            <div class="node-tags"><span class="node-tag">html</span><span class="node-tag">~2 weeks</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="CSS Fundamentals"
+            data-desc="CSS controls how your HTML looks. Master the cascade, specificity, and inheritance — the concepts most beginners get wrong first. Then learn modern layout systems that power every real-world website: Flexbox and CSS Grid."
+            data-topics="The cascade, specificity, and inheritance|Box model: margin, border, padding, content|Flexbox: one-dimensional layout mastery|CSS Grid: two-dimensional layout control|Custom properties (CSS variables)|Pseudo-classes and pseudo-elements"
+            data-tags="css,layout">
+            <div class="node-top">
+              <div class="node-icon">🎨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">CSS Fundamentals</div>
+            <div class="node-desc">Style, layout, and visual polish — Flexbox, Grid, the cascade, and custom properties.
+            </div>
+            <div class="node-tags"><span class="node-tag">css</span><span class="node-tag">~3 weeks</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Responsive Design"
+            data-desc="Over 60% of web traffic is mobile. Responsive design ensures your site looks and works well on every screen size. Learn mobile-first thinking, media queries, fluid layouts, and responsive typography — the non-negotiable skills of any frontend developer."
+            data-topics="Mobile-first vs. desktop-first approach|Media queries: breakpoints and ranges|Fluid layouts with % and viewport units|Responsive images: srcset and picture element|CSS clamp() for fluid typography|Testing responsiveness in DevTools"
+            data-tags="responsive,mobile">
+            <div class="node-top">
+              <div class="node-icon">📱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Responsive Design</div>
+            <div class="node-desc">Mobile-first thinking, media queries, and fluid layouts — build for every screen
+              size.</div>
+            <div class="node-tags"><span class="node-tag">responsive</span><span class="node-tag">~2 weeks</span></div>
+          </div>
+
         </div>
-        <div class="legend-item">
-          <div class="legend-dot ld-locked"></div> Locked
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot ld-opt"></div> Optional Branch
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
         </div>
       </div>
 
 
-      <!-- ═══════════════════════════════════════════════
-           PHASE 1 — Foundations
-      ════════════════════════════════════════════════ -->
-      <div class="phase-header">
-        <div class="phase-num">01</div>
-        <div class="phase-info">
-          <h3>Foundations</h3>
-          <p>The building blocks — learn these first before anything else.</p>
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">JavaScript &amp; Logic</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="4" data-title="JavaScript Basics"
+            data-desc="JavaScript is the programming language of the web — the only language that runs natively in every browser. It makes pages interactive and dynamic. This is the most important phase of your frontend journey. Take your time here; a strong JavaScript foundation makes everything else easier."
+            data-topics="Variables: var, let, const — and when to use each|Data types: strings, numbers, booleans, arrays, objects|Functions: declarations, expressions, arrow functions|Control flow: if/else, switch, loops (for, while, forEach)|Scope and closures|ES6+ features: destructuring, spread, template literals, optional chaining"
+            data-tags="javascript,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">JavaScript Basics</div>
+            <div class="node-desc">The language of the web. The most important phase — a strong JS foundation changes
+              everything.</div>
+            <div class="node-tags"><span class="node-tag">javascript</span><span class="node-tag">ES6+</span><span
+                class="node-tag">~5 weeks</span></div>
+          </div>
+
+          <div class="node" data-id="5" data-title="DOM Manipulation"
+            data-desc="The DOM (Document Object Model) is the live representation of your HTML in the browser. JavaScript uses the DOM to make pages interactive — selecting elements, changing their content and styles, responding to user events, and dynamically updating the page without a reload."
+            data-topics="Selecting elements: querySelector, getElementById|Changing content and attributes|CSS manipulation with classList|Event listeners: click, submit, keydown, input|Creating and removing elements dynamically|Event delegation and bubbling"
+            data-tags="DOM,events">
+            <div class="node-top">
+              <div class="node-icon">🌳</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">DOM Manipulation</div>
+            <div class="node-desc">Select, change, and respond to every element on the page — the bridge between JS and
+              HTML.</div>
+            <div class="node-tags"><span class="node-tag">DOM</span><span class="node-tag">events</span><span
+                class="node-tag">~3 weeks</span></div>
+          </div>
+
         </div>
       </div>
 
-      <div class="tree-row">
-
-        <!-- NODE: HTML Basics -->
-        <div class="node done" onclick="openPanel('html')">
-          <div class="node-status">✓</div>
-          <div class="node-title">HTML Basics</div>
-          <div class="node-time">~2 weeks</div>
-          <span class="node-badge">Done</span>
-        </div>
-        <div class="connector-v lit"></div>
-
-        <!-- NODE: CSS Fundamentals -->
-        <div class="node done" onclick="openPanel('css')">
-          <div class="node-status">✓</div>
-          <div class="node-title">CSS Fundamentals</div>
-          <div class="node-time">~3 weeks</div>
-          <span class="node-badge">Done</span>
-        </div>
-        <div class="connector-v lit"></div>
-
-        <!-- NODE: Responsive Design -->
-        <div class="node done" onclick="openPanel('responsive')">
-          <div class="node-status">✓</div>
-          <div class="node-title">Responsive Design</div>
-          <div class="node-time">~2 weeks</div>
-          <span class="node-badge">Done</span>
-        </div>
-        <div class="connector-v lit"></div>
-
-      </div><!-- /tree-row -->
-
-
-      <!-- ═══════════════════════════════════════════════
-           PHASE 2 — JavaScript & Logic
-      ════════════════════════════════════════════════ -->
-      <div class="phase-header">
-        <div class="phase-num">02</div>
-        <div class="phase-info">
-          <h3>JavaScript &amp; Logic</h3>
-          <p>Make things interactive. The most important phase for web development.</p>
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
         </div>
       </div>
 
-      <div class="tree-row">
 
-        <!-- NODE: JavaScript Basics -->
-        <div class="node active" onclick="openPanel('js')">
-          <div class="node-status">→</div>
-          <div class="node-title">JavaScript Basics</div>
-          <div class="node-time">~5 weeks</div>
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Frameworks &amp; APIs</div>
+          <div class="phase-line"></div>
         </div>
-        <div class="connector-v"></div>
+        <div class="nodes">
 
-        <!-- NODE: DOM Manipulation -->
-        <div class="node locked">
-          <div class="node-status">🔒</div>
-          <div class="node-title">DOM Manipulation</div>
-          <div class="node-time">~3 weeks</div>
-        </div>
-        <div class="connector-v"></div>
-
-      </div><!-- /tree-row -->
-
-
-      <!-- ═══════════════════════════════════════════════
-           PHASE 3 — Frameworks & APIs  (branching)
-      ════════════════════════════════════════════════ -->
-      <div class="phase-header">
-        <div class="phase-num">03</div>
-        <div class="phase-info">
-          <h3>Frameworks &amp; APIs</h3>
-          <p>Choose a framework path. React is recommended. Vue is an optional branch.</p>
-        </div>
-      </div>
-
-      <!-- tree-branches = horizontal spread of parallel nodes -->
-      <div class="tree-branches">
-
-        <!-- BRANCH: React (main path) -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node locked">
-            <div class="node-status">🔒</div>
+          <div class="node wide" data-id="6" data-title="React"
+            data-desc="React is the most in-demand frontend framework in the world — used by Meta, Airbnb, Netflix, and thousands of startups. It introduces component-based architecture: you build UIs from reusable, self-contained pieces. Once you understand React's mental model, modern frontend development clicks into place."
+            data-topics="Components: functional components and JSX|Props and state: how data flows|useState and useEffect hooks|Conditional rendering and list rendering|React Router: navigating between pages|Fetching data inside React components"
+            data-tags="react,components">
+            <div class="node-top">
+              <div class="node-icon">⚛️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">React</div>
-            <div class="node-time">~6 weeks</div>
+            <div class="node-desc">The world's most in-demand UI framework. Components, hooks, and the mental model that
+              changes how you build.</div>
+            <div class="node-tags"><span class="node-tag">react</span><span class="node-tag">hooks</span><span
+                class="node-tag">~6 weeks</span></div>
           </div>
-        </div>
 
-        <!-- BRANCH: Vue.js (optional — note class "optional locked") -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node optional locked">
-            <div class="node-status">~</div>
+          <div class="node" data-id="7" data-title="Vue.js"
+            data-desc="Vue is a progressive JavaScript framework — a gentler entry into component-based development compared to React. It's popular in European and Asian markets, used heavily in enterprise applications, and known for its approachable syntax. Learn it if you want an alternative to React or your job market favours it."
+            data-topics="Vue's template syntax and directives|Reactive data with ref() and reactive()|Vue components and props|Vue Router and Pinia (state management)|Vue vs. React: when each makes sense|Composition API vs. Options API"
+            data-tags="vue,optional">
+            <div class="node-top">
+              <div class="node-icon">💚</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">Vue.js</div>
-            <div class="node-time">~5 weeks</div>
+            <div class="node-desc">A gentler alternative to React — great for enterprise and certain markets. Learn it
+              as a second framework.</div>
+            <div class="node-tags"><span class="node-tag">vue</span><span class="node-tag optional">optional</span><span
+                class="node-tag">~5 weeks</span></div>
           </div>
-        </div>
 
-        <!-- BRANCH: APIs & Fetch -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node locked">
-            <div class="node-status">🔒</div>
+          <div class="node wide" data-id="8" data-title="APIs & Fetch"
+            data-desc="Almost every real-world application talks to a server to load or save data. APIs (Application Programming Interfaces) are how frontend and backend communicate. Learn to use the Fetch API and async/await to request data, handle loading and error states, and display dynamic content."
+            data-topics="What is a REST API? HTTP methods: GET, POST, PUT, DELETE|The Fetch API and promises|async/await: writing readable asynchronous code|Handling loading, success, and error states|JSON: parsing and serialising|Working with public APIs: GitHub, OpenWeather, JSONPlaceholder"
+            data-tags="APIs,async,fetch">
+            <div class="node-top">
+              <div class="node-icon">🔌</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">APIs &amp; Fetch</div>
-            <div class="node-time">~2 weeks</div>
+            <div class="node-desc">Connect to the internet — fetch, display, and update real data using REST APIs and
+              async/await.</div>
+            <div class="node-tags"><span class="node-tag">APIs</span><span class="node-tag">async/await</span><span
+                class="node-tag">~2 weeks</span></div>
           </div>
-        </div>
 
-      </div><!-- /tree-branches -->
-
-      <!-- Reconnect branches to single trunk before next phase -->
-      <div style="margin-top:1.5rem;">
-        <div class="connector-v" style="margin:0 auto;"></div>
-      </div>
-
-
-      <!-- ═══════════════════════════════════════════════
-           PHASE 4 — Professional Skills  (branching)
-      ════════════════════════════════════════════════ -->
-      <div class="phase-header">
-        <div class="phase-num">04</div>
-        <div class="phase-info">
-          <h3>Professional Skills</h3>
-          <p>Polish your craft, get production-ready, and launch your first real project.</p>
         </div>
       </div>
 
-      <div class="tree-branches">
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
 
-        <!-- BRANCH: Git & Version Control -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node locked">
-            <div class="node-status">🔒</div>
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Professional Skills</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="9" data-title="Git & Version Control"
+            data-desc="Git is the version control system used by every professional developer in the world. It tracks every change you make, lets you experiment safely on branches, and enables team collaboration. No matter how good your code is, if you can't use Git you won't get hired."
+            data-topics="Git core workflow: init, add, commit, push, pull|Branches: creating, switching, merging|Resolving merge conflicts|GitHub: repos, forks, pull requests, issues|.gitignore and best practices|Git log and reverting changes"
+            data-tags="git,github">
+            <div class="node-top">
+              <div class="node-icon">🌿</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">Git &amp; Version Control</div>
-            <div class="node-time">~1 week</div>
+            <div class="node-desc">Every developer uses Git every day. Branches, commits, pull requests — the
+              non-negotiable workflow skill.</div>
+            <div class="node-tags"><span class="node-tag">git</span><span class="node-tag">github</span><span
+                class="node-tag">~1 week</span></div>
           </div>
-        </div>
 
-        <!-- BRANCH: Performance & SEO -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node locked">
-            <div class="node-status">🔒</div>
+          <div class="node" data-id="10" data-title="Performance & SEO"
+            data-desc="A slow website loses users. Poor SEO means no one finds it. Learn how browsers render pages, where the bottlenecks are, and how to measure and improve performance with Lighthouse. Then learn the technical SEO fundamentals every frontend developer needs to know."
+            data-topics="How browsers render: critical rendering path|Core Web Vitals: LCP, FID/INP, CLS|Image optimisation: WebP, lazy loading, srcset|Code splitting and lazy loading in React|Meta tags, Open Graph, and structured data|Lighthouse audits: reading and acting on scores"
+            data-tags="performance,SEO">
+            <div class="node-top">
+              <div class="node-icon">⚡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">Performance &amp; SEO</div>
-            <div class="node-time">~2 weeks</div>
+            <div class="node-desc">Fast pages rank higher and convert better. Core Web Vitals, Lighthouse, and technical
+              SEO fundamentals.</div>
+            <div class="node-tags"><span class="node-tag">performance</span><span class="node-tag">SEO</span><span
+                class="node-tag">~2 weeks</span></div>
           </div>
-        </div>
 
-        <!-- BRANCH: Deploy Your Project -->
-        <div class="branch-col">
-          <div class="connector-v"></div>
-          <div class="node locked">
-            <div class="node-status">🔒</div>
+          <div class="node wide" data-id="11" data-title="Deploy Your Project"
+            data-desc="Writing code locally is only half the job. Deploying makes your project live on the internet — shareable, testable by real users, and ready for a portfolio. Learn the modern deployment workflow: from connecting a Git repository to continuous deployment on platforms like Vercel and Netlify, to buying and pointing a custom domain."
+            data-topics="Vercel: deploying React apps in minutes|Netlify: static site and form hosting|Connecting GitHub to auto-deploy on push|Environment variables and secrets|Custom domains: DNS, A records, CNAME setup|HTTPS and SSL certificates (automatic with Vercel/Netlify)"
+            data-tags="deployment,vercel,netlify">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
             <div class="node-title">Deploy Your Project</div>
-            <div class="node-time">~1 week</div>
+            <div class="node-desc">Put your work on the internet. Vercel, Netlify, custom domains, and continuous
+              deployment from GitHub.</div>
+            <div class="node-tags"><span class="node-tag">deployment</span><span class="node-tag">vercel</span><span
+                class="node-tag">~1 week</span></div>
           </div>
-        </div>
 
-      </div><!-- /tree-branches -->
+        </div>
+      </div>
 
     </main>
-  </div><!-- /layout -->
-
-
-  <!-- =====================================================
-       OVERLAY + DETAIL PANEL
-       Copy this block IDENTICALLY to every roadmap page.
-       Never needs to change — roadmap.js fills it dynamically.
-  ====================================================== -->
-  <div class="overlay" id="overlay" onclick="closePanel()"></div>
-
-  <div class="detail-panel" id="detailPanel">
-    <button class="panel-close" onclick="closePanel()">✕</button>
-    <div class="panel-tag" id="panelTag"></div>
-    <h2 class="panel-title" id="panelTitle"></h2>
-    <p class="panel-desc" id="panelDesc"></p>
-    <div class="panel-divider"></div>
-    <div class="resources-title">Recommended Resources</div>
-    <div id="panelResources"></div>
-    <button class="panel-btn" id="panelBtn">Mark as Complete ✓</button>
-    <button class="panel-btn-ghost">Save for Later</button>
   </div>
+
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>12</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/4 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+
+  <!-- DETAIL PANEL -->
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
 
   <!-- FOOTER -->
   <footer>
@@ -394,15 +893,13 @@
       <div class="footer-top">
         <div>
           <div class="footer-brand">Path<em>Finder</em></div>
-          <p class="footer-tagline">
-            Structured learning paths for students and self-learners.
-            120+ roadmaps, 100% free.
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
           </p>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Explore</div>
           <ul>
-            <li><a href="categories.html">All Roadmaps</a></li>
+            <li><a href="../categories.html">All Roadmaps</a></li>
             <li>Tech</li>
             <li>Design</li>
             <li>Business</li>
@@ -412,7 +909,7 @@
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
           <ul>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="../about.html">About Us</a></li>
             <li>Blog</li>
             <li>Community</li>
             <li><a
@@ -441,94 +938,103 @@
   </footer>
 
 
-  <!-- =====================================================
-       NODE DATA  — the only thing that changes per roadmap.
-       Add/remove/edit entries here to change what the
-       detail panel shows when a node is clicked.
-
-       FIELDS:
-         tag      → small label at top of panel  e.g. "Tech — Phase 1"
-         title    → panel heading
-         desc     → paragraph description
-         status   → "done" | "active" | "locked"
-         resources → array of resource objects:
-           name   → display name
-           type   → subtitle e.g. "Free Course"
-           icon   → emoji
-           cls    → "res-doc" | "res-free" | "res-video"
-           url    → link (optional — omit to make non-clickable)
-  ====================================================== -->
-
   <script>
-    const nodes = {
-
-      html: {
-        tag: 'Tech — Phase 1',
-        title: 'HTML Basics',
-        desc: 'Learn the structure of web pages. Understand elements, attributes, semantic HTML, accessibility, and how browsers parse your code.',
-        status: 'done',
-        resources: [
-          { name: 'MDN Web Docs — HTML', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
-          { name: 'freeCodeCamp HTML Course', type: 'Free Interactive Course', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/learn/2022/responsive-web-design/' },
-          { name: 'HTML Crash Course (YouTube)', type: 'Free Video', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/watch?v=UB1O30fR-EE' },
-        ]
-      },
-
-      css: {
-        tag: 'Tech — Phase 1',
-        title: 'CSS Fundamentals',
-        desc: 'Style your web pages. Learn selectors, the box model, flexbox, grid, animations, and how to build clean, modern layouts.',
-        status: 'done',
-        resources: [
-          { name: 'CSS Tricks — Complete Guide to Flexbox', type: 'Free Reference', icon: '📄', cls: 'res-doc', url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/' },
-          { name: 'Kevin Powell CSS on YouTube', type: 'Free Video Series', icon: '▶', cls: 'res-video', url: 'https://www.youtube.com/@KevinPowell' },
-          { name: 'The Odin Project — CSS', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.theodinproject.com/' },
-        ]
-      },
-
-      responsive: {
-        tag: 'Tech — Phase 1',
-        title: 'Responsive Design',
-        desc: 'Make your websites look great on all screen sizes. Learn media queries, mobile-first thinking, and responsive layout patterns.',
-        status: 'done',
-        resources: [
-          { name: 'MDN — Responsive Design Guide', type: 'Free Documentation', icon: '📄', cls: 'res-doc', url: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design' },
-          { name: 'Google — Responsive Web Design Basics', type: 'Free Article', icon: '🆓', cls: 'res-free', url: 'https://web.dev/responsive-web-design-basics/' },
-        ]
-      },
-
-      js: {
-        tag: 'Tech — Phase 2',
-        title: 'JavaScript Basics',
-        desc: 'The programming language of the web. Learn variables, functions, loops, objects, arrays, and how to make your pages interactive and dynamic.',
-        status: 'active',
-        resources: [
-          { name: 'javascript.info — The Modern JS Tutorial', type: 'Free & Comprehensive', icon: '📄', cls: 'res-doc', url: 'https://javascript.info/' },
-          { name: 'Eloquent JavaScript (free online book)', type: 'Free Book', icon: '🆓', cls: 'res-free', url: 'https://eloquentjavascript.net/' },
-          { name: 'freeCodeCamp JS Algorithms', type: 'Free Course', icon: '🆓', cls: 'res-free', url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/' },
-        ]
-      },
-
-      /* ── ADD MORE NODES BELOW AS YOU BUILD OUT THE ROADMAP ──
-         Copy the block above, give it a unique key (e.g. "react"),
-         and add onclick="openPanel('react')" to the matching .node in the HTML.
-
-      react: {
-        tag: 'Tech — Phase 3',
-        title: 'React',
-        desc: '...',
-        status: 'locked',
-        resources: [
-          { name: '...', type: '...', icon: '📄', cls: 'res-doc', url: 'https://...' },
-        ]
-      },
-      */
-
+    const TOTAL = 12;
+    const phaseNames = {
+      1: 'FOUNDATIONS',
+      2: 'JAVASCRIPT & LOGIC',
+      3: 'FRAMEWORKS & APIS',
+      4: 'PROFESSIONAL SKILLS'
     };
-  </script>
 
-  <!-- Shared roadmap logic — must load AFTER the nodes object above -->
-  <script src="../assets/js/roadmap.js"></script>
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-frontend-done') || '[]'));
+    let activeNode = null;
+
+    function save() { localStorage.setItem('pathfinder-frontend-done', JSON.stringify([...done])); }
+
+    function updateProgress() {
+      const n = done.size;
+      const pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+
+      let completedPhases = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const phaseNodes = phase.querySelectorAll('.node');
+        const allDone = phaseNodes.length > 0 && [...phaseNodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) {
+          dot.style.background = allDone ? 'var(--gold)' : 'var(--surface2)';
+          dot.style.boxShadow = allDone ? '0 0 6px var(--gold)' : 'none';
+          dot.style.borderColor = allDone ? 'var(--gold)' : 'rgba(255,255,255,0.1)';
+        }
+        if (allDone) completedPhases++;
+      });
+      document.getElementById('phaseDone').textContent = completedPhases;
+    }
+
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => {
+        nd.classList.toggle('done', done.has(nd.dataset.id));
+      });
+      updateProgress();
+    }
+
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const phase = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${phase} — ${phaseNames[phase]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id);
+        save(); applyDone();
+      });
+    });
+
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    applyDone();
+    setTimeout(updateProgress, 150);
+  </script>
 
 </body>
 

@@ -8,13 +8,12 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-EKZ2R7GFCB');
   </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B2B Marketing — Pathfinder</title>
+  <title>Brand Management Roadmap — Pathfinder</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
@@ -47,13 +46,6 @@
       color: var(--gold);
     }
 
-    .nav-divider {
-      width: 1px;
-      height: 18px;
-      background: rgba(255, 255, 255, 0.1);
-      align-self: center;
-    }
-
     .page-header .nav-back {
       display: inline-block;
       margin-bottom: 1rem;
@@ -66,7 +58,7 @@
       overflow-x: hidden;
     }
 
-    /* ── Phase animations ── */
+    /* ── Phase block ── */
     .phase {
       margin-bottom: 2.5rem;
       animation: fadeUp 0.45s ease both;
@@ -164,16 +156,11 @@
       background: rgba(255, 107, 107, 0.08);
     }
 
-    /* ── Card grid — 3 columns; override roadmap.css node width ── */
+    /* ── Card grid ── */
     .nodes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
-    }
-
-    .node {
-      width: auto;
-      text-align: left;
     }
 
     /* ── Card ── */
@@ -186,6 +173,8 @@
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
       position: relative;
       overflow: hidden;
+      width: auto;
+      text-align: left;
     }
 
     .node:hover {
@@ -220,6 +209,7 @@
       text-decoration: line-through;
     }
 
+    /* Card internals */
     .node-top {
       display: flex;
       align-items: flex-start;
@@ -296,7 +286,7 @@
       grid-column: span 2;
     }
 
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       .node.wide {
         grid-column: span 1;
       }
@@ -538,15 +528,15 @@
   <div class="page-header">
     <div>
       <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
-      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>B2B Marketing</span></div>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>Brand Management</span></div>
       <div class="page-tag">Marketing</div>
-      <h1 class="page-title">B2B<br />Marketing</h1>
-      <p class="page-desc">A structured path through business-to-business marketing — from understanding buyers and
-        building pipeline, to demand generation, account-based marketing, and revenue attribution.</p>
+      <h1 class="page-title">Brand<br />Management</h1>
+      <p class="page-desc">A beginner-friendly roadmap to understanding, building, and managing powerful brands — from
+        brand identity and positioning to storytelling, equity, and long-term brand strategy. 6 phases, 33 topics.</p>
       <div class="page-meta">
-        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>~4 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>5–8 months</strong>&nbsp;at 1hr/day</div>
         <div class="meta-chip"><span>🌿</span>&nbsp;<strong>33 topics</strong>&nbsp;· 6 phases</div>
-        <div class="meta-chip"><span>👥</span>&nbsp;<strong>4,200</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>4,100</strong>&nbsp;learners</div>
         <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
       </div>
     </div>
@@ -566,95 +556,101 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-section-title">Phase 1 — Brand Foundations</div>
       <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        B2B vs B2C</div>
+        What is a Brand?</div>
       <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        The B2B Buyer</div>
+        Brand vs. Product vs. Company</div>
       <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        B2B Buying Committee</div>
+        Types of Brands</div>
       <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        ICP &amp; Market Segmentation</div>
+        Brand Perception &amp; Psychology</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Brand Stakeholders</div>
 
-      <div class="sidebar-section-title">Phase 2 — Positioning &amp; Messaging</div>
+      <div class="sidebar-section-title">Phase 2 — Brand Identity</div>
       <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Positioning &amp; Differentiation</div>
+        Brand Purpose &amp; Mission</div>
       <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Value Proposition</div>
+        Brand Values &amp; Personality</div>
       <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Messaging Framework</div>
+        Visual Identity System</div>
       <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Competitive Intelligence</div>
+        Brand Voice &amp; Tone</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Brand Guidelines</div>
 
-      <div class="sidebar-section-title">Phase 3 — Demand Generation</div>
+      <div class="sidebar-section-title">Phase 3 — Positioning &amp; Strategy</div>
       <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Demand Gen vs Lead Gen</div>
+        Market Segmentation</div>
       <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Content Marketing for B2B</div>
+        Brand Positioning</div>
       <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        LinkedIn Marketing</div>
+        Competitive Analysis</div>
       <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Email &amp; Nurture Programs</div>
+        Value Proposition Design</div>
       <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        SEO &amp; Paid Search for B2B</div>
-      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
-          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Webinars &amp; Events</div>
+        Perceptual Mapping</div>
 
-      <div class="sidebar-section-title">Phase 4 — ABM</div>
+      <div class="sidebar-section-title">Phase 4 — Brand Storytelling</div>
       <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        ABM Fundamentals</div>
+        Brand Narrative &amp; Story</div>
       <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Target Account Selection</div>
+        Emotional Branding</div>
       <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Personalisation at Scale</div>
+        Messaging Frameworks</div>
       <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Sales &amp; Marketing Alignment</div>
+        Storytelling Across Channels</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Brand Archetypes</div>
 
-      <div class="sidebar-section-title">Phase 5 — Pipeline &amp; Revenue</div>
+      <div class="sidebar-section-title">Phase 5 — Brand Equity &amp; Experience</div>
       <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Lead Scoring &amp; MQL/SQL</div>
+        What is Brand Equity?</div>
       <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        CRM &amp; Marketing Automation</div>
+        Customer Experience &amp; Touchpoints</div>
       <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Pipeline Velocity</div>
+        Brand Loyalty &amp; Advocacy</div>
       <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Customer Marketing &amp; Expansion</div>
+        Measuring Brand Equity</div>
 
-      <div class="sidebar-section-title">Phase 6 — Measurement &amp; Strategy</div>
+      <div class="sidebar-section-title">Phase 6 — Brand Growth</div>
       <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        B2B Marketing Metrics</div>
+        Brand Extensions &amp; Portfolio</div>
       <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        Attribution Modelling</div>
+        Rebranding Strategy</div>
       <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        B2B Marketing Strategy</div>
+        Global &amp; Cultural Branding</div>
       <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
           style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
-        GTM Planning</div>
+        Brand Crisis Management</div>
 
     </aside>
 
@@ -662,340 +658,92 @@
     <!-- CARD CANVAS -->
     <main class="card-canvas">
 
-      <!-- ═══ PHASE 1 — Foundations ═══ -->
-      <div class="phase phase-amber" id="phase-1" data-phase="1">
+
+      <!-- ═══════════ PHASE 1 ═══════════ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
         <div class="phase-header">
-          <div class="phase-number">PHASE 01</div>
-          <div class="phase-title">B2B Foundations</div>
+          <span class="phase-number">PHASE 01</span>
+          <span class="phase-title">Brand Foundations</span>
           <div class="phase-line"></div>
         </div>
         <div class="nodes">
 
-          <div class="node" data-id="1" data-title="B2B vs B2C"
-            data-desc="Understand the fundamental differences between marketing to businesses and marketing to consumers. B2B has longer sales cycles, multiple decision-makers, rational purchase drivers, and much higher deal values — each of these changes everything about how you market."
-            data-topics="Sales cycle length and complexity|Rational vs emotional buying drivers|Deal size and relationship importance|How marketing's role differs in B2B"
-            data-tags="fundamentals,b2b">
+          <div class="node" data-id="1" data-title="What is a Brand?"
+            data-desc="Understand what a brand truly is — beyond logos and taglines. Explore how brands live in the minds of consumers as a set of associations, feelings, and expectations."
+            data-topics="Definition of a brand (Keller, Aaker frameworks)|Brand vs. logo vs. identity|How brands create value|Why branding matters for businesses|Famous brand case studies (Apple, Nike)"
+            data-tags="branding,fundamentals">
             <div class="node-top">
-              <div class="node-icon">🏢</div>
+              <div class="node-icon">🏷️</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">B2B vs B2C</div>
-            <div class="node-desc">Understand how B2B fundamentally differs from consumer marketing.</div>
+            <div class="node-title">What is a Brand?</div>
+            <div class="node-desc">Brands live in minds, not just on packaging. Learn what actually makes a brand.</div>
             <div class="node-tags"><span class="node-tag">fundamentals</span></div>
           </div>
 
-          <div class="node" data-id="2" data-title="The B2B Buyer"
-            data-desc="B2B buyers are under pressure, risk-averse, and highly informed before they ever talk to sales. Learn the psychology of the B2B buyer, how they research solutions, what makes them trust a vendor, and how buying behaviour has shifted in the digital era."
-            data-topics="How B2B buyers self-educate|The risk aversion principle|Trust signals in B2B|The shift to digital-first buyer journeys"
-            data-tags="buyer,psychology">
+          <div class="node" data-id="2" data-title="Brand vs. Product vs. Company"
+            data-desc="Many beginners confuse these three. A product is what you sell, a company is who makes it, and a brand is the meaning people attach to it. Understanding this distinction is essential for every branding decision."
+            data-topics="The brand-product distinction|Corporate brand vs. product brand|Umbrella branding vs. individual branding|How companies like P&G and Unilever manage brand portfolios"
+            data-tags="fundamentals,strategy">
+            <div class="node-top">
+              <div class="node-icon">🔀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand vs. Product vs. Company</div>
+            <div class="node-desc">Three distinct things that beginners often blur. Learn the difference.</div>
+            <div class="node-tags"><span class="node-tag">fundamentals</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Types of Brands"
+            data-desc="From personal brands to corporate giants, from FMCG brands to luxury houses — understand the different categories of brands and how they operate differently in the market."
+            data-topics="Consumer brands vs. B2B brands|Personal brands vs. corporate brands|Luxury brands vs. mass-market brands|Service brands|Employer branding basics"
+            data-tags="fundamentals,brand-types">
+            <div class="node-top">
+              <div class="node-icon">🗂️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Types of Brands</div>
+            <div class="node-desc">Luxury, FMCG, personal, B2B — brands come in many shapes and structures.</div>
+            <div class="node-tags"><span class="node-tag">brand-types</span></div>
+          </div>
+
+          <div class="node" data-id="4" data-title="Brand Perception & Psychology"
+            data-desc="People don't buy rationally. Learn how the brain processes brands — through associations, priming, colour psychology, and the halo effect — and how great brand managers use psychology to shape perception."
+            data-topics="How the brain encodes brand associations|Colour psychology in branding|The halo effect and its brand implications|Implicit vs. explicit brand attitudes|Perception vs. reality in branding"
+            data-tags="psychology,perception">
             <div class="node-top">
               <div class="node-icon">🧠</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">The B2B Buyer</div>
-            <div class="node-desc">Psychology, behaviour, and how B2B buyers make decisions.</div>
-            <div class="node-tags"><span class="node-tag">buyer</span><span class="node-tag">psychology</span></div>
-          </div>
-
-          <div class="node" data-id="3" data-title="B2B Buying Committee"
-            data-desc="B2B purchases involve an average of 6–10 stakeholders, each with different priorities. Learn the roles — champion, economic buyer, technical buyer, end user, legal/procurement — and how to create content and messaging that speaks to each one."
-            data-topics="The 6 buyer roles in a committee|Economic buyer vs champion|How to influence without direct access|Multi-threading your marketing"
-            data-tags="committee,stakeholders">
-            <div class="node-top">
-              <div class="node-icon">👥</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
+            <div class="node-title">Brand Perception &amp; Psychology</div>
+            <div class="node-desc">Brands live in the subconscious. Learn the psychology that drives brand perception.
             </div>
-            <div class="node-title">B2B Buying Committee</div>
-            <div class="node-desc">Navigate the 6–10 stakeholders involved in every B2B purchase.</div>
-            <div class="node-tags"><span class="node-tag">committee</span></div>
+            <div class="node-tags"><span class="node-tag">psychology</span></div>
           </div>
 
-          <div class="node" data-id="4" data-title="ICP & Market Segmentation"
-            data-desc="Your Ideal Customer Profile (ICP) defines which companies you can help most and who will buy most reliably. Learn how to build an ICP using firmographics, technographics, and behavioural signals, then segment your market into actionable tiers."
-            data-topics="Firmographic vs technographic segmentation|How to build an ICP from existing customers|Tiering your market (Tier 1/2/3)|TAM, SAM, SOM"
-            data-tags="icp,segmentation">
-            <div class="node-top">
-              <div class="node-icon">🎯</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">ICP &amp; Market Segmentation</div>
-            <div class="node-desc">Define who you serve and tier your market for maximum ROI.</div>
-            <div class="node-tags"><span class="node-tag">icp</span><span class="node-tag">segmentation</span></div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="phase-connector">
-        <div class="phase-connector-inner">
-          <div class="connector-line"></div>
-          <div class="connector-arrow">↓</div>
-        </div>
-      </div>
-
-      <!-- ═══ PHASE 2 — Positioning & Messaging ═══ -->
-      <div class="phase phase-teal" id="phase-2" data-phase="2">
-        <div class="phase-header">
-          <div class="phase-number">PHASE 02</div>
-          <div class="phase-title">Positioning &amp; Messaging</div>
-          <div class="phase-line"></div>
-        </div>
-        <div class="nodes">
-
-          <div class="node" data-id="5" data-title="Positioning & Differentiation"
-            data-desc="Positioning is how your product occupies a distinct place in the mind of your buyer relative to alternatives. Learn April Dunford's framework for modern B2B positioning — competitive alternatives, unique attributes, value themes, and best-fit customers."
-            data-topics="April Dunford's positioning framework|Competitive alternatives (not just direct competitors)|Unique attributes that matter to buyers|Positioning statement construction"
-            data-tags="positioning,strategy">
-            <div class="node-top">
-              <div class="node-icon">📍</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Positioning &amp; Differentiation</div>
-            <div class="node-desc">Own a distinct place in your buyer's mind using proven frameworks.</div>
-            <div class="node-tags"><span class="node-tag">positioning</span></div>
-          </div>
-
-          <div class="node" data-id="6" data-title="Value Proposition"
-            data-desc="A strong value proposition clearly answers: who is this for, what problem does it solve, and why is this better than alternatives? Learn to build value propositions that are specific, quantified, and aligned to buyer outcomes — not product features."
-            data-topics="Outcome-based vs feature-based value props|Quantifying business value (ROI, time saved)|Value prop by persona and buying stage|Testing and validating your value prop"
-            data-tags="value-prop,messaging">
-            <div class="node-top">
-              <div class="node-icon">💎</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Value Proposition</div>
-            <div class="node-desc">Articulate why buyers should choose you over every alternative.</div>
-            <div class="node-tags"><span class="node-tag">value-prop</span></div>
-          </div>
-
-          <div class="node" data-id="7" data-title="Messaging Framework"
-            data-desc="A messaging framework ensures every piece of content, every sales call, and every ad says the same core things in the right way. Learn to build a messaging house: core narrative, pillar messages, proof points, and persona-specific variants."
-            data-topics="Messaging house structure|Core narrative and brand story|Pillar messages and proof points|Persona-specific message variants"
-            data-tags="messaging,framework">
-            <div class="node-top">
-              <div class="node-icon">🗣️</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Messaging Framework</div>
-            <div class="node-desc">Build the messaging house that keeps all comms consistent.</div>
-            <div class="node-tags"><span class="node-tag">messaging</span></div>
-          </div>
-
-          <div class="node" data-id="8" data-title="Competitive Intelligence"
-            data-desc="Know your competitive landscape better than your buyers do. Learn how to systematically monitor competitors, build battlecards for sales, and create competitive content that wins deals at the bottom of the funnel."
-            data-topics="Competitor research methods|Building sales battlecards|Competitive content strategy|Win/loss analysis"
-            data-tags="competitive,intelligence">
-            <div class="node-top">
-              <div class="node-icon">🔍</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Competitive Intelligence</div>
-            <div class="node-desc">Monitor the landscape and build battlecards that win deals.</div>
-            <div class="node-tags"><span class="node-tag">competitive</span></div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="phase-connector">
-        <div class="phase-connector-inner">
-          <div class="connector-line"></div>
-          <div class="connector-arrow">↓</div>
-        </div>
-      </div>
-
-      <!-- ═══ PHASE 3 — Demand Generation ═══ -->
-      <div class="phase phase-blue" id="phase-3" data-phase="3">
-        <div class="phase-header">
-          <div class="phase-number">PHASE 03</div>
-          <div class="phase-title">Demand Generation</div>
-          <div class="phase-line"></div>
-        </div>
-        <div class="nodes">
-
-          <div class="node" data-id="9" data-title="Demand Gen vs Lead Gen"
-            data-desc="Demand generation creates awareness and desire in your market. Lead generation captures people already in-market. Most B2B teams over-invest in lead gen and under-invest in demand. Learn the difference, when to use each, and how the two work together."
-            data-topics="Demand creation vs demand capture|The dark funnel and uncredited influence|Why gated content is declining|Building a full-funnel demand strategy"
-            data-tags="demand-gen,strategy">
-            <div class="node-top">
-              <div class="node-icon">📡</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Demand Gen vs Lead Gen</div>
-            <div class="node-desc">Understand the critical distinction and when to use each.</div>
-            <div class="node-tags"><span class="node-tag">demand-gen</span></div>
-          </div>
-
-          <div class="node" data-id="10" data-title="Content Marketing for B2B"
-            data-desc="B2B content must educate, not just attract. Learn how to build a content strategy around buyer stages, create thought leadership that builds authority, repurpose effectively across formats, and measure content's contribution to pipeline."
-            data-topics="Buyer stage content mapping (TOFU/MOFU/BOFU)|Thought leadership vs product content|Long-form, case studies, and data reports|Content distribution and amplification"
-            data-tags="content,thought-leadership">
-            <div class="node-top">
-              <div class="node-icon">📝</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Content Marketing for B2B</div>
-            <div class="node-desc">Build content that educates buyers and drives pipeline.</div>
-            <div class="node-tags"><span class="node-tag">content</span></div>
-          </div>
-
-          <div class="node" data-id="11" data-title="LinkedIn Marketing"
-            data-desc="LinkedIn is the most important platform for B2B marketing. Learn organic content strategy for company pages and personal brands, LinkedIn Ads (Sponsored Content, Message Ads, Lead Gen Forms), audience targeting, and how to measure LinkedIn's contribution to pipeline."
-            data-topics="Organic LinkedIn strategy for brands|Personal brand as a B2B channel|LinkedIn Ads campaign types|Targeting by job title, company, and intent"
-            data-tags="linkedin,social">
-            <div class="node-top">
-              <div class="node-icon">💼</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">LinkedIn Marketing</div>
-            <div class="node-desc">The most important platform for B2B — organic and paid.</div>
-            <div class="node-tags"><span class="node-tag">linkedin</span></div>
-          </div>
-
-          <div class="node" data-id="12" data-title="Email & Nurture Programs"
-            data-desc="Email remains one of the highest-ROI B2B channels. Learn how to build nurture sequences that move buyers through long sales cycles, design drip programs by persona and stage, maintain list hygiene, and measure what actually matters."
-            data-topics="Nurture sequence design by funnel stage|Drip vs trigger-based programs|List segmentation and hygiene|Email metrics: open rate vs pipeline contribution"
-            data-tags="email,nurture">
-            <div class="node-top">
-              <div class="node-icon">📧</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Email &amp; Nurture Programs</div>
-            <div class="node-desc">Move buyers through long sales cycles with targeted sequences.</div>
-            <div class="node-tags"><span class="node-tag">email</span><span class="node-tag">nurture</span></div>
-          </div>
-
-          <div class="node" data-id="13" data-title="SEO & Paid Search for B2B"
-            data-desc="B2B SEO is about ranking for high-intent, often low-volume keywords that signal active buying intent. Learn B2B keyword strategy, bottom-of-funnel content (vs category/comparisons pages), Google Ads for B2B, and how to align search strategy with sales cycles."
-            data-topics="B2B keyword intent hierarchy|Bottom-of-funnel SEO pages|Google Ads for B2B — search vs display|Retargeting throughout long sales cycles"
-            data-tags="seo,paid-search">
-            <div class="node-top">
-              <div class="node-icon">🔎</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">SEO &amp; Paid Search for B2B</div>
-            <div class="node-desc">Rank for intent-rich keywords and capture in-market buyers.</div>
-            <div class="node-tags"><span class="node-tag">seo</span><span class="node-tag">paid-search</span></div>
-          </div>
-
-          <div class="node" data-id="14" data-title="Webinars & Events"
-            data-desc="Webinars and in-person events are uniquely powerful in B2B because they create real human connection and intent signals. Learn how to plan, promote, and run high-converting webinars, and how to measure the pipeline impact of events both virtual and live."
-            data-topics="Webinar funnel design and promotion|Converting attendees to pipeline|Field marketing and hosted events|Virtual vs in-person event strategy"
-            data-tags="events,webinars">
-            <div class="node-top">
-              <div class="node-icon">🎤</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Webinars &amp; Events</div>
-            <div class="node-desc">Create human connection and intent signals that drive pipeline.</div>
-            <div class="node-tags"><span class="node-tag">events</span></div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="phase-connector">
-        <div class="phase-connector-inner">
-          <div class="connector-line"></div>
-          <div class="connector-arrow">↓</div>
-        </div>
-      </div>
-
-      <!-- ═══ PHASE 4 — Account-Based Marketing ═══ -->
-      <div class="phase phase-red" id="phase-4" data-phase="4">
-        <div class="phase-header">
-          <div class="phase-number">PHASE 04</div>
-          <div class="phase-title">Account-Based Marketing</div>
-          <div class="phase-line"></div>
-        </div>
-        <div class="nodes">
-
-          <div class="node" data-id="15" data-title="ABM Fundamentals"
-            data-desc="Account-Based Marketing flips traditional lead gen: instead of casting a wide net, you identify high-value accounts and market directly to them. Learn the three tiers of ABM (1:1, 1:few, 1:many), when ABM makes sense, and how to build the business case internally."
-            data-topics="ABM 1:1, 1:few, 1:many tiers|When ABM is right for your business|The ABM technology stack|Building internal buy-in for ABM"
-            data-tags="abm,strategy">
-            <div class="node-top">
-              <div class="node-icon">🎯</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">ABM Fundamentals</div>
-            <div class="node-desc">Flip the funnel — market to accounts, not just leads.</div>
-            <div class="node-tags"><span class="node-tag">abm</span></div>
-          </div>
-
-          <div class="node" data-id="16" data-title="Target Account Selection"
-            data-desc="Choosing the right accounts to pursue is the most important ABM decision. Learn how to combine ICP criteria with intent data, technographic signals, engagement history, and sales input to build and rank a target account list."
-            data-topics="Account scoring models|Intent data providers (6sense, Bombora)|Technographic signals for fit|Sales + marketing joint account selection"
-            data-tags="abm,account-selection">
-            <div class="node-top">
-              <div class="node-icon">📋</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Target Account Selection</div>
-            <div class="node-desc">Score and prioritise accounts using ICP fit and intent signals.</div>
-            <div class="node-tags"><span class="node-tag">abm</span><span class="node-tag">intent-data</span></div>
-          </div>
-
-          <div class="node" data-id="17" data-title="Personalisation at Scale"
-            data-desc="ABM requires personalised experiences, but true 1:1 at scale isn't feasible. Learn how to create personalised landing pages, ads, and email sequences using dynamic content and segmentation — and where to spend personalisation effort for maximum impact."
-            data-topics="Dynamic landing pages and website personalisation|Personalised ad creative at scale|Account-level email personalisation|Personalisation ROI — where it matters most"
-            data-tags="personalisation,abm">
-            <div class="node-top">
-              <div class="node-icon">✨</div>
-              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
-                </svg></div>
-            </div>
-            <div class="node-title">Personalisation at Scale</div>
-            <div class="node-desc">Create tailored experiences without doing everything manually.</div>
-            <div class="node-tags"><span class="node-tag">personalisation</span></div>
-          </div>
-
-          <div class="node" data-id="18" data-title="Sales & Marketing Alignment"
-            data-desc="ABM only works when sales and marketing operate as a single revenue team. Learn how to define shared goals (pipeline, not leads), build joint account plans, create SLAs between teams, and run weekly account reviews that keep both sides aligned."
-            data-topics="Shared pipeline goals vs MQL targets|Joint account planning process|Marketing-to-sales SLAs|Weekly account review cadence"
-            data-tags="alignment,smarketing">
+          <div class="node wide" data-id="5" data-title="Brand Stakeholders"
+            data-desc="Brands don't exist just for customers. Employees, investors, partners, communities, and regulators all have a stake in how a brand is perceived and managed. Great brand managers balance all these relationships."
+            data-topics="Mapping your brand's stakeholder ecosystem|Customers as the primary audience|Internal brand alignment (employees)|Investors and analysts|Community and media relations"
+            data-tags="stakeholders,strategy">
             <div class="node-top">
               <div class="node-icon">🤝</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">Sales &amp; Marketing Alignment</div>
-            <div class="node-desc">Operate as one revenue team — shared goals, shared accountability.</div>
-            <div class="node-tags"><span class="node-tag">alignment</span></div>
+            <div class="node-title">Brand Stakeholders</div>
+            <div class="node-desc">Customers are just one audience. Learn to manage brands across every stakeholder
+              group.</div>
+            <div class="node-tags"><span class="node-tag">stakeholders</span><span class="node-tag">strategy</span>
+            </div>
           </div>
 
         </div>
@@ -1008,73 +756,93 @@
         </div>
       </div>
 
-      <!-- ═══ PHASE 5 — Pipeline & Revenue ═══ -->
-      <div class="phase phase-teal" id="phase-5" data-phase="5">
+      <!-- ═══════════ PHASE 2 ═══════════ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
         <div class="phase-header">
-          <div class="phase-number">PHASE 05</div>
-          <div class="phase-title">Pipeline &amp; Revenue Operations</div>
+          <span class="phase-number">PHASE 02</span>
+          <span class="phase-title">Brand Identity</span>
           <div class="phase-line"></div>
         </div>
         <div class="nodes">
 
-          <div class="node" data-id="19" data-title="Lead Scoring & MQL/SQL"
-            data-desc="Lead scoring determines when a prospect is ready to be passed to sales. Learn how to build a scoring model using demographic fit and behavioural engagement, define MQL and SQL thresholds, and set up the handoff process that prevents leads from falling through the cracks."
-            data-topics="Demographic + behavioural scoring models|MQL vs SQL definitions and SLAs|Lead routing and assignment rules|Recycling and re-nurturing rejected leads"
-            data-tags="lead-scoring,mql">
+          <div class="node" data-id="6" data-title="Brand Purpose & Mission"
+            data-desc="Why does your brand exist beyond making money? Purpose-driven brands like Patagonia and TOMS have shown that a clear 'why' creates deeper loyalty and differentiation. Learn to craft a genuine brand purpose."
+            data-topics="Simon Sinek's Golden Circle|Differentiating mission, vision, and purpose|Purpose vs. purpose-washing|Examples: Patagonia, Dove Real Beauty, TOMS|Writing your brand purpose statement"
+            data-tags="purpose,strategy">
             <div class="node-top">
-              <div class="node-icon">📊</div>
+              <div class="node-icon">🎯</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">Lead Scoring &amp; MQL/SQL</div>
-            <div class="node-desc">Know exactly when a lead is ready for sales — and prove it.</div>
-            <div class="node-tags"><span class="node-tag">lead-scoring</span><span class="node-tag">mql</span></div>
+            <div class="node-title">Brand Purpose &amp; Mission</div>
+            <div class="node-desc">Great brands exist for a reason beyond profit. Craft a purpose that people believe
+              in.</div>
+            <div class="node-tags"><span class="node-tag">purpose</span></div>
           </div>
 
-          <div class="node" data-id="20" data-title="CRM & Marketing Automation"
-            data-desc="Your CRM and MAP are the operating system of B2B marketing. Learn the core platforms (Salesforce, HubSpot, Marketo), how to structure your data, build automated workflows, and maintain the data hygiene that makes everything else reliable."
-            data-topics="CRM data architecture for B2B|MAP platforms: HubSpot, Marketo, Pardot|Workflow automation best practices|Data hygiene and deduplication"
-            data-tags="crm,automation,hubspot">
+          <div class="node" data-id="7" data-title="Brand Values & Personality"
+            data-desc="Brand values are the principles a brand stands for. Brand personality is how it expresses itself — think of a brand as a person. Learn frameworks like Jennifer Aaker's brand personality dimensions to define your brand's character."
+            data-topics="Defining core brand values|Jennifer Aaker's 5 personality dimensions|Sincerity, Excitement, Competence, Sophistication, Ruggedness|Translating values into behaviour|Consistency of personality across touchpoints"
+            data-tags="personality,values">
             <div class="node-top">
-              <div class="node-icon">⚙️</div>
+              <div class="node-icon">✨</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">CRM &amp; Marketing Automation</div>
-            <div class="node-desc">The operating system of B2B marketing — data, workflows, automation.</div>
-            <div class="node-tags"><span class="node-tag">crm</span><span class="node-tag">automation</span></div>
+            <div class="node-title">Brand Values &amp; Personality</div>
+            <div class="node-desc">Give your brand a human character — the values and traits it stands for and shows up
+              with.</div>
+            <div class="node-tags"><span class="node-tag">personality</span><span class="node-tag">values</span></div>
           </div>
 
-          <div class="node" data-id="21" data-title="Pipeline Velocity"
-            data-desc="Pipeline velocity measures how fast deals move through your funnel: (Number of deals × Win rate × Average deal size) ÷ Sales cycle length. Learn how marketing influences each component and how to identify which stage of the funnel is creating the biggest drag."
-            data-topics="Pipeline velocity formula|How marketing accelerates deal cycles|Stage conversion rate analysis|Content and campaigns for mid-funnel"
-            data-tags="pipeline,velocity">
+          <div class="node" data-id="8" data-title="Visual Identity System"
+            data-desc="Visual identity is how a brand looks — logo, colour palette, typography, imagery style, and layout systems. You don't need to be a designer, but brand managers must understand how to evaluate and manage a visual identity system."
+            data-topics="Logo types and construction principles|Colour palette: primary, secondary, accent|Typography selection and hierarchy|Imagery style and photography direction|Iconography and illustration systems"
+            data-tags="visual,design">
             <div class="node-top">
-              <div class="node-icon">⚡</div>
+              <div class="node-icon">🎨</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">Pipeline Velocity</div>
-            <div class="node-desc">Speed up deals at every stage with targeted marketing support.</div>
-            <div class="node-tags"><span class="node-tag">pipeline</span></div>
+            <div class="node-title">Visual Identity System</div>
+            <div class="node-desc">Logo, colours, typography, imagery — understand and manage your brand's visual
+              language.</div>
+            <div class="node-tags"><span class="node-tag">visual</span><span class="node-tag">design</span></div>
           </div>
 
-          <div class="node" data-id="22" data-title="Customer Marketing & Expansion"
-            data-desc="Acquiring customers is just the start in B2B. Learn how to use marketing to drive adoption, prevent churn, generate referrals, and create upsell and cross-sell opportunities — turning your customer base into your most valuable growth channel."
-            data-topics="Onboarding and adoption campaigns|Customer advocacy and case studies|Upsell and cross-sell marketing programs|NPS and customer health scoring"
-            data-tags="customer-marketing,expansion">
+          <div class="node" data-id="9" data-title="Brand Voice & Tone"
+            data-desc="Voice is who your brand is in words. Tone is how it adapts to context. Learn to define a consistent brand voice and a tonal range that keeps your brand recognisable whether you're writing a tweet, a legal doc, or a TV ad."
+            data-topics="Defining voice characteristics (e.g. bold, warm, witty)|Voice vs. tone: consistency vs. adaptation|Building a brand voice chart|Tone in different contexts: social, email, advertising|Voice consistency audits"
+            data-tags="voice,copywriting">
             <div class="node-top">
-              <div class="node-icon">🌱</div>
+              <div class="node-icon">🗣️</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">Customer Marketing &amp; Expansion</div>
-            <div class="node-desc">Turn customers into advocates and your biggest growth channel.</div>
-            <div class="node-tags"><span class="node-tag">customer-marketing</span></div>
+            <div class="node-title">Brand Voice &amp; Tone</div>
+            <div class="node-desc">How your brand speaks — and how it adapts its tone to every situation.</div>
+            <div class="node-tags"><span class="node-tag">voice</span><span class="node-tag">copywriting</span></div>
+          </div>
+
+          <div class="node wide" data-id="10" data-title="Brand Guidelines"
+            data-desc="Brand guidelines (or brand books) are the rulebook that ensures consistency. They document everything — from logo usage rules to photography dos and don'ts. Learn what goes in a strong brand guide and how to enforce it across teams and agencies."
+            data-topics="What to include in a brand guidebook|Logo usage rules and clear space|Colour specifications (Pantone, CMYK, RGB, HEX)|Typography hierarchy documentation|Do's and don'ts: real brand examples"
+            data-tags="guidelines,consistency">
+            <div class="node-top">
+              <div class="node-icon">📖</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Guidelines</div>
+            <div class="node-desc">The rulebook that keeps a brand consistent across every team, agency, and touchpoint.
+            </div>
+            <div class="node-tags"><span class="node-tag">guidelines</span><span class="node-tag">consistency</span>
+            </div>
           </div>
 
         </div>
@@ -1087,73 +855,360 @@
         </div>
       </div>
 
-      <!-- ═══ PHASE 6 — Measurement & Strategy ═══ -->
-      <div class="phase phase-amber" id="phase-6" data-phase="6">
+      <!-- ═══════════ PHASE 3 ═══════════ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
         <div class="phase-header">
-          <div class="phase-number">PHASE 06</div>
-          <div class="phase-title">Measurement &amp; Strategy</div>
+          <span class="phase-number">PHASE 03</span>
+          <span class="phase-title">Positioning &amp; Strategy</span>
           <div class="phase-line"></div>
         </div>
         <div class="nodes">
 
-          <div class="node" data-id="23" data-title="B2B Marketing Metrics"
-            data-desc="Most B2B marketing teams track the wrong metrics. Learn the metrics that actually matter to the business: pipeline sourced and influenced, cost per pipeline, marketing's contribution to revenue, and CAC:LTV ratio — not just MQLs and impressions."
-            data-topics="Pipeline sourced vs influenced|Marketing-sourced revenue|CAC, LTV, and payback period|Vanity metrics vs business metrics"
-            data-tags="metrics,kpis">
+          <div class="node" data-id="11" data-title="Market Segmentation"
+            data-desc="Not everyone is your customer. Market segmentation is how you divide a broad market into smaller, more defined groups so you can serve them better. Learn the four key segmentation types and how to apply them in brand strategy."
+            data-topics="Demographic segmentation|Psychographic segmentation|Behavioural segmentation|Geographic segmentation|Creating meaningful customer segments|STP framework: Segment, Target, Position"
+            data-tags="segmentation,STP">
             <div class="node-top">
-              <div class="node-icon">📈</div>
+              <div class="node-icon">🧩</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">B2B Marketing Metrics</div>
-            <div class="node-desc">Measure what matters — pipeline, revenue, and CAC, not MQLs.</div>
-            <div class="node-tags"><span class="node-tag">metrics</span><span class="node-tag">kpis</span></div>
+            <div class="node-title">Market Segmentation</div>
+            <div class="node-desc">Divide markets into meaningful groups so your brand can speak to the right people.
+            </div>
+            <div class="node-tags"><span class="node-tag">segmentation</span><span class="node-tag">STP</span></div>
           </div>
 
-          <div class="node" data-id="24" data-title="Attribution Modelling"
-            data-desc="B2B attribution is hard because deals have 10+ touchpoints over months. Learn the main attribution models (first touch, last touch, linear, U-shaped, W-shaped, data-driven), when to use each, and how to tell the story of marketing's impact with imperfect data."
-            data-topics="Attribution model types and trade-offs|Multi-touch attribution in B2B|The dark funnel problem|Revenue attribution tools (Bizible, Dreamdata)"
-            data-tags="attribution,reporting">
+          <div class="node" data-id="12" data-title="Brand Positioning"
+            data-desc="Positioning is how a brand occupies a distinct place in the mind of the target consumer relative to competitors. Learn Ries & Trout's classic positioning theory, positioning statements, and how modern brands fight for mental real estate."
+            data-topics="Al Ries & Jack Trout: Positioning theory|Writing a positioning statement|Frame of reference and points of difference|Positioning maps and mental real estate|Repositioning: when and how"
+            data-tags="positioning,strategy">
             <div class="node-top">
-              <div class="node-icon">🔗</div>
+              <div class="node-icon">📌</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">Attribution Modelling</div>
-            <div class="node-desc">Prove marketing's impact across 10+ touchpoints and months.</div>
-            <div class="node-tags"><span class="node-tag">attribution</span></div>
+            <div class="node-title">Brand Positioning</div>
+            <div class="node-desc">Own a distinct space in your customer's mind. The foundation of all brand strategy.
+            </div>
+            <div class="node-tags"><span class="node-tag">positioning</span><span class="node-tag">strategy</span></div>
           </div>
 
-          <div class="node" data-id="25" data-title="B2B Marketing Strategy"
-            data-desc="Pull everything together into a coherent annual marketing strategy. Learn how to set goals tied to revenue targets, allocate budget across channels and stages, build a quarterly planning cadence, and communicate strategy to leadership and cross-functional stakeholders."
-            data-topics="Revenue-back goal setting|Budget allocation framework|Quarterly OKR planning|Executive reporting and storytelling"
-            data-tags="strategy,planning">
+          <div class="node" data-id="13" data-title="Competitive Analysis"
+            data-desc="You can't position your brand without understanding the competitive landscape. Learn how to audit competitors' brand positioning, messaging, visual identity, and perception — and find the white space your brand can own."
+            data-topics="Competitor brand audit framework|Analysing competitor messaging and positioning|Identifying gaps and white space|SWOT analysis for brand strategy|Primary vs. secondary competitive sets"
+            data-tags="competitive,analysis">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Competitive Analysis</div>
+            <div class="node-desc">Know your competitive landscape inside out — then find the space no one else owns.
+            </div>
+            <div class="node-tags"><span class="node-tag">competitive</span><span class="node-tag">analysis</span></div>
+          </div>
+
+          <div class="node" data-id="14" data-title="Value Proposition Design"
+            data-desc="A brand's value proposition explains what it offers, who it's for, and why it's better. Learn the Value Proposition Canvas and how to craft a clear, differentiated proposition that becomes the backbone of all brand communications."
+            data-topics="Strategyzer's Value Proposition Canvas|Customer jobs, pains, and gains|Feature → Benefit → Value laddering|Functional vs. emotional vs. self-expressive value|Testing your value proposition"
+            data-tags="value-proposition,design">
+            <div class="node-top">
+              <div class="node-icon">💎</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Value Proposition Design</div>
+            <div class="node-desc">Articulate exactly what your brand offers and why customers should choose it over
+              everything else.</div>
+            <div class="node-tags"><span class="node-tag">value-prop</span></div>
+          </div>
+
+          <div class="node wide" data-id="15" data-title="Perceptual Mapping"
+            data-desc="A perceptual map plots how consumers perceive competing brands across two dimensions. It's one of the most powerful tools in brand strategy — making abstract 'positioning' tangible and revealing where opportunities lie."
+            data-topics="What is a perceptual map?|Choosing the right axes for your category|Building a perceptual map from research|Identifying positioning opportunities|Real examples: automotive, fashion, FMCG"
+            data-tags="mapping,positioning">
             <div class="node-top">
               <div class="node-icon">🗺️</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">B2B Marketing Strategy</div>
-            <div class="node-desc">Build a revenue-tied annual plan and communicate it to leadership.</div>
-            <div class="node-tags"><span class="node-tag">strategy</span></div>
+            <div class="node-title">Perceptual Mapping</div>
+            <div class="node-desc">Visualise where brands sit in consumers' minds — and spot the empty space yours can
+              own.</div>
+            <div class="node-tags"><span class="node-tag">mapping</span><span class="node-tag">positioning</span></div>
           </div>
 
-          <div class="node" data-id="26" data-title="GTM Planning"
-            data-desc="A Go-To-Market plan defines how you bring a new product, feature, or market expansion to life. Learn the GTM framework: positioning, launch tiers, launch channels, sales enablement, and success metrics — and how marketing owns much of the GTM process."
-            data-topics="GTM framework and launch tiers|Launch channel and asset planning|Sales enablement for new GTMs|Measuring GTM success post-launch"
-            data-tags="gtm,launch">
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 4 ═══════════ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 04</span>
+          <span class="phase-title">Brand Storytelling</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="16" data-title="Brand Narrative & Story"
+            data-desc="The most powerful brands tell a story — one with a hero, a conflict, and a resolution. Learn the structure of great brand narratives and how brands like Apple, Airbnb, and Nike use story to create meaning and loyalty."
+            data-topics="Why stories beat features every time|The hero's journey in brand narrative|Conflict and resolution: your brand's role|Origin stories and founder narrative|Story architecture: beginning, tension, resolution"
+            data-tags="narrative,storytelling">
             <div class="node-top">
-              <div class="node-icon">🚀</div>
+              <div class="node-icon">📚</div>
               <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                   <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
                 </svg></div>
             </div>
-            <div class="node-title">GTM Planning</div>
-            <div class="node-desc">Launch new products and markets with a structured GTM plan.</div>
-            <div class="node-tags"><span class="node-tag">gtm</span><span class="node-tag">launch</span></div>
+            <div class="node-title">Brand Narrative &amp; Story</div>
+            <div class="node-desc">Stories are how brands create meaning. Learn to craft a narrative people want to be
+              part of.</div>
+            <div class="node-tags"><span class="node-tag">narrative</span><span class="node-tag">storytelling</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Emotional Branding"
+            data-desc="Marc Gobé's emotional branding theory argues that the future of brands lies in building deep emotional connections. Learn how to design for emotion — from sensory branding to community building."
+            data-topics="Marc Gobé's 10 commandments of emotional branding|Sensory branding (sound, scent, touch)|Creating brand rituals and habits|The role of nostalgia in branding|Community as emotional brand glue"
+            data-tags="emotion,psychology">
+            <div class="node-top">
+              <div class="node-icon">❤️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Emotional Branding</div>
+            <div class="node-desc">The brands people love aren't just useful — they're felt. Design for deep emotional
+              connection.</div>
+            <div class="node-tags"><span class="node-tag">emotion</span><span class="node-tag">psychology</span></div>
+          </div>
+
+          <div class="node" data-id="18" data-title="Messaging Frameworks"
+            data-desc="A messaging framework is the structured document that defines what your brand says, to whom, and why — across every audience and context. Learn frameworks like the message house, onion model, and messaging matrix."
+            data-topics="The message house structure|Core message vs. supporting messages|Audience-specific messaging variations|Proof points and RTBs (reasons to believe)|Messaging hierarchy and priority"
+            data-tags="messaging,frameworks">
+            <div class="node-top">
+              <div class="node-icon">🏗️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Messaging Frameworks</div>
+            <div class="node-desc">Structure what your brand says and to whom — creating a clear, consistent
+              communication hierarchy.</div>
+            <div class="node-tags"><span class="node-tag">messaging</span><span class="node-tag">frameworks</span></div>
+          </div>
+
+          <div class="node" data-id="19" data-title="Storytelling Across Channels"
+            data-desc="The same story needs to work across TV, social media, packaging, email, events, and retail. Learn how to adapt your brand narrative for different formats without losing its core meaning — the art of transmedia brand storytelling."
+            data-topics="Channel-appropriate story adaptation|Short-form storytelling (social, OOH)|Long-form storytelling (video, editorial)|Packaging as storytelling canvas|Retail and experiential brand narratives"
+            data-tags="channels,storytelling">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Storytelling Across Channels</div>
+            <div class="node-desc">One story, many formats. Learn to adapt brand narrative without losing its soul.
+            </div>
+            <div class="node-tags"><span class="node-tag">channels</span><span class="node-tag">omnichannel</span></div>
+          </div>
+
+          <div class="node wide" data-id="20" data-title="Brand Archetypes"
+            data-desc="Carl Jung's archetypes, applied to branding by Margaret Mark and Carol Pearson, give brands a universal personality template. The Hero (Nike), the Sage (Google), the Outlaw (Harley-Davidson) — learn the 12 archetypes and how they shape brand identity and storytelling."
+            data-topics="The 12 Jungian brand archetypes|The Hero, Sage, Outlaw, Caregiver, Creator...|How archetypes align personality and storytelling|Choosing the right archetype for your brand|Real brand examples across all 12"
+            data-tags="archetypes,strategy">
+            <div class="node-top">
+              <div class="node-icon">🦁</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Archetypes</div>
+            <div class="node-desc">The Hero, the Sage, the Rebel — Jung's 12 archetypes are the ultimate brand
+              personality framework.</div>
+            <div class="node-tags"><span class="node-tag">archetypes</span><span class="node-tag">jung</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 5 ═══════════ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 05</span>
+          <span class="phase-title">Brand Equity &amp; Experience</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="21" data-title="What is Brand Equity?"
+            data-desc="Brand equity is the commercial value that comes from consumer perception of a brand — not from the physical product. Learn Keller's Customer-Based Brand Equity model (CBBE) and Aaker's brand equity framework, and understand how equity translates into pricing power and growth."
+            data-topics="Keller's CBBE pyramid|Aaker's Brand Equity Ten|Salience, Performance, Imagery, Judgements, Feelings, Resonance|How brand equity drives premium pricing|Brand equity vs. brand value (financial)"
+            data-tags="equity,keller,aaker">
+            <div class="node-top">
+              <div class="node-icon">💰</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is Brand Equity?</div>
+            <div class="node-desc">The commercial value of perception. Learn Keller's CBBE model and Aaker's equity
+              framework.</div>
+            <div class="node-tags"><span class="node-tag">equity</span><span class="node-tag">keller</span><span
+                class="node-tag">aaker</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Customer Experience & Touchpoints"
+            data-desc="Brand experience is everything a customer feels, thinks, and does in response to a brand. Map and manage every touchpoint — from advertising and packaging to customer service and post-purchase — to build consistent, positive brand experiences."
+            data-topics="Customer journey mapping|Brand touchpoints: pre, during, post-purchase|Moments of truth (Jan Carlzon)|Designing consistent brand experiences|Experience gaps and how to close them"
+            data-tags="CX,touchpoints">
+            <div class="node-top">
+              <div class="node-icon">🗺️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Customer Experience &amp; Touchpoints</div>
+            <div class="node-desc">Every interaction is a brand moment. Map and design the full customer experience.
+            </div>
+            <div class="node-tags"><span class="node-tag">CX</span><span class="node-tag">touchpoints</span></div>
+          </div>
+
+          <div class="node" data-id="23" data-title="Brand Loyalty & Advocacy"
+            data-desc="Loyalty goes beyond repeat purchase — the highest form is brand advocacy, where customers become brand ambassadors. Learn the loyalty ladder, NPS, and strategies to turn satisfied customers into passionate advocates."
+            data-topics="The loyalty ladder: prospects to advocates|NPS (Net Promoter Score) and its limits|Emotional loyalty vs. habitual loyalty|Community building for brand loyalty|Advocacy programmes and referral strategies"
+            data-tags="loyalty,advocacy">
+            <div class="node-top">
+              <div class="node-icon">⭐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Loyalty &amp; Advocacy</div>
+            <div class="node-desc">From repeat buyers to passionate advocates. Build the loyalty that turns customers
+              into champions.</div>
+            <div class="node-tags"><span class="node-tag">loyalty</span><span class="node-tag">advocacy</span></div>
+          </div>
+
+          <div class="node wide" data-id="24" data-title="Measuring Brand Equity"
+            data-desc="What gets measured gets managed. Learn the qualitative and quantitative methods for tracking brand equity — from brand tracking surveys and unaided awareness to share of voice, sentiment analysis, and financial valuation methods."
+            data-topics="Brand tracking: awareness, consideration, preference|Unaided vs. aided brand awareness|Brand Association Networks|Share of voice measurement|Financial brand valuation methods (Interbrand, Brand Finance)"
+            data-tags="measurement,analytics">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Measuring Brand Equity</div>
+            <div class="node-desc">Track awareness, perception, loyalty, and financial value — prove the ROI of brand
+              investment.</div>
+            <div class="node-tags"><span class="node-tag">measurement</span><span class="node-tag">analytics</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PHASE 6 ═══════════ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <span class="phase-number">PHASE 06</span>
+          <span class="phase-title">Brand Growth &amp; Evolution</span>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="25" data-title="Brand Extensions & Portfolio"
+            data-desc="Can a brand stretch into new categories? Brand extensions use existing equity to launch new products — but they come with risks. Learn the difference between line extensions and category extensions, and how companies manage multi-brand portfolios."
+            data-topics="Line extensions vs. category extensions|Stretch limits: how far can a brand go?|Brand portfolio strategies: house of brands vs. branded house|Portfolio management frameworks|Examples: Virgin, Dove, Apple, Nestlé"
+            data-tags="extensions,portfolio">
+            <div class="node-top">
+              <div class="node-icon">🌱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Extensions &amp; Portfolio</div>
+            <div class="node-desc">Stretch your brand into new territory — and learn when stretching goes too far.</div>
+            <div class="node-tags"><span class="node-tag">extensions</span><span class="node-tag">portfolio</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Rebranding Strategy"
+            data-desc="When and how do you reinvent a brand? Rebranding can range from a visual refresh to a complete identity overhaul. Learn the triggers for rebranding, the strategic process, and why so many rebrands fail — with case studies from Airbnb, Gap, Burberry, and Tropicana."
+            data-topics="Triggers for rebranding|Evolutionary vs. revolutionary rebranding|The rebranding process (research → strategy → identity → launch)|Managing rebranding risk|Rebrand case studies: Airbnb, Tropicana fail, Burberry turnaround"
+            data-tags="rebranding,strategy">
+            <div class="node-top">
+              <div class="node-icon">🔄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Rebranding Strategy</div>
+            <div class="node-desc">When and how to reinvent a brand — without losing what made it valuable in the first
+              place.</div>
+            <div class="node-tags"><span class="node-tag">rebranding</span><span class="node-tag">strategy</span></div>
+          </div>
+
+          <div class="node" data-id="27" data-title="Global & Cultural Branding"
+            data-desc="Global brands must navigate local cultures, sensitivities, and preferences. Learn the standardisation vs. adaptation debate, glocal strategy, and why what works in one market can spectacularly fail in another."
+            data-topics="Standardisation vs. localisation debate|Glocal brand strategy|Cultural dimensions (Hofstede) for brand strategy|Avoiding cultural branding disasters|Case studies: McDonald's, Coca-Cola, Pepsi global strategies"
+            data-tags="global,culture">
+            <div class="node-top">
+              <div class="node-icon">🌍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Global &amp; Cultural Branding</div>
+            <div class="node-desc">One brand, many markets. Navigate culture, localisation, and the risks of going
+              global.</div>
+            <div class="node-tags"><span class="node-tag">global</span><span class="node-tag">culture</span></div>
+          </div>
+
+          <div class="node wide" data-id="28" data-title="Brand Crisis Management"
+            data-desc="No brand is immune to crisis. From product recalls to PR disasters and social media pile-ons, brand managers must know how to respond quickly, authentically, and in a way that protects long-term brand equity. Learn the crisis response playbook."
+            data-topics="Types of brand crises (reputational, product, executive)|The 3 stages: pre-crisis, response, recovery|Speed vs. accuracy in crisis response|Authentic apology vs. corporate-speak|Case studies: Tylenol, United Airlines, Lululemon"
+            data-tags="crisis,reputation">
+            <div class="node-top">
+              <div class="node-icon">🚨</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Crisis Management</div>
+            <div class="node-desc">Protect brand equity when things go wrong — the response playbook every brand manager
+              needs.</div>
+            <div class="node-tags"><span class="node-tag">crisis</span><span class="node-tag">reputation</span></div>
           </div>
 
         </div>
@@ -1166,7 +1221,7 @@
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="stats-left">
-      <div class="stat">📚 <strong>26</strong> topics</div>
+      <div class="stat">📚 <strong>33</strong> topics</div>
       <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
       <div class="stat">🚀 <strong id="phaseDone">0</strong>/6 phases</div>
     </div>
@@ -1178,7 +1233,7 @@
   <div class="seo-panel-overlay" id="panelOverlay"></div>
   <div class="seo-panel" id="seoPanel">
     <button class="panel-close-btn" id="panelCloseBtn">✕</button>
-    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — B2B FOUNDATIONS</div>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — BRAND FOUNDATIONS</div>
     <div class="panel-node-title" id="panelTitle">Topic Title</div>
     <div class="panel-node-desc" id="panelDesc">Description.</div>
     <div class="panel-section-label">What You'll Learn</div>
@@ -1193,15 +1248,13 @@
       <div class="footer-top">
         <div>
           <div class="footer-brand">Path<em>Finder</em></div>
-          <p class="footer-tagline">
-            Structured learning paths for students and self-learners.
-            120+ roadmaps, 100% free.
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
           </p>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Explore</div>
           <ul>
-            <li><a href="categories.html">All Roadmaps</a></li>
+            <li><a href="../categories.html">All Roadmaps</a></li>
             <li>Tech</li>
             <li>Design</li>
             <li>Business</li>
@@ -1211,7 +1264,7 @@
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
           <ul>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="../about.html">About Us</a></li>
             <li>Blog</li>
             <li>Community</li>
             <li><a
@@ -1241,16 +1294,16 @@
 
 
   <script>
-    const TOTAL = 26;
+    const TOTAL = 33;
     const phaseNames = {
-      1: 'B2B FOUNDATIONS', 2: 'POSITIONING & MESSAGING', 3: 'DEMAND GENERATION',
-      4: 'ACCOUNT-BASED MARKETING', 5: 'PIPELINE & REVENUE OPS', 6: 'MEASUREMENT & STRATEGY'
+      1: 'BRAND FOUNDATIONS', 2: 'BRAND IDENTITY', 3: 'POSITIONING & STRATEGY',
+      4: 'BRAND STORYTELLING', 5: 'BRAND EQUITY & EXPERIENCE', 6: 'BRAND GROWTH & EVOLUTION'
     };
 
-    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-b2b-done') || '[]'));
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-brand-done') || '[]'));
     let activeNode = null;
 
-    function save() { localStorage.setItem('pathfinder-b2b-done', JSON.stringify([...done])); }
+    function save() { localStorage.setItem('pathfinder-brand-done', JSON.stringify([...done])); }
 
     function updateProgress() {
       const n = done.size;
@@ -1279,7 +1332,9 @@
     }
 
     function applyDone() {
-      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      document.querySelectorAll('.node').forEach(nd => {
+        nd.classList.toggle('done', done.has(nd.dataset.id));
+      });
       updateProgress();
     }
 

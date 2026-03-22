@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKZ2R7GFCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EKZ2R7GFCB');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Marketing Roadmap — Pathfinder</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/roadmap.css" />
+
+  <style>
+    .nav-links-roadmap {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links-roadmap a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links-roadmap a:hover {
+      color: var(--text);
+    }
+
+    .nav-links-roadmap a.active {
+      color: var(--gold);
+    }
+
+    .page-header .nav-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .card-canvas {
+      padding: 2.5rem 3rem 6rem;
+      flex: 1;
+      overflow-x: hidden;
+    }
+
+    .phase {
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .phase:nth-child(1) {
+      animation-delay: 0.04s;
+    }
+
+    .phase:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .phase:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .phase:nth-child(4) {
+      animation-delay: 0.16s;
+    }
+
+    .phase:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .phase:nth-child(6) {
+      animation-delay: 0.24s;
+    }
+
+    .phase:nth-child(7) {
+      animation-delay: 0.28s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .phase-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .phase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phase-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .phase-amber .phase-number {
+      color: var(--gold);
+      border-color: rgba(245, 166, 35, 0.35);
+      background: rgba(245, 166, 35, 0.08);
+    }
+
+    .phase-teal .phase-number {
+      color: var(--teal);
+      border-color: rgba(0, 201, 167, 0.35);
+      background: rgba(0, 201, 167, 0.08);
+    }
+
+    .phase-blue .phase-number {
+      color: var(--blue);
+      border-color: rgba(123, 159, 255, 0.35);
+      background: rgba(123, 159, 255, 0.08);
+    }
+
+    .phase-red .phase-number {
+      color: var(--red-soft);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      text-align: left;
+    }
+
+    .node:hover {
+      transform: translateY(-2px);
+    }
+
+    .phase-amber .node:hover {
+      border-color: rgba(245, 166, 35, 0.45);
+      background: rgba(245, 166, 35, 0.05);
+    }
+
+    .phase-teal .node:hover {
+      border-color: rgba(0, 201, 167, 0.45);
+      background: rgba(0, 201, 167, 0.05);
+    }
+
+    .phase-blue .node:hover {
+      border-color: rgba(123, 159, 255, 0.45);
+      background: rgba(123, 159, 255, 0.05);
+    }
+
+    .phase-red .node:hover {
+      border-color: rgba(255, 107, 107, 0.45);
+      background: rgba(255, 107, 107, 0.05);
+    }
+
+    .node.done {
+      opacity: 0.5;
+    }
+
+    .node.done .node-title {
+      text-decoration: line-through;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .node-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .node-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .node-check svg {
+      display: none;
+    }
+
+    .node.done .node-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .node.done .node-check svg {
+      display: block;
+    }
+
+    .node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .node-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .node-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .node-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .node.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .node.wide {
+        grid-column: span 1;
+      }
+    }
+
+    .phase-connector {
+      display: flex;
+      justify-content: center;
+      margin: -0.75rem 0 0.75rem;
+    }
+
+    .phase-connector-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .connector-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: -3px;
+      line-height: 1;
+    }
+
+    .seo-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 201;
+      width: min(420px, 100vw);
+      background: var(--bg2);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .seo-panel.open {
+      transform: translateX(0);
+    }
+
+    .seo-panel-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .seo-panel-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--surface2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .panel-close-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .panel-phase-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-node-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .panel-node-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-topics {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-topics li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .panel-topics li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .panel-mark-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      color: var(--teal);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .panel-mark-btn:hover {
+      background: rgba(0, 201, 167, 0.18);
+    }
+
+    .stats-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 50;
+      background: rgba(7, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--gold);
+    }
+
+    .stats-right {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .stats-right span {
+      color: var(--teal);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">Path<em>Finder</em></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Roadmaps</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact</a>
+      </li>
+      <li><a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeTsRxLInsSLV6JvcYQloKwf24-NhbWTyQ4B3V1i2eg4Ctz_w/viewform?usp=header">Feedback</a>
+      </li>
+    </ul>
+    <span class="progress-pill" id="navPill">0 / 36 complete</span>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <a href="../index.html" class="nav-back">← Back to Roadmaps</a>
+      <div class="breadcrumb">Roadmaps → Marketing &amp; Business → <span>Digital Marketing</span></div>
+      <div class="page-tag">Marketing</div>
+      <h1 class="page-title">Digital<br />Marketing</h1>
+      <p class="page-desc">A complete beginner's roadmap to digital marketing — from marketing fundamentals and content
+        strategy through SEO, paid ads, social media, email marketing, and analytics. Learn to attract, convert, and
+        retain customers online. 7 phases, 36 topics.</p>
+      <div class="page-meta">
+        <div class="meta-chip"><span>⏱</span>&nbsp;<strong>5–8 months</strong>&nbsp;at 1hr/day</div>
+        <div class="meta-chip"><span>🌿</span>&nbsp;<strong>36 topics</strong>&nbsp;· 7 phases</div>
+        <div class="meta-chip"><span>👥</span>&nbsp;<strong>7,200</strong>&nbsp;learners</div>
+        <div class="meta-chip"><span>🎯</span>&nbsp;<strong>Beginner</strong>&nbsp;friendly</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label"><span>Your progress</span><strong id="headerPct">0%</strong></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%;transition:width 0.8s ease;"></div>
+      </div>
+      <div class="progress-nodes" id="headerNodes">0 of 36 topics completed</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+
+      <div class="sidebar-section-title">Phase 1 — Foundations</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot" id="sdot-1"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        What is Digital Marketing?</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        The Marketing Funnel</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Target Audience &amp; Buyer Personas</div>
+      <div class="sidebar-item" onclick="scrollToPhase(1)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Brand Positioning Online</div>
+
+      <div class="sidebar-section-title">Phase 2 — Content Marketing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot" id="sdot-2"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Blogging &amp; Long-Form Content</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Copywriting Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Video &amp; Visual Content</div>
+      <div class="sidebar-item" onclick="scrollToPhase(2)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Content Distribution</div>
+
+      <div class="sidebar-section-title">Phase 3 — SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot" id="sdot-3"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        SEO Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Keyword Research</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        On-Page SEO</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Link Building</div>
+      <div class="sidebar-item" onclick="scrollToPhase(3)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Technical SEO Basics</div>
+
+      <div class="sidebar-section-title">Phase 4 — Social Media</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot" id="sdot-4"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Social Media Strategy</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Platform Deep Dives</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Community Management</div>
+      <div class="sidebar-item" onclick="scrollToPhase(4)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Influencer Marketing</div>
+
+      <div class="sidebar-section-title">Phase 5 — Paid Advertising</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot" id="sdot-5"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Paid Ads Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Google Ads</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Meta Ads</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Retargeting &amp; Audiences</div>
+      <div class="sidebar-item" onclick="scrollToPhase(5)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Landing Pages &amp; CRO</div>
+
+      <div class="sidebar-section-title">Phase 6 — Email Marketing</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot" id="sdot-6"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Email Marketing Fundamentals</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Building &amp; Growing a List</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Email Automation &amp; Sequences</div>
+      <div class="sidebar-item" onclick="scrollToPhase(6)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Writing Emails That Get Opened</div>
+
+      <div class="sidebar-section-title">Phase 7 — Analytics &amp; Growth</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot" id="sdot-7"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Google Analytics 4</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Marketing KPIs &amp; Reporting</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Attribution &amp; Channels</div>
+      <div class="sidebar-item" onclick="scrollToPhase(7)"><span class="side-dot"
+          style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--surface2);border:1px solid rgba(255,255,255,0.1);display:inline-block;"></span>
+        Growth Marketing Mindset</div>
+
+    </aside>
+
+    <main class="card-canvas">
+
+      <!-- ═══ PHASE 1 ═══ -->
+      <div class="phase phase-amber" data-phase="1" id="phase-1">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 01</div>
+          <div class="phase-title">Digital Marketing Foundations</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="1" data-title="What is Digital Marketing?"
+            data-desc="Digital marketing is everything a business does online to attract, engage, and convert customers. It encompasses SEO, paid ads, social media, email, content, and more — each a channel with its own mechanics. Before diving into tactics, you need the strategic overview that explains how all these channels connect."
+            data-topics="Digital marketing vs. traditional marketing: the key differences|The owned, earned, and paid media framework|Digital marketing channels overview: SEO, PPC, social, email, content|The customer journey online: awareness → consideration → conversion → retention|Why digital marketing is measurable in ways traditional marketing never was|The T-shaped marketer: the generalist-specialist model for career growth"
+            data-tags="overview,foundations">
+            <div class="node-top">
+              <div class="node-icon">🌐</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">What is Digital Marketing?</div>
+            <div class="node-desc">Owned, earned, and paid media — map the full landscape before diving into any single
+              channel.</div>
+            <div class="node-tags"><span class="node-tag">overview</span><span class="node-tag">foundations</span></div>
+          </div>
+
+          <div class="node" data-id="2" data-title="The Marketing Funnel"
+            data-desc="The marketing funnel describes the journey from stranger to customer. Understanding TOFU (top of funnel), MOFU (middle), and BOFU (bottom) lets you match the right content and channels to the right stage — preventing the most common beginner mistake of selling to people who don't yet know they need you."
+            data-topics="TOFU / MOFU / BOFU: what each stage means and what it needs|Awareness → Interest → Desire → Action (AIDA) model|The flywheel model: why retention fuels acquisition|Mapping content and channels to each funnel stage|Full-funnel thinking: why most marketers only optimise the bottom|Customer lifetime value (CLV) and why acquisition cost must be measured against it"
+            data-tags="funnel,AIDA">
+            <div class="node-top">
+              <div class="node-icon">🔽</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">The Marketing Funnel</div>
+            <div class="node-desc">TOFU, MOFU, BOFU — match the right message and channel to each stage of the customer
+              journey.</div>
+            <div class="node-tags"><span class="node-tag">funnel</span><span class="node-tag">AIDA</span></div>
+          </div>
+
+          <div class="node" data-id="3" data-title="Target Audience & Buyer Personas"
+            data-desc="You can't market to everyone. Defining your target audience — who they are, what they care about, where they spend time online, and what problems they're trying to solve — is the foundation every successful campaign is built on. A precise audience definition makes every subsequent decision easier."
+            data-topics="Demographic, psychographic, and behavioural segmentation|Building a buyer persona: job title, goals, pain points, channels, objections|Ideal Customer Profile (ICP) for B2B vs. buyer personas for B2C|Where to find audience data: Google Analytics, social insights, customer interviews|Negative personas: who you're explicitly NOT marketing to|Audience research tools: SparkToro, Facebook Audience Insights, Reddit, forums"
+            data-tags="audience,personas">
+            <div class="node-top">
+              <div class="node-icon">👥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Target Audience &amp; Buyer Personas</div>
+            <div class="node-desc">You can't market to everyone. Define exactly who you're talking to — and everything
+              else becomes clearer.</div>
+            <div class="node-tags"><span class="node-tag">audience</span><span class="node-tag">ICP</span></div>
+          </div>
+
+          <div class="node wide" data-id="4" data-title="Brand Positioning Online"
+            data-desc="Online positioning is how you occupy a distinct, memorable space in your audience's mind relative to competitors. In a world where every niche has dozens of alternatives, the question 'why you and not them?' needs a clear, specific answer. Learn to define and consistently express your digital brand position."
+            data-topics="Positioning statement formula: For [audience] who [need], [brand] is the [category] that [benefit] unlike [alternative]|Value proposition vs. tagline vs. elevator pitch|Visual and verbal brand consistency online: logos, colours, tone|Category creation vs. category competition: a strategic choice|Social proof as positioning: reviews, case studies, testimonials|Competitor positioning audit: where are the gaps in your market?"
+            data-tags="positioning,brand">
+            <div class="node-top">
+              <div class="node-icon">📌</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Brand Positioning Online</div>
+            <div class="node-desc">Occupy a distinct, memorable space. Define your 'why you over them' and express it
+              consistently across every channel.</div>
+            <div class="node-tags"><span class="node-tag">positioning</span><span class="node-tag">brand</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 2 ═══ -->
+      <div class="phase phase-teal" data-phase="2" id="phase-2">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 02</div>
+          <div class="phase-title">Content Marketing</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="5" data-title="Content Strategy"
+            data-desc="Content marketing is the long game — creating valuable, relevant content that attracts and builds trust with your target audience over time. But content without strategy is just noise. Learn how to build a content strategy that serves specific audience needs and business goals, not just fills a calendar."
+            data-topics="The content strategy trifecta: audience + goals + distribution|Content pillars: 3–5 core themes that everything ladders up to|Content audit: evaluating what exists before creating more|Editorial calendar: planning content across channels and formats|Evergreen vs. topical content: building a sustainable mix|Content ROI: how to measure whether your content is working"
+            data-tags="content-strategy,planning">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Strategy</div>
+            <div class="node-desc">Content without strategy is noise. Build a plan around audience needs, content
+              pillars, and business goals.</div>
+            <div class="node-tags"><span class="node-tag">content-strategy</span><span class="node-tag">planning</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="6" data-title="Blogging & Long-Form Content"
+            data-desc="Long-form written content — blog posts, guides, whitepapers — is the highest-ROI content format for SEO and thought leadership. Learn how to write content that ranks in search, genuinely helps readers, and builds compounding organic traffic over time."
+            data-topics="The anatomy of a high-ranking blog post: title, headers, intro, body, CTA|Writing for search intent: matching content to what people are actually looking for|The pillar-cluster model: a hub page + supporting articles|Internal linking strategy: distributing authority across your site|Repurposing long-form content into social, email, and video|Tools: Surfer SEO, Clearscope, Hemingway Editor"
+            data-tags="blogging,long-form">
+            <div class="node-top">
+              <div class="node-icon">✍️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Blogging &amp; Long-Form Content</div>
+            <div class="node-desc">The highest-ROI content format for SEO — write posts that rank, genuinely help
+              readers, and compound over time.</div>
+            <div class="node-tags"><span class="node-tag">blogging</span><span class="node-tag">SEO-content</span></div>
+          </div>
+
+          <div class="node" data-id="7" data-title="Copywriting Fundamentals"
+            data-desc="Copywriting is writing that drives action — on landing pages, ads, emails, and social posts. It's different from content writing, which builds awareness. Learning the principles of persuasive copy is one of the highest-leverage skills in marketing because it improves every single channel you use."
+            data-topics="The core goal of copy: one reader, one action|AIDA in copy: Attention, Interest, Desire, Action|Headlines: the most important words in any piece of copy|Benefits vs. features: the perpetual copywriting lesson|The PAS formula: Problem, Agitate, Solution|Writing for different formats: ads (brevity), landing pages (persuasion), emails (relationship)"
+            data-tags="copywriting,persuasion">
+            <div class="node-top">
+              <div class="node-icon">🖊️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Copywriting Fundamentals</div>
+            <div class="node-desc">AIDA, PAS, benefits over features — persuasive copy improves every channel. The
+              highest-leverage marketing skill.</div>
+            <div class="node-tags"><span class="node-tag">copywriting</span><span class="node-tag">PAS</span></div>
+          </div>
+
+          <div class="node" data-id="8" data-title="Video & Visual Content"
+            data-desc="Video is the dominant content format across almost every platform. Even as a beginner, understanding the principles of effective video marketing — script, hook, pacing, CTA — and how visual design supports brand trust gives you a major edge in modern digital marketing."
+            data-topics="Short-form video: Reels, TikTok, YouTube Shorts — hooks, pacing, structure|Long-form video: YouTube strategy, watch time, CTR optimisation|Infographics and data visualisation: making complex ideas shareable|Repurposing: turning one video into clips, posts, carousels, and newsletters|Tools: Canva, CapCut, Adobe Express, Descript|The 3-second hook rule and why the first frame decides everything"
+            data-tags="video,visual">
+            <div class="node-top">
+              <div class="node-icon">🎥</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Video &amp; Visual Content</div>
+            <div class="node-desc">Video dominates every feed. Learn hooks, pacing, CTAs, and repurposing — then make it
+              work across platforms.</div>
+            <div class="node-tags"><span class="node-tag">video</span><span class="node-tag">visual</span></div>
+          </div>
+
+          <div class="node wide" data-id="9" data-title="Content Distribution"
+            data-desc="Creating great content is only half the job — getting it in front of the right people is the other half that most beginners neglect. Content distribution is the system for ensuring your content reaches its intended audience across owned, earned, and paid channels."
+            data-topics="The 80/20 rule of content: spend as much time distributing as creating|Owned distribution: your email list, website, social profiles|Earned distribution: social shares, backlinks, press, word of mouth|Paid distribution: boosting posts, content amplification platforms|Community distribution: Reddit, Quora, LinkedIn groups, Discord|Content repurposing matrix: one piece → 10 formats"
+            data-tags="distribution,amplification">
+            <div class="node-top">
+              <div class="node-icon">📡</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Content Distribution</div>
+            <div class="node-desc">Creating content is half the job. Build a distribution system — owned, earned, paid —
+              so your work actually gets seen.</div>
+            <div class="node-tags"><span class="node-tag">distribution</span><span class="node-tag">amplification</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 3 ═══ -->
+      <div class="phase phase-blue" data-phase="3" id="phase-3">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 03</div>
+          <div class="phase-title">Search Engine Optimisation</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="10" data-title="SEO Fundamentals"
+            data-desc="SEO is the practice of earning organic traffic from search engines by making your content the best answer to a searcher's query. It's the highest-ROI long-term marketing channel for most businesses — but it requires patience. Learn how search engines work before trying to optimise for them."
+            data-topics="How Google crawls, indexes, and ranks pages|The three pillars of SEO: content, authority, technical|E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness|Why SEO is a long-term channel: compounding returns over 6–18 months|Google Search Console: the free tool every SEO practitioner must use|SEO vs. PPC: owned vs. rented traffic"
+            data-tags="SEO,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">SEO Fundamentals</div>
+            <div class="node-desc">Crawling, indexing, E-E-A-T, and Google Search Console — understand the system before
+              you optimise for it.</div>
+            <div class="node-tags"><span class="node-tag">SEO</span><span class="node-tag">fundamentals</span></div>
+          </div>
+
+          <div class="node" data-id="11" data-title="Keyword Research"
+            data-desc="Keywords are the bridge between what people search and what you create. Learn to identify the terms your audience uses, evaluate their volume and difficulty, understand search intent, and build a keyword strategy that targets realistic ranking opportunities at each stage of the funnel."
+            data-topics="Search volume, keyword difficulty, and CPC: the three core metrics|Search intent: informational, navigational, commercial, transactional|Long-tail keywords: lower competition, higher conversion rates|Keyword research tools: Ahrefs, Semrush, Google Keyword Planner, free alternatives|Keyword mapping: assigning keywords to specific pages|Topic clusters: the modern approach beyond individual keywords"
+            data-tags="keyword-research,search-intent">
+            <div class="node-top">
+              <div class="node-icon">🔑</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Keyword Research</div>
+            <div class="node-desc">Volume, difficulty, search intent, long-tail — find the keywords your audience uses
+              and build a realistic strategy around them.</div>
+            <div class="node-tags"><span class="node-tag">keywords</span><span class="node-tag">intent</span></div>
+          </div>
+
+          <div class="node" data-id="12" data-title="On-Page SEO"
+            data-desc="On-page SEO is everything you control on your own pages: titles, meta descriptions, header structure, content quality, internal linking, and image optimisation. Getting on-page right is the foundation of ranking — and it's entirely within your control."
+            data-topics="Title tags: the most important on-page element — format and character limits|Meta descriptions: writing click-worthy summaries (not ranking signals)|Header hierarchy: H1, H2, H3 and semantic structure|Content optimisation: keyword density, semantic relevance, coverage depth|Internal linking: distributing authority and guiding crawlers|Image optimisation: alt text, file size, descriptive filenames"
+            data-tags="on-page,optimisation">
+            <div class="node-top">
+              <div class="node-icon">📄</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">On-Page SEO</div>
+            <div class="node-desc">Title tags, headers, internal linking, image alt text — optimise everything you
+              control on your own pages.</div>
+            <div class="node-tags"><span class="node-tag">on-page</span><span class="node-tag">titles</span></div>
+          </div>
+
+          <div class="node" data-id="13" data-title="Link Building"
+            data-desc="Backlinks — other websites linking to yours — are one of Google's strongest ranking signals. Building a high-quality backlink profile is the most difficult part of SEO, and the tactics that work (and don't get you penalised) require strategy, patience, and genuine value creation."
+            data-topics="Why backlinks matter: domain authority and link equity|White-hat link building tactics: digital PR, HARO, guest posting, resource pages|The Skyscraper Technique: creating content worth linking to|Broken link building: replacing dead links with your content|Link quality vs. link quantity: why one great link beats 100 bad ones|Disavowing toxic links: protecting your profile from spam"
+            data-tags="link-building,backlinks">
+            <div class="node-top">
+              <div class="node-icon">🔗</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Link Building</div>
+            <div class="node-desc">Backlinks are Google's trust signal. Learn white-hat tactics — digital PR,
+              Skyscraper, HARO — to earn links that last.</div>
+            <div class="node-tags"><span class="node-tag">link-building</span><span class="node-tag">authority</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="14" data-title="Technical SEO Basics"
+            data-desc="Technical SEO ensures search engines can find, crawl, and index your site efficiently. While deep technical SEO requires a specialist, every digital marketer should understand the fundamentals — site speed, mobile-friendliness, structured data, and Core Web Vitals — that affect your ability to rank."
+            data-topics="Site speed: why every second matters for rankings and conversions|Mobile-first indexing: Google ranks the mobile version of your site|Core Web Vitals: LCP, INP, CLS — what they measure and why|XML sitemaps: helping search engines find all your pages|Robots.txt: controlling what gets crawled|Structured data and schema markup: enabling rich results in SERPs|Canonical tags: preventing duplicate content issues"
+            data-tags="technical-SEO,Core-Web-Vitals">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Technical SEO Basics</div>
+            <div class="node-desc">Site speed, Core Web Vitals, sitemaps, schema — the technical foundation that lets
+              Google find and rank your content.</div>
+            <div class="node-tags"><span class="node-tag">technical</span><span class="node-tag">Core-Web-Vitals</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 4 ═══ -->
+      <div class="phase phase-red" data-phase="4" id="phase-4">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 04</div>
+          <div class="phase-title">Social Media Marketing</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="15" data-title="Social Media Strategy"
+            data-desc="Being on social media and having a social media strategy are completely different things. A strategy defines which platforms to invest in, what kind of content to create, what goals each platform serves, and how success is measured — before a single post is written."
+            data-topics="Platform selection: matching platforms to audience and goals|Organic vs. paid social: complementary, not interchangeable|Social media goals: awareness, engagement, traffic, leads, sales|Content mix: the 80/20 rule — value vs. promotion|Posting frequency and timing: platform-specific benchmarks|Social media tools: Buffer, Hootsuite, Later, Sprout Social"
+            data-tags="social-strategy,platforms">
+            <div class="node-top">
+              <div class="node-icon">📱</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Social Media Strategy</div>
+            <div class="node-desc">Choose platforms intentionally, set measurable goals, plan your content mix —
+              strategy before posting.</div>
+            <div class="node-tags"><span class="node-tag">social-strategy</span><span class="node-tag">platforms</span>
+            </div>
+          </div>
+
+          <div class="node" data-id="16" data-title="Platform Deep Dives"
+            data-desc="Each social platform has its own algorithm, content format, audience behaviour, and best practices. A LinkedIn post that performs brilliantly will flop on TikTok. Learn the distinct mechanics of the major platforms — Instagram, LinkedIn, TikTok, YouTube, X — and how to create content native to each."
+            data-topics="Instagram: Reels algorithm, carousel format, hashtag strategy|LinkedIn: thought leadership content, B2B reach, personal vs. company page|TikTok: the For You Page algorithm, trending audio, duets and stitches|YouTube: SEO for video, thumbnails, watch time, community tab|X (Twitter): threads, engagement mechanics, real-time relevance|Choosing 1–2 platforms to master vs. spreading thin across all"
+            data-tags="Instagram,LinkedIn,TikTok">
+            <div class="node-top">
+              <div class="node-icon">📲</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Platform Deep Dives</div>
+            <div class="node-desc">Instagram, LinkedIn, TikTok, YouTube — each has its own algorithm and native content
+              format. Learn to speak each language.</div>
+            <div class="node-tags"><span class="node-tag">Instagram</span><span class="node-tag">TikTok</span><span
+                class="node-tag">LinkedIn</span></div>
+          </div>
+
+          <div class="node" data-id="17" data-title="Community Management"
+            data-desc="Social media is not a broadcast channel — it's a conversation. Community management is the practice of actively engaging your audience: responding to comments, joining discussions, handling criticism, and building the kind of loyal community that advocates for your brand."
+            data-topics="The community management mindset: listening, not just publishing|Responding to comments: speed, tone, and escalation protocols|Handling negative comments and PR crises on social|Building a brand community: Discord, Facebook Groups, Slack|User-generated content (UGC): encouraging and leveraging it|Social listening: monitoring brand mentions, sentiment, and trends"
+            data-tags="community,engagement">
+            <div class="node-top">
+              <div class="node-icon">💬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Community Management</div>
+            <div class="node-desc">Social media is a conversation. Engage, respond, listen — build the loyal community
+              that becomes your best marketing.</div>
+            <div class="node-tags"><span class="node-tag">community</span><span class="node-tag">UGC</span></div>
+          </div>
+
+          <div class="node wide" data-id="18" data-title="Influencer Marketing"
+            data-desc="Influencer marketing is one of the fastest-growing digital channels because people trust people, not brands. Learn how to identify the right influencers (hint: bigger isn't always better), structure partnerships, brief creators effectively, and measure whether the campaign actually worked."
+            data-topics="Influencer tiers: nano, micro, macro, mega — and their different ROI profiles|Why micro-influencers often outperform celebrities for niche products|Finding the right influencers: SparkToro, Creator.co, Instagram search|Campaign brief: deliverables, timeline, usage rights, FTC disclosure|Gifting vs. paid partnerships: the legal and ethical landscape|Measuring influencer ROI: reach, engagement, traffic, and conversions"
+            data-tags="influencer,partnerships">
+            <div class="node-top">
+              <div class="node-icon">🌟</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Influencer Marketing</div>
+            <div class="node-desc">Nano vs. micro vs. macro, campaign briefs, FTC disclosure, ROI measurement — people
+              trust people, not brands.</div>
+            <div class="node-tags"><span class="node-tag">influencer</span><span class="node-tag">partnerships</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 5 ═══ -->
+      <div class="phase phase-amber" data-phase="5" id="phase-5">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 05</div>
+          <div class="phase-title">Paid Advertising</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="19" data-title="Paid Ads Fundamentals"
+            data-desc="Paid advertising gives you immediate, targeted visibility — at a cost. Unlike SEO, paid ads stop the moment you stop spending. Understanding the core concepts — auction mechanics, quality score, CPM vs. CPC vs. CPA — gives you the foundation to run any paid channel intelligently."
+            data-topics="How ad auctions work: bid, quality score, ad rank|CPM vs. CPC vs. CPA vs. ROAS: the key pricing models|Impression share, CTR, conversion rate: the funnel within paid media|Budgeting: daily vs. campaign budgets, bid strategies|The paid media mindset: every £/$ is a test, not a commitment|Ad fatigue: why creative rotation and frequency caps matter"
+            data-tags="paid-ads,fundamentals">
+            <div class="node-top">
+              <div class="node-icon">💸</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Paid Ads Fundamentals</div>
+            <div class="node-desc">Auction mechanics, CPM vs. CPC vs. ROAS, bid strategies — understand the framework
+              before spending a penny.</div>
+            <div class="node-tags"><span class="node-tag">paid-ads</span><span class="node-tag">auction</span></div>
+          </div>
+
+          <div class="node" data-id="20" data-title="Google Ads"
+            data-desc="Google Search Ads put your message in front of people actively searching for what you offer — the highest purchase intent of any ad channel. Learn to build and optimise Search campaigns, understand match types, write ad copy that earns clicks, and diagnose why campaigns underperform."
+            data-topics="Campaign types: Search, Display, Shopping, Video, Performance Max|Keyword match types: broad, phrase, exact — and when to use each|Ad copy: headlines, descriptions, and responsive search ads|Quality Score: the formula and how to improve it|Negative keywords: the most overlooked lever in Google Ads|Conversion tracking: linking ads to actual business outcomes"
+            data-tags="google-ads,PPC">
+            <div class="node-top">
+              <div class="node-icon">🔍</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Google Ads</div>
+            <div class="node-desc">Search intent at the moment of highest purchase readiness — match types, Quality
+              Score, and conversion tracking.</div>
+            <div class="node-tags"><span class="node-tag">google-ads</span><span class="node-tag">PPC</span></div>
+          </div>
+
+          <div class="node" data-id="21" data-title="Meta Ads"
+            data-desc="Meta Ads (Facebook and Instagram) let you reach audiences based on demographics, interests, and behaviour rather than search intent. They're the primary channel for demand generation — creating desire in people who weren't actively searching. Learn the campaign structure, audience targeting, and creative formats that drive results."
+            data-topics="Meta campaign structure: Campaign → Ad Set → Ad|Audience targeting: core audiences, custom audiences, lookalikes|Creative formats: single image, carousel, video, Stories, Reels|The creative is the targeting: why the ad itself defines who it reaches|Campaign Objective selection: awareness vs. traffic vs. conversions|Meta Pixel and Conversions API: tracking events for optimisation"
+            data-tags="meta-ads,facebook">
+            <div class="node-top">
+              <div class="node-icon">📘</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Meta Ads</div>
+            <div class="node-desc">Demand generation via demographics and interests — campaign structure, lookalike
+              audiences, Meta Pixel, and creative formats.</div>
+            <div class="node-tags"><span class="node-tag">meta-ads</span><span class="node-tag">facebook</span></div>
+          </div>
+
+          <div class="node" data-id="22" data-title="Retargeting & Audiences"
+            data-desc="Retargeting shows ads to people who've already interacted with your brand — visited your website, watched your videos, or engaged with your content. These audiences convert at dramatically higher rates than cold audiences. Learn to build retargeting funnels that re-engage warm prospects."
+            data-topics="Retargeting mechanics: pixels, custom audiences, engagement audiences|Website retargeting: targeting visitors of specific pages|Cart abandonment: the highest-converting retargeting audience|Lookalike audiences: finding new users who resemble your best customers|Sequenced retargeting: showing different messages at each stage|Frequency management: the point where retargeting becomes annoying"
+            data-tags="retargeting,audiences">
+            <div class="node-top">
+              <div class="node-icon">🎯</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Retargeting &amp; Audiences</div>
+            <div class="node-desc">Warm audiences convert 3–5x better than cold. Build retargeting funnels that
+              re-engage people who already showed interest.</div>
+            <div class="node-tags"><span class="node-tag">retargeting</span><span class="node-tag">audiences</span>
+            </div>
+          </div>
+
+          <div class="node wide" data-id="23" data-title="Landing Pages & CRO"
+            data-desc="You can run a perfect ad campaign and still lose money if the landing page doesn't convert. Conversion Rate Optimisation (CRO) is the discipline of improving the percentage of visitors who take the desired action — through better copy, design, trust signals, and testing."
+            data-topics="Landing page anatomy: headline, subheadline, hero image, benefits, CTA, trust signals|Message match: aligning ad copy with landing page copy|The single CTA rule: one page, one goal|A/B testing landing pages: what to test first (headlines, CTAs, images)|Heatmaps and session recordings: seeing where users drop off|Tools: Unbounce, Webflow, Leadpages, Hotjar, Microsoft Clarity"
+            data-tags="landing-pages,CRO">
+            <div class="node-top">
+              <div class="node-icon">🏁</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Landing Pages &amp; CRO</div>
+            <div class="node-desc">A great ad with a poor landing page loses money. CRO — headlines, CTAs, A/B tests,
+              heatmaps — maximises every visit.</div>
+            <div class="node-tags"><span class="node-tag">landing-pages</span><span class="node-tag">CRO</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 6 ═══ -->
+      <div class="phase phase-teal" data-phase="6" id="phase-6">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 06</div>
+          <div class="phase-title">Email Marketing</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node" data-id="24" data-title="Email Marketing Fundamentals"
+            data-desc="Email marketing consistently delivers the highest ROI of any digital channel — £42 returned for every £1 spent on average. But it's also the channel most susceptible to poor practices. Learn the fundamentals: deliverability, list hygiene, segmentation, and the metrics that actually matter."
+            data-topics="Why email is still the highest-ROI digital channel|Deliverability: landing in the inbox, not spam|List hygiene: removing inactive subscribers before they hurt your sender reputation|Key metrics: open rate, click rate, conversion rate, unsubscribe rate|Segmentation: sending the right message to the right segment|ESP comparison: Mailchimp, Klaviyo, ConvertKit, Brevo, ActiveCampaign"
+            data-tags="email,deliverability">
+            <div class="node-top">
+              <div class="node-icon">📧</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Email Marketing Fundamentals</div>
+            <div class="node-desc">The highest-ROI digital channel. Deliverability, segmentation, list hygiene — build
+              an email programme that actually works.</div>
+            <div class="node-tags"><span class="node-tag">email</span><span class="node-tag">deliverability</span></div>
+          </div>
+
+          <div class="node" data-id="25" data-title="Building & Growing a List"
+            data-desc="An email list is the only audience you truly own — unlike social followers, it can't be taken away by an algorithm change. Learn the ethical, effective strategies for growing a list of people who genuinely want to hear from you, using lead magnets, opt-in forms, and pop-up strategies."
+            data-topics="Lead magnets: the free value exchange that earns the opt-in|Lead magnet types: checklists, templates, ebooks, mini-courses, quizzes|Opt-in form placement: homepage, blog posts, exit-intent pop-ups|GDPR and CAN-SPAM compliance: the legal requirements you must know|Double opt-in vs. single opt-in: the deliverability tradeoff|List growth benchmarks and what's realistic for different stages"
+            data-tags="list-building,lead-magnets">
+            <div class="node-top">
+              <div class="node-icon">📋</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Building &amp; Growing a List</div>
+            <div class="node-desc">Your email list is the only audience you truly own. Lead magnets, opt-in placement,
+              and GDPR compliance.</div>
+            <div class="node-tags"><span class="node-tag">list-building</span><span class="node-tag">GDPR</span></div>
+          </div>
+
+          <div class="node" data-id="26" data-title="Email Automation & Sequences"
+            data-desc="Email automation lets you deliver the right message at the right moment — triggered by user behaviour rather than a calendar. A well-built welcome sequence, abandoned cart flow, or re-engagement campaign works for you 24/7 without manual sending."
+            data-topics="Welcome sequence: the first 5 emails that set expectations and build trust|Drip campaigns vs. broadcast emails: the two modes of email|Abandoned cart email sequence: the highest-converting automation in ecommerce|Re-engagement campaigns: winning back cold subscribers|Behavioural triggers: sending emails based on clicks, page visits, purchases|Building automation in Klaviyo, ConvertKit, or ActiveCampaign"
+            data-tags="automation,sequences">
+            <div class="node-top">
+              <div class="node-icon">⚙️</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Email Automation &amp; Sequences</div>
+            <div class="node-desc">Welcome flows, abandoned cart, re-engagement — automated sequences that work for you
+              around the clock.</div>
+            <div class="node-tags"><span class="node-tag">automation</span><span class="node-tag">flows</span></div>
+          </div>
+
+          <div class="node wide" data-id="27" data-title="Writing Emails That Get Opened"
+            data-desc="The best email in the world is worthless if it's never opened. Subject lines are the most important copy in email marketing — they determine open rate, which determines everything else. Learn to write subject lines and preview text that earn opens, and email body copy that earns clicks."
+            data-topics="Subject line formulas: curiosity, specificity, urgency, personalisation|Preview text: the second subject line most marketers waste|Personalisation beyond [First Name]: dynamic content by segment|Plain text vs. HTML emails: the surprising deliverability case for plain text|Mobile optimisation: 60%+ of emails are opened on mobile|A/B testing subject lines: the single easiest lever in email marketing"
+            data-tags="subject-lines,email-copy">
+            <div class="node-top">
+              <div class="node-icon">📬</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Writing Emails That Get Opened</div>
+            <div class="node-desc">Subject lines, preview text, personalisation, A/B testing — master the craft of email
+              copy that earns opens and clicks.</div>
+            <div class="node-tags"><span class="node-tag">subject-lines</span><span class="node-tag">copy</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="phase-connector">
+        <div class="phase-connector-inner">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+      </div>
+
+      <!-- ═══ PHASE 7 ═══ -->
+      <div class="phase phase-blue" data-phase="7" id="phase-7">
+        <div class="phase-header">
+          <div class="phase-number">PHASE 07</div>
+          <div class="phase-title">Analytics &amp; Growth</div>
+          <div class="phase-line"></div>
+        </div>
+        <div class="nodes">
+
+          <div class="node wide" data-id="28" data-title="Google Analytics 4"
+            data-desc="Google Analytics 4 (GA4) is the universal measurement tool for understanding website traffic — where it comes from, what users do when they arrive, and which channels drive actual conversions. Every digital marketer must be fluent in GA4 to make data-driven decisions rather than operating on gut feel."
+            data-topics="GA4 setup: property creation, data streams, Google tag|Key reports: acquisition, engagement, monetisation, retention|Events and conversions: setting up custom event tracking|Understanding the user journey: explore reports and funnel analysis|Acquisition report: comparing channel performance|Connecting GA4 to Google Ads and Search Console for full-funnel visibility"
+            data-tags="GA4,analytics">
+            <div class="node-top">
+              <div class="node-icon">📊</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Google Analytics 4</div>
+            <div class="node-desc">GA4 setup, acquisition reports, conversion tracking, funnel analysis — the universal
+              measurement tool every marketer must know.</div>
+            <div class="node-tags"><span class="node-tag">GA4</span><span class="node-tag">analytics</span></div>
+          </div>
+
+          <div class="node" data-id="29" data-title="Marketing KPIs & Reporting"
+            data-desc="Data without interpretation is just noise. Marketing reporting is about telling a clear story with metrics — connecting channel performance to business outcomes and making recommendations that drive the next decision. Learn the KPIs that matter for each channel and how to build reports stakeholders actually read."
+            data-topics="KPIs by channel: SEO (organic traffic, rankings), paid (ROAS, CPA), email (open rate, revenue), social (engagement rate, reach)|Vanity vs. actionable metrics: the distinction that changes everything|Monthly marketing report structure: performance → insight → recommendation|Dashboard tools: Looker Studio, Notion, Databox|Attribution: giving credit to the right channels|Communicating marketing results to non-marketers"
+            data-tags="KPIs,reporting">
+            <div class="node-top">
+              <div class="node-icon">📈</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Marketing KPIs &amp; Reporting</div>
+            <div class="node-desc">Channel KPIs, vanity vs. actionable metrics, Looker Studio dashboards — build reports
+              that tell a story and drive decisions.</div>
+            <div class="node-tags"><span class="node-tag">KPIs</span><span class="node-tag">reporting</span></div>
+          </div>
+
+          <div class="node" data-id="30" data-title="Attribution & Channels"
+            data-desc="Which channel gets credit when a customer buys after seeing a Facebook ad, reading a blog post, searching Google, and clicking an email link? Attribution is one of marketing's hardest problems — and how you solve it determines where you invest your budget. Learn the models and their real-world tradeoffs."
+            data-topics="Attribution models: first touch, last touch, linear, time decay, data-driven|The multi-touch customer journey: why single-touch models lie|View-through vs. click-through attribution in paid media|GA4's attribution report: comparing models side by side|UTM parameters: tracking every link with consistent, clean source data|The fundamental attribution problem: not all channels are measurable equally"
+            data-tags="attribution,UTM">
+            <div class="node-top">
+              <div class="node-icon">🔀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Attribution &amp; Channels</div>
+            <div class="node-desc">Which channel gets credit? Attribution models, UTM parameters, and why single-touch
+              attribution is lying to you.</div>
+            <div class="node-tags"><span class="node-tag">attribution</span><span class="node-tag">UTM</span></div>
+          </div>
+
+          <div class="node wide" data-id="31" data-title="Growth Marketing Mindset"
+            data-desc="Growth marketing is not a set of tactics — it's a mindset. It treats every marketing decision as an experiment: form a hypothesis, run the test, measure the result, double down or kill it. Learning this iterative, data-driven approach to marketing is what transforms beginners into practitioners who compound their skills over time."
+            data-topics="The growth loop: acquisition → activation → retention → referral → revenue|The ICE framework for prioritising growth experiments|The 'one metric that matters' (OMTM) focus|Building a growth experiment log: track what you tested and learned|North Star Metric for marketing: the one number that guides all activity|Staying current: newsletters, communities, and channels worth following (Lenny, MKT1, Growth.Design)"
+            data-tags="growth,experimentation">
+            <div class="node-top">
+              <div class="node-icon">🚀</div>
+              <div class="node-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg></div>
+            </div>
+            <div class="node-title">Growth Marketing Mindset</div>
+            <div class="node-desc">Hypothesise, test, measure, double down or kill it. The iterative, experiment-driven
+              mindset that compounds marketing skills.</div>
+            <div class="node-tags"><span class="node-tag">growth</span><span class="node-tag">experiments</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-left">
+      <div class="stat">📚 <strong>36</strong> topics</div>
+      <div class="stat">✅ <strong id="doneCount">0</strong> completed</div>
+      <div class="stat">🚀 <strong id="phaseDone">0</strong>/7 phases</div>
+    </div>
+    <div class="stats-right">Progress: <span id="pctBottom">0%</span></div>
+  </div>
+
+  <div class="seo-panel-overlay" id="panelOverlay"></div>
+  <div class="seo-panel" id="seoPanel">
+    <button class="panel-close-btn" id="panelCloseBtn">✕</button>
+    <div class="panel-phase-tag" id="panelPhaseTag">PHASE 01 — DIGITAL MARKETING FOUNDATIONS</div>
+    <div class="panel-node-title" id="panelTitle">Topic Title</div>
+    <div class="panel-node-desc" id="panelDesc">Description.</div>
+    <div class="panel-section-label">What You'll Learn</div>
+    <ul class="panel-topics" id="panelTopics"></ul>
+    <button class="panel-mark-btn" id="panelMarkBtn">✓ Mark as Completed</button>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Path<em>Finder</em></div>
+          <p class="footer-tagline">Structured learning paths for students and self-learners. 120+ roadmaps, 100% free.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <ul>
+            <li><a href="../categories.html">All Roadmaps</a></li>
+            <li>Tech</li>
+            <li>Design</li>
+            <li>Business</li>
+            <li>Life Skills</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../about.html">About Us</a></li>
+            <li>Blog</li>
+            <li>Community</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSccSClVIEfi89--Tf_z4xz9y9f8F1cr36CYifmXG15UGt1uEA/viewform?usp=publish-editor">Contribute</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/ruhan-motiwale-/">LinkedIn</a></li>
+            <li>YouTube</li>
+            <li>Twitter</li>
+            <li><a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd32OPm8vyNImPlVa41QQbfZXL_D_YPPplbtFfHAeezy1_NIA/viewform?usp=publish-editor">Contact
+                Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PathFinder · All rights reserved by <a href="https://www.linkedin.com/in/ruhan-motiwale-/">Ruhan
+            Motiwale</a></span>
+        <span>Made for learners, by learners.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOTAL = 36;
+    const phaseNames = {
+      1: 'DIGITAL MARKETING FOUNDATIONS', 2: 'CONTENT MARKETING',
+      3: 'SEARCH ENGINE OPTIMISATION', 4: 'SOCIAL MEDIA MARKETING',
+      5: 'PAID ADVERTISING', 6: 'EMAIL MARKETING',
+      7: 'ANALYTICS & GROWTH'
+    };
+    let done = new Set(JSON.parse(localStorage.getItem('pathfinder-digimkt-done') || '[]'));
+    let activeNode = null;
+    function save() { localStorage.setItem('pathfinder-digimkt-done', JSON.stringify([...done])); }
+    function updateProgress() {
+      const n = done.size, pct = Math.round((n / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('headerPct').textContent = pct + '%';
+      document.getElementById('headerNodes').textContent = `${n} of ${TOTAL} topics completed`;
+      document.getElementById('navPill').textContent = `${n} / ${TOTAL} complete`;
+      document.getElementById('doneCount').textContent = n;
+      document.getElementById('pctBottom').textContent = pct + '%';
+      let cp = 0;
+      document.querySelectorAll('.phase').forEach(phase => {
+        const pid = phase.dataset.phase;
+        const nodes = phase.querySelectorAll('.node');
+        const all = nodes.length > 0 && [...nodes].every(nd => done.has(nd.dataset.id));
+        const dot = document.getElementById('sdot-' + pid);
+        if (dot) { dot.style.background = all ? 'var(--gold)' : 'var(--surface2)'; dot.style.boxShadow = all ? '0 0 6px var(--gold)' : 'none'; dot.style.borderColor = all ? 'var(--gold)' : 'rgba(255,255,255,0.1)'; }
+        if (all) cp++;
+      });
+      document.getElementById('phaseDone').textContent = cp;
+    }
+    function applyDone() {
+      document.querySelectorAll('.node').forEach(nd => nd.classList.toggle('done', done.has(nd.dataset.id)));
+      updateProgress();
+    }
+    document.querySelectorAll('.node').forEach(nd => {
+      nd.addEventListener('click', e => {
+        if (e.target.closest('.node-check')) return;
+        activeNode = nd;
+        const ph = nd.closest('.phase').dataset.phase;
+        document.getElementById('panelPhaseTag').textContent = `PHASE 0${ph} — ${phaseNames[ph]}`;
+        document.getElementById('panelTitle').textContent = nd.dataset.title;
+        document.getElementById('panelDesc').textContent = nd.dataset.desc;
+        document.getElementById('panelTopics').innerHTML = nd.dataset.topics.split('|').map(t => `<li>${t}</li>`).join('');
+        document.getElementById('panelMarkBtn').textContent = done.has(nd.dataset.id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('seoPanel').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.node-check').forEach(check => {
+      check.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = check.closest('.node').dataset.id;
+        done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      });
+    });
+    document.getElementById('panelMarkBtn').addEventListener('click', () => {
+      if (!activeNode) return;
+      const id = activeNode.dataset.id;
+      done.has(id) ? done.delete(id) : done.add(id); save(); applyDone();
+      document.getElementById('panelMarkBtn').textContent = done.has(id) ? '✕ Mark as Incomplete' : '✓ Mark as Completed';
+    });
+    function closePanel() {
+      document.getElementById('panelOverlay').classList.remove('open');
+      document.getElementById('seoPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+    document.getElementById('panelOverlay').addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+    function scrollToPhase(n) {
+      const el = document.getElementById('phase-' + n);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    applyDone(); setTimeout(updateProgress, 150);
+  </script>
+</body>
+
+</html>
