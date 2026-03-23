@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- PathFinder Favicon A: Compass Node -->
+  <!-- Background -->
+  <rect width="128" height="128" rx="28" fill="#07080F"/>
+
+  <!-- Hexagonal ring -->
+  <polygon points="64,8 110,34 110,94 64,120 18,94 18,34"
+    fill="none" stroke="#F5A623" stroke-width="3" opacity="0.3"/>
+
+  <!-- Compass circle -->
+  <circle cx="64" cy="64" r="36" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.45"/>
+
+  <!-- Cardinal tick marks -->
+  <line x1="64" y1="30" x2="64" y2="39" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="64" y1="89" x2="64" y2="98" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="28" y1="64" x2="37" y2="64" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="91" y1="64" x2="100" y2="64" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Ordinal tick marks (smaller) -->
+  <line x1="38.5" y1="38.5" x2="44.8" y2="44.8" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="89.5" y1="38.5" x2="83.2" y2="44.8" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="38.5" y1="89.5" x2="44.8" y2="83.2" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="89.5" y1="89.5" x2="83.2" y2="83.2" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Needle — north (gold, pointing up) -->
+  <polygon points="64,32 69.5,64 64,58 58.5,64" fill="#F5A623"/>
+  <!-- Needle — south (muted) -->
+  <polygon points="64,96 69.5,64 64,70 58.5,64" fill="#F5A623" opacity="0.28"/>
+
+  <!-- Centre hub -->
+  <circle cx="64" cy="64" r="7" fill="#07080F" stroke="#F5A623" stroke-width="2"/>
+  <circle cx="64" cy="64" r="3.5" fill="#F5A623"/>
+</svg>

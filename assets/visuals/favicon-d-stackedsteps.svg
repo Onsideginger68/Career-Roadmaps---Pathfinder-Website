@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- PathFinder Favicon D: Stacked Steps -->
+  <!-- Background -->
+  <rect width="128" height="128" rx="28" fill="#07080F"/>
+
+  <!-- Step 1 — bottom, widest, most muted -->
+  <rect x="14" y="96" width="100" height="15" rx="7.5" fill="#FF6B6B" opacity="0.28"/>
+  <!-- Step 2 — middle -->
+  <rect x="22" y="74" width="84"  height="15" rx="7.5" fill="#FF6B6B" opacity="0.6"/>
+  <!-- Step 3 — top, narrowest, brightest -->
+  <rect x="30" y="52" width="68"  height="15" rx="7.5" fill="#FF6B6B"/>
+
+  <!-- Milestone dot on top bar (right end) -->
+  <circle cx="90" cy="59.5" r="11" fill="#FF6B6B" opacity="0.18"/>
+  <circle cx="90" cy="59.5" r="6.5" fill="#FF6B6B"/>
+  <circle cx="90" cy="59.5" r="3"   fill="#07080F" opacity="0.5"/>
+
+  <!-- Upward chevrons (progress arrows above top bar) -->
+  <path d="M57 44 L64 35 L71 44"
+    fill="none" stroke="#FF6B6B" stroke-width="3"
+    stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  <path d="M57 51 L64 42 L71 51"
+    fill="none" stroke="#FF6B6B" stroke-width="3"
+    stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+
+  <!-- Left-edge step connector dots -->
+  <circle cx="30" cy="81.5" r="4" fill="#FF6B6B" opacity="0.5"/>
+  <circle cx="22" cy="103.5" r="4" fill="#FF6B6B" opacity="0.28"/>
+</svg>

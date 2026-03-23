@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- PathFinder Favicon C: Path Arrow -->
+  <!-- Background -->
+  <rect width="128" height="128" rx="28" fill="#07080F"/>
+
+  <!-- Trail dots — incoming path (dashed feel via spaced circles) -->
+  <circle cx="16" cy="104" r="4" fill="#7B9FFF" opacity="0.3"/>
+  <circle cx="30" cy="90"  r="4" fill="#7B9FFF" opacity="0.4"/>
+  <circle cx="44" cy="76"  r="4" fill="#7B9FFF" opacity="0.5"/>
+
+  <!-- Dashed trail line -->
+  <polyline points="16,104 30,90 44,76 56,66"
+    fill="none" stroke="#7B9FFF" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round"
+    stroke-dasharray="5 4" opacity="0.45"/>
+
+  <!-- Waypoint glow rings -->
+  <circle cx="64" cy="64" r="22" fill="#7B9FFF" opacity="0.1"/>
+  <circle cx="64" cy="64" r="15" fill="#7B9FFF" opacity="0.12"/>
+
+  <!-- Waypoint node ring -->
+  <circle cx="64" cy="64" r="11" fill="#07080F" stroke="#7B9FFF" stroke-width="2.5"/>
+  <!-- Waypoint centre -->
+  <circle cx="64" cy="64" r="5" fill="#7B9FFF"/>
+
+  <!-- Solid outgoing path -->
+  <polyline points="72,62 82,50 96,36 106,28"
+    fill="none" stroke="#7B9FFF" stroke-width="2.5"
+    stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+
+  <!-- Continuing dots -->
+  <circle cx="82"  cy="50" r="3.5" fill="#7B9FFF" opacity="0.6"/>
+  <circle cx="96"  cy="36" r="3.5" fill="#7B9FFF" opacity="0.7"/>
+
+  <!-- Arrow head (NE direction) -->
+  <polygon points="112,20 96,34 104,37 108,28" fill="#7B9FFF"/>
+
+  <!-- Start dot ring (open) -->
+  <circle cx="16" cy="104" r="6" fill="none" stroke="#7B9FFF" stroke-width="1.5" opacity="0.4"/>
+</svg>
